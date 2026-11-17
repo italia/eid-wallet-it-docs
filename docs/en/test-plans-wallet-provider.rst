@@ -502,9 +502,9 @@ This section lists the test cases from Sections:
      - Fresh DPoP proof
      - Wallet Instance generates a fresh DPoP proof with the same key used for the Token Request DPoP proof, and in accordance with :rfc:`9449#section-4`.
    * - WP_056c
-     - Issuance, Security
-     - Match the Credential key proof to the DPoP key
-     - Wallet Instance includes a ``proofs`` object of type ``jwt`` in the Credential Request that demonstrates possession of the cryptographic key material; the ``jwk`` value in this object matches the public key referenced in the DPoP proof.
+     - Voided
+     - Voided
+     - Voided
    * - WP_057
      - Issuance, Interoperability
      - Multiple Digital Credential request
@@ -734,7 +734,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_090
      - Remote-flow, Presentation, Interoperability
      - Notify Relying Party on invalid request
-     - If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s ``response_uri`` Endpoint.
+     - If the Request Object is invalid or fails verification, and the selected path has authenticated ``response_uri``, the Wallet Instance sends an Authorization Error Response via HTTP POST to that endpoint. Otherwise the flow terminates locally and does not disclose Wallet or Credential availability.
    * - WP_091
      - Remote-flow, Presentation, Interoperability
      - Send Authorization Response

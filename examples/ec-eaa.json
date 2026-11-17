@@ -580,7 +580,7 @@
                                     {
                                         "name": "Portrait base64 encoded",
                                         "locale": "en-US",
-                                        "description": "Photo of of the driving licence holder"
+                                        "description": "Photo of the driving licence holder"
                                     }
                                 ]
                             },
@@ -850,7 +850,7 @@
                                     {
                                         "name": "Portrait",
                                         "locale": "en-US",
-                                        "description": "Photo of of the driving licence holder"
+                                        "description": "Photo of the driving licence holder"
                                     }
                                 ]
                             },

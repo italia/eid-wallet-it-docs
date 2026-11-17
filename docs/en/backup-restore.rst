@@ -15,11 +15,11 @@ Backup and Restore
 Migration, or data portability, enables the :term:`User` to recover their Credentials and transaction log in a new Wallet Instance of the same or a different :term:`Wallet Solution`, using the migration object.
 The :term:`Wallet Instance` MUST carry out backup, restore, export and portability under this section in a manner that is user-friendly, transparent and traceable by the :term:`User`.
 
-The :term:`Wallet Instance` MUST enable the :term:`User` to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible, as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [`EU_2024_1183`_].
+The :term:`Wallet Instance` MUST enable the :term:`User` to download the User's data, electronic attestations of attributes and configurations, to the extent technically feasible. That download is as required by Article 5a(4)(f) of Regulation (EU) No 910/2014, as amended by [`EU_2024_1183`_].
 
 The :term:`Wallet Instance` MUST enable the :term:`User` to exercise the User's rights to data portability, as required by Article 5a(4)(g) of that Regulation.
 
-The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets, so that the :term:`User` can migrate to a :term:`Wallet Instance` of the same or a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
+The :term:`Wallet Instance` MUST support secure export and portability of the User's personal data, where technically feasible and excepting critical assets. The :term:`User` can then migrate to a :term:`Wallet Instance` of the same or a different :term:`Wallet Solution` while keeping assurance level high as set out in Implementing Regulation (EU) 2015/1502. This is Article 13 of [`CIR2024/2979`_].
 
 The backup file specified in :ref:`backup-restore:Backup Flow` is the backup and recovery of references to device-bound Digital Credentials.
 
@@ -61,10 +61,10 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
   As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the :term:`Issuer` identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of :term:`User` privacy.
 
 .. note::
-  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
+  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on :rfc:`2898`. `NIST SP 800-132`_ recommends PBKDF2. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found in `Practical Cryptography for Developers`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
+  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithm is 600000 iterations as stated in the `OWASP Password Storage Cheat Sheet`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
@@ -83,12 +83,8 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
 
 A non-normative example of the backup JWT header and payload is as the following:
 
-.. code-block:: json
-
-  {
-    "alg": "ES256",
-    "typ": "wallet-unit-credentials-backup+jwt"
-  }
+.. literalinclude:: ../../examples/backup-jwt-header.json
+   :language: json
 
 .. code-block:: json
 
@@ -103,7 +99,7 @@ A non-normative example of the backup JWT header and payload is as the following
      }
   }
 
-The JOSE header of the backup JWT MUST contain the following REQUIRED parameters (:ref:`WP_122a <credential-backup-testcases>`):
+The JOSE header of the backup JWT MUST contain the following parameters (:ref:`WP_122a <credential-backup-testcases>`). Those parameters are REQUIRED.
 
 .. list-table::
   :class: longtable
@@ -207,7 +203,7 @@ When the :term:`User` does not indicate that they are stored, the migration obje
 
 The migration object MUST contain the transaction log.
 
-For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the Credential, and the provider's service supply point, as specified in `EUDI-TS 10`_.
+For each PID, IT-Wallet ID or other Digital Credential in that list, the migration object MUST include the attestation type, the provider that issued the Credential, and the provider's service supply point. The content is as specified in `EUDI-TS 10`_.
 
 The attestation type, the provider that issued the Credential, and the provider's service supply point for that non-device-bound attestation remain in the Credential list.
 
@@ -223,7 +219,7 @@ The :term:`Wallet Instance` MUST protect the confidentiality, integrity and auth
 
 The :term:`Wallet Instance` MUST NOT protect the migration object by signing it as a ``wallet-unit-credentials-backup+jwt``.
 
-The :term:`Wallet Instance` MUST allow the :term:`User` to store the migration object (which is a password-protected and encrypted file) in an external or remote location of the User's choice, among the storage options supported by the :term:`Wallet Instance`.
+The :term:`Wallet Instance` MUST allow the :term:`User` to store the migration object in an external or remote location of the User's choice, among the storage options supported by the :term:`Wallet Instance`. The migration object is a password-protected and encrypted file.
 
 Directly after installation, the new :term:`Wallet Instance` MUST enable the :term:`User` to import a migration object from a location the User indicates, among the storage options supported by the :term:`Wallet Instance`.
 

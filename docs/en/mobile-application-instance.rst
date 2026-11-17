@@ -128,14 +128,8 @@ The Nonce Response body contains the ``nonce`` value.
 
 Below is a non-normative example of a Nonce Response.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-1.http
+   :language: http
 
 Mobile Application Nonce Error Response
 """""""""""""""""""""""""""""""""""""""
@@ -147,15 +141,8 @@ If any errors occur, the Application Provider returns an error response. The res
 
 Below is a non-normative example of a Nonce Error Response.
 
-.. code-block:: http
-
-    HTTP/1.1 500 Internal Server Error
-    Content-Type: application/json
-
-    {
-        "error": "server_error",
-        "error_description": "The server encountered an unexpected error."
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-2.http
+   :language: http
 
 The following table lists HTTP Status Codes and related error codes that are supported for the error response:
 
@@ -202,17 +189,8 @@ The Instance Initialization Request body contains the following claims:
 
 Below is a non-normative example of an Instance Initialization Request.
 
-.. code-block:: http
-
-    POST /instance-initialization HTTP/1.1
-    Host: application-provider.example.com
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
-      "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-3.http
+   :language: http
 
 
 Mobile Application Instance Initialization Response

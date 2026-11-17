@@ -1,0 +1,7 @@
+POST /key-attestation HTTP/1.1
+Host: application-provider.example.org
+Content-Type: application/json
+
+{
+  "assertion": "eyJpc3MiOiJPbnNpYW5kcklqcDdJbU55ZGlJNklsQ..."
+}

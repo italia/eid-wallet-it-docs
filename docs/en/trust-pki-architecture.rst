@@ -88,17 +88,17 @@ Revocation Trust Anchors
 
 Within these specifications, the following additional conditions apply regarding revocation Trust Anchors:
 
-- Within the EUDIW Trust Framework, the Trust Anchors used to validate the revocation mechanisms for WRPRC, PID and PuB-EAA certificate chains are the same notified Trust Anchors used by the corresponding signing PKIs.
+- Within the EUDIW Trust Framework, the Trust Anchors used to validate the revocation mechanisms for WRPRC, PID and PuB-EAA certificate chains are the notified Trust Anchors of the corresponding signing PKIs.
 - Within the National Trust Framework, the Signing Trust Anchors of EAA Providers are also the Trust Anchors used to validate the revocation status of EAA signing certificate chains.
-- For Wallet Instance Attestations and Key Attestations, the Wallet Provider MUST use the same Trust Anchor for signature validation and for validation of the applicable status or revocation information. In the EUDIW Trust Framework, this Trust Anchor is published in the Wallet Providers LoTE; in the National Trust Framework, the same key material is distributed as the National Wallet Trust Anchor through the Federation Trust Anchor Entity Configuration (see :ref:`trust-evaluation:Wallet Trust Anchor Distribution`).
-- When a Wallet Provider operates in both Trust Frameworks, its National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission and published in the Wallet Providers LoTE under the Wallet Provider's ``ServiceDigitalIdentity``. The national Entity Configuration is an additional distribution channel and MUST NOT introduce a second Trust Anchor.
+- For Wallet Instance Attestations and Key Attestations, the Wallet Provider MUST use the same Trust Anchor for signature validation and for validation of the applicable status or revocation information. In the EUDIW Trust Framework, this Trust Anchor is published in the Wallet Providers LoTE. In the National Trust Framework, the same key material is distributed as the National Wallet Trust Anchor through the Federation Trust Anchor Entity Configuration (see :ref:`trust-evaluation:Wallet Trust Anchor Distribution`).
+- When a Wallet Provider operates in both Trust Frameworks, its National Wallet Trust Anchor MUST be the same certificate as the Trust Anchor notified to the European Commission. That Trust Anchor is published in the Wallet Providers LoTE under the Wallet Provider's ``ServiceDigitalIdentity``. The national Entity Configuration is an additional distribution channel. The national Entity Configuration MUST NOT introduce a second Trust Anchor.
 
 .. note::
   The Certification Authority that issues the Wallet-Relying Party Access Certificates and the Certification Authority that issues the Relying Party authentication certificates of the National Trust Framework use the same certificate profile.
 
 .. note::
   The Federation Entity Keys are not certified by the Certification Authorities described in this section.
-  The binding between a Federation Entity and its keys is provided by the Entity Configuration and by the Subordinate Statement issued by its superior, which are validated through the Federation Trust Chain and not with a certification path (see :ref:`infrastructure-trust:National Trust Artifacts`).
+  The binding between a Federation Entity and its keys is provided by the Entity Configuration and by the Subordinate Statement issued by its superior, which are validated through the Federation Trust Chain and not with a certificate chain (see :ref:`infrastructure-trust:National Trust Artifacts`).
   The Entity Configuration of the Federation Trust Anchor is used as a distribution channel for the Trust Anchors of the X.509 hierarchies.
 
 Design Principles
@@ -106,14 +106,14 @@ Design Principles
 
 The hierarchies described above follow the principles listed below.
 
-- **One Sign/Seal Certification Authority per notified role.** Each role that signs or seals an artifact has a distinct Sign/Seal Certification Authority.
-- **A single WRPAC Certification Authority.** Within IT-Wallet the access certificates are issued by a single Certification Authority, both to the Wallet-Relying Parties and to the PID Providers, as they follow the same profile and certificate policy.
+- **One Sign/Seal Certification Authority per notified role**. Each role that signs or seals an artifact has a distinct Sign/Seal Certification Authority.
+- **A single WRPAC Certification Authority**. Within IT-Wallet the access certificates are issued by a single Certification Authority. That Certification Authority issues them both to the Wallet-Relying Parties and to the PID Providers. Those certificates follow the same profile and certificate policy.
   The Relying Party authentication certificates of the National Trust Framework are issued by a distinct Certification Authority.
 - **No Trust Anchor without a consumer.** Within IT-Wallet a Trust Anchor is published in a distribution channel only when a trust evaluation procedure defined in this specification obtains it from that channel.
-- **The Root Certification Authority is outside the validation path.** The Trust Anchor certificate is the trust termination point of the path validation (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`), therefore the Root Certification Authority is never evaluated at runtime and its certificate is not published in any List.
-  It provides a common governance to the subordinate Certification Authorities and no trust relationship by itself.
+- **The Root Certification Authority is outside the certificate chain**. The Trust Anchor certificate is the trust termination point of the path validation (see :ref:`infrastructure-trust:Trust Anchor Certificate Profile`). The Root Certification Authority is never evaluated at runtime. Its certificate is not published in any List.
+  The Root Certification Authority provides a common governance to the subordinate Certification Authorities and no trust relationship by itself.
   A compromise of the Root Certification Authority is not detected by the ordinary path validation, and within IT-Wallet it is managed by re-issuing and re-notifying the affected Trust Anchors.
-- **Only end entities below a published Trust Anchor.** Within IT-Wallet the published Trust Anchor is the subordinate Certification Authority of the service, and no further Certification Authority layer is issued below it.
+- **Only end entities below a published Trust Anchor**. Within IT-Wallet the published Trust Anchor is the subordinate Certification Authority of the service. No further Certification Authority layer is issued below that Trust Anchor.
   This is consistent with the ``pathLenConstraint`` recommendation of :ref:`infrastructure-trust:Trust Anchor Certificate Profile`.
 - **Separation of the keys by purpose.** A Trust Anchor published for one purpose is not used to certify the artifacts of another purpose.
   A verifying entity has to be able to distinguish which Trust Anchors are usable for which category of Attestation, as required by [`EIDAS-ARF`_].

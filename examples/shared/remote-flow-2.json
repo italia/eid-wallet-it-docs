@@ -1,0 +1,9 @@
+{
+  "alg": "ES256",
+  "typ": "oauth-authz-req+jwt",
+  "x5c": [
+    "<WRPAC-leaf-base64url>",
+    "<WRPAC-intermediate-base64url>"
+  ],
+  "iat": 1770000000
+}

@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
+}

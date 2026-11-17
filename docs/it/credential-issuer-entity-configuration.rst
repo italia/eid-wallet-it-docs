@@ -36,6 +36,6 @@ Di seguito è riportato un esempio non normativo di una Entity Configuration di 
 - `openid_credential_verifier`.
 
 .. literalinclude:: ../../examples/ec-eaa.json
-  :language: JSON
+   :language: JSON
 
 

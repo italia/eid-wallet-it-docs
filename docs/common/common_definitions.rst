@@ -1,4 +1,5 @@
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+.. _ARF Annex 1: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v3.0.0/docs/annexes/annex-1/annex-1-definitions.md
 .. _EUDI-TS 3: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md#231-general_info
 .. _EUDI-TS 5: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/ts5-common-formats-and-api-for-rp-registration-information.md
 .. _EUDI-TS 5 OpenAPI: https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/fce24dbb59af093e189deaac280ed65a1aca65c3/docs/technical-specifications/api/ts5-openapi31-registrar-api.yml
@@ -62,7 +63,6 @@
 .. _JWS: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-signature
 .. _JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-json-web-token
 .. _Key Attestation: https://developer.android.com/privacy-and-security/security-key-attestation#attestation-v4
-.. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
 .. _MODI: https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf
 .. _OAUTH-ATTESTATION-CLIENT-AUTH: https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/07/
 .. _OAUTH-MULT-RESP-TYPE: https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
@@ -91,7 +91,19 @@
 .. _OIDC-FED#Section-7.4: https://openid.net/specs/openid-federation-1_0.html#Section-7.4
 .. _OIDC-FED#Section-7.4.1: https://openid.net/specs/openid-federation-1_0.html#Section-7.4.1
 .. _OIDC-FED#Section-7.5: https://openid.net/specs/openid-federation-1_0.html#Section-7.5
+.. _CEN/TS 18099: https://conto.uni.com/en/cen-ts-18099-2024
+.. _ETSI TS 119 431-1: https://www.etsi.org/deliver/etsi_ts/119400_119499/11943101/01.03.01_60/ts_11943101v010301p.pdf
+.. _GP TEE Protection Profile: https://globalplatform.org/specs-library/tee-protection-profile-v1-3/
+.. _GP_OMAPI_GPD_SPE_075: https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/
+.. _NIST SP 800-132: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
+.. _NIST: https://csrc.nist.gov/glossary/term/special_character
+.. _NSCIB-CC-0244671: https://www.tuv-nederland.nl/assets/files/cerfiticaten/2021/08/nscib-cc-0244671-cr-1.0.pdf
 .. _OIDC: https://openid.net/specs/openid-connect-core-1_0.html
+.. _OWASP Password Storage Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2
+.. _OpenID Connect Discovery 1.0: https://openid.net/specs/openid-connect-discovery-1_0.html
+.. _OpenID Connect Registration 1.0: https://openid.net/specs/openid-connect-registration-1_0.html
+.. _Practical Cryptography for Developers: https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password
+.. _W3C-CredentialAPI: https://wicg.github.io/digital-credentials/
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
@@ -127,4 +139,6 @@
 .. _OAS3: https://spec.openapis.org/oas/v3.0.3
 .. _ICAO 9303: https://www.icao.int/publications/doc-series/doc-9303
 .. _BSI-03110: https://www.bundesanzeiger.de/download/BAnzAT1142010B1/03_BSI_TR-03110.pdf
+.. _Adaptive chosen-ciphertext attack: https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack
+.. _SOG-IS Agreed Cryptographic Mechanisms: https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf
 

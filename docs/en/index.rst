@@ -4,7 +4,13 @@
 IT-Wallet Technical Documentation
 =================================
 
-This document provides the technical architecture, implementation framework and design requirements to be adopted by IT-Wallet Solutions.
+.. only:: html
+
+   .. include:: introduction-lead.rst
+
+.. only:: latex
+
+   This document provides the technical architecture, implementation framework and design requirements to be adopted by IT-Wallet Solutions.
 
 .. toctree::
   :maxdepth: 3

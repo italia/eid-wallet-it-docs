@@ -1,0 +1,13 @@
+{
+    "iss": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
+    "sub": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
+    "aud": "https://erogatore.example/ente-example/v1",
+    "iat": 1733397840,
+    "nbf": 1733401628,
+    "exp": 1733401440,
+    "jti": "d3f7b2c9-274a-42b7-8f8d-2e9d8b1734b0",
+    "signed_headers": [
+        {"digest": "SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41"},
+        {"content-type": "application/json"}
+    ]
+}

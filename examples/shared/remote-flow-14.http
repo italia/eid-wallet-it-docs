@@ -1,0 +1,7 @@
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+  "error": "invalid_request",
+  "error_description": "The vp_token is malformed, missing required parameters or incorrectly formatted"
+}

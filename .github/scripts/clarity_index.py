@@ -29,7 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "docs"
 BASELINE_PATH = ROOT / ".github" / "clarity-baseline.json"
-THRESHOLD = 55.0
+THRESHOLD = 90.0
 
 EN_KEYWORDS = re.compile(
     r"\b(MUST NOT|MUST|REQUIRED|SHALL NOT|SHALL|SHOULD NOT|SHOULD|"
@@ -55,6 +55,10 @@ DROP_DIRECTIVES = frozenset({
 DIRECTIVE_RE = re.compile(r"^(\s*)\.\.\s+([A-Za-z0-9_-]+)::")
 TARGET_RE = re.compile(r"^\s*\.\.\s+_")
 COMMENT_RE = re.compile(r"^\s*\.\.\s+\S")
+# Sphinx directive options (`:language:`, `:caption:`, `:sorted:`). A role
+# (`:ref:`target``) has a backtick after the second colon and stays in the prose.
+# Option lines are markup. Their indentation must not change the index.
+OPTION_LINE_RE = re.compile(r"^[ \t]*:[A-Za-z0-9][A-Za-z0-9_-]*:(?!`)[^\n]*$")
 
 
 def _indent(line: str) -> int:
@@ -70,9 +74,12 @@ def strip_rst(text: str) -> str:
     raw_lines = text.splitlines()
     for index, line in enumerate(raw_lines):
         if skip_deeper_than is not None:
-            if line.strip() == "" or _indent(line) > skip_deeper_than:
+            if line.strip() == "" or _indent(line) > skip_deeper_than or OPTION_LINE_RE.match(line):
                 continue
             skip_deeper_than = None
+
+        if OPTION_LINE_RE.match(line):
+            continue
 
         directive = DIRECTIVE_RE.match(line)
         if directive and directive.group(2).lower() in DROP_DIRECTIVES:

@@ -39,10 +39,10 @@ Each X.509 certificate profile defined by this specification MUST conform to the
 
     The rest of the section details the content of the ``tbsCertificate`` field only. For additional information on the ``signatureAlgorithm`` and ``signatureValue`` fields, refer to :rfc:`5280`.
 
-The ``tbsCertificate`` field MUST contain a ``TBSCertificate`` structure, whose fields MUST conform to :rfc:`5280#section-4.1.2`.
+The ``tbsCertificate`` field MUST contain a ``TBSCertificate`` structure. The ``TBSCertificate`` fields MUST conform to :rfc:`5280#section-4.1.2`.
 
 The following table defines the certificate fields applicable to the certificate profile specified in this document.
-For each field, the table defines its presence requirement, type, description, and corresponding reference in :rfc:`5280`. Individual certificate profiles MAY provide additional contextual notes for these fields, but MUST NOT alter the presence requirements specified herein.
+For each field, the table defines its presence requirement, type, description, and corresponding reference in :rfc:`5280`. Individual certificate profiles MAY provide additional contextual notes for these fields. Individual certificate profiles MUST NOT alter the presence requirements specified herein.
 
 .. list-table:: TBSCertificate Fields
    :class: longtable
@@ -94,7 +94,7 @@ For each field, the table defines its presence requirement, type, description, a
        The applicable extensions and their profile-specific constraints are defined below and in the corresponding certificate profile.
      - Section 4.1.2.9
 
-The following table specifies the X.509 certificate extensions supported by this specification, including their Object Identifiers (OIDs), type, criticality, description, and normative references. Individual certificate profiles MUST define the presence requirement (REQUIRED, OPTIONAL, or PROHIBITED) for each extension and MAY further constrain its syntax and contents.
+The following table specifies the X.509 certificate extensions supported by this specification, including their Object Identifiers (OIDs), type, criticality, description, and normative references. Individual certificate profiles MUST define the presence requirement for each extension. The presence value REQUIRED applies when the extension is mandatory. The presence value OPTIONAL applies when the extension may be omitted. Prohibited applies when the extension is forbidden. Individual certificate profiles MAY further constrain the syntax and contents of each extension.
 
 The criticality values used in this specification have the following meaning:
 
@@ -171,7 +171,6 @@ The criticality values used in this specification have the following meaning:
      - NC
      - :rfc:`3739#section-3.2.6`, Clause 4.2 of [`ETSI EN 319 412-5`_]
 
-.. warning::
-  **Preventing Circular Dependencies in URIs**
+.. warning:: Preventing Circular Dependencies in URIs
 
   To prevent circular validation dependencies during TLS handshakes, URIs defined in the ``cRLDistributionPoints`` and ``authorityInfoAccess`` extensions MUST use the ``http://`` scheme instead of ``https://`` as suggested by :rfc:`5280#section-8`.

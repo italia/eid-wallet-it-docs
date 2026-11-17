@@ -9,11 +9,11 @@ EUDIW Trust Artifacts
 
 This section defines the required trust artifacts and their conceptual roles in the EUDIW ecosystem as per `EIDAS-ARF`_, including:
 
-- :ref:`infrastructure-trust:Register of WRPs`;
-- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`;
-- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`;
-- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`;
-- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`;
+- :ref:`infrastructure-trust:Register of WRPs`.
+- :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`.
+- :ref:`infrastructure-trust:Registrar Sign/Seal Certificate Profile`.
+- :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+- :ref:`infrastructure-trust:Trusted List, Lists of Trusted Lists, and Lists of Trusted Entities`.
 - :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
 
 The data model of these Trust Artifacts profiles the following external specifications.
@@ -46,19 +46,19 @@ Below some non-normative examples of ``WalletRelyingParty`` objects stored in th
 A bank registered as a Relying Party requesting PID for know-your-customer procedures, with one Relying Party Service.
 
 .. literalinclude:: ../../examples/register-wrp-rp.json
-  :language: JSON
+   :language: JSON
 
 A bank registered as both a Relying Party requesting PID and a QEAA Provider (issuing bank account attestations to Wallet).
 It registers two Services: one Service with ``intendedUses`` and one Service with ``providesAttestations``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-ap.json
-  :language: JSON
+   :language: JSON
 
 An entity registered as a designated Intermediary that acts on behalf of WRPs during Wallet interactions.
 Each of its ``services[]`` elements has ``isIntermediary: true``, does not declare ``intendedUses`` or entitlements, and lists the served Services in ``servedWRPServices``.
 
 .. literalinclude:: ../../examples/register-wrp-rp-intermediary.json
-  :language: JSON
+   :language: JSON
 
 
 Register Open APIs
@@ -75,7 +75,7 @@ Methods, filter parameters, response codes and the slicing of ``services`` when 
 
 The YAML file of the OpenAPI specification described in Section 3 of `EUDI-TS 5`_ is available as `EUDI-TS 5 OpenAPI`_.
 The JSON Schema of the ``WalletRelyingParty`` object, including the ``services`` array of ``WalletRelyingPartyService``, is available as `EUDI-TS 5 JSON Schema`_.
-The national read profile of that API is available :raw-html:`<a href="OAS3-Register-API-READ.html" target="_blank">here</a>`.
+The national Register API provides only the read methods of `EUDI-TS 5 OpenAPI`_.
 
 Wallet-Relying Party Access Certificate (WRPAC) Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,7 +98,7 @@ Revocation on suspension or cancellation of the WRP services is specified in :re
 The following is an example of a WRPAC for legal persons following the NCP.
 
 .. literalinclude:: ../../examples/wrpac-ncp.txt
-  :language: text
+   :language: text
 
 Registrar Sign/Seal Certificate Profile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,7 +132,7 @@ Extensions not listed in the table MUST NOT be present.
      - REQUIRED.
 
    * - ``cRLDistributionPoints``
-     - CONDITIONAL. **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
+     - **REQUIRED IF:** the certificate does not include any access location of an OCSP responder or the validity assured extension as defined in `ETSI EN 319 412-1`_.
 
    * - ``authorityInfoAccess``
      - REQUIRED. It MUST include an ``AccessDescription`` structure with ``accessMethod`` set to ``1.3.6.1.5.5.7.48.2`` (``id-ad-caIssuers``) and ``accessLocation`` specifying at least one access location of a valid CA certificate of the issuing CA.
@@ -142,7 +142,7 @@ Extensions not listed in the table MUST NOT be present.
 The following is a non-normative example of a Registrar Sign/Seal Certificate for legal persons (non-self-signed).
 
 .. literalinclude:: ../../examples/registrar-sign-seal.txt
-  :language: text
+   :language: text
 
 
 Wallet-Relying Party Registration Certificate (WRPRC) Profile
@@ -163,15 +163,15 @@ The Wallet Unit evaluates intermediated presentation as specified in :ref:`trust
 Below a non-normative example of WRPRC header and payload for a Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-jwt-header.json
-  :language: json
+   :language: json
 
 .. literalinclude:: ../../examples/wrprc-payload-ci.json
-  :language: json
+   :language: json
 
 Below a non-normative example of WRPRC payload for an intermediated Relying Party.
 
 .. literalinclude:: ../../examples/wrprc-payload-rpi.json
-  :language: json
+   :language: json
 
 .. warning::
 
@@ -268,7 +268,7 @@ The normative JSON and XML schemas of the Lists of Trusted Entities are publishe
 The example below shows a non-normative example of payload of a List of Trusted Entities for PID Providers.
 
 .. literalinclude:: ../../examples/lote-pid.json
-  :language: json
+   :language: json
 
 Embedded Disclosure Policy (EDP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -293,7 +293,7 @@ The Wallet Unit MUST NOT retrieve policy content from ``policy_uri``.
   The Service identifier is deferred as specified in :ref:`infrastructure-trust:Register of WRPs`.
   Until then, the Wallet Unit matches the EU-wide unique identifier (``sub``) and, where present, the entitlement URI.
   `ETSI TS 119 472-3`_ (ISS-MDATA-EBD-4.2.5.2-07) also encodes authorized parties by subject DN or by entitlement URI.
-  The ``subject_dn`` parameter is that ETSI encoding; it is not an evaluation input against the WRPAC.
+  The ``subject_dn`` parameter is that ETSI encoding. The ``subject_dn`` parameter is not an evaluation input against the WRPAC.
   The ``entitlement_uri`` parameter is matched against entitlements held in the WRPRC.
   Annex A.3 of `ETSI TS 119 475`_ defines sub-entitlements for Service Providers, currently for Payment Service Providers (e.g. ``https://uri.etsi.org/19475/SubEntitlement/psp/psp-ai``).
   For an **intermediated** presentation the WRPRC in the request is that of the *intermediated* Relying Party ([`EIDAS-ARF`_] RPRC_19).
@@ -404,10 +404,10 @@ The following table provides a comprehensive overview of the Embedded Disclosure
 The following are non-normative examples of EDPs with Authorized Relying Parties Only and Specific Root of Trust policy types.
 
 .. literalinclude:: ../../examples/edp-authorized-rps.json
-  :language: json
+   :language: json
 
 .. literalinclude:: ../../examples/edp-specific-root.json
-  :language: json
+   :language: json
 
 Embedded Disclosure Policy Lifecycle
 """"""""""""""""""""""""""""""""""""

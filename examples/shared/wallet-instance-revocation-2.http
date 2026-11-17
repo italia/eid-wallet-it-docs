@@ -1,0 +1,7 @@
+PATCH /wallet-instances/{f7b2a8d9} HTTP/1.1
+Host: wallet-provider.example.org
+Content-Type: application/json
+
+{
+  "status": "REVOKED"
+}

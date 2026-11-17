@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "kty": "EC",
+  "key_ops": [
+    "sign"
+  ],
+  "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec",
+  "crv": "P-256",
+  "x": "huyXIQNv902oLspX4_zonC94G6yEln6lsdm-1wM732o",
+  "y": "I9PDEawWHqaFDGx1ZkNk-2PV6WdpcaH3AfObBSLihgw"
+}

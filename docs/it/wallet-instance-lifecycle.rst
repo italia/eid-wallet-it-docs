@@ -36,8 +36,7 @@ Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che 
 Transizione a Installato
 ........................
 
-La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (**WI INST**), dove gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo
-store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato **Installato**.
+La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (**WI INST**). Gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo store ufficiale del sistema operativo del loro dispositivo. Lo store ufficiale garantisce l'autenticità tramite controlli di sistema. L'installazione porta allo stato **Installato**.
 
 Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da **Operativo** o **Valido** a **Installato**. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi :ref:`wallet-instance-lifecycle:Transizione a Operativo`), come non più utilizzabile. La revoca può avvenire nei seguenti casi:
@@ -55,15 +54,14 @@ Transizione a Operativo
 .......................
 
 Dopo l'installazione, l'Utente apre l'Istanza del Wallet e inizia un'attivazione (**WI ACT**).
-In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware
-Key Tag, previa acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli, con i test in :ref:`WP_024 <wallet-instance-testcases>` e :ref:`WP_138 <wallet-instance-optional-testcases>`).
+In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware Key Tag. La creazione è subordinata all'acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli, con i test in :ref:`WP_024 <wallet-instance-testcases>` e :ref:`WP_138 <wallet-instance-optional-testcases>`).
 Questa associazione consente all'utente di richiedere direttamente al Fornitore di Wallet la revoca dell'Istanza del Wallet.
 
 .. note::
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
-Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del Keystore (e del WSCA/Remote WSCD per l'emissione del PID), al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro (Keystore per le Credenziali standard. WSCA operante in un Remote WSCD per il PID).
+Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare quanto segue. La valutazione riguarda il sistema operativo e le capacità tecniche generali del dispositivo. La valutazione riguarda l'affidabilità del Keystore e del WSCA/Remote WSCD per l'emissione del PID. La valutazione verifica la conformità ai requisiti tecnici e di sicurezza. La valutazione verifica l'autenticità e l'integrità dell'Istanza del Wallet installata. La valutazione verifica che le chiavi utilizzate per il binding crittografico risiedano in un ambiente hardware sicuro. Tale ambiente è il Keystore per le Credenziali standard e un WSCA operante in un Remote WSCD per il PID.
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet. Questo PUÒ essere realizzato inserendo un
@@ -99,9 +97,7 @@ In tutti gli stati, **Installato**, **Attivato**, **Operativo** o **Valido**, l'
 Gestione del Ciclo di Vita dell'Istanza del Wallet
 ..................................................
 
-Mentre :numref:`fig_Wallet_Instance_States` mostra i diversi stati che un'Istanza del Wallet può acquisire durante il suo ciclo di vita,
-:numref:`fig_Wallet_Instance_Lifecycle` mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Wallet nella gestione del ciclo di vita dell'Istanza del Wallet
-e l'effetto sul loro storage locale.
+Mentre :numref:`fig_Wallet_Instance_States` mostra i diversi stati che un'Istanza del Wallet può acquisire durante il suo ciclo di vita, :numref:`fig_Wallet_Instance_Lifecycle` mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Wallet. Tale figura mostra come le Istanze del Wallet e i Fornitori di Wallet gestiscono il ciclo di vita dell'Istanza del Wallet e l'effetto sul loro storage locale.
 
 .. _fig_Wallet_Instance_Lifecycle:
 .. plantuml:: plantuml/wallet-instance-lifecycle.puml

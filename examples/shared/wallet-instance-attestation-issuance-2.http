@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "wallet_instance_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
+}

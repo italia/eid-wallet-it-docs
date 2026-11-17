@@ -39,10 +39,10 @@ Ciascun profilo di certificato X.509 definito da questa specifica DEVE conformar
 
     Il resto della sezione dettaglia il solo contenuto del campo ``tbsCertificate``. Per informazioni aggiuntive sui campi ``signatureAlgorithm`` e ``signatureValue``, fare riferimento a :rfc:`5280`.
 
-Il campo ``tbsCertificate`` DEVE contenere una struttura ``TBSCertificate``, i cui campi DEVONO conformarsi a :rfc:`5280#section-4.1.2`.
+Il campo ``tbsCertificate`` DEVE contenere una struttura ``TBSCertificate``. I campi ``TBSCertificate`` DEVONO conformarsi a :rfc:`5280#section-4.1.2`.
 
 La tabella seguente definisce i campi del certificato applicabili al profilo di certificato specificato in questo documento.
-Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in :rfc:`5280`. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi, ma NON DEVONO modificare i requisiti di presenza ivi specificati.
+Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la descrizione e il corrispondente riferimento in :rfc:`5280`. I singoli profili di certificato POSSONO fornire note contestuali aggiuntive per tali campi. I singoli profili di certificato NON DEVONO modificare i requisiti di presenza ivi specificati.
 
 .. list-table:: Campi TBSCertificate
    :class: longtable
@@ -94,7 +94,7 @@ Per ciascun campo, la tabella definisce il requisito di presenza, il tipo, la de
        Le estensioni applicabili e i relativi vincoli specifici del profilo sono definiti di seguito e nel corrispondente profilo di certificato.
      - Section 4.1.2.9
 
-La tabella seguente specifica le estensioni dei certificati X.509 supportate da questa specifica, inclusi i relativi Object Identifier (OID), il tipo, la criticità, la descrizione e i riferimenti normativi. I singoli profili di certificato DEVONO definire il requisito di presenza (OBBLIGATORIO, OPZIONALE o VIETATO) per ciascuna estensione e POSSONO ulteriormente vincolarne la sintassi e i contenuti.
+La tabella seguente specifica le estensioni dei certificati X.509 supportate da questa specifica, inclusi i relativi Object Identifier (OID), il tipo, la criticità, la descrizione e i riferimenti normativi. I singoli profili di certificato DEVONO definire il requisito di presenza per ciascuna estensione. Il valore OBBLIGATORIO si applica quando l'estensione è sempre presente. Il valore OPZIONALE si applica quando l'estensione può essere omessa. Vietato si applica quando l'estensione è proibita. I singoli profili di certificato POSSONO ulteriormente vincolare la sintassi e i contenuti di ciascuna estensione.
 
 I valori di criticità utilizzati in questa specifica hanno il seguente significato:
 
@@ -171,7 +171,6 @@ I valori di criticità utilizzati in questa specifica hanno il seguente signific
      - NC
      - :rfc:`3739#section-3.2.6`, Clausola 4.2 di [`ETSI EN 319 412-5`_]
 
-.. warning::
-  **Prevenzione delle Dipendenze Circolari negli URI**
+.. warning:: Prevenzione delle Dipendenze Circolari negli URI
 
   Per prevenire dipendenze circolari di validazione durante gli handshake TLS, gli URI definiti nelle estensioni ``cRLDistributionPoints`` e ``authorityInfoAccess`` DEVONO utilizzare lo schema ``http://`` invece di ``https://``, come suggerito da :rfc:`5280#section-8`.

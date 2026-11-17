@@ -29,6 +29,15 @@
       } catch (error) {
         /* ignore storage errors */
       }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
       {%- if display_toc -%}
       try {
         if (localStorage.getItem("it-docs-navscroll-collapsed") === "1") {
@@ -61,6 +70,7 @@
           {%- if theme_source_url %}
           {%- include "components/source_link.html" %}
           {%- endif %}
+          {%- include "components/font_size_controls.html" %}
           {%- include "components/brightness_toggle.html" %}
           <div class="nav-item dropdown it-header-lang-dropdown">
             <button type="button"

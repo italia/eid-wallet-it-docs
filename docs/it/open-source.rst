@@ -7,12 +7,12 @@ Rilasci Open Source
 1. Principi Generali
 ^^^^^^^^^^^^^^^^^^^^
 
-L'ecosistema IT-Wallet è costruito su principi di apertura e trasparenza. In conformità con il **Codice dell'Amministrazione Digitale (CAD)** e con il **Regolamento europeo eIDAS 2.0**, l'adozione di framework open source, anche durante la fase di sperimentazione, è fortemente incoraggiata come fattore abilitante chiave per garantire fiducia, collaborazione, revisione tra pari e miglioramenti condivisi in tutto l'ecosistema. Questo quadro è allineato con l'**Interoperable Europe Act**, con l'obiettivo di massimizzare il valore pubblico e la sicurezza attraverso la trasparenza.
+L'ecosistema IT-Wallet è costruito su principi di apertura e trasparenza. In conformità con il **Codice dell'Amministrazione Digitale (CAD)** e con il **Regolamento europeo eIDAS 2.0**, l'adozione di framework open source, anche durante la fase di sperimentazione, è fortemente incoraggiata. L'adozione è un fattore abilitante chiave per garantire fiducia, collaborazione, revisione tra pari e miglioramenti condivisi in tutto l'ecosistema. Questo quadro è allineato con l'**Interoperable Europe Act**, con l'obiettivo di massimizzare il valore pubblico e la sicurezza attraverso la trasparenza.
 
 2. Requisiti Standard
 ^^^^^^^^^^^^^^^^^^^^^
 
-Tutte le entità (Fornitori di Wallet, Fornitori di Credenziali, Relying Party) coinvolte nell'ecosistema IT-Wallet (di seguito "Proprietari di Progetto") **DOVREBBERO** aderire alle migliori pratiche del settore per garantire che il software sia utilizzabile, conforme e sicuro, seguendo almeno quelle elencate nelle sezioni seguenti.
+Tutte le entità (Fornitori di Wallet, Fornitori di Credenziali, Relying Party) coinvolte nell'ecosistema IT-Wallet, di seguito Proprietari di Progetto, **DOVREBBERO** aderire alle migliori pratiche del settore elencate nelle sezioni seguenti. Le pratiche rendono il software utilizzabile, conforme e sicuro.
 
 2.1 Licenze
 """""""""""
@@ -66,10 +66,10 @@ I Fornitori di Credenziali e le Relying Party **DOVREBBERO** rilasciare la logic
 
 5. Divulgazione Responsabile e Gestione delle Vulnerabilità
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In conformità con il **Cyber Resilience Act (CRA)** e la **Direttiva NIS2 (UE) 2022/2555**:
+In conformità con il **Cyber Resilience Act (CRA)** e la **Direttiva NIS2 (UE) 2022/2555**.
 
 - **Politica di Sicurezza**: Tutti i repository Open Source **DOVREBBERO** contenere un file ``SECURITY.md`` che descriva la procedura per la segnalazione delle vulnerabilità.
 - **Segnalazione**: I Proprietari di Progetto **DOVREBBERO** istituire un canale per la divulgazione responsabile, al fine di gestire i problemi di sicurezza in modo riservato prima del rilascio pubblico.
-- **Vulnerabilità sfruttate**: I Proprietari di Progetto **DEVONO** cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate e seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.
+- **Vulnerabilità sfruttate**: I Proprietari di Progetto **DEVONO** cooperare con i Computer Security Incident Response Team (CSIRT) nazionali in merito alle vulnerabilità attivamente sfruttate. I Proprietari di Progetto **DEVONO** seguire rigorosamente i protocolli di divulgazione coordinata per mitigare le minacce derivanti da una divulgazione irresponsabile.
 
 

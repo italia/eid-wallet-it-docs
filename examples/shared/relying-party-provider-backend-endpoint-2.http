@@ -1,0 +1,7 @@
+POST /access-certificate HTTP/1.1
+Host: relying-party.example.org
+Content-Type: application/json
+
+{
+  "csr": "MIIBvzCCAa..."
+}

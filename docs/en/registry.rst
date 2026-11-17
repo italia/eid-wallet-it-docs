@@ -79,8 +79,8 @@ They are populated by the onboarding processes described in :ref:`onboarding-sys
 
 The Entities that **provide** the information are the following:
 
-  - the Attestation Scheme Provider, for the definition of a Credential type and its scheme;
-  - the Authentic Sources, for their declared data capabilities;
+  - the Attestation Scheme Provider, for the definition of a Credential type and its scheme.
+  - the Authentic Sources, for their declared data capabilities.
   - the Wallet-Relying Parties and the Wallet Providers, for their registration data.
 
 These roles are described in :ref:`onboarding-system:System Actors and Roles`.
@@ -125,25 +125,11 @@ The Federation Trust Anchor MUST publish registry discovery metadata at the ``.w
 
 Below a non-normative example is given.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-1.http
+   :language: http
 
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-
-.. code-block:: http
-
-    GET /.well-known/it-wallet-registry HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
+.. literalinclude:: ../../examples/shared/registry-2.http
+   :language: http
 
 Registry Discovery Endpoint Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,21 +162,8 @@ The JWT payload of the Registry Discovery response MUST contain the following pa
 
 JWT payload structure (when decoded):
 
-.. code-block:: json
-
-  {
-    "id": "urn:it-wallet-registry:it-wallet",
-    "version": "1.0.0",
-    "last_modified": "2024-03-15T10:30:00Z",
-    "endpoints": {
-      "claims_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/claims",
-      "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
-      "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/.well-known/credential-catalog",
-      "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
-      "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas"
-    },
-    "content_negotiation": ["application/json", "application/jwt"]
-  }
+.. literalinclude:: ../../examples/shared/registry-3.json
+   :language: json
 
 Content Negotiation and Signed Representation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -260,25 +233,11 @@ The plain representation is the same content, served as a plain JSON object inst
 
 The following non-normative example requests both representations from the Digital Credentials Catalog endpoint. The URL is the one resolved from the discovery document, shortened here for readability.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-4.http
+   :language: http
 
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
-
-.. code-block:: http
-
-    GET /.well-known/credential-catalog HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
+.. literalinclude:: ../../examples/shared/registry-5.http
+   :language: http
 
 The example requests the first page of the collection. Query parameters, further pages and the entry resource are specified in :ref:`registry:Digital Credentials Catalog Retrieval`.
 
@@ -291,7 +250,8 @@ In a single resource, it defines the hierarchy of Domains, Classes and Purposes 
 
 The Taxonomy endpoint URL is published under the ``taxonomy`` key of the Registry Discovery document. The endpoint supports the content negotiation and signed representation common to all Registry Infrastructure endpoints (see :ref:`registry:Content Negotiation and Signed Representation`).
 
-**Taxonomy Objectives:**
+Taxonomy Objectives
+^^^^^^^^^^^^^^^^^^^
 
 1. **Semantic Foundation**: Establish standardized vocabulary for domains and purposes across the ecosystem
 2. **Policy Framework**: Enable structured authorization decisions based on hierarchical classification
@@ -315,12 +275,14 @@ Digital Credentials recognized within the IT-Wallet ecosystem are classified and
 
 The hierarchy is defined as follows:
 
-**Domain**
+Domain
+""""""
 
 A **Domain** represents a high-level thematic area grouping Credential families that relate to the same broad context (e.g., Identity, Health, Education, Mobility).
 Domains provide a top-level organizational layer.
 
-**Credential Class**
+Credential Class
+""""""""""""""""
 
 A **Credential Class** represents a family of Credentials sharing similar nature, function, or structure (e.g., Identification Documents, Civil Status Certificates).
 
@@ -331,7 +293,8 @@ Each Class SHOULD define:
 
 Classes enable Relying Parties and Wallet Solutions to request or match Credentials based on their type category.
 
-**Credential Type**
+Credential Type
+"""""""""""""""
 
 A **Credential Type** represents a specific Credential within a Class (e.g. Digital Travel Credential, Birth Certificate, Mobile Driving License).
 Each Credential Type MUST include:
@@ -342,7 +305,8 @@ Each Credential Type MUST include:
 
 Credential Types enable precise targeting for compliance-driven or regulation-mandated verification flows.
 
-**Purpose (Verification Intent)**
+Purpose (Verification Intent)
+"""""""""""""""""""""""""""""
 
 A **Purpose (Verification Intent)** describes *why* a Credential may be requested by a Relying Party (e.g., Identity Verification, Age Verification, Eligibility for specific services).
 Purposes MUST describe **verification outcomes**.
@@ -683,12 +647,14 @@ The taxonomy maintains a four level hierarchical structure, that is the Domains,
 .. note::
   Credential Type is a concept defined at the Digital Credentials Catalog level, not within the Taxonomy. The Taxonomy provides the classification vocabulary (Domains, Classes, Purposes) that Credential Types in the Catalog reference.
 
-**Localization Support:**
+Localization Support
+""""""""""""""""""""
 
 The taxonomy supports multilingual environments through the ``_l10n_id`` suffix pattern, enabling efficient localization management for user interfaces and cross-border implementations.
 
 
-**Taxonomy JSON Structure:**
+Taxonomy JSON Structure
+"""""""""""""""""""""""
 
 .. list-table:: First-level Fields of the Taxonomy
    :class: longtable
@@ -730,7 +696,7 @@ The taxonomy supports multilingual environments through the ``_l10n_id`` suffix 
 A non-normative example of Taxonomy structure is given below:
 
 .. literalinclude:: ../../examples/taxonomy-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the Taxonomy, an Entity consulting it SHOULD:
@@ -742,21 +708,8 @@ A non-normative example of Taxonomy structure is given below:
 
 A non-normative example of a localization bundle output is given below:
 
-.. code-block:: json
-
-  {
-    "taxonomy.name": "IT-Wallet Taxonomy",
-    "taxonomy.description": "Hierarchical classification system for Digital Credentials in the IT-Wallet ecosystem",
-    "domain.identity.name": "Identity",
-    "domain.identity.description": "Credentials that establish or confirm a person's legal identity and personal, civil or legal status.",
-    "class.identification_documents.name": "Identification Documents",
-    "purpose.identity_verification.name": "Identity verification",
-    "domain.authentication.name": "Authentication",
-    "domain.authentication.description": "Credentials that attest authorisation to access restricted physical or digital spaces, services or resources.",
-    "class.access.name": "Access",
-    "purpose.access_permit.name": "Access permit verification",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-6.json
+   :language: json
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the taxonomy. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
@@ -789,13 +742,15 @@ Claims Registry Usage
 
 As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the Claims Registry MUST support the complete ecosystem lifecycle:
 
-**During Onboarding Process**:
+Claims Registry Usage: During Onboarding Process
+""""""""""""""""""""""""""""""""""""""""""""""""
 
   - **AS Registration**: Authentic Sources declare available claims from standardized registry during capability registration.
   - **CI Registration**: Credential Issuers select Authentic Source entities based on required claims. The Credential types that use those claims are registered in the catalog by the Attestation Scheme Provider, see :ref:`onboarding-system:Credential Type Registration`.
   - **RP Registration**: Relying Parties specify authorization requirements using domains/purposes for specific User's attributes.
 
-**During Operational Activities**:
+Claims Registry Usage: During Operational Activities
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   - **Credential Issuance**: Claims definitions ensure consistent data representation across different Credential types.
   - **Presentation Requests**: Relying Parties reference claims for schema validation and authorization verification in both credential-specific and credential-agnostic scenarios.
@@ -857,7 +812,7 @@ The Claims Registry maintains language-neutral, technical definitions for semant
 A non-normative example of Claims Registry structure is given below:
 
 .. literalinclude:: ../../examples/claims-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Claims Registry, an Entity consulting it SHOULD:
@@ -869,14 +824,8 @@ A non-normative example of Claims Registry structure is given below:
 
 A non-normative example of a localization bundle output is given below:
 
-.. code-block:: json
-
-  {
-    "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
-    "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
-    "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-7.json
+   :language: json
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value (e.g., ``https://trust-registry.eid-wallet.example.it/.well-known/l10n/claims/it.json``).
 
@@ -907,11 +856,13 @@ Authentic Source Registry Usage
 
 As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the Authentic Source Registry supports ecosystem coordination throughout the operational lifecycle:
 
-**During Onboarding Process**:
+Authentic Source Registry Usage: During Onboarding Process
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   - **AS Self-Declaration**: Authentic Sources register capabilities before any Credential types exist in the catalog.
   - **CI Discovery**: Credential Issuers search for Authentic Source entities based on required claims and intended Credential types.
 
-**During Operational Activities**:
+Authentic Source Registry Usage: During Operational Activities
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   - **Credential Issuance**: Credential Issuer systems reference Authentic Source Registry for real-time data access during Credential issuance.
 
 Authentic Source Registry Structure
@@ -919,7 +870,8 @@ Authentic Source Registry Structure
 
 During registration, Authentic Sources declare their capabilities before Credential types exist in the catalog. This declaration establishes the foundation for subsequent CI registration and Credential type creation.
 
-**Authentic Source Unique Identifier Schema**
+Authentic Source Unique Identifier Schema
+"""""""""""""""""""""""""""""""""""""""""
 
 Each Authentic Source MUST be assigned a unique identifier that follows the HTTPS URL schema defined below. This identifier is used for referencing AS entities across the registry system and in the Digital Credentials Catalog, ensuring consistency with OpenID Federation entity identification patterns.
 
@@ -948,7 +900,8 @@ The AS identifier MUST follow these normative rules:
 - ``https://registry.anpr.example``: Public - National Registry of Resident Population
 - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
 
-**Authentic Source Registry Parameters**
+Authentic Source Registry Parameters
+""""""""""""""""""""""""""""""""""""
 
 The Authentic Source Registry MUST contain the following parameters for each registered Authentic Source:
 
@@ -1024,7 +977,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the organization's logo image.
    * - **organization_info.logo_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.logo_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's logo image.
@@ -1033,7 +986,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the organization's extended logo image.
    * - **organization_info.logo_extended_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the extended logo image resource for integrity verification. REQUIRED if ``logo_extended_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.logo_extended_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's extended logo image.
@@ -1081,10 +1034,10 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - REQUIRED. Indicates if the Authentic Source supports deferred data provision.
    * - **data_capabilities[].data_provision.max_response_time_minutes**
      - integer
-     - CONDITIONAL. Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if ``deferred_flow`` is ``true``.
+     - Maximum time in minutes for the Authentic Source to respond to a deferred data provision request. REQUIRED if ``deferred_flow`` is ``true``.
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
-     - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+     - Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
    * - **data_capabilities[].user_information_l10n_id**
      - string
      - OPTIONAL. Localization key referencing a Markdown-formatted string with human-readable information about the data capability relevant to the User (e.g., ``authentic_source1.dataset1.userinfo``). This string MUST be provided by the Authentic Source to the Trust Anchor during onboarding. The Markdown formatting can be plain text or a combination of text and links. For example, if the Authentic Source's database only contains data registered *after* a specific date, this information MUST be conveyed through this key.
@@ -1099,7 +1052,7 @@ The Authentic Source Registry MUST contain the following parameters for each reg
      - OPTIONAL. URL to the logo image related to the data.
    * - **data_capabilities[].logo_uri#integrity**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+     - Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **data_capabilities[].logo_alt_text_l10n_id**
      - string
      - OPTIONAL. Alternative text for the organization's logo image.
@@ -1120,12 +1073,13 @@ The Authentic Source Registry MUST contain the following parameters for each reg
 .. note::
   For further details on the required features and the expected outcome in terms of user experience, see the Section :ref:`functionalities:Issuance from the Wallet Instance Catalog` for the parameter `data_capabilities.user_information` and Section :ref:`functionalities:Focus on Electronic Attestations of Attributes` for the parameters `organization_info.logo_uri`, `organization_info.logo_extended_uri`, `data_capabilities.logo_uri`, `data_capabilities.background_color` and `data_capabilities.available_claims.order`.
 
-**Authentic Source Registry Example**
+Authentic Source Registry Example
+"""""""""""""""""""""""""""""""""
 
 A non-normative example of AS Registry structure is given below:
 
 .. literalinclude:: ../../examples/as-registry-example.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Authentic Source Registry, an Entity consulting it SHOULD:
@@ -1137,17 +1091,8 @@ A non-normative example of AS Registry structure is given below:
 
 A non-normative example of a localization bundle output is given below:
 
-.. code-block:: json
-
-  {
-    "authentic_source1.name": "Ministero delle infrastrutture e dei trasporti",
-    "authentic_source1.dataset1.origin": "MIT -- Direzione Generale per la Motorizzazione",
-    "authentic_source1.dataset1.userinfo": "###### Patente di Guida\nSono disponibili le patenti rilasciate dopo il 1° gennaio 2020. Per le patenti più vecchie, contattare l'ufficio motorizzazione locale.",
-    "authentic_source2.name": "Banca Esempio SpA",
-    "authentic_source2.dataset1.origin": "Esempio origine dei dati 1",
-    "authentic_source2.dataset1.userinfo": "###### Informazioni sulla disponibilità dei dati\nL'accesso ai dati finanziari richiede il consenso del cliente ed è soggetto alla normativa PSD2. Le informazioni sui conti sono disponibili solo per i conti attivi.",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-8.json
+   :language: json
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the registry. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
@@ -1158,7 +1103,8 @@ Schema Registry
 
 The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem.
 
-**Schema Registry Objectives:**
+Schema Registry Objectives
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
 2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
@@ -1181,7 +1127,7 @@ Catalogue of Attestations
 
 The ``schema_registry`` value in the Registry Discovery document is the root of the Catalogue of Attestations API.
 The Federation Trust Anchor MUST implement Section 5 of [`EUDI-TS 11`_] and the OpenAPI document of Annex A.3 ([`EUDI-TS 11 OpenAPI`_]).
-Each attestation schema MUST be a ``SchemaMeta`` object as defined in Section 4.3 of [`EUDI-TS 11`_] and MUST validate against the JSON Schema of Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
+Each attestation schema MUST be a ``SchemaMeta`` object as defined in Section 4.3 of [`EUDI-TS 11`_]. The schema MUST validate against the JSON Schema of Annex A.2 ([`EUDI-TS 11 Attestation Schema`_]).
 The object MUST NOT contain properties outside that schema.
 
 The API root has these paths:
@@ -1254,9 +1200,9 @@ Digital Credentials Catalog
 ---------------------------
 
 The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
-The Digital Credential Catalog MUST contain at least:
+The Digital Credentials Catalog MUST contain at least:
 
-.. list-table:: Digital Credential Catalog - Main information
+.. list-table:: Digital Credentials Catalog - Main information
    :class: longtable
    :widths: 30 70
    :header-rows: 1
@@ -1291,7 +1237,7 @@ The Digital Credential Catalog MUST contain at least:
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
 
-The Digital Credential Catalog MUST ensure to:
+The Digital Credentials Catalog MUST ensure to:
 
   1. Facilitate Digital Credential discovery for Users.
   2. Standardize the technical and functional description of Digital Credentials.
@@ -1303,12 +1249,12 @@ The Digital Credential Catalog MUST ensure to:
 Digital Credentials Catalog Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities involved in the Digital Credential Catalog are:
+As shown in Figure :ref:`fig_registry_infrastructure` and Figure :ref:`fig_registry_discovery`, the main Entities involved in the Digital Credentials Catalog are:
 
   - **Attestation Scheme Providers**: The Entities that own the Attestation Rulebook of a Digital Credential and that request the registration of the corresponding versioned entry, see Attestation Scheme Provider.
   - **Digital Credential Issuers**: They are added to the ``issuers`` field of a versioned entry as a result of the Digital Credentials they declare in their registration data.
-  - **Relying Parties**: They use the Digital Credential Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
-  - **Wallet Providers**: They access the Digital Credential Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
+  - **Relying Parties**: They use the Digital Credentials Catalog to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
+  - **Wallet Providers**: They access the Digital Credentials Catalog to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
   - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: They are referenced by the versioned entry as its data source and they act as Attestation Scheme Provider when they own the Attestation Rulebook.
 
@@ -1381,8 +1327,8 @@ The collection response MUST include a versioned entry only when that entry matc
 The Federation Trust Anchor MUST respond with HTTP 400 when the request repeats a query parameter, contains a query parameter that is not listed in :ref:`table_catalog_query_parameters`, or contains a value that does not satisfy that parameter.
 
 The Federation Trust Anchor MUST order matching entries by the Unicode code point order of ``credential_type`` and, for an equal ``credential_type``, by the Unicode code point order of ``version``.
-The ``credentials`` array MUST contain the matching entries in that order, starting after ``offset`` entries, and it MUST contain at most ``limit`` entries.
-When no versioned entry matches, or when ``offset`` is greater than or equal to ``total``, ``credentials`` MUST be an empty array and ``total`` MUST be the number of matching entries.
+The ``credentials`` array MUST contain the matching entries in that order, starting after ``offset`` entries. The ``credentials`` array MUST contain at most ``limit`` entries.
+When no versioned entry matches, or when ``offset`` is greater than or equal to ``total``, ``credentials`` MUST be an empty array. In that same case, ``total`` MUST be the number of matching entries.
 
 A client MUST NOT treat ``credentials`` as every versioned entry of the catalog.
 When the client requires every matching entry, it MUST request the next page by increasing ``offset`` by ``limit`` until ``offset`` is greater than or equal to ``total``.
@@ -1416,16 +1362,8 @@ When the client requires every matching entry, it MUST request the next page by 
 
 The following non-normative example requests the first page of active entries.
 
-.. code-block:: http
-
-    GET /.well-known/credential-catalog?state=ACTIVE&limit=20&offset=0 HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/jwt
-
-    HTTP/1.1 200 OK
-    Content-Type: application/jwt
-
-    eyJhbGciOiJSUzI1NiIsImtpZCI6ImV4YW1w...
+.. literalinclude:: ../../examples/shared/registry-9.http
+   :language: http
 
 The payload of a successful collection response MUST contain the fields in :ref:`table_catalog_collection_payload`.
 
@@ -1456,32 +1394,11 @@ The Federation Trust Anchor MUST respond with HTTP 404 when no versioned entry h
 
 The following non-normative example requests one versioned entry. The ``credential`` member is abbreviated.
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/registry-10.http
+   :language: http
 
-    GET /.well-known/credential-catalog/mDL/1 HTTP/1.1
-    Host: trust-anchor.eid-wallet.example.it
-    Accept: application/json
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-.. code-block:: json
-
-    {
-      "iss": "https://trust-registry.eid-wallet.example.it",
-      "iat": 1742040000,
-      "localization": {
-        "default_locale": "it",
-        "available_locales": ["en", "it"],
-        "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/credential-catalog/",
-        "version": "1.0.0"
-      },
-      "credential": {
-        "credential_type": "mDL",
-        "version": "1",
-        "...": "..."
-      }
-    }
+.. literalinclude:: ../../examples/shared/registry-11.json
+   :language: json
 
 Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1504,7 +1421,7 @@ The collection payload contains the following parameters.
    * - **last_modified**
      - REQUIRED. The timestamp indicating when the catalog content was last updated (e.g., ``2025-03-15T12:00:00Z``).
    * - **iss**
-     - REQUIRED. Issuer identifier of the Digital Credential Catalog.
+     - REQUIRED. Issuer identifier of the Digital Credentials Catalog.
    * - **iat**
      - REQUIRED. Unix time at which this response JWT was issued, as defined in :rfc:`7519`. ``last_modified`` records the last change of catalog content. ``iat`` records the issuance of this JWT.
    * - **localization**
@@ -1586,7 +1503,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **purposes**
     - REQUIRED. Array of usage purpose IDs for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose (e.g., ``"IDENTITY_VERIFICATION"``, ``"AGE_VERIFICATION"``, ``"DRIVING_RIGHTS_VERIFICATION"``).
   * - **issuers**
-    - CONDITIONAL. It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
+    - It is REQUIRED only if **state** is ``ACTIVE``. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms. Each array element contains:
 
        * **entity_id**: REQUIRED. String. Unique identifier of the Credential Issuer. It MUST match with the value contained in the ``iss`` parameter of the Credential Issuer Entity Configuration.
        * **organization_name_l10n_id**: REQUIRED. String. Localization key referencing the localized organization name in the localization bundle (e.g., ``issuer1.name``).
@@ -1605,16 +1522,16 @@ Each element of the ``credentials`` array contains at least the following inform
           * **immediate_flow**: REQUIRED. Boolean. Indicates if the immediate issuance is supported.
           * **wallet_initiated**: REQUIRED. Boolean. Indicates if the Wallet-Initiated flow is supported.
           * **issuer_initiated**: REQUIRED. Boolean. Indicates if the Issuer-Initiated flow issuance is supported (Third Party Initiated Flow).
-          * **max_deferred_issuance_time_minutes**: CONDITIONAL. Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
-          * **notification_methods**: CONDITIONAL. String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
+          * **max_deferred_issuance_time_minutes**: Integer. Maximum time in minutes for the availability of the issuance of the Credential. REQUIRED if ``deferred_flow`` is ``true``.
+          * **notification_methods**: String Array. Contains the notification methods supported by the Credential issuer for the deferred issuance, such as ``"push"``, ``"polling"``. REQUIRED if ``deferred_flow`` is ``true``.
 
   * - **authentic_sources**
-    - CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
+    - It is REQUIRED only if ``parent_credentials`` is absent. Array of Authentic Source JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 
       * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
       * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
   * - **parent_credentials**
-    - CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
+    - It is REQUIRED only if ``authentic_sources`` is absent. Array of ``credential_type`` identifier corresponding to Credentials designated as data sources. Each element identifies a Credential that acts as an Authentic Source during the Digital Credential Issuance process.
   * - **trustedAuthorities**
     - REQUIRED. Array of JSON objects that resolve to the applicable trust anchor(s), containing:
 
@@ -1643,10 +1560,10 @@ Each element of the ``credentials`` array contains at least the following inform
 The following non-normative example is one page of a collection response, decoded as JSON for both the header and the payload.
 
 .. literalinclude:: ../../examples/catalog-example-header.json
-  :language: JSON
+   :language: JSON
 
 .. literalinclude:: ../../examples/catalog-example-payload.json
-  :language: JSON
+   :language: JSON
 
 .. note::
   For a better and more efficient management of the localization of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
@@ -1658,13 +1575,8 @@ The following non-normative example is one page of a collection response, decode
 
 A non-normative example of a localization bundle output is given below:
 
-.. code-block:: json
-
-  {
-    "mDL.name": "Patente di Guida",
-    "mDL.issuer1.name": "Esempio di Credential Issuer",
-    "...": "..."
-  }
+.. literalinclude:: ../../examples/shared/registry-12.json
+   :language: json
 
 Localization bundles MUST be available at the URI composed by appending the locale code and ``.json`` to the ``localization.base_uri`` value defined in the catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 

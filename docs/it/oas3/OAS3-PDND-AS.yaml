@@ -433,8 +433,8 @@ components:
                 example: "Example: Master's Degree in Computer Science"
               status:
                 description: |
-                  Stato del Dataset. OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. I dataset Issued e Expired ricadono in VALID; la scadenza è verificata
-                  tramite metadata claims (es. expiry_date, nbf/exp). INVALID indica revoca attiva da parte dell'AS.
+                  Stato del Dataset. OBBLIGATORIO se additionalProperties di attributeClaims sono presenti. I dataset Issued e Expired ricadono in VALID. La scadenza è verificata
+                  su attributeClaims.expiry_date. INVALID indica revoca attiva da parte dell'AS.
                   Per come questo stato influenza il ciclo di vita dell'Attestato Elettronico gestito dal
                   Fornitore di Attestati Elettronici, vedere la sezione <a target="blank" href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/credential-revocation.html#aggiornamento-dello-stato-da-parte-delle-fonti-autentiche">Aggiornamento dello Stato da parte delle Fonti Autentiche</a>.
                 type: string
@@ -443,7 +443,7 @@ components:
                   - INVALID
                   - SUSPENDED
                 x-enum-description:
-                  - VALID - Il dataset è valido (include Issued e Expired; la scadenza è verificata via metadata).
+                  - VALID - Il dataset è valido (include Issued e Expired; la scadenza è verificata su attributeClaims.expiry_date).
                   - INVALID - Il dataset è stato attivamente revocato dalla Fonte Autentica.
                   - SUSPENDED - Il dataset è temporaneamente non valido (tipicamente reversibile).
                 example: "VALID"

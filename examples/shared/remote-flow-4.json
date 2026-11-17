@@ -1,0 +1,6 @@
+{
+  "alg": "ES256",
+  "typ": "oauth-authz-req+jwt",
+  "kid": "national-signing-key",
+  "trust_chain": ["<entity-statement-base64url>"]
+}

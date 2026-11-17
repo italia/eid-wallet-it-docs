@@ -2,6 +2,8 @@
 
 This guide provides guidelines for contributing to IT-Wallet Technical Documentation. Following these conventions ensures consistency across all documentation files.
 
+Normative language, placement of requirements, the clarity index, and defined terms are in [EDITORIAL-RULES.md](EDITORIAL-RULES.md). This document specifies reStructuredText formatting.
+
 ## Table of Contents
 
 - [Contributing Rules](#contributing-rules)

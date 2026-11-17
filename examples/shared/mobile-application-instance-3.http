@@ -1,0 +1,9 @@
+POST /instance-initialization HTTP/1.1
+Host: application-provider.example.com
+Content-Type: application/json
+
+{
+  "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
+  "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
+  "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
+}

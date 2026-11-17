@@ -36,8 +36,7 @@ Each state represents a specific functional status and determines the actions th
 Transition to Installed
 .......................
 
-The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
-official app store of their device's operating system (this ensures authenticity via system checks), leading to the **Installed** state.
+The state machine begins with the Wallet Instance installation (**WI INST**) transition. Users download and install a Wallet Instance provided by the Wallet Provider using the official app store of their device's operating system. The official app store ensures authenticity via system checks. The installation leads to the **Installed** state.
 
 When the state is **Installed**, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from **Operational** or **Valid** to **Installed**. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
 (see :ref:`wallet-instance-lifecycle:Transition to Operational`), as not usable anymore. Revocation can occur in the following cases:
@@ -55,23 +54,21 @@ Transition to Operational
 .........................
 
 After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
-At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
-Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
+At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. The creation is subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
 This association allows the User to directly request Wallet Instance revocation from the Wallet Provider.
 
 .. note::
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the Keystore (and of the WSCA/Remote WSCD for PID issuance) to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for key binding reside in a secure hardware-backed environment (Keystore for standard Credentials, WSCA operating within a Remote WSCD for the PID).
+As part of the activation, the Wallet Provider MUST evaluate the following. The evaluation covers the operating system and the general technical capabilities of the device. The evaluation covers the trustworthiness of the Keystore and of the WSCA/Remote WSCD for PID issuance. The evaluation checks compliance with the technical and security requirements. The evaluation checks the authenticity and integrity of the installed Wallet Instance. The evaluation checks that the keys used for key binding reside in a secure hardware-backed environment. That environment is the Keystore for standard Credentials and a WSCA operating within a Remote WSCD for the PID.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance. This MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-instance-attestation-issuance:Wallet Instance Attestation Issuance`.
 
-In the **Operational** state, Users can request the issuance of the national **IT-Wallet ID** (which does **not** cause a transition to **Valid**), or of (Q)EAAs if the PID is not required in the issuance
-(**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
+In the **Operational** state, Users can request the issuance of the national **IT-Wallet ID** (which does **not** cause a transition to **Valid**). Users can also request (Q)EAAs if the PID is not required in the issuance (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
 without transitioning the Wallet Instance to another state (**(Q)EEA PRE** transition). The IT-Wallet ID MAY likewise be presented while the Wallet Instance remains **Operational**.
 
 The **PID ISS** transition is subject to :ref:`pid-until-notification`.
@@ -99,9 +96,7 @@ uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a
 Wallet Instance Lifecycle Management
 ....................................
 
-While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet Instance may acquire during its lifecycle,
-:numref:`fig_Wallet_Instance_Lifecycle` shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
-and the effect on their local storage.
+While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet Instance may acquire during its lifecycle, :numref:`fig_Wallet_Instance_Lifecycle` shows the point of view of Wallet Instances and Wallet Providers. That figure shows how Wallet Instances and Wallet Providers manage the Wallet Instance lifecycle and the effect on their local storage.
 
 .. _fig_Wallet_Instance_Lifecycle:
 .. plantuml:: plantuml/wallet-instance-lifecycle.puml

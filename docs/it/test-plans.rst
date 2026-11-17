@@ -29,10 +29,10 @@ Ogni test è identificato da un identificatore univoco (es. WS-001) e categorizz
 
 Per ogni caso di test, la tabella specifica:
 
-- **Test Case ID**: un identificatore univoco.
-- **Purpose**: l'area funzionale coperta dal test.
-- **Description**: il requisito che viene testato, sempre basato su un DEVE normativo della specifica.
-- **Expected Result**: il risultato atteso quando la soluzione è implementata correttamente.
+- **ID Caso di Test**: un identificatore univoco.
+- **Scopo**: l'area funzionale coperta dal test.
+- **Descrizione**: il requisito che viene testato, sempre basato su un DEVE normativo della specifica.
+- **Risultato Atteso**: il risultato atteso quando la soluzione è implementata correttamente.
 
 
 .. toctree::

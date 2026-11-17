@@ -1,0 +1,12 @@
+{
+  "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
+  "aud": "https://erogatore.example/ente-example/v1",
+  "exp": 1733052600,
+  "nbf": 1733036450,
+  "iat": 1733036400,
+  "jti": "a4b5c6d7-e8f9-abcd-ef12-345678901234",
+  "dnonce": 6528424213685,
+  "purposeId": "b2c3d4e5-f6g7-h8i9-j0k1-lmno12345678",
+  "userID": "a8b7c6d5-e4f3-g2h1-i9j0-klmnopqrstuv",
+  "loa": "substantial"
+}

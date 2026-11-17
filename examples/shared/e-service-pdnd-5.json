@@ -1,0 +1,13 @@
+{
+    "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
+    "sub": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
+    "aud": "https://interop.pagopa.it/authorization-server",
+    "exp": 1733041440,
+    "iat": 1733037840,
+    "jti": "7e9f3a4d-c9b2-42f6-a6d4-38e12fb6b8ab",
+    "purposeId": "d2b9a653-c497-45c6-b8f1-5bdf124c9d3a",
+    "digest": {
+        "alg": "SHA256",
+        "value": "9c7894a0a5a910580b967f384cdfba17b1ab6f86670e5b0df18a0c453b5eb215"
+    }
+}

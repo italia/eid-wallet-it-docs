@@ -122,14 +122,8 @@ Il corpo della Risposta di Nonce contiene il valore ``nonce``.
 
 Di seguito è riportato un esempio non normativo di una Risposta di Nonce.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-1.http
+   :language: http
 
 Risposta di Errore di Nonce dell'Applicazione Mobile
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,15 +135,8 @@ Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta
 
 Di seguito è riportato un esempio non normativo di una Risposta di Errore di Nonce.
 
-.. code-block:: http
-
-    HTTP/1.1 500 Internal Server Error
-    Content-Type: application/json
-
-    {
-        "error": "server_error",
-        "error_description": "The server encountered an unexpected error."
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-2.http
+   :language: http
 
 La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore:
 
@@ -196,17 +183,8 @@ Il corpo della Richiesta di Inizializzazione dell'Istanza contiene i seguenti at
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Inizializzazione dell'Istanza.
 
-.. code-block:: http
-
-    POST /instance-initialization HTTP/1.1
-    Host: application-provider.example.com
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
-      "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
-    }
+.. literalinclude:: ../../examples/shared/mobile-application-instance-3.http
+   :language: http
 
 
 Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile

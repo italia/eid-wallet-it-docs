@@ -1,0 +1,10 @@
+{
+  "iss": "https://interop.pagopa.it",
+  "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
+  "aud": "https://interop.pagopa.it/api/v1",
+  "exp": 1733236680,
+  "nbf": 1733233158,
+  "iat": 1733233080,
+  "jti": "f87e2d5b-9f65-4f0f-8ad4-92e58e6b13c7",
+  "client_id": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b"
+}

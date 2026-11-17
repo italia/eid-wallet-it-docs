@@ -1,0 +1,77 @@
+{
+  "client_id": "x509_hash:AbCdEfGhIjKlMnOp",
+  "response_mode": "direct_post.jwt",
+  "response_type": "vp_token",
+  "dcql_query": {
+     "credentials": [
+      {
+         "id": "personal id data",
+         "format": "dc+sd-jwt",
+         "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
+        "meta": {
+          "vct_values": [ "urn:eudi:pid:it:1" ]
+        },
+        "claims": [
+          {"path": ["given_name"]},
+          {"path": ["family_name"]},
+          {"path": ["birthdate"]}
+        ]
+      },
+      {
+         "id": "mobile driving license",
+         "format": "mso_mdoc",
+         "trusted_authorities": [{"type": "etsi_tl", "values": ["https://trusted-list.example.org"]}],
+        "meta": {
+          "doctype_value": "org.iso.18013.5.1.mDL"
+        },
+        "claims": [
+          {"path": ["org.iso.18013.5.1", "given_name"]},
+          {"path": ["org.iso.18013.5.1", "family_name"]},
+          {"path": ["org.iso.18013.5.1", "document_number"]}
+        ]
+      }
+    ]
+  },
+  "verifier_info": [
+    {
+      "format": "registrar_dataset",
+      "data": {
+        "identifier": "https://relying-party.example.org",
+        "srvDescription": [{"lang": "en", "value": "Example service"}],
+        "registryURI": "https://registrar.example.org",
+        "intendedUseIdentifier": "https://example.org/use/presentation",
+        "purpose": [{"lang": "en", "value": "Identity verification"}],
+        "policyURI": "https://example.org/policy"
+      }
+    },
+    {
+      "format": "registration_cert",
+      "data": "<WRPRC-base64url>"
+    }
+  ],
+  "response_uri": "https://relying-party.example.org/response_uri",
+  "aud": "https://wallet.example.org",
+  "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
+  "wallet_nonce": "qPmxiNFCR3QTm19POc8u",
+  "client_metadata": {
+      "jwks": {
+        "keys": [
+          {
+            "kty": "EC",
+            "use": "enc",
+            "crv": "P-256",
+            "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+            "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0",
+            "kid": "20260202-abc123",
+            "alg": "ECDH-ES"
+          }
+        ]
+      },
+      "encrypted_response_alg_values_supported": ["ECDH-ES"],
+      "encrypted_response_enc_values_supported": ["A128GCM", "A256GCM"]
+  },
+  "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
+  "iss": "x509_hash:AbCdEfGhIjKlMnOp",
+  "iat": 1672418465,
+  "exp": 1672422065
+}

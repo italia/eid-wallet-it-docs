@@ -83,7 +83,8 @@ Authentic Source
 
 The Authentic Source focuses on securely exposing, managing, and guaranteeing the absolute accuracy and integrity of the authoritative raw data underlying (Q)EAA.
 
-**Phase 1: Discovery**
+Authentic Source: Phase 1: Discovery
+....................................
 
 To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.
 
@@ -93,7 +94,8 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-**Phase 2: Design**
+Authentic Source: Phase 2: Design
+.................................
 
 To understand the requirements and design the features, functionalities and specific characteristics underlying a (Q)EAA to be issued.
 
@@ -103,7 +105,8 @@ To understand the requirements and design the features, functionalities and spec
 
 - **Appendix** :ref:`e-service-pdnd-template:PDND e-Service Template`: Standardized blueprint containing all necessary technical and descriptive metadata for the e-service definition.
 
-**Phase 3: Implementation**
+Authentic Source: Phase 3: Implementation
+.........................................
 
 To implement the technological interfaces required to communicate with Credential Issuers and to manage the entire (Q)EAA data lifecycle.
 
@@ -119,7 +122,8 @@ To implement the technological interfaces required to communicate with Credentia
 
 - **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
-**Phase 4: Registration**
+Authentic Source: Phase 4: Registration
+.......................................
 
 To become registered as an Authentic Source within the system by completing the administrative and technical procedures required.
 
@@ -135,7 +139,8 @@ Wallet Provider
 
 The Wallet Provider focuses on designing and developing the Wallet Solution that enables the User to store, manage, and present their PID and (Q)EAAs.
 
-**Phase 1: Discovery**
+Wallet Provider: Phase 1: Discovery
+...................................
 
 To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.
 
@@ -145,7 +150,8 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-**Phase 2: Design**
+Wallet Provider: Phase 2: Design
+................................
 
 To understand the User Experience requirements and design the Wallet Solution following common patterns to ensure the usability and accessibility of the solutions.
 
@@ -155,7 +161,8 @@ To understand the User Experience requirements and design the Wallet Solution fo
 
 - **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical and functional requirements related to (Q)EAA lifecycle.
 
-**Phase 3: Implementation**
+Wallet Provider: Phase 3: Implementation
+........................................
 
 To implement the Wallet Solution in line with specific technological standards to ensure the communication between the Wallet Solution and other actors.
 
@@ -177,7 +184,8 @@ To implement the Wallet Solution in line with specific technological standards t
 
 - **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
-**Phase 4: Registration**
+Wallet Provider: Phase 4: Registration
+......................................
 
 To become registered as a Wallet Provider within the system by completing the administrative and technical procedures so that the Wallet Solution is recognized by the system.
 
@@ -193,7 +201,8 @@ Credential Issuer
 
 The Credential Issuer focuses on transforming authoritative raw data from Authentic Sources into (Q)EAAs, and managing their entire lifecycle from issuance to revocation or expiration.
 
-**Phase 1: Discovery**
+Credential Issuer: Phase 1: Discovery
+.....................................
 
 To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.
 
@@ -203,7 +212,8 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-**Phase 2: Design**
+Credential Issuer: Phase 2: Design
+..................................
 
 To understand the requirements and technically design (Q)EAA by structuring metadata to meet technical and regulatory requirements.
 
@@ -211,7 +221,8 @@ To understand the requirements and technically design (Q)EAA by structuring meta
 
 - **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical and functional requirements related to (Q)EAA lifecycle.
 
-**Phase 3: Implementation**
+Credential Issuer: Phase 3: Implementation
+..........................................
 
 To develop endpoints based on specific protocols, and to implement (Q)EAA issuance, renewal, revocation and all the technical lifecycle management functions.
 
@@ -231,7 +242,8 @@ To develop endpoints based on specific protocols, and to implement (Q)EAA issuan
 
 - **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
-**Phase 4: Registration**
+Credential Issuer: Phase 4: Registration
+........................................
 
 To become registered as a Credential Issuer within the system, by completing the administrative and technical procedure so that (Q)EAA issued to the Wallet are officially trusted.
 
@@ -247,7 +259,8 @@ Relying Party
 
 The Relying Party focuses on securely requesting, receiving, and verifying the authenticity and validity of the PID and (Q)EAAs presented by the User to grant access to online and offline services.
 
-**Phase 1: Discovery**
+Relying Party: Phase 1: Discovery
+.................................
 
 To understand the general functioning of the ecosystem, the technical architecture and the Infrastructure of Trust.
 
@@ -257,7 +270,8 @@ To understand the general functioning of the ecosystem, the technical architectu
 
 - **Section** :ref:`infrastructure-trust:Infrastructure of Trust`: Key requirements of the federation-based trust model and trust evaluation mechanisms between entities.
 
-**Phase 2: Design**
+Relying Party: Phase 2: Design
+..............................
 
 To understand the User Experience requirements and design the verification functionalities necessary to provide the service to the end User.
 
@@ -267,7 +281,8 @@ To understand the User Experience requirements and design the verification funct
 
 - **Section** :ref:`digital-credential-management:Digital Credential Management`: Technical and functional requirements related to (Q)EAA lifecycle.
 
-**Phase 3: Implementation**
+Relying Party: Phase 3: Implementation
+......................................
 
 To implement verification functionalities following specific protocols, to send verification requests to the Wallet and receive a response with the User authorization.
 
@@ -285,7 +300,8 @@ To implement verification functionalities following specific protocols, to send 
 
 - **Appendix** :ref:`test-plans:Test Plans`: Guide to set up the test environment and validate backend interactions with the test matrices provided by the ecosystem.
 
-**Phase 4: Registration**
+Relying Party: Phase 4: Registration
+....................................
 
 To become registered as a Relying Party within the system, by completing the administrative and technical procedure and becoming a reliable actor when requesting User data.
 

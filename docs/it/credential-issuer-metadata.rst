@@ -30,7 +30,7 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
   * - **code_challenge_methods_supported**
     - Array JSON contenente un elenco di metodi di *code challenge* previsti da Proof Key for Code Exchange (PKCE) :rfc:`7636` e supportati dall'*authorization server*. L'*authorization server* DEVE supportare *S256*.
   * - **acr_values_supported**
-    - Vedi `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. I valori supportati sono:
+    - Vedi la Sezione 3 di [`OpenID Connect Discovery 1.0`_]. I valori supportati sono:
 
       - `https://{Trust Anchor Domain}/loa/low`
       - `https://{Trust Anchor Domain}/loa/substantial`
@@ -54,7 +54,7 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
   * - **require_signed_request_object**
     - Booleano. DEVE essere impostato a `true` per indicare che la richiesta di autorizzazione è protetta usando un Request Object firmato [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**
-    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati per i *Request Objects*. Vedi `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
+    - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati per i *Request Objects*. Vedi [`OpenID Connect Discovery 1.0`_].
   * - **dpop_signing_alg_values_supported**
     - Array JSON contenente un elenco degli algoritmi di firma (valori "*alg*") supportati per i JWT DPoP proof. Vedi :rfc:`9449`.
   * - **jwks**
@@ -129,16 +129,16 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
             - **path**: OBBLIGATORIO. Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.
             - **mandatory**: OBBLIGATORIO. Valore booleano che, se impostato su `true`, indica che il Credential Issuer includerà sempre questo attributo nelle Credenziali che emette.
             - **sd**: OBBLIGATORIO. Stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è.
-            - **display**: CONDIZIONALE. OBBLIGATORIO solo per i *claims* che vengono mostrati all'Utente. Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
+            - **display**: OBBLIGATORIO solo per i *claims* che vengono mostrati all'Utente. Array di oggetti contenenti le proprietà di visualizzazione. Array contenente informazioni di visualizzazione relative al claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata. Contiene i seguenti parametri:
 
                 - **name**: OBBLIGATORIO. Nome dell'attributo in formato stringa.
                 - **label**: OPZIONALE. Nome dell'attributo in formato stringa.
                 - **description**: OBBLIGATORIO. Descrizione "human-readable" dell'Attributo.
                 - **locale**: OBBLIGATORIO. Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
-        - **schema_id**: REQUIRED. L'``id`` dello ``SchemaMeta`` nel :ref:`registry:Catalogue of Attestations`.
-        - **authentic_sources**: CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
-        - **parent_credentials**: CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Digital Credentials Catalog`.
+        - **schema_id**: OBBLIGATORIO. L'``id`` dello ``SchemaMeta`` nel :ref:`registry:Catalogo delle Attestazioni`.
+        - **authentic_sources**: È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
+        - **parent_credentials**: È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
   * - **issuer_info**
     - OBBLIGATORIO per i Fornitori di PID e i Fornitori di Attestati Elettronici nel Trust Framework EUDIW. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_]. Ciascun oggetto DEVE contenere:
 
@@ -155,11 +155,11 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         - *eudi_wallet*: trust framework Member State EUDI Wallet supportato.
         - *it_l2+document_proof*: protocollo Autenticazione eID Substantial con Verifica MRTD supportato.
   * - **batch_credential_issuance**
-    - OPZIONALE. Oggetto contenente informazioni sull'emissione di Credenziali in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
+    - OPZIONALE. Oggetto contenente informazioni sull'emissione di Attestati Elettronici in batch da parte del Credential Issuer presso il Credential Endpoint. La presenza di questo parametro indica che il Credential Issuer supporta più di una prova di possesso nel parametro ``proofs`` nella Credential Request, pertanto può emettere più di un Attestato Elettronico con gli stessi attributi relativi al titolare in un'unica richiesta/risposta. Il parametro che DEVE essere incluso è:
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
 
-        La presenza di questo parametro dichiara l'emissione in batch solo per i tipi di Attestato per i quali il Credential Issuer documenta il supporto. Il Credential Issuer DEVE dichiarare se PID e IT-Wallet ID rientrano nel perimetro dell'emissione in batch. Un tipo di Attestato senza tale dichiarazione DEVE essere emesso come singolo Attestato (:ref:`CI_203 <credential-issuer-testcases>`).
+        La presenza di questo parametro dichiara l'emissione in batch solo per i tipi di Attestato Elettronico per i quali il Credential Issuer documenta il supporto. Il Credential Issuer DEVE dichiarare se il PID e l'IT-Wallet ID rientrano nel perimetro dell'emissione in batch. Un tipo di Attestato Elettronico senza tale dichiarazione DEVE essere emesso come singolo Attestato Elettronico (:ref:`CI_203 <credential-issuer-testcases>`).
   * - **status_list_aggregation_endpoint**
     - OBBLIGATORIO. URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
 

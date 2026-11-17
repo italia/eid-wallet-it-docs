@@ -1,0 +1,6 @@
+{
+  "claim.given_name.description": "Person's given name(s) as they appear on official documents.",
+  "claim.birth_date.description": "Date of birth, in ISO 8601 format (YYYY-MM-DD). Also known as birthdate.",
+  "claim.driving_privileges.description": "Array of authorized vehicle categories with details.",
+  "...": "..."
+}

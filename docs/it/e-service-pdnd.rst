@@ -4,9 +4,9 @@
 e-Service PDND
 ==============
 
-Il framework `EIDAS-ARF`_ consente agli Stati Membri di stabilire le interfacce, i termini e le condizioni che regolano la comunicazione tra i Fornitori di Credenziali e le Fonti Autentiche. Nel contesto italiano, l'interoperabilità è stabilita sfruttando le seguenti linee guida:
+Il framework `EIDAS-ARF`_ consente agli Stati Membri di stabilire le interfacce, i termini e le condizioni che regolano la comunicazione tra i Fornitori di Credenziali e le Fonti Autentiche. Nel contesto italiano, l'interoperabilità è stabilita sfruttando le seguenti linee guida.
 
-    - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni" (`MODI`_);
+    - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni" (`MODI`_).
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 
 Per utilizzare la PDND, le entità DEVONO aderire formalmente, diventando **Aderenti**. All'interno dell'infrastruttura PDND, gli Aderenti DEVONO assumere almeno uno dei seguenti ruoli:
@@ -58,7 +58,7 @@ Questa specifica si basa sul seguente insieme di requisiti:
     - R2, R4, R5
   * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OBBLIGATORIO. Protegge la comunicazione tra il Fruitore e l'Erogatore garantendo riservatezza, integrità, identificazione dell'Erogatore e mitigazione contro attacchi di replay e spoofing.
     - R1, R2
-  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): CONDIZIONALE. Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.
+  * - **[INTEGRITY_REST_02]** Integrità del payload delle richieste REST in PDND (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): Garantisce l'integrità del payload della richiesta REST del Fruitore e della risposta REST dell'Erogatore, all'interno dell'Infrastruttura PDND. È OBBLIGATORIO ogni volta che la richiesta/risposta contiene un payload.
     - R2, R4
   * - **[AUDIT_REST_02]** Inoltro dati tracciati nel dominio del Fruitore REST con correlazione (*Allegato 2 - Pattern di sicurezza* [`MODI`_]): OPZIONALE. L'Erogatore PUÒ richiedere dati aggiuntivi tracciati nel dominio del Fruitore, con una correlazione tra tali dati e il metodo di autenticazione. In tal caso, questo pattern DEVE essere utilizzato.
     - R3, R4
@@ -70,25 +70,25 @@ Questa specifica si basa sul seguente insieme di requisiti:
 
     In alternativa, la prova di possesso PUÒ essere attestata dal JWT ``TrackingEvidence`` (come dettagliato di seguito). Tuttavia, mentre il ``TrackingEvidence`` è definito in ``AUDIT_REST_02`` per fornire dati tracciati aggiuntivi, in questo contesto funge da prova di possesso del Voucher. Tali scelte di implementazione saranno indicate rispettivamente come ``POP_DPoP`` e ``POP_TPoP``.
 
-I seguenti pattern di sicurezza definiti in `PDND`_ e `MODI`_ NON DEVONO essere utilizzati in quanto non conformi ai requisiti definiti in precedenza:
+I seguenti pattern di sicurezza definiti in `PDND`_ e `MODI`_ NON DEVONO essere utilizzati. Tali pattern non sono conformi ai requisiti definiti in precedenza.
 
-    - I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta), pertanto non risultano conformi a **R1**:
+    - I seguenti pattern possono essere utilizzati solo quando il Fruitore non può iscriversi all'Infrastruttura PDND (ossia quando la trust tra gli Aderenti deve essere stabilita in forma diretta). Tali pattern non risultano conformi a **R1**.
 
-      - **[ID_AUTH_CHANNEL_02]** Direct Trust mutual Transport-Level Security (*Allegato 2 - Pattern di Sicurezza* [`MODI`_])
+      - **[ID_AUTH_CHANNEL_02]** Direct Trust mutual Transport-Level Security (*Allegato 2 - Pattern di Sicurezza* [`MODI`_]).
       - **[ID_AUTH_REST_02]** Direct Trust su PDND tramite token JWT emessi dalla piattaforma con caratteristiche di unicità del token/messaggio (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[INTEGRITY_REST_01]** Integrità del payload messaggio REST (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
 
-    - Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher, pertanto non risulta conforme a **R3**:
+    - Il seguente pattern non fornisce correlazione tra i dati tracciati e il Voucher. Tale pattern non risulta conforme a **R3**.
 
       - **[AUDIT_REST_01]** Inoltro dati tracciati nel dominio del Fruitore REST (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
 
-    - I seguenti pattern sono basati su un'architettura SOAP, pertanto non risultano conformi a **R4**:
+    - I seguenti pattern sono basati su un'architettura SOAP. Tali pattern non risultano conformi a **R4**.
 
       - **[ID_AUTH_SOAP_01]** Direct Trust con certificato X.509 su SOAP (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[ID_AUTH_SOAP_02]** Direct Trust con certificato X.509 su SOAP con unicità del token/messaggio (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
       - **[INTEGRITY_SOAP_01]** Integrità del payload del messaggio SOAP (*Allegato 2 - Pattern di sicurezza* [`MODI`_]).
 
-    - Il seguente pattern non garantisce la prova di possesso del Voucher, pertanto non risulta conforme a **R5**:
+    - Il seguente pattern non garantisce la prova di possesso del Voucher. Tale pattern non risulta conforme a **R5**.
 
       - **[REST_JWS_2021_Bearer]** Profilo di emissione dei Voucher JWS Bearer (*Allegato 3 - Standard e dettagli tecnici utilizzati per la fruizione dei Voucher di autorizzazione* [`PDND`_]).
 
@@ -146,87 +146,43 @@ Flusso del Voucher PDND per e-Service
 
 **Passi 1-2 (Preparazione dei dati tracciati):** Il Fruitore prepara un JWT (``TrackingEvidence``) contenente i dati tracciati che devono essere inviati all'Erogatore. Infine, calcola l'hash SHA-256 di ``TrackingEvidence``.
 
-.. code-block:: json
-  :caption: Esempio non normativo dell'header di ``TrackingEvidence``
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
-
-  {
-    "alg": "ES256",
-    "kid": "d4c3b2a1-9876-5432-10fe-dcba98765432",
-    "typ": "JWT"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-1.json
+   :language: json
+   :caption: Esempio non normativo dell'header di ``TrackingEvidence``
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 
 
-.. code-block:: json
-  :caption: Esempio non normativo del payload di ``TrackingEvidence``
-  :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
-
-  {
-    "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-    "aud": "https://erogatore.example/ente-example/v1",
-    "exp": 1733052600,
-    "nbf": 1733036450,
-    "iat": 1733036400,
-    "jti": "a4b5c6d7-e8f9-abcd-ef12-345678901234",
-    "dnonce": 6528424213685,
-    "purposeId": "b2c3d4e5-f6g7-h8i9-j0k1-lmno12345678",
-    "userID": "a8b7c6d5-e4f3-g2h1-i9j0-klmnopqrstuv",
-    "loa": "substantial"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-2.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``TrackingEvidence``
+   :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
 
 .. note::
   I passi 1-2 sono richiesti solo quando si rispetta il pattern di sicurezza ``AUDIT_REST_02`` o l'implementazione ``POP_TPoP``.
 
-**Passo 3 (Generazione coppia di chiavi e `DPoP proof`)**: Il Fruitore DEVE creare una nuova coppia di chiavi e un nuovo JWT di `DPoP proof`, seguendo le istruzioni fornite nella Sezione 4 di :rfc:`9449` per la richiesta di token all'Authorization Server PDND.
+**Passo 3 (Generazione coppia di chiavi e `DPoP proof`)**: Il Fruitore DEVE creare una nuova coppia di chiavi e un nuovo JWT di `DPoP proof` come specificato nella Sezione 4 di :rfc:`9449`. Il Fruitore usa tale prova per la richiesta di token all'Authorization Server PDND.
 
 .. note::
   Il passo 3 è richiesto solo quando si segue l'implementazione ``POP_DPoP``.
 
 **Passo 4 (Richiesta di Voucher)**: Il Fruitore crea una `Voucher Request` e la invia all'Authorization Server PDND.
 
-.. code-block:: http
-    :caption: Esempio non normativo della `Voucher Request`
-    :name: code_VoucherIssuance_eService_Flow_Request
-
-    POST /authorization-server/token HTTP/1.1
-    Host: interop.pagopa.it
-    DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJodG0iOiJQT1NUIiwiaHR1IjoiaHR0cHM6Ly9pbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImlhdCI6MTc2MjI2MDYxNn0.D0ZUDkfGHx_rQBdYi_3VSXkdbJM-7FSWN88LWICQImMWtIWd2mbxGb7v8udfM_c4_ase8x7I3I1JZm01Us3QEA
-    Content-Type: application/x-www-form-urlencoded
-
-    grant_type=client_credentials&
-    client_id=82914b3f-60b2-4529-b4d6-3d4e67f0a933&
-    client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-    client_assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJpbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImV4cCI6MTczMzA0MTQ0MCwiaWF0IjoxNzMzMDM3ODQwLCJqdGkiOiI3ZTlmM2E0ZC1jOWIyLTQyZjYtYTZkNC0zOGUxMmZiNmI4YWIiLCJwdXJwb3NlSWQiOiJkMmI5YTY1My1jNDk3LTQ1YzYtYjhmMS01YmRmMTI0YzlkM2EiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI5Yzc4OTRhMGE1YTkxMDU4MGI5NjdmMzg0Y2RmYmExN2IxYWI2Zjg2NjcwZTViMGRmMThhMGM0NTNiNWViMjE1In19.cl-wvwJF3WLgywoq9qULVKCajleqz0jpD82QTZZAxHSjoGeA7l7n0LNC8eDfIM4F-rzMU5qfC9eW6UDxMwJrdg
+.. literalinclude:: ../../examples/shared/e-service-pdnd-3.http
+   :language: http
+   :caption: Esempio non normativo della `Voucher Request`
+   :name: code_VoucherIssuance_eService_Flow_Request
 
 
-.. code-block:: json
-    :caption: Esempio non normativo del JOSE header di ``client_assertion``
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
-
-    {
-        "alg": "ES256",
-        "kid": "d4c3b2a1-9876-5432-10fe-dcba98765432",
-        "typ": "JWT"
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-4.json
+   :language: json
+   :caption: Esempio non normativo del JOSE header di ``client_assertion``
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
 
 
-.. code-block:: json
-    :caption: Esempio non normativo del payload di ``client_assertion``
-    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
-
-    {
-        "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-        "sub": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-        "aud": "https://interop.pagopa.it/authorization-server",
-        "exp": 1733041440,
-        "iat": 1733037840,
-        "jti": "7e9f3a4d-c9b2-42f6-a6d4-38e12fb6b8ab",
-        "purposeId": "d2b9a653-c497-45c6-b8f1-5bdf124c9d3a",
-        "digest": {
-            "alg": "SHA256",
-            "value": "9c7894a0a5a910580b967f384cdfba17b1ab6f86670e5b0df18a0c453b5eb215"
-        }
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-5.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``client_assertion``
+   :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
 
 .. note::
   Il claim ``purposeId`` nel payload di ``client_assertion`` è richiesto solo quando si richiede un Voucher per e-Service.
@@ -268,52 +224,20 @@ L'Authorization Server PDND DEVE anche validare il JWT ``client_assertion`` come
 
 **Passo 6 (Emissione del Voucher)**: Qualora i controlli abbiano successo, l'Authorization Server PDND emette un Voucher, che è incluso nella `Voucher Response` inviata al Fruitore.
 
-.. code-block:: http
-    :caption: Esempio non normativo della `Voucher Response`
-    :name: code_VoucherIssuance_eService_Flow_Response
+.. literalinclude:: ../../examples/shared/e-service-pdnd-6.http
+   :language: http
+   :caption: Esempio non normativo della `Voucher Response`
+   :name: code_VoucherIssuance_eService_Flow_Response
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-    Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/e-service-pdnd-7.json
+   :language: json
+   :caption: Esempio non normativo del JOSE header di ``access_token``
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
 
-    {
-        "access_token": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw",
-        "token_type": "DPoP",
-        "expires_in": 3600
-    }
-
-.. code-block:: json
-    :caption: Esempio non normativo del JOSE header di ``access_token``
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
-
-    {
-        "alg": "ES256",
-        "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec",
-        "typ": "at+jwt"
-    }
-
-.. code-block:: json
-    :caption: Esempio non normativo del payload di ``access_token``
-    :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
-
-    {
-        "iss": "https://interop.pagopa.it",
-        "sub": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-        "aud": "https://erogatore.example/ente-example/v1",
-        "exp": 1733042150,
-        "nbf": 1733041945,
-        "iat": 1733041920,
-        "jti": "c4f5d7e2-b7c8-40f6-9b6a-dc9a4f5aeb57",
-        "client_id": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-        "purposeId": "d2b9a653-c497-45c6-b8f1-5bdf124c9d3a",
-        "digest": {
-            "alg": "SHA256",
-            "value": "9c7894a0a5a910580b967f384cdfba17b1ab6f86670e5b0df18a0c453b5eb215"
-        },
-        "cnf": {
-            "jkt": "0ZcOCORZNYy-DWpqq30jZyJGHTN0d2HglBV3uiguA4I"
-        }
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-8.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``access_token``
+   :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
 
 .. note::
   Il claim ``digest`` nel payload di ``access_token`` è richiesto solo quando si rispetta il pattern di sicurezza ``AUDIT_REST_02`` o l'implementazione ``POP_TPoP``. Se presente, corrisponde al valore del claim ``digest`` contenuto in ``client_assertion``.
@@ -349,41 +273,20 @@ Flusso del Voucher per API di Interoperabilità
 
 **Passo 1 (Richiesta di Voucher)**: L'Aderente crea una `Voucher Request` e la invia all'Authorization Server PDND.
 
-.. code-block:: http
-  :caption: Esempio non normativo della `Voucher Request`
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
+.. literalinclude:: ../../examples/shared/e-service-pdnd-9.http
+   :language: http
+   :caption: Esempio non normativo della `Voucher Request`
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
 
-  POST /authorization-server/token HTTP/1.1
-  Host: interop.pagopa.it
-  Content-Type: application/x-www-form-urlencoded
+.. literalinclude:: ../../examples/shared/e-service-pdnd-10.json
+   :language: json
+   :caption: Esempio non normativo del JOSE header di ``client_assertion``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
 
-  grant_type=client_credentials&
-  client_id=5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&
-  client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
-  client_assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6IjlhNGQ4ZTNmLThiN2QtNGM5OC05MjZmLTI3NDVjNmIxZjgzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI1YTNjN2YyOC05MWI5LTRjNGUtODlhOS02ZTJmODVkOTI2MmIiLCJzdWIiOiI1YTNjN2YyOC05MWI5LTRjNGUtODlhOS02ZTJmODVkOTI2MmIiLCJhdWQiOiJpbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImV4cCI6MTczMzIzMzUwMCwiaWF0IjoxNzMzMjMyMzAwLCJqdGkiOiJkMmM5YTdiNC0zZTgxLTRkMjctYjZmNy01MWE4YzlmMGEzYzYifQ.YDX7ekvvY3gPHTfZeqa3IcurU7kNBZPy3OHAdljdXSFLoC5cVVyIzl43aMbwLouI43ylxWktaf0-pXabmye1qA
-
-.. code-block:: json
-  :caption: Esempio non normativo del JOSE header di ``client_assertion``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
-
-  {
-      "alg": "ES256",
-      "kid": "9a4d8e3f-8b7d-4c98-926f-2745c6b1f832",
-       "typ": "JWT"
-  }
-
-.. code-block:: json
-  :caption: Esempio non normativo del payload di ``client_assertion``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
-
-  {
-      "iss": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
-      "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
-      "aud": "https://interop.pagopa.it/authorization-server",
-      "exp": 1733233500,
-      "iat": 1733232300,
-      "jti": "d2c9a7b4-3e81-4d27-b6f7-51a8c9f0a3c6"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-11.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``client_assertion``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
 
 Alla ricezione della `Voucher Request`, l'Authorization Server PDND DEVE eseguire i seguenti controlli sui parametri del relativo body:
 
@@ -409,44 +312,20 @@ L'Authorization Server PDND DEVE anche validare il JWT ``client_assertion`` come
 
 **Passo 2 (Emissione del Voucher)**: Qualora i controlli abbiano successo, l'Authorization Server PDND emette un Voucher, che è incluso nella `Voucher Response` inviata all'Aderente.
 
-.. code-block:: http
-  :caption: Esempio non normativo della `Voucher Response`
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
+.. literalinclude:: ../../examples/shared/e-service-pdnd-12.http
+   :language: http
+   :caption: Esempio non normativo della `Voucher Response`
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
 
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  Cache-Control: no-store
+.. literalinclude:: ../../examples/shared/e-service-pdnd-13.json
+   :language: json
+   :caption: Esempio non normativo del JOSE header di ``access_token``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
 
-  {
-    "access_token": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjVhM2M3ZjI4LTkxYjktNGM0ZS04OWE5LTZlMmY4NWQ5MjYyYiIsImF1ZCI6Imh0dHBzOi8vaW50ZXJvcC5wYWdvcGEuaXQvYXBpL3YxIiwiZXhwIjoxNzMzMjM2NjgwLCJuYmYiOjE3MzMyMzMxNTgsImlhdCI6MTczMzIzMzA4MCwianRpIjoiZjg3ZTJkNWItOWY2NS00ZjBmLThhZDQtOTJlNThlNmIxM2M3IiwiY2xpZW50X2lkIjoiNWEzYzdmMjgtOTFiOS00YzRlLTg5YTktNmUyZjg1ZDkyNjJiIn0.SKDDap16Ubi6gYwpKVdBcuhmhF_XnGiHeoxkF8F4IAualYORu_TxnDZqeP_RCcBAxSRkJTFbMihPCLA7DoRQOw",
-    "token_type": "Bearer",
-    "expires_in": 3600
-  }
-
-.. code-block:: json
-  :caption: Esempio non normativo del JOSE header di ``access_token``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
-
-  {
-    "alg": "ES256",
-    "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec",
-    "typ": "at+jwt"
-  }
-
-.. code-block:: json
-  :caption: Esempio non normativo del payload di ``access_token``
-  :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
-
-  {
-    "iss": "https://interop.pagopa.it",
-    "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
-    "aud": "https://interop.pagopa.it/api/v1",
-    "exp": 1733236680,
-    "nbf": 1733233158,
-    "iat": 1733233080,
-    "jti": "f87e2d5b-9f65-4f0f-8ad4-92e58e6b13c7",
-    "client_id": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-14.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``access_token``
+   :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
 
 
 Endpoint Authorization Server PDND
@@ -648,23 +527,15 @@ Il JWT ``access_token`` DEVE includere i seguenti claim nel payload (se non dive
     - DEVE contenere un claim **jkt** che è il JWK SHA-256 Thumbprint Confirmation Method. Il valore del claim *jkt* DEVE essere la codifica base64url (come definito in [:rfc:`7515`]) del JWK SHA-256 Thumbprint della chiave pubblica DPoP (in formato JWK) a cui l'Access Token è associato. È obbligatorio solo quando si rispetta l'implementazione ``POP_DPoP``.
     - [:rfc:`9449`. Sezione 6.1] e [:rfc:`7638`].
 
-Se si verificano errori durante la validazione della `Voucher Request`, l'Endpoint Authorization Server PDND DEVE restituire una risposta di errore come definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come ``Content-Type`` e DEVE includere i seguenti parametri:
+Se si verificano errori durante la validazione della `Voucher Request`, l'Endpoint Authorization Server PDND DEVE restituire una risposta di errore come definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come ``Content-Type``. La risposta DEVE includere i seguenti parametri.
 
   - ``error``: Il codice di errore.
   - ``error_description``: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.
 
-.. code-block:: http
-  :caption: Esempio non normativo di una `Voucher Error Response`
-  :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
-
-  HTTP/1.1 400 Bad Request
-  Content-Type: application/json
-  Cache-Control: no-store
-
-  {
-    "error": "invalid_request",
-    "error_description": "The client_assertion_type parameter is missing."
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-15.http
+   :language: http
+   :caption: Esempio non normativo di una `Voucher Error Response`
+   :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -733,31 +604,10 @@ Chiavi dell'Authorization Server PDND
 
 **Passo 2 (Risposta)**: L'Endpoint .well-known restituisce l'elenco delle chiavi utilizzate dalla PDND per firmare i Voucher, come un ``JWK Set`` [:rfc:`7517`].
 
-.. code-block:: http
-  :caption: Esempio non normativo della `Keys Response`
-  :name: _code_KeyRetrieval_PDND_Flow_Response
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-
-  {
-    "keys": [
-      {
-        "kty": "RSA",
-        "n": "qU2Bp7xgkXBQI2w2PZ5LZGo34TIjoir-ul0x4jZ_d9hN6q...",
-        "e": "AQAB",
-        "alg": "ES256",
-        "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec"
-      },
-      {
-        "kty": "RSA",
-        "n": "05VukHBwiE1W_kgUS0zkOyHCrRivgw5cfSTmcvD_phieEY...",
-        "e": "AQAB",
-        "alg": "ES256",
-        "kid": "9432c16b-7aae-49df-b9c4-ea61b556652b"
-      }
-    ]
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-16.http
+   :language: http
+   :caption: Esempio non normativo della `Keys Response`
+   :name: _code_KeyRetrieval_PDND_Flow_Response
 
 Endpoint .well-known dell'Authorization Server PDND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -774,22 +624,15 @@ Risposta (Chiavi dell'Authorization Server PDND)
 
 L'Endpoint .well-known risponde con un HTTP Status Code ``200 OK`` e un ``JWK Set`` [:rfc:`7517`] contenente le chiavi pubbliche impiegate dall'Authorization Server PDND per firmare i Voucher.
 
-Se si verificano errori durante il reperimento delle chiavi, l'Endpoint .well-known DEVE restituire una risposta di errore. La risposta DEVE utilizzare ``application/json`` come ``Content-Type`` e DEVE includere i seguenti parametri:
+Se si verificano errori durante il reperimento delle chiavi, l'Endpoint .well-known DEVE restituire una risposta di errore. La risposta DEVE utilizzare ``application/json`` come ``Content-Type``. La risposta DEVE includere i seguenti parametri.
 
   - ``error``: Il codice di errore.
   - ``error_description``: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.
 
-.. code-block:: http
-  :caption: Esempio non normativo di una `Keys Error Response`
-  :name: code_KeyRetrieval_Endpoint_WellKnown_Error
-
-  HTTP/1.1 500 Internal Server Error
-  Content-Type: application/json
-
-  {
-    "error": "server_error",
-    "error_description": "The server encountered an unexpected error."
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-17.http
+   :language: http
+   :caption: Esempio non normativo di una `Keys Error Response`
+   :name: code_KeyRetrieval_Endpoint_WellKnown_Error
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -841,33 +684,17 @@ Flusso di Reperimento delle Chiavi degli Aderenti
 
 **Passo 1 (Richiesta della chiave)**: L'Aderente richiede la chiave utilizzata da un altro Aderente, corrispondente a uno specifico ``kid``, alle API di Interoperabilità PDND.
 
-.. code-block:: http
-    :caption: Esempio non normativo della `Key Request`
-    :name: _code_KeyRetrieval_Participant_Flow_Request
-
-    GET /keys/c7e3d6a4-5b99-4298-9b84-d8f3a61279f1 HTTP/1.1
-    Host: interop.pagopa.it
-    Authorization: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjVhM2M3ZjI4LTkxYjktNGM0ZS04OWE5LTZlMmY4NWQ5MjYyYiIsImF1ZCI6Imh0dHBzOi8vaW50ZXJvcC5wYWdvcGEuaXQvYXBpL3YxIiwiZXhwIjoxNzMzMjM2NjgwLCJuYmYiOjE3MzMyMzMxNTgsImlhdCI6MTczMzIzMzA4MCwianRpIjoiZjg3ZTJkNWItOWY2NS00ZjBmLThhZDQtOTJlNThlNmIxM2M3IiwiY2xpZW50X2lkIjoiNWEzYzdmMjgtOTFiOS00YzRlLTg5YTktNmUyZjg1ZDkyNjJiIn0.SKDDap16Ubi6gYwpKVdBcuhmhF_XnGiHeoxkF8F4IAualYORu_TxnDZqeP_RCcBAxSRkJTFbMihPCLA7DoRQOw
+.. literalinclude:: ../../examples/shared/e-service-pdnd-18.http
+   :language: http
+   :caption: Esempio non normativo della `Key Request`
+   :name: _code_KeyRetrieval_Participant_Flow_Request
 
 **Passo 2 (Risposta)**: L'Endpoint API di Interoperabilità restituisce la chiave richiesta, come un ``JWK`` [:rfc:`7517`].
 
-.. code-block:: http
-  :caption: Esempio non normativo della `Key Response`
-  :name: _code_KeyRetrieval_Participant_Flow_Response
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-
-  {
-    "kty": "EC",
-    "key_ops": [
-      "sign"
-    ],
-    "kid": "b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec",
-    "crv": "P-256",
-    "x": "huyXIQNv902oLspX4_zonC94G6yEln6lsdm-1wM732o",
-    "y": "I9PDEawWHqaFDGx1ZkNk-2PV6WdpcaH3AfObBSLihgw"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-19.http
+   :language: http
+   :caption: Esempio non normativo della `Key Response`
+   :name: _code_KeyRetrieval_Participant_Flow_Response
 
 
 .. note::
@@ -903,31 +730,22 @@ Nel caso in cui esista una chiave pubblica con il ``kid`` fornito, l'Endpoint de
 
 Se si verificano errori durante il reperimento della chiave, l'Endpoint API di Interoperabilità DEVE restituire un errore, la cui struttura dipende dalla natura dell'errore.
 
-In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in :rfc:`6750#section-3`, con specifico riferimento all'uso del parametro di header ``WWW-Authenticate``.
+In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in :rfc:`6750#section-3`. Il formato riguarda in particolare l'uso del parametro di header ``WWW-Authenticate``.
 
-.. code-block:: http
-    :caption: Esempio non normativo di una `Key Error Response` in caso di errori 401
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
+.. literalinclude:: ../../examples/shared/e-service-pdnd-20.http
+   :language: http
+   :caption: Esempio non normativo di una `Key Error Response` in caso di errori 401
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
 
-    HTTP/1.1 401 Unauthorized
-    WWW-Authenticate: Bearer error="invalid_token", error_description="The access token expired"
-
-Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come tipo di contenuto e DEVE includere i seguenti parametri:
+Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`6749#section-5.2`. La risposta DEVE utilizzare ``application/json`` come tipo di contenuto. La risposta DEVE includere i seguenti parametri.
 
     - ``error``: Il codice di errore.
     - ``error_description``: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.
 
-.. code-block:: http
-    :caption: Esempio non normativo di una `Key Error Response` in caso di altri errori
-    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
-
-    HTTP/1.1 400 Bad Request
-    Content-Type: application/json
-
-    {
-        "error": "invalid_request",
-        "error_description": "The kid parameter is missing."
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-21.http
+   :language: http
+   :caption: Esempio non normativo di una `Key Error Response` in caso di altri errori
+   :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
 
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:
@@ -994,33 +812,15 @@ Flusso di Utilizzo dell'e-Service
 
 **Passo 1 (Preparazione della firma):** Il Fruitore prepara un JWT (``Signature``) contenente le intestazioni firmate del messaggio, per garantire l'integrità.
 
-.. code-block:: json
-    :caption: Esempio non normativo dell'header di ``Signature``
-    :name: _code_Usage_Flow_Signature_Header
+.. literalinclude:: ../../examples/shared/e-service-pdnd-22.json
+   :language: json
+   :caption: Esempio non normativo dell'header di ``Signature``
+   :name: _code_Usage_Flow_Signature_Header
 
-    {
-        "alg": "ES256",
-        "kid": "d4c3b2a1-9876-5432-10fe-dcba98765432",
-        "typ": "JWT"
-    }
-
-.. code-block:: json
-    :caption: Esempio non normativo del payload di ``Signature``
-    :name: _code_Usage_Flow_Signature_Payload
-
-    {
-        "iss": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
-        "sub": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
-        "aud": "https://erogatore.example/ente-example/v1",
-        "iat": 1733397840,
-        "nbf": 1733401628,
-        "exp": 1733401440,
-        "jti": "d3f7b2c9-274a-42b7-8f8d-2e9d8b1734b0",
-        "signed_headers": [
-            {"digest": "SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41"},
-            {"content-type": "application/json"}
-        ]
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-23.json
+   :language: json
+   :caption: Esempio non normativo del payload di ``Signature``
+   :name: _code_Usage_Flow_Signature_Payload
 
 .. note::
   Il passo 1 è richiesto per rispettare il pattern di sicurezza ``INTEGRITY_REST_02``.
@@ -1032,23 +832,10 @@ Flusso di Utilizzo dell'e-Service
 
 **Passo 3 (Richiesta e-Service):** Il Fruitore invia una `e-Service Request` all'Erogatore, includendo il Voucher.
 
-.. code-block:: http
-    :caption: Esempio non normativo della `e-Service Request`
-    :name: _code_Usage_Flow_Request
-
-    POST /ente-example/v1/hello/echo/ HTTP/1.1
-    Host: erogatore.example
-    Authorization: DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw
-    DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiIyYzc2ZmNhMy1jYjRlLTQzMTItOGI2ZS05NzQ5NDYyZjQyMGQiLCJodG0iOiJQT1NUIiwiYXRoIjoiM2UwOGRlMWQwYTNkZjIzNWZjZmNjZjYyNjdmYTUwYTU5YmEyYTk1NTI2YzdjZTY3MDY1YjhlMjZkYmI5NDQ1MSIsImh0dSI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiaWF0IjoxNzYyMjYyNjE2fQ.kvXh8H9B5DWCNlWyNB_PzRH217j1NHnIkE_55WnEixt2RbQTGrCS6AFAznREA85dzqwAAaHb_qHtDc5BR0lLmQ
-    Agid-JWT-Signature: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5YThiN2M2ZC1lNWY0LWczaDItaTFqMC1rbG1ub3BxcnN0dXYiLCJzdWIiOiI5YThiN2M2ZC1lNWY0LWczaDItaTFqMC1rbG1ub3BxcnN0dXYiLCJhdWQiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg
-    Digest: SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41
-    Agid-JWT-TrackingEvidence: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.bhb3f3aWEuK-bZWjyKRWrJ4hYUWhw2SQ-yRz0kUFjPQTVagjXuTqyhxsHO4KXeSX9SivgaLSvw4n9BeZa7APbQ
-    Content-Type: application/json
-
-    {
-        "parameter1": "value1",
-        "parameter2": "value2"
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-24.http
+   :language: http
+   :caption: Esempio non normativo della `e-Service Request`
+   :name: _code_Usage_Flow_Request
 
 L'Erogatore DEVE validare la `DPoP proof` [:rfc:`9449`].
 
@@ -1122,20 +909,10 @@ Se uno qualsiasi dei controlli precedenti fallisce, l'Erogatore DEVE rifiutare l
 
 **Passo 4 (Risposta):** Qualora i controlli abbiano successo, l'Erogatore fornisce al Fruitore i dati richiesti. Nelle intestazioni della risposta DEVE essere presente il JWT (``Signature``) al fine di garantire l'integrità.
 
-.. code-block:: http
-  :caption: Esempio non normativo della `e-Service Response`
-  :name: _code_Usage_Flow_Response
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-  Agid-JWT-Signature: ew0KICAiYWxnIjogIkVTMjU2IiwNCiAgImtpZCI6ICJhMWY1YzhkMi00YjM3LTRlOTEtYjBkMi03OWUzZjBjNGE4ZWYiLA0KICAidHlwIjogIkpXVCINCn0.ew0KICAiaXNzIjogIjEyMzRhYmNkLWVmNTYtZ2g3OC1pOWowLWtsbW5vcHFyc3R3eCIsDQogICJzdWIiOiAiMTIzNGFiY2QtZWY1Ni1naDc4LWk5ajAta2xtbm9wcXJzdHd4IiwNCiAgImF1ZCI6ICJodHRwczovL2ZydWl0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwNCiAgImlhdCI6IDE3MzMzOTc4NDAsDQogICJuYmYiOiAxNzMzNDAxNjI4LA0KICAiZXhwIjogMTczMzQwMTQ0MCwNCiAgImp0aSI6ICI4ZTEyZjRiNy05YzNhLTRmODMtOWI4ZC01MWEyYzdmNmU5ZDQiLA0KICAic2lnbmVkX2hlYWRlcnMiOiBbDQogICAgew0KICAgICAgImRpZ2VzdCI6ICJTSEEtMjU2PTc5YTIwYTc0NDMzNjQyMDMwMTgzMDYwMGFkOWJkY2E5OTM1OTNmODc2MjA5YTAwNGI1OTliNTgzMDk1YjBhNjEiDQogICAgfSwNCiAgICB7DQogICAgICAiY29udGVudC10eXBlIjogImFwcGxpY2F0aW9uL2pzb24iDQogICAgfQ0KICBdDQp9.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg
-  Digest: SHA-256=79a20a744336420301830600ad9bdca993593f876209a004b599b583095b0a61
-
-  {
-    "requestedField1": "value1",
-    "requestedField2": "value2",
-    "requestedField3": "value3"
-  }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-25.http
+   :language: http
+   :caption: Esempio non normativo della `e-Service Response`
+   :name: _code_Usage_Flow_Response
 
 Il Fruitore DEVE validare il JWT ``Signature`` come segue:
 
@@ -1370,16 +1147,14 @@ Il payload del JWT della `e-Service Response` include specifici claim relativi a
 
 Se si verificano errori durante la validazione della `e-Service Request`, l'Endpoint e-Service DEVE restituire un errore, la cui struttura dipende dalla natura dell'errore.
 
-In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in :rfc:`6750#section-3` e :rfc:`9449#section-7.1`, con specifico riferimento all'uso del parametro di header ``WWW-Authenticate``.
+In caso di problemi di autenticazione (cioè, Voucher non valido o scaduto), la risposta DEVE aderire al formato di errore definito in :rfc:`6750#section-3` e :rfc:`9449#section-7.1`. Il formato riguarda in particolare l'uso del parametro di header ``WWW-Authenticate``.
 
-.. code-block:: http
-    :caption: Esempio non normativo di una `e-Service Error Response` in caso di errori 401
-    :name: code_Usage_Endpoint_eService_Error_401
+.. literalinclude:: ../../examples/shared/e-service-pdnd-26.http
+   :language: http
+   :caption: Esempio non normativo di una `e-Service Error Response` in caso di errori 401
+   :name: code_Usage_Endpoint_eService_Error_401
 
-    HTTP/1.1 401 Unauthorized
-    WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
-
-Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`9457`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type`` e DEVE includere i seguenti parametri:
+Per tutti gli altri errori, la risposta DEVE aderire al formato di errore definito in :rfc:`9457`. La risposta DEVE utilizzare ``application/problem+json`` (secondo MODI ``RAC_GEN_FORMAT_002``) come ``Content-Type``. La risposta DEVE includere i seguenti parametri.
 
     - ``type``: [OPZIONALE] URI che identifica il tipo di problema.
     - ``title``:  [OBBLIGATORIO] Stringa contenente un breve riepilogo, leggibile dall’utente, del tipo di problema.
@@ -1387,18 +1162,10 @@ Per tutti gli altri errori, la risposta DEVE aderire al formato di errore defini
     - ``detail``: [OBBLIGATORIO] Stringa contenente una spiegazione, leggibile dall’utente, specifica per questa occorrenza del problema.
     - ``instance``: [OPZIONALE] Stringa contenente un riferimento URI che identifica la specifica occorrenza del problema.
 
-.. code-block:: http
-    :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
-    :name: code_Usage_Endpoint_eService_Error
-
-    HTTP/1.1 400 Bad Request
-    Content-Type: application/problem+json
-
-    {
-        "title": "invalid_request",
-        "status": 400,
-        "detail": "The Agid-JWT-Signature header parameter is missing."
-    }
+.. literalinclude:: ../../examples/shared/e-service-pdnd-27.http
+   :language: http
+   :caption: Esempio non normativo di una `e-Service Error Response` in caso di altri errori
+   :name: code_Usage_Endpoint_eService_Error
 
 
 La seguente tabella elenca gli HTTP Status Code che DEVONO essere supportati per la risposta di errore:

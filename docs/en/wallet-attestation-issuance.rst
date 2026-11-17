@@ -48,12 +48,8 @@ On iOS, the Wallet Instance MUST generate each key pair in the Secure Enclave. T
 
 Below is a non-normative example of the ``client_data`` JSON object.
 
-.. code-block:: json
-
-  {
-    "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
-    "jwk_thumbprints": ["vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]
-  }
+.. literalinclude:: ../../examples/shared/wallet-attestation-issuance-1.json
+   :language: json
 
 
 **Steps 11-12**: The Wallet Instance produces a ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys (:ref:`WP_140d <wallet-instance-optional-testcases>`).
@@ -92,13 +88,7 @@ Upon successful completion of all checks, the Wallet Provider issues a Key Attes
 
 Below is a non-normative example of the response.
 
-.. code-block:: http
-
-  HTTP/1.1 200 OK
-  Content-Type: application/json
-
-  {
-    "key_attestation": "omppc3N1ZXJBdXRohEOhASaiBE...dElEAnFlbGVtZW50SWRl"
-  }
+.. literalinclude:: ../../examples/shared/wallet-attestation-issuance-2.http
+   :language: http
 
 
