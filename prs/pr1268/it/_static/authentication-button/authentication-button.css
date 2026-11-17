@@ -139,21 +139,16 @@
 .btn-itwallet-auth.btn-fixed-justified {
   justify-content: flex-start;
   width: 280px; /* Standard fixed size, can be customized */
-  position: relative;
 }
 
 .btn-itwallet-auth.btn-fixed-justified .btn-icon {
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .btn-itwallet-auth.btn-fixed-justified .btn-text {
-  position: absolute;
-  left: 0;
-  right: 0;
+  flex: 1 1 auto;
+  min-width: 0;
   text-align: center;
-  padding-left: 0;
 }
 
 /* Sizes - default is Medium (M) */
@@ -198,6 +193,13 @@
 .btn-itwallet-auth.btn-lg .btn-icon {
   width: 20px;
   height: 24px;
+}
+
+/* Size variants above set gap: 8px. That gap sits only between the icon and
+   the label, so it would make the left space larger than the right one.
+   The label must be centered in the space from the icon to the right padding. */
+.btn-itwallet-auth.btn-fixed-justified {
+  gap: 0;
 }
 
 /* Responsive */
