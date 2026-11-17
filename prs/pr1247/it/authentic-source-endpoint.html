@@ -7,7 +7,7 @@
 
     <title>12.4. Endpoint delle Fonti Autentiche &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -345,8 +381,8 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 <p>Questo e-Service DEVE essere invocato dal Credential Issuer nei seguenti casi:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> NON DEVE essere utilizzato nel payload della request dell'e-Service e la response dell'e-Service DEVE includere tutti i dataset delle Credenziali in stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e non scaduti amministrativamente (ovvero, <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; data corrente della request dell'e-service).</p></li>
-<li><p>Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> DEVE essere incluso nel payload della request dell'e-service e la risposta dell'e-Service DEVE restituire solamente il dataset delle Credenziali identificato dal claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, indipendentemente dal suo stato.</p></li>
+<li><p>Durante il flusso di emissione delle Credenziali per recuperare i relativi dataset. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> NON DEVE essere utilizzato nel payload della request dell'e-Service. La response dell'e-Service DEVE includere tutti i dataset delle Credenziali in stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code> e non scaduti amministrativamente (ovvero, <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> &gt; data corrente della request dell'e-service).</p></li>
+<li><p>Dopo aver ricevuto una notifica di aggiornamento tramite Signal Hub. In questo caso, il claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code> DEVE essere incluso nel payload della request dell'e-service. La risposta dell'e-Service DEVE restituire solamente il dataset delle Credenziali identificato dal claim <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, indipendentemente dal suo stato.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -363,34 +399,47 @@ Questa specifica OpenAPI può essere estesa dalle Fonti Autentiche, infatti, l'a
 </section>
 <section id="mapping-degli-stati-del-ciclo-di-vita-degli-attestati-elettronici">
 <h3><span class="section-number">12.4.1.2. </span>Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici<a class="headerlink" href="#mapping-degli-stati-del-ciclo-di-vita-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
-<p>Per garantire la coerenza tra il &quot;Ciclo di Vita degli Attestati Elettronici&quot; documentato in <a class="reference internal" href="credential-revocation.html#ciclo-di-vita-degli-attestati-elettronici"><span class="std std-ref">Ciclo di Vita degli Attestati Elettronici</span></a> e l'Enum status delle OpenAPI, la seguente mappatura e logica operativa DEVE essere applicata per il campo <code class="docutils literal notranslate"><span class="pre">status</span></code> negli <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>.</p>
-<p><strong>Direzionalità e Responsabilità:</strong>
-I cambiamenti di stato di un Attestato Elettronico a livello di Fornitore di Attestati Elettronici NON implicano un cambiamento presso la Fonte Autentica. Al contrario, qualsiasi cambiamento di stato di un dataset presso la Fonte Autentica DEVE essere elaborato dal Fornitore di Attestati Elettronici per aggiornare lo stato tecnico dell'Attestato Elettronico.</p>
-<p><strong>Guida Operativa:</strong></p>
+<p>La seguente mappatura e logica operativa DEVE essere applicata al campo <code class="docutils literal notranslate"><span class="pre">status</span></code> negli <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>. La mappatura mantiene la coerenza con il Ciclo di Vita degli Attestati Elettronici documentato in <a class="reference internal" href="credential-revocation.html#ciclo-di-vita-degli-attestati-elettronici"><span class="std std-ref">Ciclo di Vita degli Attestati Elettronici</span></a> e con l'Enum status delle OpenAPI.</p>
+<section id="direzionalita-e-responsabilita">
+<h4><span class="section-number">12.4.1.2.1. </span>Direzionalità e Responsabilità<a class="headerlink" href="#direzionalita-e-responsabilita" title="Link to this heading">¶</a></h4>
+<p>I cambiamenti di stato di un Attestato Elettronico a livello di Fornitore di Attestati Elettronici NON implicano un cambiamento presso la Fonte Autentica. Al contrario, qualsiasi cambiamento di stato di un dataset presso la Fonte Autentica DEVE essere elaborato dal Fornitore di Attestati Elettronici per aggiornare lo stato tecnico dell'Attestato Elettronico.</p>
+</section>
+<section id="guida-operativa">
+<h4><span class="section-number">12.4.1.2.2. </span>Guida Operativa<a class="headerlink" href="#guida-operativa" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><strong>Validità Tecnica vs Amministrativa</strong>: Gli Attestati Elettronici distinguono tra una <strong>validità tecnica</strong> stabilita dal Fornitore di Attestati Elettronici (claim <code class="docutils literal notranslate"><span class="pre">iat</span></code> ed <code class="docutils literal notranslate"><span class="pre">exp</span></code>) e una <strong>validità amministrativa</strong> determinata dalla Fonte Autentica (claim <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> ed <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>).</p></li>
 <li><p><strong>Gerarchia delle Scadenze</strong>: La scadenza tecnica (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) NON DEVE essere successiva alla scadenza amministrativa (<code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>). Per esempio, una patente di guida può essere amministrativamente valida per 10 anni, mentre l'Attestato Elettronico emesso può avere una scadenza tecnica di 1 anno.</p></li>
-<li><p><strong>Riemissione</strong>: Se un Attestato Elettronico raggiunge la sua scadenza tecnica (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) ma il dataset è ancora amministrativamente valido, lo stato OpenAPI rimane <code class="docutils literal notranslate"><span class="pre">VALID</span></code>, consentendo all'Attestato Elettronico di essere riemesso più volte entro l'arco temporale amministrativo.</p></li>
+<li><p><strong>Riemissione</strong>: Se un Attestato Elettronico raggiunge la sua scadenza tecnica (<code class="docutils literal notranslate"><span class="pre">exp</span></code>) ma il dataset è ancora amministrativamente valido, lo stato OpenAPI rimane <code class="docutils literal notranslate"><span class="pre">VALID</span></code>. Tale stato consente all'Attestato Elettronico di essere riemesso più volte entro l'arco temporale amministrativo.</p></li>
 <li><p><strong>Verifica dei Metadati</strong>: Il Fornitore di Attestati Elettronici DEVE verificare l'effettiva usabilità controllando sia i claim tecnici che le date amministrative.</p></li>
-<li><p><strong>Irreversibilità</strong>: Dopo una transizione a <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, l'Attestato Elettronico non può tornare a uno stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code>. È richiesta una nuova emissione per un nuovo dataset. Questo si applica sia alla revoca esplicita che alla scadenza amministrativa.</p></li>
+<li><p><strong>Irreversibilità</strong>: Quando un Attestato Elettronico passa allo stato <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, quell'Attestato Elettronico non può tornare allo stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code>. Una nuova emissione dopo <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> usa un nuovo <code class="docutils literal notranslate"><span class="pre">object_id</span></code>. Quando <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> è superata, l'Attestato Elettronico mantiene lo stato corrente.</p></li>
 <li><p><strong>Elaborazione dei Segnali</strong>: I Segnali DEVONO essere elaborati sequenzialmente. Se un Segnale invalida un Attestato Elettronico, i successivi Segnali di correzione per lo stesso oggetto vengono ignorati.</p></li>
 </ul>
-<p><strong>Mapping degli Stati e Logica dei Casi:</strong></p>
-<p>Il Fornitore di Attestati Elettronici DEVE aggiornare lo <code class="docutils literal notranslate"><span class="pre">status</span></code> dell'Attestato Elettronico in base ai Segnali ricevuti dalla Fonte Autentica via Signal Hub (<code class="docutils literal notranslate"><span class="pre">signalType=UPDATE</span></code>):</p>
+</section>
+<section id="mapping-degli-stati-e-logica-dei-casi">
+<h4><span class="section-number">12.4.1.2.3. </span>Mapping degli Stati e Logica dei Casi<a class="headerlink" href="#mapping-degli-stati-e-logica-dei-casi" title="Link to this heading">¶</a></h4>
+<p>Il Fornitore di Attestati Elettronici DEVE aggiornare lo <code class="docutils literal notranslate"><span class="pre">status</span></code> dell'Attestato Elettronico in base ai Segnali ricevuti dalla Fonte Autentica via Signal Hub (<code class="docutils literal notranslate"><span class="pre">signalType=UPDATE</span></code>).</p>
 <ul class="simple">
 <li><p><strong>Revoca</strong>: Se un dataset viene revocato presso la Fonte Autentica (stato <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>), il Fornitore di Attestati Elettronici DEVE revocare gli Attestati Elettronici che utilizzano quel dataset (transizione di stato da <code class="docutils literal notranslate"><span class="pre">VALID/SUSPENDED</span></code> a <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
 <li><p><strong>Sospensione</strong>: Se un dataset viene sospeso presso la Fonte Autentica (stato <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>), il Fornitore di Attestati Elettronici DEVE sospendere gli Attestati Elettronici (transizione di stato da <code class="docutils literal notranslate"><span class="pre">VALID</span></code> a <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code>).</p></li>
 <li><p><strong>Ripristino</strong>: Se un dataset sospeso torna a essere <code class="docutils literal notranslate"><span class="pre">VALID</span></code> presso la Fonte Autentica, il Fornitore di Attestati Elettronici DEVE ripristinare la validità dell'Attestato Elettronico (transizione di stato da <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> a <code class="docutils literal notranslate"><span class="pre">VALID</span></code>).</p></li>
-<li><p><strong>Modifica</strong>: Se un dataset viene modificato ma rimane <code class="docutils literal notranslate"><span class="pre">VALID</span></code> presso la Fonte Autentica, il Fornitore di Attestati Elettronici — rilevando il cambiamento tramite il campo <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> — assegna lo stato tecnico <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> all'Attestato Elettronico. Questo avvia un flusso di riemissione quando l'Istanza del Wallet controlla lo stato.</p></li>
+<li><dl class="simple">
+<dt><strong>Modifica</strong>: La Fonte Autentica sceglie come rappresentare un cambiamento del dataset.</dt><dd><ul>
+<li><p>PUÒ impostare il dataset su <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> e identificare il dataset sostitutivo con un nuovo <code class="docutils literal notranslate"><span class="pre">object_id</span></code>. Il Fornitore di Attestati Elettronici applica la <strong>Revoca</strong> agli Attestati Elettronici che usano il precedente <code class="docutils literal notranslate"><span class="pre">object_id</span></code>.</p></li>
+<li><p>PUÒ mantenere lo stesso <code class="docutils literal notranslate"><span class="pre">object_id</span></code> e lasciare lo stato <code class="docutils literal notranslate"><span class="pre">VALID</span></code>. Aggiorna gli attributi e <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> e invia un Segnale con <code class="docutils literal notranslate"><span class="pre">signalType=UPDATE</span></code>. Il Fornitore di Attestati Elettronici imposta <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>. L'Istanza del Wallet segue il flusso di riemissione quando controlla lo stato.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><dl class="simple">
 <dt><strong>Scadenza Amministrativa</strong>:</dt><dd><ul>
-<li><p><strong>Scenario A (Basato sui metadati)</strong>: Se <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> è stata condivisa con il Fornitore di Attestati Elettronici nei metadati, la Fonte Autentica NON invia Segnali alla scadenza. Il Fornitore di Attestati Elettronici gestisce il ciclo di vita in modo indipendente garantendo che l'<code class="docutils literal notranslate"><span class="pre">exp</span></code> tecnico sia &lt;= <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code>.</p></li>
-<li><p><strong>Scenario B (Basato sui segnali)</strong>: Se <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> NON è presente nei metadati e il dataset scade, la Fonte Autentica DEVE impostare il suo stato su <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> e inviare un Segnale via Signal Hub. Il Fornitore di Attestati Elettronici revoca quindi gli Attestati Elettronici (transizione di stato a <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p></li>
+<li><p><strong>Scenario A (Data nel dataset)</strong>: Quando <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> è presente in <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>, la Fonte Autentica NON DEVE inviare un Segnale al superamento di tale data. L'<code class="docutils literal notranslate"><span class="pre">exp</span></code> tecnico segue la Gerarchia delle Scadenze sopra indicata e <code class="docutils literal notranslate"><span class="pre">max_validity_days</span></code> in <a class="reference internal" href="registry.html#catalogo-degli-attestati-elettronici"><span class="std std-ref">Catalogo degli Attestati Elettronici</span></a>. Quando <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> è presente come attributo, l'Istanza del Wallet applica <a class="reference internal" href="functionalities.html#stato-degli-attestati-elettronici"><span class="std std-ref">Stato degli Attestati Elettronici</span></a>.</p></li>
+<li><p>Quando il tipo di Attestato Elettronico ha una scadenza amministrativa, la Fonte Autentica DEVE includere <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> in <code class="docutils literal notranslate"><span class="pre">attributeClaims</span></code>. Il Fornitore di Attestati Elettronici DEVE includere tale valore come attributo dell'Attestato Elettronico. La Fonte Autentica NON DEVE modificare lo stato del dataset solo perché <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> è stata superata. Un successivo stato del dataset <code class="docutils literal notranslate"><span class="pre">INVALID</span></code> o <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code> è trattato come <strong>Revoca</strong> o <strong>Sospensione</strong>.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
+</section>
 </section>
 <section id="esempio-di-risposta-della-authentic-source">
 <h3><span class="section-number">12.4.1.3. </span>Esempio di risposta della Authentic Source<a class="headerlink" href="#esempio-di-risposta-della-authentic-source" title="Link to this heading">¶</a></h3>
@@ -447,8 +496,8 @@ I cambiamenti di stato di un Attestato Elettronico a livello di Fornitore di Att
 <p>In sintesi:</p>
 <ul class="simple">
 <li><p><strong>userClaims</strong>: dati anagrafici dell'utente (nome, cognome, data/luogo di nascita, codice fiscale o numero di identificazione). Almeno uno tra <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> e <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code> è richiesto se si forniscono user claims.</p></li>
-<li><p><strong>attributeClaims</strong>: array di dataset. Ogni elemento <strong>DEVE</strong> contenere <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code> (VALID | INVALID | SUSPENDED), <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> (formato ISO 8601), più eventuali attributi aggiuntivi specifici del dataset (es. <code class="docutils literal notranslate"><span class="pre">nationality</span></code>, <code class="docutils literal notranslate"><span class="pre">residence_address</span></code>).</p></li>
-<li><p><strong>metadataClaims</strong>: array di metadati per dataset (<code class="docutils literal notranslate"><span class="pre">object_id</span></code> obbligatorio. <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> e <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> opzionali).</p></li>
+<li><p><strong>attributeClaims</strong>: array di dataset. Ogni elemento contiene <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, <code class="docutils literal notranslate"><span class="pre">issuance_date</span></code> e <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> opzionali, e gli attributi che entrano nell'Attestato Elettronico (es. <code class="docutils literal notranslate"><span class="pre">nationality</span></code>, <code class="docutils literal notranslate"><span class="pre">residence_address</span></code>).</p></li>
+<li><p><strong>metadataClaims</strong>: array di metadati per dataset. Ogni elemento contiene <code class="docutils literal notranslate"><span class="pre">object_id</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code> (VALID | INVALID | SUSPENDED), <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> (formato ISO 8601) e <code class="docutils literal notranslate"><span class="pre">interval</span></code>.</p></li>
 <li><p><strong>interval</strong>: obbligatorio se non è presente il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella richiesta. Indica i secondi da attendere prima di ripetere la richiesta (es. 864000 = 10 giorni).</p></li>
 </ul>
 <p>La risposta in caso di successo (HTTP 200) restituisce un oggetto <code class="docutils literal notranslate"><span class="pre">CredentialClaimsResponse</span></code> formattato come <strong>Payload JSON</strong>, accompagnato dagli header di integrità <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code> e <code class="docutils literal notranslate"><span class="pre">Digest</span></code>.</p>
@@ -501,18 +550,6 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -542,7 +579,12 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
 <li><a class="reference internal" href="#">12.4. Endpoint delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">12.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">12.4.1.1. Get Attribute Claims</a></li>
-<li><a class="reference internal" href="#mapping-degli-stati-del-ciclo-di-vita-degli-attestati-elettronici">12.4.1.2. Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#mapping-degli-stati-del-ciclo-di-vita-degli-attestati-elettronici">12.4.1.2. Mapping degli Stati del Ciclo di Vita degli Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#direzionalita-e-responsabilita">12.4.1.2.1. Direzionalità e Responsabilità</a></li>
+<li><a class="reference internal" href="#guida-operativa">12.4.1.2.2. Guida Operativa</a></li>
+<li><a class="reference internal" href="#mapping-degli-stati-e-logica-dei-casi">12.4.1.2.3. Mapping degli Stati e Logica dei Casi</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#esempio-di-risposta-della-authentic-source">12.4.1.3. Esempio di risposta della Authentic Source</a><ul>
 <li><a class="reference internal" href="#verifica-della-firma-e-gestione-chiavi">12.4.1.3.1. Verifica della Firma e Gestione Chiavi</a></li>
 </ul>
@@ -584,7 +626,7 @@ Si rimanda all'Appendice tecnica (Sezione <a class="reference internal" href="e-
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

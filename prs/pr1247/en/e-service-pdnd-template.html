@@ -7,7 +7,7 @@
 
     <title>19.3. PDND e-Service Template &#8212; IT-Wallet Technical Specifications</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -33,6 +33,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -84,7 +93,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Text size"
+     data-it-docs-font-status-m2="Text size: much smaller"
+     data-it-docs-font-status-m1="Text size: smaller"
+     data-it-docs-font-status-0="Text size: default"
+     data-it-docs-font-status-1="Text size: larger"
+     data-it-docs-font-status-2="Text size: much larger">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Decrease text size"
+          aria-label="Decrease text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Increase text size"
+          aria-label="Increase text size">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -901,8 +937,8 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">433</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Example:</span><span class="nv"> </span><span class="s">Master&#39;s</span><span class="nv"> </span><span class="s">Degree</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">Computer</span><span class="nv"> </span><span class="s">Science&quot;</span>
 <span class="linenos">434</span><span class="w">              </span><span class="nt">status</span><span class="p">:</span>
 <span class="linenos">435</span><span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="linenos">436</span><span class="w">                  </span><span class="no">Status of the Dataset. REQUIRED if additionalProperties of attributeClaims are present. Issued and Expired datasets fall within VALID; expiry is verified</span>
-<span class="linenos">437</span><span class="w">                  </span><span class="no">via metadata claims (e.g. expiry_date, nbf/exp). INVALID indicates active revocation by the AS.</span>
+<span class="linenos">436</span><span class="w">                  </span><span class="no">Status of the Dataset. REQUIRED if additionalProperties of attributeClaims are present. Issued and Expired datasets fall within VALID. Expiry is verified</span>
+<span class="linenos">437</span><span class="w">                  </span><span class="no">on attributeClaims.expiry_date. INVALID indicates active revocation by the AS.</span>
 <span class="linenos">438</span><span class="w">                  </span><span class="no">For how this status affects the Digital Credential lifecycle managed by the Credential</span>
 <span class="linenos">439</span><span class="w">                  </span><span class="no">Issuer, see &lt;a target=&quot;blank&quot; href=&quot;https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/credential-revocation.html#status-update-by-authentic-sources&quot;&gt;Status Update by Authentic Sources&lt;/a&gt;.</span>
 <span class="linenos">440</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -911,7 +947,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
 <span class="linenos">443</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INVALID</span>
 <span class="linenos">444</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUSPENDED</span>
 <span class="linenos">445</span><span class="w">                </span><span class="nt">x-enum-description</span><span class="p">:</span>
-<span class="linenos">446</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALID - Dataset is valid (includes Issued and Expired; expiry checked via metadata).</span>
+<span class="linenos">446</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALID - Dataset is valid (includes Issued and Expired; expiry checked on attributeClaims.expiry_date).</span>
 <span class="linenos">447</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INVALID - Dataset has been actively revoked by the Authentic Source.</span>
 <span class="linenos">448</span><span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SUSPENDED - Dataset is temporarily invalid (typically reversible).</span>
 <span class="linenos">449</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VALID&quot;</span>
@@ -1056,18 +1092,6 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -1147,7 +1171,7 @@ The instantiation process will result in a new e-service that <strong>MUST</stro
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

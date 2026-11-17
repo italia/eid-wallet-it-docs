@@ -14,15 +14,15 @@ I metadata *openid_credential_verifier* DEVONO contenere il *client_metadata*, c
   * - **Claim**
     - **Descrizione**
   * - **client_id**
-    - DEVE contenere un URL HTTPS che identifica in modo univoco la RP. Vedi :rfc:`7591#section-3.2.1` e `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 3.2.
+    - DEVE contenere un URL HTTPS che identifica in modo univoco la RP. Vedi :rfc:`7591#section-3.2.1` e Sezione 3.2 di [`OpenID Connect Registration 1.0`_].
   * - **client_name**
     - Stringa leggibile che rappresenta il nome della RP. Vedi :rfc:`7591#section-2`.
   * - **logo_uri**
     - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi `OID-FED`_ Sezione 5.2.2. Il MIME type del logo DEVE essere ``application/svg``.
   * - **application_type**
-    - Stringa che indica il tipo di applicazione. DEVE essere impostata al valore "*web*". Vedi `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 2.
+    - Stringa che indica il tipo di applicazione. DEVE essere impostata al valore "*web*". Vedi Sezione 2 di [`OpenID Connect Registration 1.0`_].
   * - **request_uris**
-    - JSON Array di valori ``request_uri`` che sono pre-registrati dalla RP. Questi URL DEVONO utilizzare lo schema *https*. Vedi `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 2.
+    - JSON Array di valori ``request_uri`` che sono pre-registrati dalla RP. Questi URL DEVONO utilizzare lo schema *https*. Vedi Sezione 2 di [`OpenID Connect Registration 1.0`_].
   * - **response_uris**
     - JSON Array di stringhe URI di risposta a cui l'Istanza del Wallet DEVE inviare la Risposta di Autorizzazione utilizzando una richiesta HTTP POST come definito dalle Modalità di Risposta ``direct_post`` e ``direct_post.jwt`` (vedi `OpenID4VP`_ Draft 20 Sezioni 6.2 e 6.3).
   * - **encrypted_response_enc_values_supported**

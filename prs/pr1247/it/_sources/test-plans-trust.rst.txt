@@ -12,10 +12,10 @@ Questa sezione fornisce l'insieme comune di casi di test per le Soluzioni Wallet
   :widths: 15 15 35 35
   :header-rows: 1
 
-  * - Test Case ID
-    - Purpose
-    - Description
-    - Expected Result
+  * - ID Caso di Test
+    - Scopo
+    - Descrizione
+    - Risultato Atteso
   * - ALL-001
     - Security
     - Ottenimento dei materiali crittografici pubblici dei Trust Anchors

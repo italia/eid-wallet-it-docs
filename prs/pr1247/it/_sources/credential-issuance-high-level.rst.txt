@@ -23,7 +23,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
 
     1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici. L'emissione di un PID usa il Trust Framework EUDIW, come specificato in :ref:`trust-evaluation:Selection at Issuance`. L'Istanza del Wallet ottiene i Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del PID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede il PID al PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
-    3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
+    3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet. Il PID Provider stabilisce la trust verso il Fornitore di Wallet e ottiene i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
     4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
     5. **Recupero dei dati PID dal Registro Pubblico Nazionale**: il PID Provider ottiene i dati PID richiesti dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione del PID**: il PID Provider rilascia un PID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
@@ -44,7 +44,7 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un IT-Wallet
 
     1. **Individuazione e Trust del Provider di IT-Wallet ID**: l'Istanza del Wallet individua l'EAA Provider di IT-Wallet ID fidato utilizzando il Catalogo degli Attestati Elettronici. L'emissione dell'IT-Wallet ID usa il Trust Framework Nazionale, come specificato in :ref:`trust-evaluation:Selection at Issuance`. I Metadata indicano i formati dell'IT-Wallet ID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045-046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta dell'IT-Wallet ID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede l'IT-Wallet ID all'EAA Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
-    3. **Individuazione e Trust del Fornitore di Wallet**: l'EAA Provider di IT-Wallet ID verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
+    3. **Individuazione e Trust del Fornitore di Wallet**: l'EAA Provider di IT-Wallet ID verifica l'autenticità e la validità dell'Istanza del Wallet. L'EAA Provider di IT-Wallet ID stabilisce la trust verso il Fornitore di Wallet e ottiene i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
     4. **Autenticazione dell'Utente**: l'EAA Provider di IT-Wallet ID autentica l'Utente secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`. Per il flusso di protocollo L2+, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione IT-Wallet ID`.
     5. **Recupero dei dati dell'IT-Wallet ID dal Registro Pubblico Nazionale**: l'EAA Provider di IT-Wallet ID ottiene i dati richiesti dell'IT-Wallet ID dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione dell'IT-Wallet ID**: l'EAA Provider di IT-Wallet ID rilascia un IT-Wallet ID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
@@ -52,10 +52,10 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un IT-Wallet
 Flusso ad Alto Livello per (Q)EAA
 ---------------------------------
 
-La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA, seguendo le ipotesi elencate di seguito:
+La :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` mostra un'architettura generale ed evidenzia le principali operazioni coinvolte nell'emissione di un (Q)EAA. Le ipotesi sono elencate di seguito.
 
-  - l'Utente ha un PID valido memorizzato nella propria Istanza del Wallet, oppure un IT-Wallet ID valido quando richiesto secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`;
-  - il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.
+  - L'Utente ha un PID valido memorizzato nell'Istanza del Wallet, oppure un IT-Wallet ID valido quando richiesto secondo :ref:`credential-issuance-endpoint:Selezione del Metodo di Autenticazione dell'Utente`.
+  - Il (Q)EAA richiede un profilo di implementazione ad alta sicurezza.
 
 .. _fig_High-Level-Flow-ITWallet-QEAA-Issuance:
 .. plantuml:: plantuml/eaa-issuance-high-level-flow.puml

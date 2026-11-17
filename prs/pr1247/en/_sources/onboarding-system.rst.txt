@@ -10,7 +10,7 @@ Onboarding System and Lifecycle Management
    The general structure is in place, while several parts are still to be written and the content may change.
    The subsections marked as draft below contain only a short description of what they will provide.
 
-The Onboarding System is the set of components, services, processes and procedures that admits an Entity into the IT-Wallet ecosystem, publishes the information that other participants need to recognize it, and manages what happens after the registration.
+The Onboarding System is the set of components, services, processes and procedures that admits an Entity into the IT-Wallet ecosystem. The Onboarding System publishes the information that other participants need to recognize the Entity. The Onboarding System manages what happens after the registration.
 
 The Onboarding System covers:
 
@@ -27,7 +27,7 @@ As defined in :ref:`infrastructure-trust:Infrastructure of Trust`, two Trust Fra
 
 The National Trust Framework is the registration layer for all the Entities of the ecosystem and provides the mechanisms that the components of the Onboarding System use to authenticate each other.
 
-The data structures of the registries are defined in :ref:`registry:Registry Infrastructure`, the profiles of the Trust Artifacts in :ref:`infrastructure-trust:Infrastructure of Trust`, the technical mechanisms that publish the status of a certificate in :ref:`infrastructure-trust:Revocation Mechanisms`, and the way the artifacts are consumed at runtime in :ref:`trust-evaluation:Trust Evaluation Process`.
+The data structures of the registries are defined in :ref:`registry:Registry Infrastructure`. The profiles of the Trust Artifacts are defined in :ref:`infrastructure-trust:Infrastructure of Trust`. The technical mechanisms that publish the status of a certificate are defined in :ref:`infrastructure-trust:Revocation Mechanisms`. The way the artifacts are consumed at runtime is defined in :ref:`trust-evaluation:Trust Evaluation Process`.
 
 The section is organized in five parts.
 The **Overview** gives the actors, the components and the way the two Trust Frameworks are used.

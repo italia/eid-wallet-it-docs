@@ -105,16 +105,8 @@ Il JWT Request Object DEVE contenere gli stessi parametri come definiti in :ref:
 
 Di seguito un esempio non normativo di PAR:
 
-.. code-block:: http
-
-    POST /as/par HTTP/1.1
-    Host: eaa-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
-
-    client_id=47b982369791d08003a7283f059cb0d1&
-    request=eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWF1dGh6LXJlcStqd3QiLCJraWQiOiJiMDFiODIwOGQ5ZTZjYzgzNGQ4N2RjMzU2YWI1MDE3MCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL2VhYS1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdFctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJlaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9laWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsImNoYWxsZW5nZV9tZXRob2QiOiJtcnRkK2lhcyIsImlkcGhpbnRpbmciOiJodHRwczovL2lkcC5leGFtcGxlLm9yZyIsImNoYWxsZW5nZV9yZWRpcmVjdF91cmkiOiJodHRwczovL3N0YXJ0LndhbGxldC5leGFtcGxlLm9yZy9jaGFsbGVuZ2UifV0sInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnIn0.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-1.http
+   :language: http
 
 La Risposta PAR e la Richiesta di Autorizzazione sono le stesse delle Specifiche IT-Wallet.
 
@@ -204,10 +196,8 @@ Il Server di Autorizzazione DEVE fornire un JWT firmato contenente i requisiti d
 
 Un esempio non normativo è riportato di seguito:
 
-.. code-block:: http
-
-    HTTP/1.1 302 Found
-    Location: https://start.wallet.example.org/challenge?challenge_info=eyJhbGciOiJFUzI1NiIsInR5cCI6Im1ydGQtaWFzK2p3dCIsImtpZCI6ImQ0ZjhlMDJlZWJhMDdhNTM3MmUxOGVjYzU4NzA5ZDA2In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-2.http
+   :language: http
 
 Il server di autorizzazione DEVE:
 
@@ -252,33 +242,27 @@ L'Istanza del Wallet DEVE inviare una Richiesta HTTP POST all'endpoint di inizia
 
 Di seguito un esempio non normativo di una Richiesta MRTD PoP:
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-3.http
+   :language: http
 
-    POST /edoc-proof/init HTTP/1.1
-    Host: eaa-provider.example.org
-    Content-Type: application/json
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
+Richiesta MRTD PoP: Istanza del Wallet
+......................................
 
-    {
-      "mrtd_auth_session": "wxroVrBY2MCq4dDNGXACS",
-      "mrtd_pop_jwt_nonce": "f42cccb7f1c8269f9d4aeefe339c6b13"
-    }
+L'Istanza del Wallet DEVE validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider EAA.
+L'Istanza del Wallet DEVE verificare che il claim JWT ``aud`` corrisponda al suo ``client_id``.
+L'Istanza del Wallet DEVE assicurare che il claim JWT ``exp`` indichi che il token non è scaduto.
+L'Istanza del Wallet DEVE estrarre i valori ``mrtd_auth_session`` e ``mrtd_pop_jwt_nonce`` per correlazione.
+L'Istanza del Wallet DEVE includere Wallet Attestation valida secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+L'Istanza del Wallet DEVE gestire errori di rete e implementare meccanismi di retry appropriati.
 
-**L'Istanza del Wallet DEVE:**
 
-- Validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider EAA.
-- Verificare che il claim JWT ``aud`` corrisponda al suo ``client_id``.
-- Assicurare che il claim JWT ``exp`` indichi che il token non è scaduto.
-- Estrarre i valori ``mrtd_auth_session`` e ``mrtd_pop_jwt_nonce`` per correlazione.
-- Includere Wallet Attestation valida secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-- Gestire errori di rete e implementare meccanismi di retry appropriati.
+Richiesta MRTD PoP: Servizio MRTD PoP
+.....................................
 
-**Il Servizio MRTD PoP DEVE:**
+Il Servizio MRTD PoP DEVE validare la Wallet Attestation secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+Il Servizio MRTD PoP DEVE verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+Il Servizio MRTD PoP DEVE validare che il parametro ``mrtd_pop_jwt_nonce`` corrisponda a quello emesso nello step precedente.
 
-- Validare la Wallet Attestation secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-- Verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-- Validare che il parametro ``mrtd_pop_jwt_nonce`` corrisponda a quello emesso nello step precedente.
 
 Il Servizio MRTD PoP PUÒ richiedere le informazioni MRZ (numero documento, data di nascita, data di scadenza, cittadinanza e genere) direttamente al Registro Nazionale CIE utilizzando il codice fiscale dell'Utente autenticato. In questo caso, il Servizio MRTD PoP è in grado di verificare se l'Utente autenticato possiede una CIE valida e se non è il caso, DEVE inviare una Risposta di Errore HTTP con codice di errore HTTP ``access_denied``.
 
@@ -343,60 +327,46 @@ Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviar
 
 Di seguito un esempio non normativo di una Risposta MRTD PoP:
 
-.. code-block:: http
-
-    HTTP/1.1 202 Accepted
-    Content-Type: application/jwt; charset=utf-8
-
-    eyJhbGciOiJFUzI1NiIsInR5cCI6Im1ydGQtaWFzLXBvcCtqd3QiLCJraWQiOiJiM2YxYTZjMmU5ZDU0YThmOWMzZTdkMWEyZjRiNmM3OCJ9.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2luc3RhbmNlLzEyMzQ1IiwiaWF0IjoxNzUzNTU1ODAwLCJleHAiOjE3NTM1NTYwMDAsIm1ydGRfcG9wX25vbmNlIjoiOWYyYzRhN2UzYjFkOGM5YTZlNWY0YjJhMWMzZDdlOGYiLCJtcnoiOiIuLi4iLCJjaGFsbGVuZ2UiOiIuLi4iLCJodHUiOiIuLi4iLCJodG0iOiIuLi4ifQ.signature
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-4.http
+   :language: http
 
 Header JWT decodificato:
 
-.. code-block:: json
-
-    {
-      "alg":"ES256",
-      "typ":"mrtd-ias-pop+jwt",
-      "kid":"b3f1a6c2e9d54a8f9c3e7d1a2f4b6c78"
-    }
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-5.json
+   :language: json
 
 Body JWT decodificato:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-6.json
+   :language: json
 
-    {
-      "iss":"https://eaa-provider.example.org",
-      "aud":"https://wallet.example.org/instance/12345",
-      "iat": 1753555800,
-      "exp": 1753556000,
-      "mrtd_pop_nonce":"9f2c4a7e3b1d8c9a6e5f4b2a1c3d7e8f",
-      "mrz":"...",
-      "challenge":"...",
-      "htu":"...",
-      "htm":"..."
-    }
+Risposta MRTD PoP: Servizio MRTD PoP
+....................................
 
-**Il Servizio MRTD PoP DEVE:**
+Il Servizio MRTD PoP DEVE generare dati di challenge crittograficamente sicuri per la validazione ``MRTD+IAS``, con entropia sufficiente, per l'uso da parte dell'Istanza del Wallet nel protocollo Anti-Cloning Internal Authentication.
+Il Servizio MRTD PoP DEVE memorizzare i dati di challenge con un tempo di scadenza appropriato.
+Il Servizio MRTD PoP DEVE assicurare l'unicità del challenge per prevenire attacchi di riutilizzo.
+Il Servizio MRTD PoP DEVE creare un nuovo ``mrtd_pop_nonce`` unico per lo step successivo per prevenire attacchi replay.
+Il Servizio MRTD PoP DEVE validare continuità di sessione assicurando che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+Il Servizio MRTD PoP DEVE restituire stato HTTP *202 Accepted* per indicare iniziazione di elaborazione asincrona.
+Il Servizio MRTD PoP DEVE includere header Content-Type appropriato (``application/jwt; charset=utf-8``).
+Il Servizio MRTD PoP DEVE gestire errori di servizio e restituire risposte di errore appropriate.
+Il Servizio MRTD PoP DEVE estrarre e validare informazioni MRZ se fornite da servizi di registro esterni.
 
-- Generare dati di challenge crittograficamente sicuri per validazione ``MRTD+IAS`` con entropia sufficiente (da utilizzare nel protocollo Anti-Cloning Internal Authentication dall'Istanza del Wallet), memorizzandoli con tempo di scadenza appropriato. Inoltre, il Servizio MRTD PoP DEVE assicurare unicità del challenge per prevenire attacchi di riutilizzo.
-- Creare un nuovo ``mrtd_pop_nonce`` unico per lo step successivo per prevenire attacchi replay.
-- Validare continuità di sessione assicurando che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-- Restituire stato HTTP *202 Accepted* per indicare iniziazione di elaborazione asincrona.
-- Includere header Content-Type appropriato (``application/jwt; charset=utf-8``).
-- Gestire errori di servizio e restituire risposte di errore appropriate.
-- Estrarre e validare informazioni MRZ se fornite da servizi di registro esterni.
 
-**L'Istanza del Wallet DEVE:**
+Risposta MRTD PoP: Istanza del Wallet
+.....................................
 
-- Validare stato risposta HTTP (*202 Accepted*) e content type.
-- Analizzare risposta JSON e validare parametri richiesti (``challenge``, ``mrtd_pop_nonce``).
-- Estrarre dati di challenge per validazione crittografica del documento.
-- Memorizzare nuovo valore ``mrtd_pop_nonce`` in modo sicuro per richieste di validazione successive.
-- Validare informazioni MRZ opzionali se presenti nella risposta.
-- Estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
-- Gestire errori, fornendo feedback utente relativo.
-- Memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
-- Preparare sessione di lettura NFC.
+L'Istanza del Wallet DEVE validare stato risposta HTTP (*202 Accepted*) e content type.
+L'Istanza del Wallet DEVE analizzare risposta JSON e validare parametri richiesti (``challenge``, ``mrtd_pop_nonce``).
+L'Istanza del Wallet DEVE estrarre dati di challenge per validazione crittografica del documento.
+L'Istanza del Wallet DEVE memorizzare nuovo valore ``mrtd_pop_nonce`` in modo sicuro per richieste di validazione successive.
+L'Istanza del Wallet DEVE validare informazioni MRZ opzionali se presenti nella risposta.
+L'Istanza del Wallet DEVE estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
+L'Istanza del Wallet DEVE gestire errori, fornendo feedback utente relativo.
+L'Istanza del Wallet DEVE memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
+L'Istanza del Wallet DEVE preparare sessione di lettura NFC.
+
 
 L'Istanza del Wallet esegue lettura e validazione di documento elettronico basata su NFC, poi invia l'evidenza al Provider EAA per verifica finale e correlazione di identità con il risultato di autenticazione LoA3.
 
@@ -524,46 +494,42 @@ L'oggetto ``ias`` contiene i seguenti campi:
 
 Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-7.http
+   :language: http
 
-    POST /edoc-proof/verify HTTP/1.1
-    Host: eaa-provider.example.org
-    Content-Type: application/json
-    OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
-    OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
+Richiesta di Validazione MRTD PoP: Istanza del Wallet
+.....................................................
 
-    {
-      "mrtd_validation_jwt":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5leGFtcGxlLm9yZy9pbnN0YW5jZS8xMjM0NSIsImF1ZCI6Imh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnIiwiaWF0IjoxNzUzNTU1NDAwLCJleHAiOjE3NTM1NTU3MDAsImRvY3VtZW50X3R5cGUiOiJjaWUiLCJtcnRkIjp7ImRnMSI6IlVEeEpWRUU4VTAxSlZFZzhQRXBQU0U0OFBFcFBTRTRnVTAxSlZFZzhQREU1T0RBME1UVThUVDxQTnpjM056SXpNUT09IiwiZGcxMSI6Ik1USXpORFUyTnpnNVFVSkRSRVZHUjBoSlNrdE1UVTVQVUVGT1IxSlRWRlZXV0ZsYVUwRkVSVVU9Iiwic29kX21ydGQiOiJNSUlGempDQ0JMYWdBd0lCQWdJSVFPWTJLSkdGVFVJd0RRWUpLb1pJaHZjTkFRRUxCUUF3WHpFTE1Baz0ifSwiaWFzIjp7Imlhc19wayI6Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBejEyMzQ1Njc4OTA9Iiwic29kX2lhcyI6Ik1JSUZhRENDQkZDZ0F3SUJBZ0lKQUwyS0pHRlRVSXdEUVlKS29aSWh2Y05BUUVMQlFBd1h6RUxNQT09IiwiY2hhbGxlbmdlX3NpZ25lZCI6ImExYjJjM2Q0ZTVmNjc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OTBhYmNkZWY9PSJ9fQ.xyz456abc789def012ghi345jkl678mno901pqr234stu567vwx890yz123",
-      "mrtd_auth_session":"wxroVrBY2MCq4dDNGXACS",
-      "mrtd_pop_nonce":"9f2c4a7e3b1d8c9a6e5f4b2a1c3d7e8f"
-    }
+L'Istanza del Wallet DEVE eseguire lettura documento NFC conforme `ICAO 9303`_ (PACE, ecc.).
+L'Istanza del Wallet DEVE validare firme crittografiche del documento e catene di certificati.
+L'Istanza del Wallet DEVE estrarre attributi di identità (DG1 e DG11), Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
+L'Istanza del Wallet DEVE eseguire l'Anti-Cloning Internal Authentication.
+L'Istanza del Wallet DEVE generare evidenza di validazione nel JWT.
+L'Istanza del Wallet DEVE autenticare utilizzando una Wallet Instance Attestation valida.
+L'Istanza del Wallet DEVE includere esatti ``mrtd_auth_session`` e ``mrtd_pop_nonce`` dalla risposta init.
+L'Istanza del Wallet DEVE firmare il ``mrtd_validation_jwt`` con la sua chiave privata.
+L'Istanza del Wallet DEVE gestire errori di lettura documento e fornire feedback appropriato.
 
-**L'Istanza del Wallet DEVE:**
 
-- Eseguire lettura documento NFC conforme `ICAO 9303`_ (PACE, ecc.).
-- Validare firme crittografiche del documento e catene di certificati.
-- Estrarre attributi di identità (DG1 e DG11), Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
-- Eseguire l'Anti-Cloning Internal Authentication.
-- Generare evidenza di validazione nel JWT.
-- Autenticare utilizzando una Wallet Instance Attestation valida.
-- Includere esatti ``mrtd_auth_session`` e ``mrtd_pop_nonce`` dalla risposta init.
-- Firmare il ``mrtd_validation_jwt`` con la sua chiave privata.
-- Gestire errori di lettura documento e fornire feedback appropriato.
+Richiesta di Validazione MRTD PoP: Servizio MRTD PoP
+....................................................
 
-**Il Servizio MRTD PoP DEVE:**
+Il Servizio MRTD PoP DEVE validare Wallet Instance Attestation secondo le specifiche IT-Wallet.
+Il Servizio MRTD PoP DEVE verificare firma OAuth-Client-Attestation-PoP.
+Il Servizio MRTD PoP DEVE validare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+Il Servizio MRTD PoP DEVE verificare che il ``mrtd_pop_nonce`` corrisponda al valore inviato nella risposta precedente.
+Il Servizio MRTD PoP DEVE analizzare e validare la firma (utilizzando la chiave pubblica dell'istanza del Wallet) e la struttura del ``mrtd_validation_jwt``.
+Il Servizio MRTD PoP DEVE estrarre e verificare le evidence del documento dal ``mrtd_validation_jwt``.
+Il Servizio MRTD PoP DEVE validare autenticità del documento utilizzando standard `ICAO 9303`_.
+Il Servizio MRTD PoP DEVE verificare risposta challenge Anti-Cloning.
+Il Servizio MRTD PoP DEVE convalidare le prove crittografiche e le catene di certificati del documento.
+Il Servizio MRTD PoP DEVE eseguire la correlazione dell'identità tra i dati del documento e il risultato dell'autenticazione LoA3.
+Il Servizio MRTD PoP DEVE controllare validità del documento (stato non di revoca).
+Il Servizio MRTD PoP DEVE verificare il binding tra le applicazioni IAS e MRTD.
+Il Servizio MRTD PoP DEVE controllare che il NUN estratto da DG1 sia presente come valore hash nell'IAS SOD.
+Il Servizio MRTD PoP DEVE controllare che il DG1 stesso sia presente come valore hash nell'MRTD SOD.
+Questa doppia verifica assicura che entrambe le applicazioni risiedano sullo stesso chip fisico.
 
-- Validare Wallet Instance Attestation secondo le specifiche IT-Wallet.
-- Verificare firma OAuth-Client-Attestation-PoP.
-- Validare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-- Verificare che il ``mrtd_pop_nonce`` corrisponda al valore inviato nella risposta precedente.
-- Analizzare e validare la firma (utilizzando la chiave pubblica dell'istanza del Wallet) e la struttura del ``mrtd_validation_jwt``.
-- Estrarre e verificare le evidence del documento dal ``mrtd_validation_jwt``.
-- Validare autenticità del documento utilizzando standard `ICAO 9303`_.
-- Verificare risposta challenge Anti-Cloning.
-- Convalida delle prove crittografiche e delle catene di certificati del documento.
-- Eseguire la correlazione dell'identità tra i dati del documento e il risultato dell'autenticazione LoA3.
-- Controllare validità del documento (stato non di revoca).
-- Verificare il binding tra le applicazioni IAS e MRTD controllando che il NUN estratto da DG1 sia presente (come valore hash) nell'IAS SOD, e che il DG1 stesso sia presente (come valore hash) nell'MRTD SOD. Questa doppia verifica assicura che entrambe le applicazioni risiedano sullo stesso chip fisico.
 
 Risposta di Validazione MRTD PoP
 """"""""""""""""""""""""""""""""
@@ -593,45 +559,42 @@ Dopo completamento con successo di tutti i controlli da parte del Servizio MRTD 
 
 Di seguito un esempio non normativo di una Risposta di Validazione MRTD PoP:
 
-.. code-block:: http
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-8.http
+   :language: http
 
-    HTTP/1.1 202 Accepted
-    Content-Type: application/json; charset=utf-8
+Risposta di Validazione MRTD PoP: Servizio MRTD PoP
+...................................................
 
-    {
-      "status": "require_interaction",
- 	    "type": "redirect_to_web",
-      "mrtd_val_pop_nonce": "0f2bff024317345b6927ce17e776361d",
-      "redirect_uri":"https://eaa-provider.example.org/cb"
-    }
+Il Servizio MRTD PoP DEVE generare un nuovo nonce ``mrtd_val_pop_nonce`` per la conferma finale basata su browser.
+Il Servizio MRTD PoP DEVE restituire lo stato HTTP 202 per indicare il completamento dell'elaborazione asincrona.
 
-**Il servizio MRTD PoP DEVE:**
 
-- Generare un nuovo nonce ``mrtd_val_pop_nonce`` per la conferma finale basata su browser.
-- Restituire lo stato HTTP 202 per indicare il completamento dell'elaborazione asincrona.
+Risposta di Validazione MRTD PoP: Istanza del Wallet
+....................................................
 
-**L'istanza Wallet DEVE:**
+L'Istanza del Wallet DEVE validare la response.
+L'Istanza del Wallet DEVE estrarre i parametri ``mrtd_val_pop_nonce`` e ``redirect_uri`` per preparare la successiva richiesta GET basata su browser.
 
-- Validare la response.
-- Estrarre i parametri ``mrtd_val_pop_nonce`` e ``redirect_uri`` per preparare la successiva richiesta GET basata su browser.
 
 Conferma Finale Basata su Browser
 """""""""""""""""""""""""""""""""
 
 Dopo validazione MRTD PoP con successo, l'Istanza del Wallet DEVE reindirizzare l'User Agent al ``challenge_redirect_uri`` specificato nell'Authorization Details Object iniziale, includendo il ``mrtd_val_pop_nonce`` e ``mrtd_auth_session`` come parametri query:
 
-.. code-block:: text
-
-    https://eaa-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
+.. literalinclude:: ../../examples/shared/credential-issuance-l2plus-9.txt
+   :language: text
 
 L'Istanza del Wallet DEVE validare che il ``mrtd_val_pop_nonce`` corrisponda al valore ricevuto dalla Risposta di Validazione MRTD PoP.
 
-**Il server di autorizzazione DEVE:**
+Conferma Finale Basata su Browser: Server di Autorizzazione
+...........................................................
 
-- Verificare che ``mrtd_val_pop_nonce`` corrisponda al valore inviato nella verification response e che sia firmato utilizzando la chiave privata dell'istanza Wallet.
-- Verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-- Verificare che tutti gli step di autenticazione (LoA3 + MRTD PoP) siano stati completati correttamente (inclusa la correlazione di identità recuparata tramite autenticazione LoA3 e quella presente nel documento).
-- Generare l'authorization code finale.
+Il Server di Autorizzazione DEVE verificare che ``mrtd_val_pop_nonce`` corrisponda al valore inviato nella verification response.
+Il Server di Autorizzazione DEVE verificare che ``mrtd_val_pop_nonce`` sia firmato utilizzando la chiave privata dell'Istanza del Wallet.
+Il Server di Autorizzazione DEVE verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+Il Server di Autorizzazione DEVE verificare che tutti gli step di autenticazione (LoA3 + MRTD PoP) siano stati completati correttamente (inclusa la correlazione di identità recuparata tramite autenticazione LoA3 e quella presente nel documento).
+Il Server di Autorizzazione DEVE generare l'authorization code finale.
+
 
 Fase 4: Risposta di Autorizzazione OAuth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -717,9 +680,9 @@ In particolare, ogni fase di autenticazione DEVE convalidare la correlazione tra
 - Correlazione delle prove documentali con l'identità autenticata.
 - Validazione della sequenza temporale per prevenire attacchi fuori ordine.
 
-Quando i componenti operano al di fuori dei confini del Provider EAA, DEVONO essere implementate le seguenti misure di sicurezza aggiuntive:
+Quando i componenti operano al di fuori dei confini del Provider EAA, DEVONO essere implementate le seguenti misure di sicurezza aggiuntive.
 
-- Comunicazione sicura tra servizi (ad esempio, tramite pinning del certificato, TLS reciproco, ecc.).
+- Comunicazione sicura tra servizi (ad esempio, tramite confronto con una copia locale nota del certificato, TLS reciproco, ecc.).
 - Crittografia e integrità dei dati sensibili della sessione e/o delle informazioni di identità personale (ad esempio, utilizzando token JWE/JWS).
 - Lock distribuiti per gli aggiornamenti dello stato di sessione
 
@@ -732,12 +695,12 @@ Quando i componenti operano al di fuori dei confini del Provider EAA, DEVONO ess
 Generazione Challenge Crittografico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Servizio MRTD PoP DEVE generare challenge crittograficamente sicuri con entropia sufficiente (minimo 256 bits) per la validazione del documento. I valori di challenge DEVONO essere unici e NON DEVONO essere riutilizzati attraverso sessioni diverse (vincolata crittograficamente al contesto specifico della sessione OAuth) o tentativi di autenticazione. L'algoritmo di generazione challenge DOVREBBE incorporare l'identificatore ``mrtd_auth_session`` e timestamp per assicurare binding crittografico appropriato.
+Il Servizio MRTD PoP DEVE generare challenge crittograficamente sicuri con entropia sufficiente (minimo 256 bits) per la validazione del documento. I valori di challenge DEVONO essere unici. I valori di challenge NON DEVONO essere riutilizzati attraverso sessioni diverse (vincolata crittograficamente al contesto specifico della sessione OAuth) o tentativi di autenticazione. L'algoritmo di generazione challenge DOVREBBE incorporare l'identificatore ``mrtd_auth_session`` e timestamp per assicurare binding crittografico appropriato.
 
 Gestione Ciclo di Vita Nonce
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ogni step nel flusso di Autenticazione eID Substantial con Verifica MRTD DEVE utilizzare valori nonce unici per prevenire attacchi replay. I valori nonce DEVONO avere tempi di scadenza appropriati e DEVONO essere invalidati dopo uso con successo. Il Server di Autorizzazione EAA e il Servizio MRTD PoP DEVONO mantenere validazione nonce sincronizzata per assicurare integrità di sessione.
+Ogni step nel flusso di Autenticazione eID Substantial con Verifica MRTD DEVE utilizzare valori nonce unici per prevenire attacchi replay. I valori nonce DEVONO avere tempi di scadenza appropriati. I valori nonce DEVONO essere invalidati dopo uso con successo. Il Server di Autorizzazione EAA e il Servizio MRTD PoP DEVONO mantenere validazione nonce sincronizzata per assicurare integrità di sessione.
 
 Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
 - ``mrtd_pop_jwt_nonce`` DEVE essere correlato con il JWT di prova MRTD.
@@ -775,7 +738,7 @@ I seguenti controlli di sicurezza DEVONO essere implementati nel protocollo:
      - I canali di comunicazione di rete sono protetti utilizzando TLS v1.2+ con cifrari sicuri.
      - Tutte
    * - **SC2**
-     - L'Istanza del Wallet assicura l'autenticità del Provider EAA e del Provider di Identità eID tramite pinning del certificato leaf di ogni server.
+     - L'Istanza del Wallet assicura l'autenticità del Provider EAA e del Provider di Identità eID confrontando il certificato leaf di ogni server con una copia locale nota.
      - Tutte
    * - **SC3**
      - Il Server di Autorizzazione EAA verifica che il Provider di Identità eID utilizzato nella fase *eID LoA3* sia accreditato.

@@ -66,7 +66,7 @@ Where the configuration published through the EUDIW mechanisms and the configura
       - **Condition**
       - **Trust Framework**
     * - Issuance, Credential Issuer
-      - The requested Credential is a PID, a QEAA or a PuB-EAA, or the Credential Issuer is of another Member State.
+      - The requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or the Credential Issuer is of another Member State.
       - The Wallet Unit MUST use the EUDIW Trust Framework.
     * - Issuance, Credential Issuer
       - The Credential Issuer is a national entity and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
@@ -76,14 +76,14 @@ Where the configuration published through the EUDIW mechanisms and the configura
       - The Wallet Unit is of another Member State.
       - The Credential Issuer MUST validate it through the Wallet Providers List of Trusted Entities.
     * - Issuance, Wallet Instance Attestation
-      - The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA.
+      - The Wallet Unit is national and the requested Credential is a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook.
       - The Credential Issuer MUST validate the Wallet Instance Attestation through the Wallet Providers List of Trusted Entities.
     * - Issuance, Wallet Instance Attestation
       - The Wallet Unit is national and the requested Credential is a non-qualified Electronic Attestation of Attributes with national scope.
         The IT-Wallet ID is such a Credential (see :term:`IT-Wallet ID`).
       - The Credential Issuer MAY validate it through the National Trust Framework (see :ref:`trust-evaluation:Wallet Unit Authentication`).
     * - Presentation
-      - The request includes a PID, a QEAA or a PuB-EAA, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.
+      - The request includes a PID, a QEAA or a PuB-EAA, or a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook, or a Credential of another Member State, or the Relying Party offers the service outside the national audience.
       - The Relying Party MUST use the EUDIW Trust Framework for the whole request.
     * - Presentation
       - The Relying Party is national and the request contains only a non-qualified Electronic Attestation of Attributes with national scope.
@@ -124,10 +124,23 @@ On the National path the Wallet Unit MUST validate the reader certificate as spe
 The Wallet Unit MUST run Authorization under the selected framework only.
 The Relying Party uses the certificate that corresponds to the selected row.
 
+The following requirement applies in the remote flow and in the proximity flow.
+When the presentation follows the National Trust Framework, the Wallet Unit MUST stop the interaction before Authorization if the request includes any of the following.
+
+* a PID.
+* a QEAA.
+* a PuB-EAA.
+* a non-qualified Electronic Attestation of Attributes anchored to the EUDIW Trust Framework by its Rulebook.
+* a Credential of another Member State.
+
 Failure Handling
 ^^^^^^^^^^^^^^^^
 
 The failure of the trust evaluation under the selected framework MUST NOT be evaluated again under the other framework.
+
+When the presentation follows the National Trust Framework and :ref:`trust-evaluation:Selection at Presentation` requires the Wallet Unit to stop the interaction before Authorization, that stop is a failure of Trust Framework selection.
+The Wallet Unit MUST NOT treat it as overasking.
+It is not overridable.
 
 If Relying Party authentication fails for any reason, the Wallet Unit SHALL notify the User. In addition, the Wallet Unit SHALL either not present the requested attributes to the Relying Party, or give the User the choice to present the requested attributes or not. ([`EIDAS-ARF`_] RPA_06a).
 The same applies under the National Trust Framework: a ``NON_AUTHENTICATED`` outcome MUST stop the interaction.
@@ -136,7 +149,7 @@ If Authentication succeeds and Authorization fails, the Wallet Unit MUST apply :
 During presentation, a User choice to proceed is allowed only for the overridable Authorization outcomes defined there.
 Authentication failure is not overridable.
 
-During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User and MUST NOT request the issuance ([`EIDAS-ARF`_] RPRC_22a).
+During Issuance, when Authentication or Authorization does not succeed, the Wallet Unit MUST display a warning to the User. The Wallet Unit MUST NOT request the issuance ([`EIDAS-ARF`_] RPRC_22a).
 No User choice is offered at issuance.
 
 .. include:: trust-evaluation-eudiw.rst

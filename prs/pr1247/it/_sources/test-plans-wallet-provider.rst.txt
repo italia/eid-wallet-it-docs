@@ -501,9 +501,9 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Prova DPoP fresca
      - Istanza del Wallet genera una prova DPoP fresca con la stessa chiave utilizzata per il DPoP-JWT della Token Request, e in accordo con :rfc:`9449#section-4`.
    * - WP_056c
-     - Issuance, Sicurezza
-     - Abbinare la prova chiave Attestato Elettronico alla chiave DPoP
-     - Istanza del Wallet include un oggetto JSON come valore del parametro ``proofs`` nella Credential Request. Al suo interno sono è presente l'array ``jwt``. Quest'ultimo è valorizzato con uno o più JWT i cui parametro dell'header ``jwk`` rappresenta la prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.
+     - Annullato
+     - Annullato
+     - Annullato
    * - WP_057
      - Issuance, Interoperabilità
      - Richiesta di Attestati Elettronici multipli
@@ -599,7 +599,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_069
      - Issuance, Sicurezza
      - Controllo stato di un Attestato Elettronico
-     - Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per :ref:`credential-revocation:Token di Status List`).
+     - L'Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token come descritto in `TOKEN-STATUS-LIST`_ e nei profili specificati in :ref:`credential-revocation:Token Status List (Profilo degli Attestati Elettronici)`.
    * - WP_070
      - Issuance, Sicurezza
      - Flusso re-Issuance: rilevare necessità re-Issuance (aggiornare stato)
@@ -733,7 +733,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_090
      - Flusso-remoto, Presentazione, Interoperabilità
      - Notificare Relying Party su richiesta non valida
-     - Se il Request Object è non valido o ne fallisse la verifica, Istanza del Wallet invia una Authorization Error Response tramite HTTP POST al Response Endpoint (``response_uri``) della Relying Party.
+     - Se il Request Object è non valido o ne fallisce la verifica, e il percorso selezionato ha autenticato ``response_uri``, l'Istanza del Wallet invia una Authorization Error Response tramite HTTP POST a quell'endpoint. Altrimenti il flusso termina in locale e non rivela la disponibilità del Wallet o della Credenziale.
    * - WP_091
      - Flusso-remoto, Presentazione, Interoperabilità
      - Inviare l'Authorization Response

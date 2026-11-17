@@ -15,15 +15,15 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
    * - **Claim**
      - **Description**
    * - **client_id**
-     - It MUST contain an HTTPS URL that uniquely identifies the RP. See :rfc:`7591#section-3.2.1` and `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 3.2.
+     - It MUST contain an HTTPS URL that uniquely identifies the RP. See :rfc:`7591#section-3.2.1` and Section 3.2 of [`OpenID Connect Registration 1.0`_].
    * - **client_name**
      - Human-readable string name of the RP. See :rfc:`7591#section-2`.
    * - **logo_uri**
      - URL of the entity's logo that will be shown to the User during interactions with the Wallet Instance. See `OID-FED`_ Section 5.2.2. The logo mime type MUST be ``application/svg``.
    * - **application_type**
-     - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
+     - String indicating the type of application. It MUST be set to "*web*" value. See Section 2 of [`OpenID Connect Registration 1.0`_].
    * - **request_uris**
-     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
+     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See Section 2 of [`OpenID Connect Registration 1.0`_].
    * - **response_uris**
      - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode ``direct_post`` and ``direct_post.jwt`` (see `OpenID4VP`_ Sections 6.2 and 6.3).
    * - **redirect_uris**

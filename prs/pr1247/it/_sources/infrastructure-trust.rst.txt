@@ -16,8 +16,8 @@ Nell'IT-Wallet coesistono due Trust Framework.
 Il Trust Framework di ciascuna interazione è selezionato come specificato in :ref:`trust-evaluation:Trust Framework Selection`.
 
   - Il **Trust Framework EUDIW** è definito dal Regolamento eIDAS2 (`EU_2024_1183`_), dai relativi regolamenti di esecuzione e dall'ARF (`EIDAS-ARF`_).
-    Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA di un altro Stato membro.
-    Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di un altro Stato membro.
+    Una Wallet Unit che implementa solo le procedure EUDIW DEVE poter richiedere, presentare e verificare un PID, una (Q)EAA o una PuB-EAA emessi da un Provider di qualunque Stato membro.
+    Tale Wallet Unit DEVE poter autenticare una Wallet-Relying Party di qualunque Stato membro che richiede tali Credenziali.
     I PID Provider, i QEAA Provider e i PuB-EAA Provider DEVONO supportare il Trust Framework EUDIW.
   - Il **Trust Framework Nazionale** è un overlay nazionale basato su OpenID Federation (`OID-FED`_) combinato con una PKI X.509 per gli Attestati Elettronici ancorati a tale framework.
     È **fuori dall'ARF**.

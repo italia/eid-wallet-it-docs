@@ -62,15 +62,8 @@ If any errors occur during the process, an error response is returned. The respo
 
 Below is a non-normative example of a Key Binding Error Response.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-      "error": "invalid_request",
-      "error_description": "The provided challenge is invalid, expired, or already used."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-1.http
+   :language: http
 
 The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
@@ -146,15 +139,8 @@ The request includes the following body parameter:
 
 Below is a non-normative example of an Access Certificate Request.
 
-.. code-block:: http
-
-    POST /access-certificate HTTP/1.1
-    Host: relying-party.example.org
-    Content-Type: application/json
-
-    {
-      "csr": "MIIBvzCCAa..."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-2.http
+   :language: http
 
 
 Relying Party Provider Backend Access Certificate Response
@@ -175,14 +161,8 @@ Upon a successful request, the Relying Party Access Certificate Endpoint provide
 
 Below is a non-normative example of an Access Certificate Response.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "access_certificate": "hajdnhaghSDGns..."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-3.http
+   :language: http
 
 If any errors occur, the Relying Party Access Certificate Endpoint returns an error response. The response uses ``application/json`` as the content type and includes the following parameters:
 
@@ -191,15 +171,8 @@ If any errors occur, the Relying Party Access Certificate Endpoint returns an er
 
 Below is a non-normative example of an Access Certificate Error Response.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-        "error": "invalid_request",
-        "error_description": "The public key in the CSR is different from the one associated with the Cryptographic Hardware Keys."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-4.http
+   :language: http
 
 The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
 

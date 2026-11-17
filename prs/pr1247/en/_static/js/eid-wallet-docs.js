@@ -8,6 +8,10 @@
   var MOBILE_MQ = window.matchMedia("(max-width: 991.98px)");
   var BRIGHTNESS_STORAGE_KEY = "it-docs-brightness";
   var BRIGHTNESS_MODES = ["light", "middle", "black"];
+  var FONT_STEP_STORAGE_KEY = "it-docs-font-step";
+  var FONT_STEP_MIN = -2;
+  var FONT_STEP_MAX = 2;
+  var FONT_STEP_SIZES = { "-2": "74%", "-1": "82%", "0": "90%", "1": "98%", "2": "106%" };
 
   function bindHeaderDropdownPopper(toggle) {
     if (!window.bootstrap || !window.bootstrap.Dropdown || !toggle) return;
@@ -83,6 +87,80 @@
       }
     } catch (error) {
       /* ignore storage errors */
+    }
+  }
+
+  function fontStepStatusKey(step) {
+    if (step < 0) return "m" + String(Math.abs(step));
+    return String(step);
+  }
+
+  function applyFontStep(step) {
+    if (step < FONT_STEP_MIN || step > FONT_STEP_MAX || isNaN(step)) {
+      step = 0;
+    }
+
+    var size = FONT_STEP_SIZES[String(step)];
+    if (step === 0) {
+      document.documentElement.style.removeProperty("--it-docs-root-font-size");
+    } else if (size) {
+      document.documentElement.style.setProperty("--it-docs-root-font-size", size);
+    }
+
+    var decrease = document.getElementById("it-docs-font-decrease");
+    var increase = document.getElementById("it-docs-font-increase");
+    if (decrease) decrease.disabled = step <= FONT_STEP_MIN;
+    if (increase) increase.disabled = step >= FONT_STEP_MAX;
+
+    var controls = document.querySelector(".it-docs-font-size-controls");
+    var status = document.getElementById("it-docs-font-size-status");
+    if (controls && status) {
+      var label = controls.getAttribute("data-it-docs-font-status-" + fontStepStatusKey(step));
+      if (label) status.textContent = label;
+    }
+
+    return step;
+  }
+
+  function persistFontStep(step) {
+    try {
+      if (step === 0) {
+        localStorage.removeItem(FONT_STEP_STORAGE_KEY);
+      } else {
+        localStorage.setItem(FONT_STEP_STORAGE_KEY, String(step));
+      }
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  function readFontStep() {
+    try {
+      var stored = parseInt(localStorage.getItem(FONT_STEP_STORAGE_KEY), 10);
+      if (stored >= FONT_STEP_MIN && stored <= FONT_STEP_MAX) return stored;
+    } catch (error) {
+      /* ignore storage errors */
+    }
+    return 0;
+  }
+
+  function initFontSizeControls() {
+    var step = readFontStep();
+    applyFontStep(step);
+
+    var decrease = document.getElementById("it-docs-font-decrease");
+    var increase = document.getElementById("it-docs-font-increase");
+    if (decrease) {
+      decrease.addEventListener("click", function () {
+        step = applyFontStep(readFontStep() - 1);
+        persistFontStep(step);
+      });
+    }
+    if (increase) {
+      increase.addEventListener("click", function () {
+        step = applyFontStep(readFontStep() + 1);
+        persistFontStep(step);
+      });
     }
   }
 
@@ -375,6 +453,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     initLangDropdowns();
+    initFontSizeControls();
     initBrightnessToggle();
     initMobileNavPanels();
     initMainLandmark();

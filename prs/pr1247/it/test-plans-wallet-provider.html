@@ -7,7 +7,7 @@
 
     <title>19.4.1.4. Matrice di Test per Wallet Provider &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -935,9 +971,9 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <td><p>Istanza del Wallet genera una prova DPoP fresca con la stessa chiave utilizzata per il DPoP-JWT della Token Request, e in accordo con <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-4"><strong>RFC 9449#section-4</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_056c</p></td>
-<td><p>Issuance, Sicurezza</p></td>
-<td><p>Abbinare la prova chiave Attestato Elettronico alla chiave DPoP</p></td>
-<td><p>Istanza del Wallet include un oggetto JSON come valore del parametro <code class="docutils literal notranslate"><span class="pre">proofs</span></code> nella Credential Request. Al suo interno sono è presente l'array <code class="docutils literal notranslate"><span class="pre">jwt</span></code>. Quest'ultimo è valorizzato con uno o più JWT i cui parametro dell'header <code class="docutils literal notranslate"><span class="pre">jwk</span></code> rappresenta la prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
+<td><p>Annullato</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_057</p></td>
 <td><p>Issuance, Interoperabilità</p></td>
@@ -1057,7 +1093,7 @@ La risorsa specificata da <code class="docutils literal notranslate"><span class
 <tr class="row-even"><td><p>WP_069</p></td>
 <td><p>Issuance, Sicurezza</p></td>
 <td><p>Controllo stato di un Attestato Elettronico</p></td>
-<td><p>Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token (per <a class="reference internal" href="credential-revocation.html#token-di-status-list"><span class="std std-ref">Token di Status List</span></a>).</p></td>
+<td><p>L'Istanza del Wallet verifica lo stato di ogni Attestato Elettronico archiviato recuperando e validando un Status List Token come descritto in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/21/">TOKEN-STATUS-LIST</a> e nei profili specificati in <a class="reference internal" href="credential-revocation.html#token-status-list-profilo-degli-attestati-elettronici"><span class="std std-ref">Token Status List (Profilo degli Attestati Elettronici)</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_070</p></td>
 <td><p>Issuance, Sicurezza</p></td>
@@ -1224,7 +1260,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-odd"><td><p>WP_090</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
 <td><p>Notificare Relying Party su richiesta non valida</p></td>
-<td><p>Se il Request Object è non valido o ne fallisse la verifica, Istanza del Wallet invia una Authorization Error Response tramite HTTP POST al Response Endpoint (<code class="docutils literal notranslate"><span class="pre">response_uri</span></code>) della Relying Party.</p></td>
+<td><p>Se il Request Object è non valido o ne fallisce la verifica, e il percorso selezionato ha autenticato <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>, l'Istanza del Wallet invia una Authorization Error Response tramite HTTP POST a quell'endpoint. Altrimenti il flusso termina in locale e non rivela la disponibilità del Wallet o della Credenziale.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_091</p></td>
 <td><p>Flusso-remoto, Presentazione, Interoperabilità</p></td>
@@ -2050,18 +2086,6 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -2131,7 +2155,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

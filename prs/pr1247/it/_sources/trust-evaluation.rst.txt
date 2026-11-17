@@ -66,33 +66,33 @@ Ove la configurazione pubblicata attraverso i meccanismi EUDIW e la configurazio
       - **Condizione**
       - **Trust Framework**
     * - Emissione, Credential Issuer
-      - L'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure il Credential Issuer è di un altro Stato membro.
+      - L'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure il Credential Issuer è di un altro Stato membro.
       - La Wallet Unit DEVE usare il Trust Framework EUDIW.
     * - Emissione, Credential Issuer
-      - Il Credential Issuer è un'entità nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+      - Il Credential Issuer è un'entità nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato di ambito nazionale.
         L'IT-Wallet ID è un Attestato di questo tipo (vedere :term:`IT-Wallet ID`).
       - La Wallet Unit DEVE usare il Trust Framework Nazionale.
     * - Emissione, Wallet Instance Attestation
       - La Wallet Unit è di un altro Stato membro.
       - Il Credential Issuer DEVE validarla attraverso la Wallet Providers List of Trusted Entities.
     * - Emissione, Wallet Instance Attestation
-      - La Wallet Unit è nazionale e l'Attestato richiesto è un PID, una QEAA o una PuB-EAA.
+      - La Wallet Unit è nazionale e l'Attestato richiesto è un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook.
       - Il Credential Issuer DEVE validare la Wallet Instance Attestation attraverso la Wallet Providers List of Trusted Entities.
     * - Emissione, Wallet Instance Attestation
-      - La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+      - La Wallet Unit è nazionale e l'Attestato richiesto è un Attestato Elettronico di Attributi non qualificato di ambito nazionale.
         L'IT-Wallet ID è un Attestato di questo tipo (vedere :term:`IT-Wallet ID`).
       - Il Credential Issuer PUÒ validarla attraverso il Trust Framework Nazionale (vedere :ref:`trust-evaluation:Wallet Unit Authentication`).
     * - Presentazione
-      - La richiesta include un PID, una QEAA o una PuB-EAA, oppure un Attestato di un altro Stato membro, oppure la Relying Party offre il servizio al di fuori del pubblico nazionale.
+      - La richiesta include un PID, una QEAA o una PuB-EAA, oppure un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook, oppure un Attestato di un altro Stato membro, oppure la Relying Party offre il servizio al di fuori del pubblico nazionale.
       - La Relying Party DEVE usare il Trust Framework EUDIW per l'intera richiesta.
     * - Presentazione
-      - La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato ad audience nazionale.
+      - La Relying Party è nazionale e la richiesta contiene soltanto un Attestato Elettronico di Attributi non qualificato di ambito nazionale.
       - La Relying Party DEVE usare il Trust Framework Nazionale.
 
 Selection at Issuance
 ^^^^^^^^^^^^^^^^^^^^^
 
-All'emissione la Wallet Unit avvia l'interazione e conosce l'Attestato richiesto (vedere :ref:`registry:Digital Credentials Catalog`).
+All'emissione la Wallet Unit avvia l'interazione e conosce l'Attestato richiesto (vedere :ref:`registry:Catalogo degli Attestati Elettronici`).
 La riga applicabile di :ref:`Trust Framework applicabile per interazione <table_applicable_tf_by_entity>` seleziona il Trust Framework.
 
 Nel percorso EUDIW, Authentication, Authorization e Metadata Retrieval and Validation del Credential Issuer seguono :ref:`trust-evaluation:EUDIW Authentication`, :ref:`trust-evaluation:EUDIW Authorization` e :ref:`trust-evaluation:EUDIW Metadata Retrieval and Validation`.
@@ -124,10 +124,23 @@ Sul percorso nazionale la Wallet Unit DEVE validare il certificato di reader com
 La Wallet Unit DEVE eseguire l'Authorization esclusivamente nell'ambito del framework selezionato.
 La Relying Party utilizza il certificato che corrisponde alla riga selezionata.
 
+Il requisito seguente si applica nel flusso remoto e nel flusso di prossimità.
+Quando la presentazione segue il Trust Framework Nazionale, la Wallet Unit DEVE interrompere l'interazione prima dell'Authorization se la richiesta include uno qualsiasi dei seguenti Attestati.
+
+* un PID.
+* una QEAA.
+* una PuB-EAA.
+* un Attestato Elettronico di Attributi non qualificato ancorato al Trust Framework EUDIW dal suo Rulebook.
+* un Attestato di un altro Stato membro.
+
 Failure Handling
 ^^^^^^^^^^^^^^^^
 
 Il fallimento della trust evaluation nell'ambito del framework selezionato NON DEVE essere valutato nuovamente nell'ambito dell'altro framework.
+
+Quando la presentazione segue il Trust Framework Nazionale e :ref:`trust-evaluation:Selection at Presentation` richiede che la Wallet Unit interrompa l'interazione prima dell'Authorization, tale interruzione è un fallimento della selezione del Trust Framework.
+La Wallet Unit NON DEVE trattarla come overasking.
+Tale fallimento non è overridable.
 
 Se l'autenticazione della Relying Party fallisce per qualsiasi motivo, la Wallet Unit DEVE informare l'Utente. Inoltre, la Wallet Unit DEVE non presentare gli attributi richiesti alla Relying Party, oppure dare all'Utente la scelta di presentare o meno gli attributi richiesti ([`EIDAS-ARF`_] RPA_06a).
 Lo stesso vale nell'ambito del Trust Framework Nazionale: un esito ``NON_AUTHENTICATED`` DEVE interrompere l'interazione.
@@ -136,7 +149,7 @@ Se l'Authentication ha successo e l'Authorization fallisce, la Wallet Unit DEVE 
 Durante la presentazione, una scelta dell'Utente di proseguire è consentita solo per gli esiti di Authorization overridable ivi definiti.
 Il fallimento dell'Authentication non è overridable.
 
-Durante l'Emissione, quando l'Authentication o l'Authorization non ha successo, la Wallet Unit DEVE mostrare un avviso all'Utente e NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a).
+Durante l'Emissione, quando l'Authentication o l'Authorization non ha successo, la Wallet Unit DEVE mostrare un avviso all'Utente. La Wallet Unit NON DEVE richiedere l'emissione ([`EIDAS-ARF`_] RPRC_22a).
 All'emissione non è offerta alcuna scelta all'Utente.
 
 .. include:: trust-evaluation-eudiw.rst

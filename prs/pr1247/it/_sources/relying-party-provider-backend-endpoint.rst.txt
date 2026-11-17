@@ -62,15 +62,8 @@ Se si verifica un errore durante il processo, viene restituita una risposta di e
 
 Di seguito è riportato un esempio non normativo di una Key Binding Error Response.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-      "error": "invalid_request",
-      "error_description": "The provided challenge is invalid, expired, or already used."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-1.http
+   :language: http
 
 La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore supportati per la risposta di errore, salvo diversa indicazione (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
@@ -146,15 +139,8 @@ La richiesta include il seguente parametro nel body:
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Certificato di Accesso.
 
-.. code-block:: http
-
-    POST /access-certificate HTTP/1.1
-    Host: relying-party.example.org
-    Content-Type: application/json
-
-    {
-      "csr": "MIIBvzCCAa..."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-2.http
+   :language: http
 
 
 Risposta del Certificato di Accesso della Relying Party
@@ -175,14 +161,8 @@ In caso di richiesta riuscita, l'Access Certificate Endpoint della Relying Party
 
 Di seguito è riportato un esempio non normativo di Risposta dall'Access Certificate Endpoint.
 
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "access_certificate": "hajdnhaghSDGns..."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-3.http
+   :language: http
 
 Se si verificano errori, l'Access Certificate Endpoint della Relying Party restituisce una Error Response. La risposta utilizza ``application/json`` come tipo di contenuto e include i seguenti parametri:
 
@@ -191,15 +171,8 @@ Se si verificano errori, l'Access Certificate Endpoint della Relying Party resti
 
 Di seguito è riportato un esempio non normativo di una Error Response dell'Access Certificate Endpoint.
 
-.. code-block:: http
-
-    HTTP/1.1 403 Forbidden
-    Content-Type: application/json
-
-    {
-        "error": "invalid_request",
-        "error_description": "The public key in the CSR is different from the one associated with the Cryptographic Hardware Keys."
-    }
+.. literalinclude:: ../../examples/shared/relying-party-provider-backend-endpoint-4.http
+   :language: http
 
 La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per l'Error Response, se non diversamente specificato:
 

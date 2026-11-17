@@ -7,7 +7,7 @@
 
     <title>9.1.5. Backup e Ripristino &#8212; Specifiche Tecniche IT-Wallet</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=adaf4dc5" />
+    <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs.css?v=af42346b" />
     <link rel="stylesheet" type="text/css" href="_static/eid-wallet-docs-fonts.css?v=5c444340" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/bootstrap-italia.min.css?v=b319c0cd" />
     <link rel="stylesheet" type="text/css" href="_static/shared-ui/css/ita.min.css?v=db8a8e6d" />
@@ -34,6 +34,15 @@
         var mode = localStorage.getItem("it-docs-brightness");
         if (mode && /^(light|middle|black)$/.test(mode)) {
           document.documentElement.setAttribute("data-it-docs-brightness", mode);
+        }
+      } catch (error) {
+        /* ignore storage errors */
+      }
+      try {
+        var fontStep = parseInt(localStorage.getItem("it-docs-font-step"), 10);
+        var fontSizes = { "-2": "74%", "-1": "82%", "1": "98%", "2": "106%" };
+        if (fontSizes[String(fontStep)]) {
+          document.documentElement.style.setProperty("--it-docs-root-font-size", fontSizes[String(fontStep)]);
         }
       } catch (error) {
         /* ignore storage errors */
@@ -85,7 +94,34 @@
   </svg>
   
   <span class="visually-hidden">Source repository</span>
-</a><div class="nav-item dropdown it-docs-brightness-dropdown">
+</a><div class="it-docs-font-size-controls"
+     role="group"
+     aria-label="Dimensione del testo"
+     data-it-docs-font-status-m2="Dimensione del testo: molto ridotta"
+     data-it-docs-font-status-m1="Dimensione del testo: ridotta"
+     data-it-docs-font-status-0="Dimensione del testo: predefinita"
+     data-it-docs-font-status-1="Dimensione del testo: maggiore"
+     data-it-docs-font-status-2="Dimensione del testo: molto maggiore">
+  <button type="button"
+          id="it-docs-font-decrease"
+          class="it-docs-font-size-button"
+          title="Riduci la dimensione del testo"
+          aria-label="Riduci la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M2.2 18.2 7.4 4.6h2.3l5.2 13.6h-2.4l-1.2-3.3H5.8l-1.2 3.3H2.2zm4.2-5h4.3L8.6 8.4 6.4 13.2zM15.2 16.2h6.2v2.1h-6.2v-2.1z"/>
+</svg>
+  </button>
+  <button type="button"
+          id="it-docs-font-increase"
+          class="it-docs-font-size-button"
+          title="Aumenta la dimensione del testo"
+          aria-label="Aumenta la dimensione del testo">
+    <svg class="icon it-docs-font-size-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path fill="currentColor" d="M1.2 18.2 6.4 4.6h2.3l5.2 13.6H11.5l-1.2-3.3H4.8l-1.2 3.3H1.2zm4.2-5h4.3L7.6 8.4 5.4 13.2zM17.6 8.2h2.1v2.8h2.8v2.1h-2.8v2.8h-2.1v-2.8h-2.8v-2.1h2.8V8.2z"/>
+</svg>
+  </button>
+  <span id="it-docs-font-size-status" class="visually-hidden" aria-live="polite"></span>
+</div><div class="nav-item dropdown it-docs-brightness-dropdown">
   <button type="button"
           id="it-docs-brightness-toggle"
           class="it-docs-brightness-toggle nav-link dropdown-toggle"
@@ -360,11 +396,11 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> ed è raccomandata dal <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">qui</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121</span></a>).</p>
+<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate. PBKDF2 è definita in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2898.html"><strong>RFC 2898</strong></a>. <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST SP 800-132</a> raccomanda PBKDF2. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati in <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">Practical Cryptography for Developers</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121</span></a>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nell’<a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
+<p>Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nell’<a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheat Sheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
 </div>
 <p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>):</p>
 <ul class="simple">
@@ -415,7 +451,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>Un identificatore di algoritmo di firma digitale come da registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o qualsiasi identificatore di algoritmo simmetrico (MAC).</p></td>
-<td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+<td><p><span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
 <td><p>DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">wallet-unit-credentials-backup+jwt</span></code></p></td>
@@ -569,18 +605,6 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
         </button><div class="it-docs-navscroll-sticky it-docs-menu-scroll"><nav class="navbar it-navscroll-wrapper navbar-expand-lg it-top-navscroll it-left-side it-docs-navscroll"
      data-bs-navscroll
      aria-label="Page contents">
-  <button class="custom-navbar-toggler"
-          type="button"
-          data-it-docs-nav-toggle
-          data-it-docs-nav-target="#itDocsNavscroll"
-          aria-controls="itDocsNavscroll"
-          aria-expanded="false"
-          aria-label="Open page contents">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-  <path fill="currentColor" d="M11.6 15.4 6 9.8l.7-.8 4.9 4.9L16.5 9l.7.8z"/>
-</svg>
-    <span>Page contents</span>
-  </button>
   <div class="navbar-collapsable it-docs-navscroll-panel" id="itDocsNavscroll">
     <div class="overlay"></div>
     <div class="close-div">
@@ -647,7 +671,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
     </li>
   </ul>
 </nav><div class="it-docs-footer-meta">
-        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 15/10/2026</span><span class="it-docs-footer-detail">
+        <p class="it-docs-footer-details"><span class="it-docs-footer-detail">Version 1.5.0</span><span class="it-docs-footer-detail">Last updated 17/11/2026</span><span class="it-docs-footer-detail">
             Sphinx 7.4.5
           </span></p>
       </div>

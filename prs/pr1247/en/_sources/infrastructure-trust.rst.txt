@@ -12,12 +12,12 @@ Registration and publication of entities are specified in :ref:`onboarding-syste
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards.
 This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-Two trust frameworks coexist in IT-Wallet.
+Two Trust Frameworks coexist in IT-Wallet.
 The Trust Framework of each interaction is selected as specified in :ref:`trust-evaluation:Trust Framework Selection`.
 
   - The **EUDIW Trust Framework** is defined by the eIDAS2 Regulation (`EU_2024_1183`_), its Implementing Regulations and the ARF (`EIDAS-ARF`_).
-    A Wallet Unit that implements only the EUDIW procedures MUST be able to request, present and verify a PID, a (Q)EAA or a PuB-EAA of another Member State.
-    That Wallet Unit MUST be able to authenticate a Wallet-Relying Party of another Member State.
+    A Wallet Unit that implements only the EUDIW procedures MUST be able to request, present and verify a PID, a (Q)EAA or a PuB-EAA issued by a Provider of any Member State.
+    That Wallet Unit MUST be able to authenticate a Wallet-Relying Party of any Member State that requests those Credentials.
     PID Providers, QEAA Providers and PuB-EAA Providers MUST support the EUDIW Trust Framework.
   - The **National Trust Framework** is a national overlay based on OpenID Federation (`OID-FED`_) combined with an X.509 PKI for Digital Credentials anchored to that framework.
     It is **out of the ARF**.
