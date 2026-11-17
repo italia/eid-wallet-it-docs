@@ -140,7 +140,7 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **authentic_sources**: CONDITIONAL. It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: CONDITIONAL. It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **jwks**
-    - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_. The JWKS MUST include at least one encryption key used to encrypt ``issuer_state`` as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`. That encryption JWK MUST have the following parameters:
+    - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_. The JWKS MUST include at least one encryption key used to encrypt ``issuer_state`` when that value carries ``objectId``, as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`. That encryption JWK MUST have the following parameters:
 
         - **kty**: MUST be ``EC``.
         - **crv**: MUST be ``P-256``.

@@ -140,7 +140,7 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         - **authentic_sources**: CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Registro delle Fonti Autentiche`.
         - **parent_credentials**: CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
   * - **jwks**
-    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_. Il JWKS DEVE includere almeno una chiave di cifratura utilizzata per cifrare ``issuer_state`` come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`. Tale JWK di cifratura DEVE avere i seguenti parametri:
+    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_. Il JWKS DEVE includere almeno una chiave di cifratura utilizzata per cifrare ``issuer_state`` quando quel valore contiene ``objectId``, come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`. Tale JWK di cifratura DEVE avere i seguenti parametri:
 
         - **kty**: DEVE essere ``EC``.
         - **crv**: DEVE essere ``P-256``.

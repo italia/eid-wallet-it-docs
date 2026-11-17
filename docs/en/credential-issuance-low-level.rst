@@ -690,7 +690,7 @@ The Credential Offer object is a JSON object containing the parameters defined i
   * - **grants**
     - REQUIRED. It MUST contain ``authorization_code`` object with the following parameters:
 
-        - **issuer_state**: OPTIONAL, unless the Credential Offer is bound to a Credential Dataset of an Authentic Source, in which case it is REQUIRED. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. When present, the Wallet Instance MUST include the same value in the subsequent Authorization Request. The plaintext URN, JWE Compact Serialization, encryption key, and processing rules are defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
+        - **issuer_state**: OPTIONAL, unless the Credential Offer is bound to a Credential Dataset of an Authentic Source, in which case it is REQUIRED. Opaque string used to bind the subsequent Authorization Request with the Credential Issuer. When present, the Wallet Instance MUST include the same value in the subsequent Authorization Request. The URN plaintext, the encryption mandate when ``objectId`` is present, and the processing rules are defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
 
         - **authorization_server**: REQUIRED when the Credential Issuer uses more than one authorization server in its Issuer Solution. This string identifies the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the Credential Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_] and Section 4.1 of [`OPENID4VC-HAIP`_].
@@ -703,15 +703,15 @@ issuer_state Parameter
 
 The ``issuer_state`` parameter is an opaque string as defined in Section 4.1.1 of [`OpenID4VCI`_]. The conditions for its presence and the Wallet Instance's use of the value in the subsequent Authorization Request (:ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`) are specified in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`. The Wallet Instance MUST treat ``issuer_state`` as opaque and MUST NOT decrypt or parse it.
 
-The parameter value and the information it carries are two distinct layers:
+The information carried by ``issuer_state`` is always a URN, as specified below. The form of the parameter value depends on whether that URN includes ``objectId``:
 
-1. **Plaintext**: a URN that identifies the Authentic Source, the Credential Dataset, and optionally a specific object, as specified below.
-2. **Parameter value**: the JWE Compact Serialization [:rfc:`7516`] of that plaintext.
+1. When ``objectId`` is absent, the parameter value MUST be the plaintext URN.
+2. When ``objectId`` is present, the parameter value MUST be the JWE Compact Serialization [:rfc:`7516`] of that URN. The plaintext URN MUST NOT be used as the parameter value in this case.
 
 URN Plaintext
 """""""""""""
 
-The JWE payload MUST be the UTF-8 encoding of a URN with the following structure:
+The URN MUST have the following structure. When ``issuer_state`` is encrypted, the JWE payload MUST be the UTF-8 encoding of this URN:
 
 .. code-block:: text
 
@@ -742,7 +742,7 @@ To parse the plaintext URN, the Credential Issuer MUST:
 JOSE Profile
 """"""""""""
 
-``issuer_state`` MUST be a JWE in Compact Serialization as defined in :rfc:`7516#section-7.1`. JSON Serialization MUST NOT be used.
+When ``objectId`` is present, ``issuer_state`` MUST be a JWE in Compact Serialization as defined in :rfc:`7516#section-7.1`. JSON Serialization MUST NOT be used. When ``objectId`` is absent, ``issuer_state`` MUST NOT be a JWE.
 
 The JWE payload MUST be the URN plaintext specified above. The payload MUST NOT be a JWT.
 
@@ -778,26 +778,33 @@ The ``cty`` header parameter MUST NOT be present.
 Encryption Key
 """"""""""""""
 
-The JWE MUST be encrypted to an encryption public key of the Credential Issuer identified by ``credential_issuer``. That key MUST be a JWK with ``use`` set to ``enc`` from the ``jwks`` parameter of the Credential Issuer's ``openid_credential_issuer`` metadata, as published in its Federation Entity Configuration. The JWK parameters are defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
+When ``objectId`` is present, the JWE MUST be encrypted to an encryption public key of the Credential Issuer identified by ``credential_issuer``. That key MUST be a JWK with ``use`` set to ``enc`` from the ``jwks`` parameter of the Credential Issuer's ``openid_credential_issuer`` metadata, as published in its Federation Entity Configuration. The JWK parameters are defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
 
-When the Credential Issuer generates the Credential Offer, it encrypts ``issuer_state`` to its own encryption key. When an Authentic Source or other third party generates the Credential Offer, it MUST obtain that same encryption JWK by resolving the Credential Issuer Entity Configuration for ``credential_issuer``. It MUST encrypt ``issuer_state`` to that key.
+When the Credential Issuer generates the Credential Offer and ``objectId`` is present, it encrypts ``issuer_state`` to its own encryption key. When an Authentic Source or other third party generates the Credential Offer and ``objectId`` is present, it MUST obtain that same encryption JWK by resolving the Credential Issuer Entity Configuration for ``credential_issuer``. It MUST encrypt ``issuer_state`` to that key.
 
 Processing by the Credential Issuer
 """""""""""""""""""""""""""""""""""
 
 Upon receipt of ``issuer_state`` in the Authorization Request, the Credential Issuer MUST:
 
-1. Decrypt the JWE Compact Serialization using the private key corresponding to the ``kid`` header parameter.
+1. Determine the form of the value. If it is a JWE Compact Serialization, decrypt it with the private key corresponding to the ``kid`` header parameter and take the resulting UTF-8 plaintext as the URN. Otherwise, take the value as the plaintext URN.
 2. Parse the URN plaintext as specified above.
-3. Verify that ``authenticSourceId`` and ``datasetId`` are coherent with the ``credential_configuration_id`` requested in the Request Object and with the :ref:`registry:Authentic Source Registry`.
-4. Use the decoded identifiers to invoke ``GetAttributeClaims`` as defined in :ref:`authentic-source-endpoint:Get Attribute Claims`.
+3. Verify that the form matches the presence of ``objectId``. If ``objectId`` is present, the received ``issuer_state`` MUST have been a JWE. If ``objectId`` is absent, the received value MUST be the plaintext URN.
+4. Verify that ``authenticSourceId`` and ``datasetId`` are coherent with the ``credential_configuration_id`` requested in the Request Object and with the :ref:`registry:Authentic Source Registry`.
+5. Use the decoded identifiers to invoke ``GetAttributeClaims`` as defined in :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 If decryption, parsing, or the coherence checks fail, the Credential Issuer MUST reject the request.
 
 Non-normative Examples
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following examples share the same ``issuer_state`` JWE. The plaintext URN is shown above. The decoded JWE Protected Header and the Compact Serialization are:
+When ``objectId`` is absent, ``issuer_state`` is the plaintext URN, for example:
+
+.. code-block:: text
+
+  urn:it-wallet:credential-offer:https%3A%2F%2Fauthentic-source.example.org:education_degree
+
+When ``objectId`` is present, the following examples share the same ``issuer_state`` JWE. The plaintext URN is shown above. The decoded JWE Protected Header and the Compact Serialization are:
 
 .. literalinclude:: ../../examples/issuer-state-jwe-header.json
   :language: JSON
@@ -855,5 +862,5 @@ The Wallet Instance sends:
   Host: authentic-source.example.org
   Accept: application/json
 
-The Authentic Source responds with HTTP ``200 OK``, ``Content-Type: application/json``, ``Cache-Control: no-store``, and a Credential Offer object as in Example 1. The ``credential_issuer`` value identifies the Credential Issuer to which ``issuer_state`` is encrypted. The ``credential_configuration_ids`` array MAY list a different Credential Configuration, such as ``mso_mdoc_mDL``. The ``issuer_state`` value MUST follow :ref:`credential-issuance-low-level:issuer_state Parameter`.
+The Authentic Source responds with HTTP ``200 OK``, ``Content-Type: application/json``, ``Cache-Control: no-store``, and a Credential Offer object as in Example 1. The ``credential_issuer`` value identifies the Credential Issuer. When ``objectId`` is present, ``issuer_state`` is encrypted to that Credential Issuer. The ``credential_configuration_ids`` array MAY list a different Credential Configuration, such as ``mso_mdoc_mDL``. The ``issuer_state`` value MUST follow :ref:`credential-issuance-low-level:issuer_state Parameter`.
 
