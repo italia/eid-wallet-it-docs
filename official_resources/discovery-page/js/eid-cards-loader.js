@@ -326,11 +326,28 @@ function getEidEntriesForRow(entriesObj) {
   return entries.map(([, v]) => v);
 }
 
+function isEidasEid(eid) {
+  const name = eid?.name?.toLowerCase() ?? '';
+  const logoText = eid?.logo_text?.toLowerCase() ?? '';
+  const logo = eid?.logo?.toLowerCase() ?? '';
+  return (
+    name.includes('eidas') ||
+    name.includes('european digital') ||
+    logoText.includes('eidas') ||
+    logo.includes('eidas') ||
+    logo.includes('ficep')
+  );
+}
+
 // ----------------------- Eid Card Box (Bootstrap Italia it-card) -----------------------
 function createEidCardBox(resource, eid, headingLevel = 2) {
   // Bootstrap Italia card: https://italia.github.io/bootstrap-italia/docs/componenti/card/
   const card = document.createElement('article');
   card.className = 'it-card shadow';
+  // eIDAS copy is intentionally English inside an Italian page.
+  if (isEidasEid(eid)) {
+    card.setAttribute('lang', 'en');
+  }
 
   const safeLevel = Math.min(6, Math.max(2, headingLevel));
   const title = document.createElement(`h${safeLevel}`);
@@ -545,9 +562,30 @@ function closeEidSpidDiscoveryMenu(trigger, menuEl) {
   return true;
 }
 
+function isSvgSpriteLogo(logo) {
+  return typeof logo === 'string' && /\.svg#[\w-]+/i.test(logo);
+}
+
+function cieDropdownLogoSrc(logo) {
+  if (typeof logo !== 'string' || !logo) return logo;
+  return logo.replace(/cie_white\.svg$/i, 'cie_blue.svg');
+}
+
 // ----------------------- Logo Button -----------------------
 function createLogoButton(eid, _hasLearnMore = false) {
   const createLogoImg = () => {
+    // SVG sprite fragments are not supported on <img>; use <svg>+<use>.
+    if (isSvgSpriteLogo(eid.logo)) {
+      const svgNs = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(svgNs, 'svg');
+      svg.setAttribute('class', 'eid-card-logo');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.setAttribute('focusable', 'false');
+      const use = document.createElementNS(svgNs, 'use');
+      use.setAttribute('href', eid.logo);
+      svg.appendChild(use);
+      return svg;
+    }
     const img = document.createElement('img');
     img.src = eid.logo;
     img.alt = '';
@@ -594,7 +632,18 @@ function createLogoButton(eid, _hasLearnMore = false) {
       li.className = 'spid-idp-button-link';
       const link = document.createElement('a');
       link.href = opt.login_url;
-      link.innerHTML = `<img src="${opt.logo}" alt=""> <span class="cie-option-label">${opt.name}</span>`;
+      // White CIE mark is for the blue trigger; dropdown is on white — use blue variant.
+      const logoSrc = cieDropdownLogoSrc(opt.logo);
+      const img = document.createElement('img');
+      img.src = logoSrc;
+      img.alt = '';
+      img.setAttribute('aria-hidden', 'true');
+      const label = document.createElement('span');
+      label.className = 'cie-option-label';
+      label.textContent = opt.name;
+      link.appendChild(img);
+      link.appendChild(document.createTextNode(' '));
+      link.appendChild(label);
       li.appendChild(link);
       menu.appendChild(li);
     });
@@ -713,33 +762,28 @@ function createLogoButton(eid, _hasLearnMore = false) {
     href = href + sep + window.location.search.slice(1);
   }
   const isCie = eid.name?.toLowerCase().includes('cie') || eid.logo?.toLowerCase().includes('cie');
-  const isEidas =
-    eid.name?.toLowerCase().includes('eidas') ||
-    eid.logo_text?.toLowerCase().includes('eidas') ||
-    eid.logo?.toLowerCase().includes('eidas');
+  const isEidas = isEidasEid(eid);
   const btnClassName =
     'btn btn-primary d-flex align-items-center eid-card-btn' +
     (isCie ? ' eid-card-btn-cie' : '') +
     (isWallet ? ' eid-card-btn-wallet' : '') +
     (isEidas ? ' eid-card-btn-eidas' : '');
 
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = btnClassName;
-  btn.addEventListener('click', () => {
-    window.location.href = href;
-  });
+  // Direct navigation targets use <a href>; <button> is only for dropdown triggers.
+  const link = document.createElement('a');
+  link.href = href || '#';
+  link.className = btnClassName;
 
-  btn.appendChild(createLogoImg());
+  link.appendChild(createLogoImg());
   if (!isWallet) {
     const sep = document.createElement('span');
     sep.className = 'eid-card-separator';
     sep.setAttribute('aria-hidden', 'true');
-    btn.appendChild(sep);
+    link.appendChild(sep);
   }
-  btn.appendChild(createTextSpan());
+  link.appendChild(createTextSpan());
 
-  return btn;
+  return link;
 }
 
 // ----------------------- Learn More -----------------------

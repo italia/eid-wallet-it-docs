@@ -559,6 +559,25 @@ main {
   margin-right: 0.25rem;
 }
 
+/* Direct navigation cards use <a class="btn">; keep button look. */
+a.eid-card-btn {
+  text-decoration: none;
+}
+
+/* Sprite icons via <svg><use> inherit button text color. */
+svg.eid-card-logo {
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* SPID IdP menu: list semantics aligned with CIE dropdown. */
+.ita .ita-menu ul.ita-menu-list,
+.ita .ita-menu ul[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Vertical line between logo and label (all buttons except IT-Wallet) */
 .eid-card-btn .eid-card-separator {
   width: 1px;

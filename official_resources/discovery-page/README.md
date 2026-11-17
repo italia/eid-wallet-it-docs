@@ -92,7 +92,9 @@ discovery-page/
 │   ├── eid-it.json
 │   └── eid-en.json
 ├── img/                            # Loghi specifici (eIDAS, CNS, IDEM, gestori SPID)
-├── cie/cie_white.svg
+├── cie/
+│   ├── cie_white.svg               # CIE mark for blue triggers
+│   └── cie_blue.svg                # CIE mark for white dropdown items
 ├── it-wallet/wallet_icon.svg
 └── spid/                           # Pulsante e script SPID (favicon in ../shared-ui/spid/)
 
