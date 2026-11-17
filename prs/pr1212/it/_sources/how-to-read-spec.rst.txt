@@ -33,7 +33,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.
 
 - **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`:
-  Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.
+  Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità, e l'identity matching dopo la presentazione.
 
 - **Sezione** :ref:`endpoints:Endpoints`:
   Specifiche tecniche per tutti gli endpoint API esposti da ciascun tipo di entità, inclusi gli endpoint di federazione e le integrazioni di servizi specializzati.
@@ -261,6 +261,8 @@ Implementare le funzionalità di verifica secondo specifici protocolli, al fine 
 - **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti tecnici e funzionali relativi ai componenti e alle funzionalità per la verifica del PID e dei (Q)EAA.
 
 - **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Requisiti tecnici e funzionali relativi ai flussi di emissione e presentazione dei (Q)EAA.
+
+- **Sezione** :ref:`identity-matching`: Regole di identity matching e identity reconciliation dopo la presentazione degli attributi di identificazione personale.
 
 - **Sezione** :ref:`relying-party-endpoints:Endpoint della Relying Party`: Requisiti chiave per l’implementazione degli endpoint di verifica dei (Q)EAA.
 

@@ -4,7 +4,7 @@
 Wallet Solution Metadata
 ------------------------
 
-The metadata JSON Object whose key is ``wallet_solution`` contains the following parameters. The public keys found in this object are exclusively used for signing and/or encryption operations required by this Entity when acting as a component of the Wallet Provider (e.g., sign the Wallet Attestations to the Wallet Instance).
+The metadata JSON Object whose key is ``openid_wallet_provider`` contains the following parameters. The public keys found in this object are exclusively used for signing and/or encryption operations required by this Entity when acting as a component of the Wallet Provider (e.g., sign the Wallet Attestations to the Wallet Instance).
 
 .. list-table::
     :class: longtable

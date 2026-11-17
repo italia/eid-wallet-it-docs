@@ -395,7 +395,7 @@ Di seguito è riportato un esempio non normativo di Entity Configuration del Tru
         "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
           "https://trust-anchor.eid-wallet.example.it"
         ],
-        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_wallet_provider": [
           "https://trust-anchor.eid-wallet.example.it"
         ]
       }
@@ -455,8 +455,8 @@ In questa sezione sono definiti i principali tipi di metadati mappati sui ruoli 
      - `OID-FED`_
    * - Fornitore di Wallet
      - Fornitore di Wallet
-     - ``federation_entity``, ``wallet_solution``
-     - --
+     - ``federation_entity``, ``openid_wallet_provider``
+     - `OID-FED-WALLET`_
    * - Authorization Server
      -
      - ``federation_entity``, ``oauth_authorization_server``

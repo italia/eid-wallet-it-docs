@@ -395,7 +395,7 @@ Below is a non-normative example of a Trust Anchor Entity Configuration showing 
         "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_credential_issuer": [
           "https://trust-anchor.eid-wallet.example.it"
         ],
-        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/wallet_solution": [
+        "https://trust-anchor.eid-wallet.example.it/trust_marks/federation-entity/openid_wallet_provider": [
           "https://trust-anchor.eid-wallet.example.it"
         ]
       }
@@ -455,8 +455,8 @@ In this section are defined the main metadata types mapped to the roles of the e
      - `OID-FED`_
    * - Wallet Provider
      - Wallet Provider
-     - ``federation_entity``, ``wallet_solution``
-     - --
+     - ``federation_entity``, ``openid_wallet_provider``
+     - `OID-FED-WALLET`_
    * - Authorization Server
      -
      - ``federation_entity``, ``oauth_authorization_server``

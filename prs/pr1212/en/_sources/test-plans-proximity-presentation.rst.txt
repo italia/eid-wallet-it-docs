@@ -322,19 +322,19 @@ This section provides the set of test cases designed for technical implementers 
     - ``deviceAuth`` structure includes required ``deviceSignature`` for authentication.
 
   * - PPR-061
-    - Wallet Attestation Inclusion
-    - Test that Relying Party correctly handles Wallet Instance including Wallet Attestation when requested.
-    - Wallet Instance includes Wallet Attestation when requested by Relying Party.
+    - Wallet Instance Attestation (WIA) Inclusion
+    - Test that Relying Party correctly handles Wallet Instance including Wallet Instance Attestation (WIA) when requested.
+    - Wallet Instance includes Wallet Instance Attestation (WIA) when requested by Relying Party.
 
   * - PPR-062
     - AAL Claim Inclusion
-    - Test that Relying Party correctly handles Wallet Instance including ``aal`` claim in Wallet Attestation.
-    - Wallet Instance includes ``aal`` claim as disclosure in Wallet Attestation.
+    - Test that Relying Party correctly handles Wallet Instance including ``aal`` claim in Wallet Instance Attestation (WIA).
+    - Wallet Instance includes ``aal`` claim as disclosure in Wallet Instance Attestation (WIA).
 
   * - PPR-063
     - User Consent Bypass
-    - Test that Relying Party correctly handles Wallet Instance not requesting user consent for Wallet Attestation.
-    - Wallet Instance does not request user consent for technical Wallet Attestation attributes.
+    - Test that Relying Party correctly handles Wallet Instance not requesting user consent for Wallet Instance Attestation (WIA).
+    - Wallet Instance does not request user consent for technical Wallet Instance Attestation (WIA) attributes.
 
   * - PPR-064
     - Session Termination Conditions

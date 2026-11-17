@@ -4,8 +4,9 @@
 Signature Evaluation Test Matrix
 ------------------------------------------
 
-This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.
+.. _signature-evaluation-testcases:
 
+This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.
 
 .. list-table::
   :class: longtable
@@ -30,16 +31,28 @@ This section provides the common set of test cases for Wallet Solutions, Relying
     - The algorithm in the header must match the cryptographic operation.
   * - ATT-004
     - Appropriate Algorithms
-    - Ensure only cryptographically current algorithms are used.
-    - Only approved algorithms are accepted; deprecated ones are rejected.
+    - Ensure only algorithms listed as MUST or RECOMMENDED in :ref:`algorithms:Cryptographic Algorithms` are used. Algorithms listed as MUST NOT (including ``none``) are rejected. Cipher suites and hash functions not profiled in that section follow the ACN *Linee guida funzioni crittografiche*. Edwards-curve and post-quantum algorithms are not required by the current profile.
+    - Only approved algorithms are accepted; deprecated or unlisted algorithms are rejected.
   * - ATT-005
     - Signature Validation
     - Validate all cryptographic operations and reject if any fail.
     - All signatures must be valid; any failure results in rejection.
   * - ATT-006
     - Key Entropy
-    - Ensure cryptographic keys have sufficient entropy.
-    - Keys must meet entropy requirements; weak keys are rejected.
+    - Cryptographic keys and fresh secrets provide at least 128 bits of security strength as defined in NIST SP 800-57 Part 1. Asymmetric keys used with ES256/ESP256 are P-256 keys generated inside the Keystore or WSCD CSPRNG. Nonces, ``jti``, ``state`` and similar values are CSPRNG output of at least 128 bits and are not sequential.
+    - Keys and secrets meet the entropy minima; weak, undersized, sequential or software-forged keys are rejected. A third party verifies key type and length and, where the platform exposes it, that the key is inside secure hardware (Android ``KeyInfo.isInsideSecureHardware`` / iOS Secure Enclave token).
+  * - ATT-006a
+    - Key Entropy
+    - PKCE ``code_verifier``
+    - The ``code_verifier`` is 43 to 128 unreserved characters as required by :rfc:`7636`, generated with a CSPRNG.
+  * - ATT-006b
+    - Key Entropy
+    - MRTD and challenge nonces
+    - Challenge identifiers and MRTD PoP nonces have at least 128 bits of entropy, as required for eID Substantial Authentication with MRTD Verification.
+  * - ATT-006c
+    - Key Entropy
+    - No imported weak keys
+    - The Wallet Provider rejects Key Attestations for keys that were imported into the Keystore, generated outside the Keystore/WSCD, or whose length does not match the algorithm (for example ES256 with a non-P-256 key).
   * - ATT-007
     - Issuer Validation
     - Validate that the cryptographic keys belong to the issuer.

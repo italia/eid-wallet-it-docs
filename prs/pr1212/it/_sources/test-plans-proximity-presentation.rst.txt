@@ -322,19 +322,19 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - La struttura ``deviceAuth`` include ``deviceSignature`` richiesto per l'autenticazione.
 
   * - PPR-061
-    - Inclusione Wallet Attestation
-    - Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.
-    - L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.
+    - Inclusione Wallet Instance Attestation (WIA)
+    - Testare che l'Istanza del Wallet includa la Wallet Instance Attestation (WIA) quando richiesto.
+    - L'Istanza del Wallet include la Wallet Instance Attestation (WIA) quando richiesto dalla Relying Party.
 
   * - PPR-062
     - Inclusione Claim AAL
-    - Testare che l'Istanza del Wallet includa il claim ``aal`` nel Wallet Attestation.
-    - L'Istanza del Wallet include il claim ``aal`` come disclosure nel Wallet Attestation.
+    - Testare che l'Istanza del Wallet includa il claim ``aal`` nella Wallet Instance Attestation (WIA).
+    - L'Istanza del Wallet include il claim ``aal`` come disclosure nella Wallet Instance Attestation (WIA).
 
   * - PPR-063
     - Bypass Consenso Utente
-    - Testare che l'Istanza del Wallet non richieda il consenso utente per il Wallet Attestation.
-    - L'Istanza del Wallet non richiede il consenso per gli attributi tecnici del Wallet Attestation.
+    - Testare che l'Istanza del Wallet non richieda il consenso utente per la Wallet Instance Attestation (WIA).
+    - L'Istanza del Wallet non richiede il consenso per gli attributi tecnici della Wallet Instance Attestation (WIA).
 
   * - PPR-064
     - Condizioni di Terminazione Sessione
