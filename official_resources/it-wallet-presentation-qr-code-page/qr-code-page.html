@@ -107,13 +107,17 @@
 
     .qr-expired-info {
       display: inline-flex;
+      flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      text-align: left;
     }
 
     .qr-expired-info .icon {
-      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      flex: 0 0 auto;
       color: #995C00;
       fill: currentColor;
     }
@@ -296,7 +300,7 @@
 
   <script src="../shared-ui/js/bootstrap-italia.bundle.min.js"></script>
   <script src="../shared-ui/js/header-lang-dropdown.js?v=wallet-ui-qr-demo"></script>
-  <script src="js/qr-code-page.js?v=wallet-ui-qr-20261117"></script>
+  <script src="js/qr-code-page.js?v=wallet-ui-qr-20261117c"></script>
 </body>
 
 </html>
