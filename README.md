@@ -21,7 +21,7 @@ This repository hosts the IT-Wallet Technical Specifications: the technical arch
 
 For more information on the IT-Wallet System please refer to the [official page]([url](https://innovazione.gov.it/progetti/sistema-it-wallet/)).
 
-The repository is structured as sphinx project tree. **The first stable release is v1.0**; older releases are considered experimental.
+The repository is structured as sphinx project tree.
 
 
 ## Versioning and preview
@@ -64,11 +64,17 @@ LTS does not cover new features, API changes, or modifications that would imply 
 
 This section contains the references about the official releases of this project.
 
-#### Stable release
+#### LTS stable release
 
 | Version | English | Italian |
 |---------|---------|---------|
 | 1.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/en/) \| [PDF]() | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/it/) \| [PDF]() |
+
+#### EUDIW release
+
+| Version | English | Italian |
+|---------|---------|---------|
+| 1.5.0 | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/en/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.5.0/eid-wallet-it-docs-en-20261027-111543.pdf) | [HTML](https://italia.github.io/eid-wallet-it-docs/releases/1.5.0/it/) \| [PDF](https://github.com/italia/eid-wallet-it-docs/releases/download/1.5.0/eid-wallet-it-docs-it-20261027-111543.pdf) |
 
 For previous releases see [RELEASES-HISTORY.md](RELEASES-HISTORY.md).
 
