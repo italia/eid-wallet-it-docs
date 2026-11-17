@@ -451,7 +451,7 @@ async function loadItWalletPage() {
   let wallets = [];
   let loadFailed = false;
   try {
-    const resp = await fetch(basePath + 'data/it-wallets.json?v=wallet-ui-20261117');
+    const resp = await fetch(basePath + 'data/it-wallets.json?v=wallet-ui-20261117g');
     if (!resp.ok) {
       loadFailed = true;
       console.error('Error loading it-wallets.json: HTTP', resp.status);
