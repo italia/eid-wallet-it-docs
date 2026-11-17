@@ -158,7 +158,16 @@ The *openid_credential_issuer* metadata contains the following claims.
        Both values of ``format`` MUST be present.
 
   * - **jwks**
-    - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
+    - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_. The JWKS MUST include at least one encryption key used to encrypt ``issuer_state`` when that value carries ``objectId``, as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`. That encryption JWK MUST have the following parameters:
+
+        - **kty**: MUST be ``EC``.
+        - **crv**: MUST be ``P-256``.
+        - **use**: MUST be ``enc``.
+        - **key_ops**: MUST include ``deriveKey`` and MUST NOT include ``sign``.
+        - **alg**: MUST be ``ECDH-ES``.
+        - **kid**: REQUIRED. Unique identifier of this key.
+
+      Signing keys MAY also be present in the same JWKS for other protocol uses. Signing keys MUST NOT be used to encrypt ``issuer_state``.
   * - **trust_frameworks_supported**
     - REQUIRED. JSON array containing all supported trust frameworks. The supported values are:
         - *it_cie*: CIE id trust framework supported.
@@ -173,3 +182,9 @@ The *openid_credential_issuer* metadata contains the following claims.
         The presence of this parameter advertises batch issuance only for the Credential types for which the Credential Issuer documents support. The Credential Issuer MUST declare whether PID and IT-Wallet ID are in scope of batch issuance. A Credential type without that advertisement MUST be issued as a single Credential (:ref:`CI_203 <credential-issuer-testcases>`).
   * - **status_list_aggregation_endpoint**
     - REQUIRED. URL of the Status List Aggregation Endpoint. See `TOKEN-STATUS-LIST`_ Section 9.
+
+Below is a non-normative example of an encryption JWK published in ``openid_credential_issuer.jwks``:
+
+.. literalinclude:: ../../examples/issuer-state-encryption-jwk.json
+  :language: JSON
+

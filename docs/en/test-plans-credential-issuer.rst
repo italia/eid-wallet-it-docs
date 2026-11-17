@@ -69,7 +69,19 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_013
     - Issuance, Interoperability
     - Credential Offer Grants Parameter Structure
-    - The grants parameter successfully contains an ``authorization_code`` object that includes both required sub-parameters (``issuer_state`` and ``authorization_server``) with appropriate values.
+    - The ``grants`` parameter contains an ``authorization_code`` object. ``issuer_state`` is present when required by :ref:`credential-issuance-low-level:issuer_state Parameter`. ``authorization_server`` is present only when required by the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`.
+  * - CI_013a
+    - Issuance, Security
+    - issuer_state JWE Compact Profile
+    - When ``issuer_state`` carries ``objectId``, it is a JWE Compact Serialization whose Protected Header and algorithms match :ref:`credential-issuance-low-level:issuer_state Parameter`. When ``objectId`` is absent, ``issuer_state`` is the plaintext URN.
+  * - CI_013b
+    - Issuance, Interoperability
+    - issuer_state URN Encoding
+    - The URN, whether carried as plaintext or as JWE payload, has percent-encoded components and is parsed as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
+  * - CI_013c
+    - Issuance, Security
+    - issuer_state Encryption Key and Decryption
+    - When ``objectId`` is present, ``issuer_state`` is encrypted to an OpenID4VCI encryption JWK (``use`` equal to ``enc``) from the Credential Issuer ``openid_credential_issuer.jwks`` metadata as defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`. The Credential Issuer decrypts it when required and uses the identifiers as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
   * - CI_014
     - Issuance, Interoperability
     - Credential Object Compilation

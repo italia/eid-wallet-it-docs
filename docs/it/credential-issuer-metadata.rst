@@ -147,7 +147,16 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
 
       La Wallet Unit DEVE usare ``registration_cert`` come specificato in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` NON DEVE essere usato come sostituto di ``registration_cert``.
   * - **jwks**
-    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
+    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_. Il JWKS DEVE includere almeno una chiave di cifratura utilizzata per cifrare ``issuer_state`` quando quel valore contiene ``objectId``, come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`. Tale JWK di cifratura DEVE avere i seguenti parametri:
+
+        - **kty**: DEVE essere ``EC``.
+        - **crv**: DEVE essere ``P-256``.
+        - **use**: DEVE essere ``enc``.
+        - **key_ops**: DEVE includere ``deriveKey`` e NON DEVE includere ``sign``.
+        - **alg**: DEVE essere ``ECDH-ES``.
+        - **kid**: OBBLIGATORIO. Identificatore univoco di questa chiave.
+
+      Chiavi di firma POSSONO essere presenti nello stesso JWKS per altri usi di protocollo. Le chiavi di firma NON DEVONO essere utilizzate per cifrare ``issuer_state``.
   * - **trust_frameworks_supported**
     - OBBLIGATORIO. Array JSON contenente tutti i trust framework supportati. I valori supportati sono:
         - *it_cie*: trust framework CIE id supportato.
@@ -162,5 +171,11 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         La presenza di questo parametro dichiara l'emissione in batch solo per i tipi di Attestato Elettronico per i quali il Credential Issuer documenta il supporto. Il Credential Issuer DEVE dichiarare se il PID e l'IT-Wallet ID rientrano nel perimetro dell'emissione in batch. Un tipo di Attestato Elettronico senza tale dichiarazione DEVE essere emesso come singolo Attestato Elettronico (:ref:`CI_203 <credential-issuer-testcases>`).
   * - **status_list_aggregation_endpoint**
     - OBBLIGATORIO. URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
+
+
+Di seguito un esempio non normativo di un JWK di cifratura pubblicato in ``openid_credential_issuer.jwks``:
+
+.. literalinclude:: ../../examples/issuer-state-encryption-jwk.json
+  :language: JSON
 
 
