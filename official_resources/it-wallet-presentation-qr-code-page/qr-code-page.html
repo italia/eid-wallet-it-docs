@@ -8,7 +8,7 @@
   <meta name="description" id="meta-description" content="">
   <link rel="icon" href="../shared-ui/spid/favicon-32x32.png">
 
-  <link rel="stylesheet" href="../shared-ui/css/style.css?v=wallet-ui-qr-demo">
+  <link rel="stylesheet" href="../shared-ui/css/style.css?v=wallet-ui-qr-20261117">
   <link href="../shared-ui/css/bootstrap-italia.min.css" rel="stylesheet">
   <link href="../shared-ui/css/ita.min.css" rel="stylesheet">
 
@@ -45,6 +45,16 @@
 
     .qr-faded {
       opacity: 0.2;
+    }
+
+    .qr-code-payload-wrap.is-expired {
+      width: var(--qr-size);
+      height: var(--qr-size);
+      background-color: #D0D4D8;
+    }
+
+    .qr-code-payload-wrap.is-expired .qr-code-link {
+      visibility: hidden;
     }
 
     .qr-code-payload-wrap {
@@ -286,7 +296,7 @@
 
   <script src="../shared-ui/js/bootstrap-italia.bundle.min.js"></script>
   <script src="../shared-ui/js/header-lang-dropdown.js?v=wallet-ui-qr-demo"></script>
-  <script src="js/qr-code-page.js?v=wallet-ui-qr-demo"></script>
+  <script src="js/qr-code-page.js?v=wallet-ui-qr-20261117"></script>
 </body>
 
 </html>
