@@ -140,7 +140,16 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         - **authentic_sources**: CONDIZIONALE. È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Registro delle Fonti Autentiche`.
         - **parent_credentials**: CONDIZIONALE. È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
   * - **jwks**
-    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
+    - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_. Il JWKS DEVE includere almeno una chiave di cifratura utilizzata per cifrare ``issuer_state`` come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`. Tale JWK di cifratura DEVE avere i seguenti parametri:
+
+        - **kty**: DEVE essere ``EC``.
+        - **crv**: DEVE essere ``P-256``.
+        - **use**: DEVE essere ``enc``.
+        - **key_ops**: DEVE includere ``deriveKey`` e NON DEVE includere ``sign``.
+        - **alg**: DEVE essere ``ECDH-ES``.
+        - **kid**: OBBLIGATORIO. Identificatore univoco di questa chiave.
+
+      Chiavi di firma POSSONO essere presenti nello stesso JWKS per altri usi di protocollo. Le chiavi di firma NON DEVONO essere utilizzate per cifrare ``issuer_state``.
   * - **trust_frameworks_supported**
     - OBBLIGATORIO. Array JSON contenente tutti i trust framework supportati. I valori supportati sono:
         - *it_cie*: trust framework CIE id supportato.
@@ -154,4 +163,8 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
   * - **status_list_aggregation_endpoint**
     - OBBLIGATORIO. URL del *Status List Aggregation Endpoint*. Vedi `TOKEN-STATUS-LIST`_ Sezione 9.
 
+Di seguito un esempio non normativo di un JWK di cifratura pubblicato in ``openid_credential_issuer.jwks``:
+
+.. literalinclude:: ../../examples/issuer-state-encryption-jwk.json
+  :language: JSON
 

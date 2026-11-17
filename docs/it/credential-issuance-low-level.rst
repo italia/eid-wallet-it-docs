@@ -764,7 +764,7 @@ L'header protetto del JWE DEVE contenere i seguenti parametri. Gli identificator
     - OBBLIGATORIO. DEVE essere ``A256GCM``.
     - :rfc:`7516`, :rfc:`7518`.
   * - **kid**
-    - OBBLIGATORIO. Identificatore della chiave di cifratura del Credential Issuer definita in :ref:`e-service-pdnd:Chiavi di cifratura del Consumer di GetAttributeClaims`.
+    - OBBLIGATORIO. Identificatore della chiave di cifratura del Credential Issuer pubblicata in ``openid_credential_issuer.jwks`` come definito in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
     - :rfc:`7516#section-4.1.4`.
   * - **typ**
     - OBBLIGATORIO. DEVE essere ``issuer-state+jwe``.
@@ -778,11 +778,9 @@ Il parametro di header ``cty`` NON DEVE essere presente.
 Chiave di cifratura
 """""""""""""""""""
 
-Il JWE DEVE essere cifrato con la chiave pubblica di cifratura PDND del Consumer dell'e-service ``GetAttributeClaims``, cioè il Credential Issuer identificato da ``credential_issuer``.
+Il JWE DEVE essere cifrato con una chiave pubblica di cifratura del Credential Issuer identificato da ``credential_issuer``. Tale chiave DEVE essere un JWK con ``use`` impostato a ``enc`` dal parametro ``jwks`` dei metadata ``openid_credential_issuer`` del Credential Issuer, come pubblicati nella sua Entity Configuration di Federazione. I parametri del JWK sono definiti in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
 
-La registrazione, i parametri JWK e il reperimento di tale chiave, incluso ``GET /keys/{kid}``, sono definiti in :ref:`e-service-pdnd:Chiavi di cifratura del Consumer di GetAttributeClaims`.
-
-Quando il Credential Issuer genera la Credential Offer, cifra ``issuer_state`` verso la propria chiave di cifratura. Quando una Fonte Autentica o un'altra terza parte genera la Credential Offer, DEVE cifrare ``issuer_state`` verso la stessa chiave di cifratura di quel Credential Issuer.
+Quando il Credential Issuer genera la Credential Offer, cifra ``issuer_state`` verso la propria chiave di cifratura. Quando una Fonte Autentica o un'altra terza parte genera la Credential Offer, DEVE ottenere lo stesso JWK di cifratura risolvendo l'Entity Configuration del Credential Issuer per ``credential_issuer``. DEVE cifrare ``issuer_state`` verso tale chiave.
 
 Elaborazione da parte del Credential Issuer
 """""""""""""""""""""""""""""""""""""""""""
@@ -807,7 +805,7 @@ Gli esempi seguenti condividono lo stesso JWE di ``issuer_state``. L'URN in chia
 .. literalinclude:: ../../examples/issuer-state-jwe.txt
   :language: text
 
-Il JWK di cifratura corrispondente all'header ``kid`` è l'esempio in :ref:`e-service-pdnd:Chiavi di cifratura del Consumer di GetAttributeClaims`.
+Il JWK di cifratura corrispondente all'header ``kid`` è l'esempio non normativo in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
 
 **Esempio 1: Credential Offer per valore**
 

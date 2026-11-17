@@ -764,7 +764,7 @@ The JWE Protected Header MUST contain the following parameters. Algorithm identi
     - REQUIRED. MUST be ``A256GCM``.
     - :rfc:`7516`, :rfc:`7518`.
   * - **kid**
-    - REQUIRED. Key identifier of the Credential Issuer encryption key defined in :ref:`e-service-pdnd:GetAttributeClaims Consumer Encryption Keys`.
+    - REQUIRED. Key identifier of the Credential Issuer encryption key published in ``openid_credential_issuer.jwks`` as defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
     - :rfc:`7516#section-4.1.4`.
   * - **typ**
     - REQUIRED. MUST be ``issuer-state+jwe``.
@@ -778,11 +778,9 @@ The ``cty`` header parameter MUST NOT be present.
 Encryption Key
 """"""""""""""
 
-The JWE MUST be encrypted to the PDND encryption public key of the Consumer of the ``GetAttributeClaims`` e-service, that is the Credential Issuer identified by ``credential_issuer``.
+The JWE MUST be encrypted to an encryption public key of the Credential Issuer identified by ``credential_issuer``. That key MUST be a JWK with ``use`` set to ``enc`` from the ``jwks`` parameter of the Credential Issuer's ``openid_credential_issuer`` metadata, as published in its Federation Entity Configuration. The JWK parameters are defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
 
-Registration, JWK parameters, and discovery of that key, including ``GET /keys/{kid}``, are defined in :ref:`e-service-pdnd:GetAttributeClaims Consumer Encryption Keys`.
-
-When the Credential Issuer generates the Credential Offer, it encrypts ``issuer_state`` to its own encryption key. When an Authentic Source or other third party generates the Credential Offer, it MUST encrypt ``issuer_state`` to that same Credential Issuer encryption key.
+When the Credential Issuer generates the Credential Offer, it encrypts ``issuer_state`` to its own encryption key. When an Authentic Source or other third party generates the Credential Offer, it MUST obtain that same encryption JWK by resolving the Credential Issuer Entity Configuration for ``credential_issuer``. It MUST encrypt ``issuer_state`` to that key.
 
 Processing by the Credential Issuer
 """""""""""""""""""""""""""""""""""
@@ -807,7 +805,7 @@ The following examples share the same ``issuer_state`` JWE. The plaintext URN is
 .. literalinclude:: ../../examples/issuer-state-jwe.txt
   :language: text
 
-The encryption JWK corresponding to the ``kid`` header is the example in :ref:`e-service-pdnd:GetAttributeClaims Consumer Encryption Keys`.
+The encryption JWK corresponding to the ``kid`` header is the non-normative example in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`.
 
 **Example 1: Credential Offer by value**
 

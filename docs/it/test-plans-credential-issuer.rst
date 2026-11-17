@@ -79,7 +79,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_013c
     - Emissione, Sicurezza
     - Chiave di cifratura e decifratura di issuer_state
-    - ``issuer_state`` è cifrato verso la chiave di cifratura del Consumer di GetAttributeClaims definita in :ref:`e-service-pdnd:Chiavi di cifratura del Consumer di GetAttributeClaims`. Il Credential Issuer lo decifra e utilizza gli identificativi come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
+    - ``issuer_state`` è cifrato verso un JWK di cifratura OpenID4VCI (``use`` uguale a ``enc``) dei metadata ``openid_credential_issuer.jwks`` del Credential Issuer come definito in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`. Il Credential Issuer lo decifra e utilizza gli identificativi come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
   * - CI_014
     - Emissione, Interoperabilità
     - Compilazione dell’Oggetto Credential

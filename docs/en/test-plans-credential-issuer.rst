@@ -79,7 +79,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_013c
     - Issuance, Security
     - issuer_state Encryption Key and Decryption
-    - ``issuer_state`` is encrypted to the GetAttributeClaims Consumer encryption key defined in :ref:`e-service-pdnd:GetAttributeClaims Consumer Encryption Keys`. The Credential Issuer decrypts it and uses the identifiers as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
+    - ``issuer_state`` is encrypted to an OpenID4VCI encryption JWK (``use`` equal to ``enc``) from the Credential Issuer ``openid_credential_issuer.jwks`` metadata as defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`. The Credential Issuer decrypts it and uses the identifiers as defined in :ref:`credential-issuance-low-level:issuer_state Parameter`.
   * - CI_014
     - Issuance, Interoperability
     - Credential Object Compilation
