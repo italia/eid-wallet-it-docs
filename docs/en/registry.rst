@@ -1414,6 +1414,8 @@ The collection payload contains the following parameters.
 
    * - **Field Name**
      - **Description**
+   * - **id**
+     - REQUIRED. Unique identifier of the Digital Credentials Catalog (e.g., ``urn:credential-catalog:it-wallet``). It is retained for backward compatibility with previous implementations.
    * - **version**
      - REQUIRED. The version of the Digital Credentials Catalog (e.g., ``1.0.0``).
    * - **last_modified**
