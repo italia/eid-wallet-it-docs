@@ -440,8 +440,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 
 
 .. note::
-    Il claim ``iss`` non è più necessario nel corpo della WIA, poiché l’identità del Wallet Provider viene ora dedotta dal certificato di firma nel parametro di intestazione JOSE ``x5c``.
-
+    In conformità con la Technical Specification 3 e in deroga a quanto previsto in [OPENID4VC-HAIP_], l'inclusione del claim ``iss`` nel payload della WIA non è richiesta. L'identificazione del Wallet Provider viene dedotta e verificata mediante il certificato di firma nel parametro di intestazione JOSE ``x5c``.
 
 
 
