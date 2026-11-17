@@ -140,12 +140,18 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         - **authentic_sources**: È OBBLIGATORIO solo se ``parent_credentials`` è assente. Oggetto contenente il parametro ``entity_id`` e ``dataset_id``, valorizzato con i rispettivi dentificativi come censiti all'interno del :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: È OBBLIGATORIO solo se ``authentic_sources`` è assente. Array degli identificativi di ``credential_type`` come indicato all'interno del :ref:`registry:Catalogo degli Attestati Elettronici`.
   * - **issuer_info**
-    - OBBLIGATORIO per i Fornitori di PID e i Fornitori di Attestati Elettronici nel Trust Framework EUDIW. Array di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_]. Ciascun oggetto DEVE contenere:
+    - OBBLIGATORIO per i Fornitori di PID e i Fornitori di Attestati Elettronici nel Trust Framework EUDIW. Array di primo livello di oggetti che convoglia la registrazione del Wallet-Relying Party del Servizio applicabile, come definito nella Sezione 4.2.3 di [`ETSI TS 119 472-3`_]. Ciascun elemento DEVE contenere:
 
-        - **registration_cert**: OBBLIGATORIO. Il Wallet-Relying Party Registration Certificate del Servizio applicabile, incluso per valore ([`EIDAS-ARF`_] RPRC_22).
-        - **registrar_dataset**: OBBLIGATORIO. Le informazioni di registrazione del Servizio applicabile.
+      - ``format``. OBBLIGATORIO. Questo parametro identifica la rappresentazione di ``data``.
 
-      La Wallet Unit DEVE usare ``registration_cert`` come specificato in :ref:`trust-evaluation:EUDIW Authorization`. ``registrar_dataset`` NON DEVE essere usato come sostituto di ``registration_cert``.
+        L'array DEVE contenere un elemento con ``format`` impostato a ``registration_cert``.
+
+        L'array DEVE contenere un elemento con ``format`` impostato a ``registrar_dataset``.
+
+      - ``data``. OBBLIGATORIO. Questo parametro porta il payload per il ``format`` dello stesso elemento.
+
+        - Quando ``format`` è ``registrar_dataset``, ``data`` DEVE essere un oggetto con i parametri ``identifier``, ``srvDescription``, ``registryURI`` e ``providesAttestations``. I valori di questi claim sono ulteriormente specificati in :ref:`infrastructure-trust:Register of WRPs`.
+        - Quando ``format`` è ``registration_cert``, ``data`` DEVE essere la serializzazione compatta del WRPRC del Credential Issuer, portata per valore. Tale serializzazione usa ``typ`` ``rc-wrp+jwt``, come specificato in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
   * - **jwks**
     - OBBLIGATORIO. JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
   * - **trust_frameworks_supported**

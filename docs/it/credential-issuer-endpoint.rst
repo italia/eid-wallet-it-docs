@@ -33,10 +33,23 @@ Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i 
 
 - i parametri di header e payload definiti nella sezione 12.2.3 di `OpenID4VCI`_ oltre a quelli definiti nella sezione  :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer` all'interno di un JSON Web Token firmato utilizzando il media type *application/jwt*.
 
-Di seguito è riportato un esempio non normativo dei metadati del Credential Issuer firmati:
+Sul percorso EUDIW la Wallet Unit ottiene i Metadata del Credential Issuer come tale JSON Web Token firmato. Il media type è *application/jwt*. Il documento JSON non firmato resta disponibile allo stesso endpoint. Il documento JSON non firmato non è l'artefatto autenticato in :ref:`trust-evaluation:Metadata Validation`.
 
-.. literalinclude:: ../../examples/credential-issuer-metadata.txt
-   :language: text
+Sul filo il documento EUDIW è un solo JSON Web Token firmato. Di seguito è riportato un esempio non normativo del suo header protetto e del suo payload per un Fornitore di Attestati Elettronici. La catena ``x5c`` inizia con l'access certificate. Il trust anchor è assente. Il valore ``registration_cert`` rimanda all'esempio di WRPRC di una Relying Party in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-header.json
+   :language: json
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-payload.json
+   :language: json
+
+Di seguito è riportato un esempio non normativo dei Metadata firmati del Credential Issuer di un PID Provider sul percorso EUDIW. Il primo certificato di ``x5c`` è l'access certificate illustrato in :ref:`infrastructure-trust:Wallet-Relying Party Access Certificate (WRPAC) Profile`. Il trust anchor è assente. Il valore ``registration_cert`` è la serializzazione compatta del WRPRC del PID Provider in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`. La firma è illustrativa.
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-pid-header.json
+   :language: json
+
+.. literalinclude:: ../../examples/credential-issuer-metadata-pid-payload.json
+   :language: json
 
 Gli elementi contenuti in ``authorization_servers`` nei metadati del Credential Issuer possono essere utilizzati per ottenere i metadati dell'OAuth Authorization Server tramite l’endpoint ``/.well-known/oauth-authorization-server``, come definito nella Sezione 3 del :rfc:`8414`.
 Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server.

@@ -426,11 +426,11 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
   HTTP/1.1 204 No Content
 
 .. note::
-   Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_057 <wallet-credential-issuance-testcases>`).
+   Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 
 .. note::
-  Per gli Attestati Elettronici emessi in batch, il ``notification_id`` si riferisce a tutti gli attestati emessi in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutti gli attestati contenuti nel batch. Qualsiasi errore parziale viene trattato come errore dell'intero batch.
+  Per gli Attestati Elettronici emessi in batch, il ``notification_id`` si riferisce a tutti gli attestati emessi in batch. La Notification Response (``credential_accepted``) si applica pertanto a tutti gli attestati contenuti nel batch. Qualsiasi errore parziale viene trattato come errore dell'intero batch.
 
 
 Refresh Token Flow
@@ -441,7 +441,7 @@ Per utilizzare gli Endpoint Deferred, Credential Request e Notification, l'Istan
 Un Access Token ottenuto come risultato di un Refresh Token Flow DEVE essere limitato ai seguenti endpoint.
 
   - Il Deferred Endpoint, per ottenere un nuovo Attestato Elettronico dopo il tempo impostato nel parametro ``interval`` o quando l'Attestato Elettronico viene notificato come pronto per essere emesso (:ref:`WP_066 <wallet-credential-issuance-testcases>`).
-  - Il Notification Endpoint, per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer.
+  - Il Notification Endpoint, per notificare l'esito di emissione (``credential_accepted``, ``credential_deleted``, ``credential_failure``) al Credential Issuer.
   - Il Credential Endpoint, per aggiornare un Attestato Elettronico che è già presente nell'Istanza del Wallet (chiamato anche riemissione dell'Attestato Elettronico, vedi sezione :ref:`credential-issuance-low-level:Re-issuance Flow`).
 
 Per mitigare l'impatto di un Refresh Token rubato, i Refresh Token DEVONO essere DPoP. Questi aspetti sono dettagliati e discussi nella Sezione :ref:`credential-issuance-low-level:Considerazioni di Sicurezza`.

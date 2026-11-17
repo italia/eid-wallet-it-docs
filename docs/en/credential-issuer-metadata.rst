@@ -144,18 +144,18 @@ The *openid_credential_issuer* metadata contains the following claims.
         - **authentic_sources**: It is REQUIRED only if ``parent_credentials`` is absent. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
         - **parent_credentials**: It is REQUIRED only if ``authentic_sources`` is absent. Array containing ``credential_type`` identifiers as indicated in the :ref:`registry:Digital Credentials Catalog`.
   * - **issuer_info**
-    - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Top-level array of signed-payload objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each element MUST contain:
-      
-      - ``format``. REQUIRED. It identifies the signed representation and ``data`` is its decoded payload. 
+    - REQUIRED for PID Providers and Attestation Providers in the EUDIW Trust Framework. Top-level array of objects conveying the Wallet-Relying Party registration of the applicable Service, as defined in Section 4.2.3 of [`ETSI TS 119 472-3`_]. Each element MUST contain:
 
-       Possible values for ``format`` include ``registrar_dataset`` and ``registration_cert``.
-      
-      - ``data``. REQUIRED. Depending on the ``format`` parameter value,
-      
-        - if ``format == registrar_dataset``; this payload MUST contain an object with the following parameters: ``identifier``;``srvDescription``, ``registryURI``, and ``providesAttestations``. The values of these claims are further specified in :ref:`infrastructure-trust:Register of WRPs`.
-        - if ``format == registration_cert``; this payload MUST contain the base64-encoded WRPRC of the Credential Issuer by value. Its profile is specified in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
-        
-       Both values of ``format`` MUST be present.
+      - ``format``. REQUIRED. This parameter identifies the representation of ``data``.
+
+        The array MUST contain one element with ``format`` set to ``registration_cert``.
+
+        The array MUST contain one element with ``format`` set to ``registrar_dataset``.
+
+      - ``data``. REQUIRED. This parameter carries the payload for the ``format`` of the same element.
+
+        - When ``format`` is ``registrar_dataset``, ``data`` MUST be an object with the parameters ``identifier``, ``srvDescription``, ``registryURI``, and ``providesAttestations``. The values of these claims are further specified in :ref:`infrastructure-trust:Register of WRPs`.
+        - When ``format`` is ``registration_cert``, ``data`` MUST be the compact serialization of the WRPRC of the Credential Issuer, carried by value. That serialization uses ``typ`` ``rc-wrp+jwt``, as specified in :ref:`infrastructure-trust:Wallet-Relying Party Registration Certificate (WRPRC) Profile`.
 
   * - **jwks**
     - REQUIRED. JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.

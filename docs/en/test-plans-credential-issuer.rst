@@ -433,7 +433,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_088b
     - Issuance, Security
     - Notification Endpoint Access Authorization
-    - Access Token allows access to Notification endpoint for notifying Digital Credential deletion to the Credential Issuer
+    - Access Token allows access to the Notification endpoint for notifying the issuance outcome (``credential_accepted``, ``credential_deleted``, ``credential_failure``) to the Credential Issuer
   * - CI_089
     - Voided
     - Voided
