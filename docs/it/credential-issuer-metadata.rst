@@ -152,7 +152,6 @@ I Metadata *openid_credential_issuer* contiene i seguenti *claims*.
         - **kty**: DEVE essere ``EC``.
         - **crv**: DEVE essere ``P-256``.
         - **use**: DEVE essere ``enc``.
-        - **key_ops**: DEVE includere ``deriveKey`` e NON DEVE includere ``sign``.
         - **alg**: DEVE essere ``ECDH-ES``.
         - **kid**: OBBLIGATORIO. Identificatore univoco di questa chiave.
 
