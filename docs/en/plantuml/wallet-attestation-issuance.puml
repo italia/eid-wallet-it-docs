@@ -9,7 +9,7 @@ participant "Device Integrity Service APIs" as aats #springgreen
 participant "WSCA/Remote WSCD" as wsca #springgreen
 participant "Wallet Provider backend" as bck
 
-user->app: Request a new operation that\nrequires a Key Attestation
+user->app: Request a new operation that\nrequires a Key Attestation and it already obtained a\n fresh ``c_nonce`` from the Credential Issuer.
 activate app
 
 app->app: Verify that Cryptographic Hardware Keys exist\n(""hardware_key_tag""). Otherwise re-initialize
@@ -71,7 +71,7 @@ app->app: Assemble signed ""keys_to_attest"" JWT
 
 end
 
-app->app: Key Attestation Request JWT (""ka-request+jwt""):\n""iss"", ""iat"", ""exp"", ""nonce"", ""keys_to_attest"", ""hardware_signature"",\n""hardware_key_tag"", ""cnf"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""
+app->app: Key Attestation Request JWT (""ka-request+jwt""):\n""iss"", ""iat"", ""exp"", ""nonce"", ""c_nonce"", ""keys_to_attest"", ""hardware_signature"",\n""hardware_key_tag"", ""cnf"", ""platform"", ""wallet_solution_id"", ""wallet_solution_version""
 
 alt Keys bound to a Digital Credential other than the PID
 
