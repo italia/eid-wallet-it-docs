@@ -441,8 +441,7 @@ Below is a non-normative example of the Wallet Instance Attestation JWT header a
 
 
 .. note::
-    The ``iss`` claim is not needed anymore in the WIA body as Wallet Provider identity is now inferred from the signing certificate in the ``x5c`` JOSE header parameter.
-
+    In accordance with Technical Specification 3 and in derogation from [OPENID4VC-HAIP_], the iss claim is no longer required in the WIA payload. The Wallet Provider identity is inferred from the signing certificate in the ``x5c`` JOSE header parameter.
 
 
 
