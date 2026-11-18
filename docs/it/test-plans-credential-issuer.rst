@@ -68,7 +68,19 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_013
     - Emissione, Interoperabilità
     - Struttura del parametro Grants nella Credential Offer
-    - Il parametro grants contiene correttamente un oggetto ``authorization_code`` che include entrambi i sotto-parametri obbligatori (``issuer_state`` e ``authorization_server``) con valori appropriati.
+    - Il parametro ``grants`` contiene un oggetto ``authorization_code``. ``issuer_state`` è presente quando richiesto da :ref:`credential-issuance-low-level:Parametro issuer_state`. ``authorization_server`` è presente solo quando richiesto dalla :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>`.
+  * - CI_013a
+    - Emissione, Sicurezza
+    - Profilo JWE Compact di issuer_state
+    - Quando ``issuer_state`` contiene ``objectId``, è una JWE Compact Serialization il cui header protetto e i cui algoritmi corrispondono a :ref:`credential-issuance-low-level:Parametro issuer_state`. Quando ``objectId`` è assente, ``issuer_state`` è l'URN in chiaro.
+  * - CI_013b
+    - Emissione, Interoperabilità
+    - Codifica URN di issuer_state
+    - L'URN, sia in chiaro sia come payload del JWE, ha componenti percent-encoded ed è analizzato come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
+  * - CI_013c
+    - Emissione, Sicurezza
+    - Chiave di cifratura e decifratura di issuer_state
+    - Quando ``objectId`` è presente, ``issuer_state`` è cifrato verso un JWK di cifratura OpenID4VCI (``use`` uguale a ``enc``) dei metadata ``openid_credential_issuer.jwks`` del Credential Issuer come definito in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`. Il Credential Issuer lo decifra quando richiesto e utilizza gli identificativi come definito in :ref:`credential-issuance-low-level:Parametro issuer_state`.
   * - CI_014
     - Emissione, Interoperabilità
     - Compilazione dell’Oggetto Credential

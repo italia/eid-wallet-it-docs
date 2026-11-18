@@ -142,7 +142,7 @@ Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Reque
     9. Il Credential Issuer DEVE verificare che il `Request Object` sia stato emesso in un momento precedente al valore esposto nel claim ``iat``. Il Credential Issuer DOVREBBE rifiutare la richiesta se il claim ``iat`` è lontano dall'ora corrente (:rfc:`9126`) di più di `5` minuti.
     10. Il Credential Issuer DEVE verificare che il claim ``jti`` nel `Request Object` non sia stato utilizzato in precedenza dall'Istanza del Wallet identificata dal ``client_id``. Ciò consente al Credential Issuer di mitigare gli attacchi di replay (:rfc:`7519`).
     11. Il Credential Issuer DEVE validare il parametro ``OAuth-Client-Attestation-PoP`` in base alla Sezione 5 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
-    12. Il Credential Issuer DEVE verificare, se presente, la validità dell’``issuer_state`` e la coerenza con il ``credential_configuration_id`` richiesto nel Request Object.
+    12. DEVE verificare, se presente, la validità dell’``issuer_state`` secondo :ref:`credential-issuance-low-level:Parametro issuer_state` e la coerenza con il ``credential_configuration_id`` richiesto nel Request Object.
 
 
 Di seguito un esempio non normativo di `PAR Request`.
@@ -627,37 +627,145 @@ L'oggetto Credential Offer è un oggetto JSON contenente i parametri definiti ne
   * - **grants**
     - OBBLIGATORIO. DEVE contenere l'oggetto ``authorization_code`` con i seguenti parametri:
 
-        - **issuer_state**: OPZIONALE. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Isser. PUO' essere associata a un determinato Credential Dataset fornito da una specifica Fonte Autentica. Il Wallet DEVE includerlo nella successiva Authorization Request quando presente. Deve essere un’URN e contenere le seguenti informazioni:
+        - **issuer_state**: OPZIONALE, salvo il caso in cui la Credential Offer sia associata a un Credential Dataset di una Fonte Autentica, nel qual caso è OBBLIGATORIO. Stringa opaca utilizzata per associare la successiva Authorization Request con il Credential Issuer. Quando presente, l'Istanza del Wallet DEVE includere lo stesso valore nella successiva Authorization Request. L'URN in chiaro, l'obbligo di cifratura quando ``objectId`` è presente e le regole di elaborazione sono definiti in :ref:`credential-issuance-low-level:Parametro issuer_state`.
 
-            - *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Authentic Source Registry`.
-
-            - *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Authentic Source Registry`.
-
-            - *objectId*: OPZIONALE. Identificativo univoco del Credential Dataset disponibile presso la Fonte Autentica.
-
-        Il parametro ``issuer_state`` DEVE seguire la seguente struttura: ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}`` se ``objectId`` è assente oppure ``urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}:{objectId}`` nel caso in cui ``objectId`` è presente. Il segmento opzionale ``objectId`` DEVE essere omesso quando non disponibile; NON DEVE essere utilizzato un segmento finale vuoto. Il valore di questo URN DEVE essere cifrato utilizzando la chiave pubblica PDND relativa al Consumer dell’e-service ``GetAttributeClaims``.
-
-        - **authorization_server**: OBBLIGATORIO quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
+       - **authorization_server**: OBBLIGATORIO quando il Credential Issuer utilizza più di un authorization server nella sua soluzione. Stringa che identifica l'Authorization Server da utilizzare. Il valore DEVE corrispondere a uno dei valori mappati nell'array ``authorization_servers`` dei metadata del Credential Issuer. NON DEVE essere utilizzato se ``authorization_servers`` è assente o non ha voci multiple.
     - Sezione 4.1.1 di [`OpenID4VCI`_] e Sezione 4.1 di [`OPENID4VC-HAIP`_].
 
 .. note::
   Quando si utilizza ``credential_offer_uri`` (per riferimento), il Credential Issuer o la terza parte DOVREBBE utilizzare un URI univoco per ogni Credential Offer o altrimenti prevenire il caching dell'URI, come raccomandato nella Sezione 4.1.3 di [`OpenID4VCI`_].
 
+Parametro issuer_state
+^^^^^^^^^^^^^^^^^^^^^^
+
+Il parametro ``issuer_state`` è una stringa opaca come definito nella Sezione 4.1.1 di [`OpenID4VCI`_]. Le condizioni per la sua presenza e per l'uso del valore da parte dell'Istanza del Wallet nella successiva Authorization Request (:ref:`credential-issuance-endpoint:Pushed Authorization Request Endpoint`) sono specificate nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>`. L'Istanza del Wallet DEVE trattare ``issuer_state`` come opaco e NON DEVE decifrarlo né analizzarlo.
+
+L'informazione trasportata da ``issuer_state`` è sempre un URN, come specificato di seguito. La forma del valore del parametro dipende dalla presenza di ``objectId`` in quell'URN:
+
+1. Quando ``objectId`` è assente, il valore del parametro DEVE essere l'URN in chiaro.
+2. Quando ``objectId`` è presente, il valore del parametro DEVE essere la JWE Compact Serialization [:rfc:`7516`] di quell'URN. In questo caso l'URN in chiaro NON DEVE essere usato come valore del parametro.
+
+URN in chiaro
+"""""""""""""
+
+L'URN DEVE avere la seguente struttura. Quando ``issuer_state`` è cifrato, il payload del JWE DEVE essere la codifica UTF-8 di questo URN:
+
+.. code-block:: text
+
+  urn:it-wallet:credential-offer:{authenticSourceId}:{datasetId}[:{objectId}]
+
+I componenti dell'URN sono:
+
+- *authenticSourceId*: OBBLIGATORIO. DEVE corrispondere al valore ``entity_id`` della Fonte Autentica che fornisce i Credential Dataset, come indicato nel :ref:`registry:Authentic Source Registry`.
+- *datasetId*: OBBLIGATORIO. Identificativo univoco del dataset fornito dalla Fonte Autentica, come indicato nel :ref:`registry:Authentic Source Registry`.
+- *objectId*: OPZIONALE. Identificativo univoco del Credential Dataset disponibile presso la Fonte Autentica.
+
+Ciascuno tra ``authenticSourceId``, ``datasetId`` e ``objectId`` è un componente distinto dell'URN. Prima della concatenazione, ciascun componente DEVE essere percent-encoded secondo :rfc:`3986#section-2.1`, in modo che i caratteri riservati dell'``entity_id`` della Fonte Autentica (in particolare ``:`` e ``/``) non possano essere confusi con il delimitatore dei componenti dell'URN.
+
+Il componente opzionale ``objectId`` DEVE essere omesso quando non disponibile; NON DEVE essere utilizzato un componente finale vuoto.
+
+L'URN risultante utilizza quindi ``:`` non codificato solo come delimitatore tra i componenti. Un esempio non normativo di URN con ``entity_id`` della Fonte Autentica percent-encoded e con ``objectId`` è:
+
+.. literalinclude:: ../../examples/issuer-state-plaintext.txt
+  :language: text
+
+Per analizzare l'URN in chiaro, il Credential Issuer DEVE:
+
+1. Verificare che la stringa inizi con il prefisso ``urn:it-wallet:credential-offer:``.
+2. Suddividere il resto della stringa sul carattere ``:`` non codificato. La suddivisione DEVE produrre due componenti, oppure tre quando ``objectId`` è presente.
+3. Applicare il percent-decoding a ciascun componente secondo :rfc:`3986#section-2.1`.
+4. Utilizzare i componenti decodificati come ``authenticSourceId``, ``datasetId`` e, se presente, ``objectId``.
+
+Profilo JOSE
+""""""""""""
+
+Quando ``objectId`` è presente, ``issuer_state`` DEVE essere un JWE in Compact Serialization come definito in :rfc:`7516#section-7.1`. La JSON Serialization NON DEVE essere utilizzata. Quando ``objectId`` è assente, ``issuer_state`` NON DEVE essere un JWE.
+
+Il payload del JWE DEVE essere l'URN in chiaro specificato sopra. Il payload NON DEVE essere un JWT.
+
+L'header protetto del JWE DEVE contenere i seguenti parametri. Gli identificatori degli algoritmi DEVONO essere scelti dalla Sezione :ref:`algorithms:Algoritmi Crittografici`.
+
+.. _table_issuer_state_jwe_header:
+.. list-table:: Header protetto JWE di issuer_state
+  :class: longtable
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **JOSE Header**
+    - **Descrizione**
+    - **Riferimento**
+  * - **alg**
+    - OBBLIGATORIO. DEVE essere ``ECDH-ES``.
+    - :rfc:`7516`, :rfc:`7518`.
+  * - **enc**
+    - OBBLIGATORIO. DEVE essere ``A256GCM``.
+    - :rfc:`7516`, :rfc:`7518`.
+  * - **kid**
+    - OBBLIGATORIO. Identificatore della chiave di cifratura del Credential Issuer pubblicata in ``openid_credential_issuer.jwks`` come definito in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
+    - :rfc:`7516#section-4.1.4`.
+  * - **typ**
+    - OBBLIGATORIO. DEVE essere ``issuer-state+jwe``.
+    - :rfc:`7516#section-4.1.11`.
+  * - **epk**
+    - OBBLIGATORIO. Chiave pubblica effimera utilizzata per ``ECDH-ES``.
+    - :rfc:`7518#section-4.6.1.1`.
+
+Il parametro di header ``cty`` NON DEVE essere presente.
+
+Chiave di cifratura
+"""""""""""""""""""
+
+Quando ``objectId`` è presente, il JWE DEVE essere cifrato con una chiave pubblica di cifratura del Credential Issuer identificato da ``credential_issuer``. Tale chiave DEVE essere un JWK con ``use`` impostato a ``enc`` dal parametro ``jwks`` dei metadata ``openid_credential_issuer`` del Credential Issuer, come pubblicati nella sua Entity Configuration di Federazione. I parametri del JWK sono definiti in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
+
+Quando il Credential Issuer genera la Credential Offer e ``objectId`` è presente, cifra ``issuer_state`` verso la propria chiave di cifratura. Quando una Fonte Autentica o un'altra terza parte genera la Credential Offer e ``objectId`` è presente, DEVE ottenere lo stesso JWK di cifratura risolvendo l'Entity Configuration del Credential Issuer per ``credential_issuer``. DEVE cifrare ``issuer_state`` verso tale chiave.
+
+Elaborazione da parte del Credential Issuer
+"""""""""""""""""""""""""""""""""""""""""""
+
+Alla ricezione di ``issuer_state`` nella Authorization Request, il Credential Issuer DEVE:
+
+1. Determinare la forma del valore. Se è una JWE Compact Serialization, decifrarla con la chiave privata corrispondente al parametro di header ``kid`` e usare il testo UTF-8 risultante come URN. Altrimenti, usare il valore come URN in chiaro.
+2. Analizzare l'URN in chiaro come specificato sopra.
+3. Verificare che la forma corrisponda alla presenza di ``objectId``. Se ``objectId`` è presente, l'``issuer_state`` ricevuto DEVE essere stato un JWE. Se ``objectId`` è assente, il valore ricevuto DEVE essere l'URN in chiaro.
+4. Verificare che ``authenticSourceId`` e ``datasetId`` siano coerenti con il ``credential_configuration_id`` richiesto nel Request Object e con il :ref:`registry:Authentic Source Registry`.
+5. Utilizzare gli identificativi decodificati per invocare ``GetAttributeClaims`` come definito in :ref:`authentic-source-endpoint:Get Attribute Claims`.
+
+Se la decifratura, l'analisi o i controlli di coerenza falliscono, il Credential Issuer DEVE rifiutare la richiesta.
+
 Esempi non normativi
 ^^^^^^^^^^^^^^^^^^^^
+
+Quando ``objectId`` è assente, ``issuer_state`` è l'URN in chiaro, ad esempio:
+
+.. code-block:: text
+
+  urn:it-wallet:credential-offer:https%3A%2F%2Fauthentic-source.example.org:education_degree
+
+Quando ``objectId`` è presente, gli esempi seguenti condividono lo stesso JWE di ``issuer_state``. L'URN in chiaro è mostrato sopra. L'header protetto JWE decodificato e la Compact Serialization sono:
+
+.. literalinclude:: ../../examples/issuer-state-jwe-header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/issuer-state-jwe.txt
+  :language: text
+
+Il JWK di cifratura corrispondente all'header ``kid`` è l'esempio non normativo in :ref:`credential-issuer-metadata:Metadata per openid_credential_issuer`.
+
+Esempi non normativi della Credential Offer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'esempio seguente è una Credential Offer passata per valore.
 
 La Credential Offer può essere trasmessa per valore utilizzando qualsiasi metodo di invocazione supportato (schema URL personalizzato o Universal Link):
 
-.. code-block:: text
+.. literalinclude:: ../../examples/credential-offer-by-value.txt
+  :language: text
 
-  openid-credential-offer://?credential_offer=%7B%22credential_issuer%22%3A%22https%3A//credential-issuer.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_Education_degree%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22eyJhbGciOiJSU0Et...F77QK8%22%7D%7D%7D
 
 L'oggetto Credential Offer decodificato:
 
-.. literalinclude:: ../../examples/shared/credential-issuance-low-level-12.json
-   :language: json
+.. literalinclude:: ../../examples/credential-offer.json
+  :language: JSON
 
 L'esempio seguente è una Credential Offer passata per riferimento dal Credential Issuer.
 
