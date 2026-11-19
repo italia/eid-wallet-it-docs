@@ -350,8 +350,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-85
     - Endpoint Security
-    - Test that ``request_uri`` is attested by trusted third party.
-    - ``request_uri`` parameter is properly attested by trusted third party.
+    - Test that ``request_uri`` is attested by a trusted third party.
+    - ``request_uri`` exactly matches one value of ``request_uris`` in the ``openid_credential_verifier`` metadata from the Trust Chain.
 
   * - RPR-86
     - Privacy Protection
