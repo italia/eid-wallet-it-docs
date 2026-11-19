@@ -351,7 +351,7 @@ Questa sezione fornisce l’insieme dei casi di test progettati per implementato
   * - RPR-85
     - Sicurezza Endpoint
     - Test che ``request_uri`` sia attestato da una terza parte fidata.
-    - Il parametro ``request_uri`` è correttamente attestato da una terza parte fidata.
+    - ``request_uri`` corrisponde esattamente a un valore di ``request_uris`` nei metadata ``openid_credential_verifier`` della Trust Chain.
 
   * - RPR-86
     - Protezione della Privacy

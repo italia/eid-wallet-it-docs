@@ -22,7 +22,7 @@ I metadata *openid_credential_verifier* DEVONO contenere il *client_metadata*, c
   * - **application_type**
     - Stringa che indica il tipo di applicazione. DEVE essere impostata al valore "*web*". Vedi `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 2.
   * - **request_uris**
-    - JSON Array di valori ``request_uri`` che sono pre-registrati dalla RP. Questi URL DEVONO utilizzare lo schema *https*. Vedi `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 2.
+    - JSON Array di URL di endpoint ``request_uri`` pre-registrati dalla RP. Ciascun valore è l'URL HTTPS completo che l'Authorization Request usa come ``request_uri``. Questi URL DEVONO utilizzare lo schema *https*. Vedi `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Sezione 2. Il confronto è specificato in :ref:`endpoint-mix-up-protection`.
   * - **response_uris**
     - JSON Array di stringhe URI di risposta a cui l'Istanza del Wallet DEVE inviare la Risposta di Autorizzazione utilizzando una richiesta HTTP POST come definito dalle Modalità di Risposta ``direct_post`` e ``direct_post.jwt`` (vedi `OpenID4VP`_ Draft 20 Sezioni 6.2 e 6.3).
   * - **encrypted_response_enc_values_supported**

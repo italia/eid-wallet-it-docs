@@ -176,6 +176,11 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
   - Quando la Relying Party non supporta ``request_uri_method`` con valore ``post``, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
+  Di seguito è riportato un esempio non normativo di HTTP GET verso l'endpoint ``request_uri`` attestato. Il valore ``state`` associa il recupero alla transazione creata nel Passaggio 3.
+
+  .. literalinclude:: ../../examples/shared/remote-flow-request-uri-get.http
+     :language: http
+
 **Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`) come estratto dall'Istanza del Wallet per :ref:`WP_084 <wallet-credential-presentation-testcases>`. L'Istanza del Wallet ottiene il Request Object firmato.
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
@@ -388,11 +393,19 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
 .. note::
   Le specifiche IT Wallet raccomandano l'uso di ``request_uri``, ovvero Request Object by reference.
 
+.. note::
+  In questo profilo il parametro ``request_uri`` nell'Authorization Request è l'URL dell'endpoint attestato.
+  La Relying Party non codifica in quel parametro un percorso casuale per richiesta.
+  La Relying Party associa il recupero del Request Object alla transazione con il valore ``state`` creato nel Passaggio 3, oppure con la sessione dello user-agent.
+  Quel riferimento fornisce il recupero non indovinabile di cui tratta :rfc:`9101#section-5.2.1`.
+
+.. _endpoint-mix-up-protection:
+
 .. warning::
 
-  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``request_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
-
-Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Sezione 5.2.1.
+  Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere attestato da una terza parte fidata.
+  L'Istanza del Wallet DEVE ottenere i metadata ``openid_credential_verifier`` dalla Trust Chain relativa alla Relying Party.
+  L'Istanza del Wallet DEVE richiedere che ``request_uri`` sia esattamente uguale a un valore del parametro ``request_uris`` in quei metadata (:ref:`WP_081 <wallet-credential-presentation-testcases>` e :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`).
 
 
 Richiesta all'Endpoint URI Request

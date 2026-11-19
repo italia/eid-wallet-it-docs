@@ -176,6 +176,11 @@ The details of each step shown in the previous picture are described below.
 
   - When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
+  Below is a non-normative example of an HTTP GET to the attested ``request_uri`` endpoint. The ``state`` value binds the retrieval to the transaction created in Step 3.
+
+  .. literalinclude:: ../../examples/shared/remote-flow-request-uri-get.http
+     :language: http
+
 **Step 12 (Request URI Response)**: The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.openid_credential_verifier.jwks`) as extracted by Wallet Instance per :ref:`WP_084 <wallet-credential-presentation-testcases>`. The Wallet Instance obtains the signed Request Object.
 
   Below is a non-normative example of the Redirect URI Response:
@@ -388,11 +393,19 @@ The URL parameters contained in the Relying Party Authorization Request are desc
 .. note::
   IT Wallet specification recommends the use of ``request_uri``, i.e. Request Object by reference.
 
+.. note::
+  Under this profile the ``request_uri`` parameter in the Authorization Request is the attested endpoint URL.
+  The Relying Party does not encode a per-request random path in that parameter.
+  The Relying Party binds the Request Object retrieval to the transaction with the ``state`` value created in Step 3, or with the user-agent session.
+  That handle provides the unguessable retrieval that :rfc:`9101#section-5.2.1` addresses.
+
+.. _endpoint-mix-up-protection:
+
 .. warning::
 
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
-
-The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be attested by a trusted third party.
+  The Wallet Instance MUST obtain the ``openid_credential_verifier`` metadata from the Trust Chain about the Relying Party.
+  The Wallet Instance MUST require that ``request_uri`` exactly equal one value of the ``request_uris`` parameter in that metadata (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`).
 
 
 Request URI Request
