@@ -169,6 +169,11 @@ For a redirect flow, the Relying Party provides the user-agent with a JavaScript
 
   - If ``request_uri_method`` is equal to ``get`` or is not present, the Wallet Instance MUST request the signed Request Object using HTTP GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
+  Below is a non-normative example of an HTTP GET to the attested ``request_uri`` endpoint. The ``state`` value binds the retrieval to the transaction created in Step 3.
+
+  .. literalinclude:: ../../examples/shared/remote-flow-request-uri-get.http
+     :language: http
+
 **Step 12 (Request URI Response)**: The Relying Party issues the Request Object by signing it with one of its cryptographic private keys. 
 
 * For ``openid_federation``, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`). The Wallet Unit MUST obtain the ``openid_credential_verifier`` metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`. The Wallet Unit MUST verify the signature with the key identified by ``kid`` in that metadata.
@@ -303,7 +308,10 @@ The URL parameters contained in the Relying Party Authorization Request are desc
      - OPTIONAL only if ``request_uri`` is present. Otherwise it MUST NOT be present. The value MUST be ``get`` or ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-08 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`, :ref:`RPR-09 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`). If it is not provided or is equal to ``get``, the Wallet Instance MUST fetch the Request Object with HTTP ``GET``. If it is equal to ``post``, the Wallet Instance MUST provide its metadata in the HTTP POST body, encoded as ``application/x-www-form-urlencoded``.
 
 .. note::
-   The value corresponding to the ``request_uri`` endpoint SHOULD be randomized, according to :rfc:`9101#section-5.2.1`.
+   Under this profile the ``request_uri`` parameter in the Authorization Request is the attested endpoint URL.
+   The Relying Party does not encode a per-request random path in that parameter.
+   The Relying Party binds the Request Object retrieval to the transaction with the ``state`` value created in Step 3, or with the user-agent session.
+   That handle provides the unguessable retrieval that :rfc:`9101#section-5.2.1` addresses.
 
 .. _endpoint-mix-up-protection:
 
@@ -312,7 +320,9 @@ Endpoint Mix-Up Protection
 
 .. warning::
    For redirect flows, to prevent endpoint mix-up attacks, the values of ``request_uri``, ``response_uri`` and ``redirect_uri`` MUST each be attested by a trusted third party.
-   Under the National Trust Framework, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`), and the values MUST match the corresponding ``request_uris``, ``response_uris`` and ``redirect_uris`` parameters in the ``openid_credential_verifier`` metadata obtained through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+   Under the National Trust Framework, the Wallet Unit MUST evaluate trust using the Federation Entity Authentication and National Authorization (:ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`).
+   The Wallet Unit MUST obtain the ``openid_credential_verifier`` metadata through :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+   The Wallet Unit MUST require that ``request_uri``, ``response_uri`` and ``redirect_uri`` each exactly equal one value of the corresponding ``request_uris``, ``response_uris`` and ``redirect_uris`` parameters in that metadata.
    Under the EUDIW Trust Framework they MUST satisfy the WRPAC/WRPRC identity and endpoint binding, as specified in :ref:`trust-evaluation:EUDIW Authentication` and :ref:`trust-evaluation:EUDIW Authorization`. Evidence from the unselected framework MUST NOT authorize an endpoint.
 
    This requirement applies to ``request_uri`` as specified in :ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-85 <test-plans-remote-presentation:Remote Credential Verifier Test Matrix>`.

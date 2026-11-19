@@ -23,7 +23,7 @@ The *openid_credential_verifier* metadata MUST contain the *client_metadata*, as
    * - **application_type**
      - String indicating the type of application. It MUST be set to "*web*" value. See Section 2 of [`OpenID Connect Registration 1.0`_].
    * - **request_uris**
-     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See Section 2 of [`OpenID Connect Registration 1.0`_].
+     - JSON Array of ``request_uri`` endpoint URLs that are pre-registered by the RP. Each value is the full HTTPS URL that the Authorization Request uses as ``request_uri``. These URLs MUST use the *https* scheme. See Section 2 of [`OpenID Connect Registration 1.0`_]. National-path comparison is specified in :ref:`endpoint-mix-up-protection`.
    * - **response_uris**
      - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode ``direct_post`` and ``direct_post.jwt`` (see `OpenID4VP`_ Sections 6.2 and 6.3).
    * - **redirect_uris**
