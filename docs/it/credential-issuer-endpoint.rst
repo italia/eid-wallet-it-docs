@@ -14,15 +14,22 @@ I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoin
 
 Alternativamente i metadati del Credential Issuer possono essere recuperati utilizzando l’identificativo del Credential Issuer. Il documento di metadata DEVE essere reso disponibile in formato JSON e JWT presso l’endpoint ``/.well-known/openid-credential-issuer`` come definito nella Sezione 12.2.2 di `OpenID4VCI`_.
 
+Il Wallet DEVE formare l’URL dei metadati inserendo la stringa ``/.well-known/openid-credential-issuer`` nell’identificativo del Credential Issuer tra la componente host (e la porta opzionale) e la componente path, se presente. Il Wallet NON DEVE aggiungere ``/.well-known/openid-credential-issuer`` dopo il path dell’identificativo del Credential Issuer.
+
 L’header ``Accept-Language`` nella richiesta HTTP GET può essere utilizzato per indicare la/le lingua/e preferite.
 In tal caso, il Credential Issuer può inviare un sottoinsieme dei metadati contenente dati di visualizzazione internazionalizzati per una o tutte le lingue richieste, e può indicare le lingue restituite utilizzando l’header HTTP ``Content-Language``.
 
-Di seguito è riportato un esempio non normativo.
+Di seguito è riportato un esempio non normativo per un identificativo del Credential Issuer senza componente path.
 
 .. literalinclude:: ../../examples/shared/credential-issuer-endpoint-1.http
    :language: http
 
 .. literalinclude:: ../../examples/shared/credential-issuer-endpoint-2.http
+   :language: http
+
+Di seguito è riportato un esempio non normativo per l’identificativo del Credential Issuer ``https://issuer.example.org/tenant``.
+
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-path.http
    :language: http
 
 Il Credential Issuer DEVE rispondere con il Status Code HTTP 200 e restituire i metadati del Credential Issuer contenenti:
@@ -39,11 +46,16 @@ Di seguito è riportato un esempio non normativo dei metadati del Credential Iss
    :language: text
 
 Gli elementi contenuti in ``authorization_servers`` nei metadati del Credential Issuer possono essere utilizzati per ottenere i metadati dell'OAuth Authorization Server tramite l’endpoint ``/.well-known/oauth-authorization-server``, come definito nella Sezione 3 del :rfc:`8414`.
-Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server.
+Nel caso in cui il parametro ``authorization_servers`` venga omesso, è possibile utilizzare l’identificativo del Credential Issuer per recuperare i metadati del Authorization Server. Il Wallet DEVE formare quell’URL dei metadati inserendo la stringa ``/.well-known/oauth-authorization-server`` nell’identificativo del Credential Issuer tra la componente host (e la porta opzionale) e la componente path, se presente.
 
-Di seguito è riportato un esempio non normativo.
+Di seguito è riportato un esempio non normativo per un identificativo dell’Authorization Server senza componente path.
 
 .. literalinclude:: ../../examples/shared/credential-issuer-endpoint-3.http
+   :language: http
+
+Di seguito è riportato un esempio non normativo quando i metadati dell’Authorization Server sono derivati dall’identificativo del Credential Issuer ``https://issuer.example.org/tenant``.
+
+.. literalinclude:: ../../examples/shared/credential-issuer-endpoint-as-path.http
    :language: http
 
 OAuth Authorization Server DEVE rispondere con Status Code HTTP 200 e restituire i metadati dell’OAuth Authorization Server, contenenti i parametri definiti nella sezione :ref:`credential-issuer-metadata:Metadata per oauth_authorization_server`, all’interno di un documento JSON utilizzando il media type *application/json*.
