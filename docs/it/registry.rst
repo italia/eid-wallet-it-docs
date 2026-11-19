@@ -834,56 +834,56 @@ Regole per la denominazione dei claim
 
 Prima di definire un nuovo claim per un’Attestazione Elettronica di Attributi, il Claim Registry **DEVE** essere consultato per verificare se esista già un claim che rappresenti il medesimo concetto semantico. Un claim esistente **DEVE** essere riutilizzato ogniqualvolta abbia il significato richiesto, in assenza di standard esterni.
 
-Quando nel Claim Registry non è disponibile un claim adeguato e non esistono standard esterni specifici (ad esempio, il registro IANA per SD-JWT VC o ISO 18013-5 per mdoc-cbor), il nome di un nuovo claim **DEVE** rispettare le regole seguenti:
+Il nome di un nuovo claim **DEVE** rispettare le regole seguenti quando ricorrono entrambe le condizioni. Nel Claim Registry non è disponibile un claim adeguato. Nessuno standard esterno specifico definisce il nome, ad esempio il registro IANA per SD-JWT VC o ISO 18013-5 per mdoc-cbor.
 
-1. **Il nome del claim DEVE utilizzare il formato `snake_case`**: DEVE contenere esclusivamente parole in minuscolo separate da underscore. Non DEVONO essere utilizzati né il CamelCase né i trattini.
+1. **Il nome del claim DEVE utilizzare il formato ``snake_case``**. DEVE contenere esclusivamente parole in minuscolo separate da underscore. Non DEVONO essere utilizzati né il CamelCase né i trattini.
 
-   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):
+   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗).
 
-   - ✓ `degree_level`
-   - ✓ `graduation_date`
-   - ✗ `DegreeLevel` (CamelCase)
-   - ✗ `degree-level` (trattino)
-   - ✗ `DEGREE_LEVEL` (maiuscolo)
+   - ✓ ``degree_level``.
+   - ✓ ``graduation_date``.
+   - ✗ ``DegreeLevel`` (CamelCase).
+   - ✗ ``degree-level`` (trattino).
+   - ✗ ``DEGREE_LEVEL`` (maiuscolo).
 
 2. **Il nome del claim DEVE essere in inglese**. La descrizione semantica e l’etichetta visualizzata nell’interfaccia utente DEVONO essere fornite almeno in italiano.
 
-   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):
+   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗).
 
-   - ✓ `graduation_date` → Etichetta UI: "Data conseguimento"
-   - ✓ `institution_name` → Etichetta UI: "Istituto"
-   - ✗ `data_laurea` (nome in italiano)
-   - ✗ `denominazione_corso` (nome in italiano)
+   - ✓ ``graduation_date``. Etichetta UI: "Data conseguimento".
+   - ✓ ``institution_name``. Etichetta UI: "Istituto".
+   - ✗ ``data_laurea`` (nome in italiano).
+   - ✗ ``denominazione_corso`` (nome in italiano).
 
 3. **Un claim DEVE rappresentare un solo concetto semantico**. Le informazioni correlate DEVONO essere rappresentate mediante claim distinti oppure, ove appropriato, mediante proprietà di un oggetto strutturato.
 
-   Gli esempi seguenti illustrano nomi e strutture di claim conformi (✓) e non conformi (✗):
+   Gli esempi seguenti illustrano nomi e strutture di claim conformi (✓) e non conformi (✗).
 
-   - ✓ `given_name` + `family_name` (claim distinti)
-   - ✓ `place_of_birth`: `{ country, region, locality }` (oggetto strutturato)
-   - ✗ `full_name` (aggregazione di due informazioni distinte)
-   - ✗ `birth_info`: `"1990-01-01 Roma"` (stringa composita)
+   - ✓ ``given_name`` + ``family_name`` (claim distinti).
+   - ✓ ``place_of_birth``: ``{ country, region, locality }`` (oggetto strutturato).
+   - ✗ ``full_name`` (aggregazione di due informazioni distinte).
+   - ✗ ``birth_info``: ``"1990-01-01 Roma"`` (stringa composita).
 
-4. **Quando il claim è specifico di un dominio, DEVE essere aggiunto un prefisso di dominio. Un prefisso NON DEVE essere aggiunto a un claim generico riutilizzabile in più domini**.
+4. **Quando il claim è specifico di un dominio, DEVE essere aggiunto un prefisso di dominio**. Un prefisso **NON DEVE** essere aggiunto a un claim generico riutilizzabile in più domini.
 
-   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):
+   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗).
 
-   - ✓ `edu_degree_level` (dominio dell’istruzione)
-   - ✓ `badge_type` (dominio lavorativo/di accesso)
-   - ✓ `email_address` (generico, senza prefisso)
-   - ✓ `tax_id_code` (universale, senza prefisso)
+   - ✓ ``edu_degree_level`` (dominio dell’istruzione).
+   - ✓ ``badge_type`` (dominio lavorativo/di accesso).
+   - ✓ ``email_address`` (generico, senza prefisso).
+   - ✓ ``tax_id_code`` (universale, senza prefisso).
 
-5. **I nomi dei claim DEVONO essere sempre scritti per esteso, fatta eccezione per gli acronimi e le sigle definiti dagli standard tecnici applicabili**.
+5. **I nomi dei claim DEVONO essere sempre scritti per esteso**. Fanno eccezione gli acronimi e le sigle definiti dagli standard tecnici applicabili.
 
-   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗):
+   Gli esempi seguenti illustrano nomi di claim conformi (✓) e non conformi (✗).
 
-   - ✓ `institution_name`
-   - ✓ `graduation_date`
-   - ✓ `tax_id_code` (acronimo standard)
-   - ✗ `inst_name`
-   - ✗ `grad_dt`
+   - ✓ ``institution_name``.
+   - ✓ ``graduation_date``.
+   - ✓ ``tax_id_code`` (acronimo standard).
+   - ✗ ``inst_name``.
+   - ✗ ``grad_dt``.
 
-A un claim già presente nel Claim Registry **PUÒ** essere associato un alias. L’alias **DEVE** risolversi nel claim registrato e **NON DEVE** modificarne il nome canonico né il significato semantico.
+A un claim già presente nel Claim Registry **PUÒ** essere associato un alias. L’alias **DEVE** risolversi nel claim registrato. L’alias **NON DEVE** modificarne il nome canonico né il significato semantico.
 
 Authentic Source Registry
 -------------------------

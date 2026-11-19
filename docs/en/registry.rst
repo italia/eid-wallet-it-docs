@@ -834,56 +834,56 @@ Claim naming rules
 
 Before defining a new claim for an Electronic Attestation of Attributes, the Claim Registry MUST be consulted to determine whether a claim representing the same semantic concept already exists. An existing claim MUST be reused whenever it has the required meaning if there are no external standards.
 
-When a suitable claim is not available in the Claim Registry and there are no specific external standard (e.g IANA registry for SD-JWT VC, ISO 18013-5 for mdoc-cbor), a new claim name MUST comply with the following rules:
+A new claim name MUST comply with the following rules when both of the following conditions hold. No suitable claim is available in the Claim Registry. No specific external standard defines the name, such as the IANA registry for SD-JWT VC or ISO 18013-5 for mdoc-cbor.
 
-1. **The claim name MUST use ``snake_case``**: it MUST contain only lowercase words separated by underscores. Camel case and hyphens MUST NOT be used.
+1. **The claim name MUST use ``snake_case``**. It MUST contain only lowercase words separated by underscores. Camel case and hyphens MUST NOT be used.
 
-    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names.
 
-    -   ✓ degree_level
-    -   ✓ graduation_date
-    -   ✗ DegreeLevel (CamelCase)
-    -   ✗ degree-level (hyphen)
-    -   ✗ DEGREE_LEVEL (uppercase)
+    -   ✓ degree_level.
+    -   ✓ graduation_date.
+    -   ✗ DegreeLevel (CamelCase).
+    -   ✗ degree-level (hyphen).
+    -   ✗ DEGREE_LEVEL (uppercase).
 
 2. **The claim name MUST be in English**. The semantic description and the label displayed in the user interface MUST be provided at least in Italian.
 
-    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names.
 
-    -   ✓ graduation_date → Label UI: 'Data conseguimento'
-    -   ✓ institution_name → Label UI: 'Istituto'
-    -   ✗ data_laurea (Italian name)
-    -   ✗ denominazione_corso (Italian name)
+    -   ✓ graduation_date. Label UI: 'Data conseguimento'.
+    -   ✓ institution_name. Label UI: 'Istituto'.
+    -   ✗ data_laurea (Italian name).
+    -   ✗ denominazione_corso (Italian name).
 
 3. **A claim MUST represent one semantic concept only**. Correlated information MUST be represented by separate claims or by properties of a structured object, as appropriate.
 
-    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names.
 
-    -   ✓ given_name + family_name (separate claims)
-    -   ✓ place_of_birth: { country, region, locality } (structured object)
-    -   ✗ full_name (aggregation of two distinct pieces of information)
-    -   ✗ birth_info: '1990-01-01 Roma' (composite string)
+    -   ✓ given_name + family_name (separate claims).
+    -   ✓ place_of_birth: { country, region, locality } (structured object).
+    -   ✗ full_name (aggregation of two distinct pieces of information).
+    -   ✗ birth_info: '1990-01-01 Roma' (composite string).
 
-4. **A domain prefix MUST be added when the claim is specific to a vertical domain. A prefix MUST NOT be added to a generic claim that can be reused across domains**.
+4. **A domain prefix MUST be added when the claim is specific to a vertical domain**. A prefix MUST NOT be added to a generic claim that can be reused across domains.
 
-    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names.
 
-    -   ✓ edu_degree_level (education domain)
-    -   ✓ badge_type (work/access domain)
-    -   ✓ email_address (generic, no prefix)
-    -   ✓ tax_id_code (universal, no prefix)
+    -   ✓ edu_degree_level (education domain).
+    -   ✓ badge_type (work/access domain).
+    -   ✓ email_address (generic, no prefix).
+    -   ✓ tax_id_code (universal, no prefix).
 
-5. **Claims MUST always be written in their entirety, except for acronyms and initialisms established by applicable technical standards**.
+5. **Claims MUST always be written in their entirety**. Acronyms and initialisms established by applicable technical standards are the exception.
 
-    The following examples illustrate compliant (✓) and non-compliant (✗) claim names:
+    The following examples illustrate compliant (✓) and non-compliant (✗) claim names.
 
-    -   ✓ institution_name
-    -   ✓ graduation_date
-    -   ✓ tax_id_code (standard acronym)
-    -   ✗ inst_name
-    -   ✗ grad_dt
+    -   ✓ institution_name.
+    -   ✓ graduation_date.
+    -   ✓ tax_id_code (standard acronym).
+    -   ✗ inst_name.
+    -   ✗ grad_dt.
 
-An alias MAY be associated with a claim already present in the Claim Registry. The alias MUST resolve to the registered claim and MUST NOT alter its canonical name or semantic meaning.
+An alias MAY be associated with a claim already present in the Claim Registry. The alias MUST resolve to the registered claim. The alias MUST NOT alter its canonical name or its semantic meaning.
 
 Authentic Source Registry
 -------------------------
