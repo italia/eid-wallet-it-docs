@@ -168,6 +168,11 @@ La Relying Party fornisce allo user-agent una pagina JavaScript che ispeziona lo
 
   - Se ``request_uri_method`` è uguale a ``get`` o non è presente, l'Istanza del Wallet DEVE richiedere il Request Object firmato con il metodo HTTP GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
+  Di seguito è riportato un esempio non normativo di HTTP GET verso l'endpoint ``request_uri`` attestato. Il valore ``state`` associa il recupero alla transazione creata nel Passaggio 3.
+
+  .. literalinclude:: ../../examples/shared/remote-flow-request-uri-get.http
+     :language: http
+
 **Passaggio 12 (URI Request Response)**: La Relying Party emette il Request Object firmandolo con una delle sue chiavi private crittografiche.
 
 * Per ``openid_federation``, la Wallet Unit DEVE valutare la fiducia usando la Federation Entity Authentication e l'Authorization nazionale (:ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Authorization`). La Wallet Unit DEVE ottenere i metadata ``openid_credential_verifier`` tramite :ref:`trust-evaluation:Metadata Retrieval and Validation`. La Wallet Unit DEVE verificare la firma con la chiave identificata da ``kid`` in quei metadata.
@@ -301,7 +306,11 @@ I parametri URL contenuti nella Authorization Request della Relying Party sono d
   * - **request_uri_method**
     - OPZIONALE solo se ``request_uri`` è presente. Altrimenti NON DEVE essere presente. Il valore DEVE essere ``get`` o ``post`` (:ref:`RPR-07 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-08 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`, :ref:`RPR-09 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`). Se non è fornito o è uguale a ``get``, l'Istanza del Wallet DEVE recuperare il Request Object con il metodo HTTP ``GET``. Se è uguale a ``post``, l'Istanza del Wallet DEVE fornire i suoi metadata nel corpo della richiesta HTTP POST, codificati in ``application/x-www-form-urlencoded``.
 
-Il valore corrispondente all'endpoint ``request_uri`` DOVREBBE essere casuale, secondo quanto prescritto da :rfc:`9101#section-5.2.1`.
+.. note::
+  In questo profilo il parametro ``request_uri`` nell'Authorization Request è l'URL dell'endpoint attestato.
+  La Relying Party non codifica in quel parametro un percorso casuale per richiesta.
+  La Relying Party associa il recupero del Request Object alla transazione con il valore ``state`` creato nel Passaggio 3, oppure con la sessione dello user-agent.
+  Quel riferimento fornisce il recupero non indovinabile di cui tratta :rfc:`9101#section-5.2.1`.
 
 .. _endpoint-mix-up-protection:
 
@@ -310,7 +319,9 @@ Protezione da Endpoint Mix-Up
 
 .. warning::
   Per prevenire attacchi di tipo endpoint mix-up, i valori di ``request_uri``, ``response_uri`` e ``redirect_uri`` DEVONO ciascuno essere attestati da una terza parte fidata.
-  Sotto il Trust Framework Nazionale DEVONO corrispondere ai parametri ``request_uris``, ``response_uris`` e ``redirect_uris`` nei metadata ``openid_credential_verifier`` ottenuti dalla Trust Chain.
+  Sotto il Trust Framework Nazionale, la Wallet Unit DEVE valutare la fiducia usando l'Autenticazione dell'Entità di Federazione e l'Autorizzazione Nazionale (:ref:`trust-evaluation:Federation Entity Authentication` e :ref:`trust-evaluation:Authorization`).
+  La Wallet Unit DEVE ottenere i metadata ``openid_credential_verifier`` attraverso :ref:`trust-evaluation:Metadata Retrieval and Validation`.
+  La Wallet Unit DEVE richiedere che ``request_uri``, ``response_uri`` e ``redirect_uri`` siano ciascuno esattamente uguale a un valore dei corrispondenti parametri ``request_uris``, ``response_uris`` e ``redirect_uris`` in quei metadata.
   Sotto il Trust Framework EUDIW DEVONO corrispondere all'identità vincolata al Wallet-Relying Party Access Certificate e al Wallet-Relying Party Registration Certificate, come specificato in :ref:`trust-evaluation:Selection at Presentation`.
 
   Questo requisito si applica a ``request_uri`` come specificato in :ref:`WP_081 <wallet-credential-presentation-testcases>` e :ref:`RPR-85 <test-plans-remote-presentation:Matrice di Test per il Verificatore di Credenziali in Remoto>`.
