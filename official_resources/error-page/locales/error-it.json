@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Errore di Autenticazione",
+    "description": "Errore di Autenticazione"
+  },
+  "skip_links": {
+    "nav_label": "Collegamenti di salto",
+    "main_content": "Vai al contenuto principale",
+    "footer": "Vai al piè di pagina"
+  },
+  "noscript": {
+    "message": "Per visualizzare correttamente questa pagina è necessario abilitare JavaScript."
+  },
+  "header": {
+    "organization_name": "Ente di appartenenza",
+    "region_name": "Ente di appartenenza",
+    "logo_title": "Il tuo logo",
+    "lang_active_hint": "lingua attiva:",
+    "lang_trigger": "Selezione lingua, {{name}} selezionata"
+  },
+  "nav": {
+    "main_page": "Pagina principale",
+    "faq": "Domande frequenti",
+    "this_service": "Questo servizio",
+    "assistance": "Assistenza",
+    "spid": "SPID",
+    "more_info": "Maggiori informazioni",
+    "dont_have_spid": "Non hai SPID?",
+    "need_help": "Serve aiuto?",
+    "close": "Chiudi"
+  },
+  "body": {
+    "description": "Si è verificato un errore durante il processo di autenticazione. Non è dipeso dalle tue credenziali, altrimenti avresti ricevuto un messaggio diverso nella pagina di accesso.",
+    "guidance": "Riprova dall'homepage del servizio o attendi qualche minuto. Se il problema persiste per oltre un'ora, contatta l'assistenza attraverso i canali forniti dalla tua organizzazione.",
+    "action": "Torna alla pagina di accesso",
+    "assistance_link": "Rimando all'assistenza specifica",
+    "assistance_link_title": "Vai alla pagina di assistenza"
+  },
+  "footer": {
+    "organization_name": "Ente di appartenenza",
+    "tagline": "Lorem ipsum",
+    "contacts": "Contatti",
+    "contacts_title": "Vai alla pagina: Contatti",
+    "address_line1": "via Tal dei Tali 00000 Città, Provincia",
+    "address_line2": "Codice Fiscale 2384762384623894 - Tel. (+39) xxxx yyyyyy",
+    "pec": "Posta Elettronica Certificata",
+    "pec_title": "Vai alla pagina: Posta Elettronica Certificata",
+    "e_invoicing": "Fatturazione Elettronica",
+    "e_invoicing_title": "Vai alla pagina: Fatturazione elettronica",
+    "useful_links": "Link Utili",
+    "useful_links_title": "Vai alla pagina: Link Utili",
+    "contacts_search": "Contatti/cerca persone",
+    "contacts_search_title": "Vai alla pagina: Contatti/cerca persone",
+    "admin_contacts": "Contatti amministrazione",
+    "admin_contacts_title": "Vai alla pagina: Contatti amministrazione",
+    "services_contacts": "Contatti servizi",
+    "services_contacts_title": "Vai alla pagina: Contatti servizi",
+    "pat": "PAT - Portale amministrazione trasparente",
+    "pat_title": "Vai alla pagina: PAT - Portale amministrazione trasparente",
+    "follow_us": "Seguici su",
+    "follow_us_title": "Vai alla pagina: Seguici su",
+    "newsletter": "Newsletter",
+    "newsletter_title": "Vai alla pagina: Newsletter",
+    "newsletter_form": "Form Newsletter",
+    "useful_links_section": "Sezione Link Utili",
+    "legal_notes": "Note legali",
+    "legal_notes_title": "Note Legali",
+    "privacy": "Privacy policy",
+    "privacy_title": "Privacy policy",
+    "accessibility": "Dichiarazione accessibilità",
+    "nav_label": "Link legali",
+    "new_window_hint": "si apre in una nuova finestra"
+  }
+}

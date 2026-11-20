@@ -1,6 +1,6 @@
 {
   "header": {
-    "region_name": "Nome dell'Organizzazione",
+    "region_name": "Ente di appartenenza",
     "lang_active_hint": "lingua attiva:",
     "lang_trigger": "Selezione lingua, {{name}} selezionata"
   },
@@ -51,8 +51,8 @@
   "footer": {
     "nav_label": "Link legali",
     "legal_notice": "Note legali",
-    "privacy_policy": "Privacy Policy",
-    "accessibility_statement": "Dichiarazione Accessibilità",
+    "privacy_policy": "Privacy policy",
+    "accessibility_statement": "Dichiarazione accessibilità",
     "new_window_hint": "si apre in una nuova finestra"
   },
   "skip_links": {

@@ -403,6 +403,7 @@
     border-radius: calc(var(--qr-size, 250px) * 0.032);
     box-sizing: border-box;
     padding: calc(var(--qr-size, 250px) * 0.028);
+    overflow: visible;
 }
 
 .icon-qr-code {
@@ -410,7 +411,9 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     margin: 0;
+    overflow: visible;
 }
 
 /* ----- disco.html / eid-cards layout ----- */
@@ -559,6 +562,25 @@ main {
   margin-right: 0.25rem;
 }
 
+/* Direct navigation cards use <a class="btn">; keep button look. */
+a.eid-card-btn {
+  text-decoration: none;
+}
+
+/* Sprite icons via <svg><use> inherit button text color. */
+svg.eid-card-logo {
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* SPID IdP menu: list semantics aligned with CIE dropdown. */
+.ita .ita-menu ul.ita-menu-list,
+.ita .ita-menu ul[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Vertical line between logo and label (all buttons except IT-Wallet) */
 .eid-card-btn .eid-card-separator {
   width: 1px;
@@ -601,6 +623,7 @@ header svg.icon {
 .eid-havent-digital-id-heading {
   color: #2f475e;
   font-size: 24px;
+  font-weight: 600;
   line-height: 32px;
 }
 
@@ -930,7 +953,7 @@ html.it-wallet-html {
 footer {
   margin: 0;
   padding: 1rem 0;
-  background-color: #004C99;
+  background-color: #003366;
   color: #ffffff;
   position: relative;
   width: 100%;
@@ -1084,6 +1107,7 @@ html.it-wallet-html body.it-wallet-body {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
+  gap: 12px;
   width: fit-content;
   max-width: 100%;
   min-width: 0;
@@ -1105,7 +1129,7 @@ html.it-wallet-html body.it-wallet-body {
 
 .it-wallet-body .header-title-section .navbar-separator {
   flex: 0 0 auto;
-  margin: 0 1rem;
+  margin: 0;
 }
 
 @media (max-width: 575.98px) {
@@ -1122,7 +1146,7 @@ html.it-wallet-html body.it-wallet-body {
 
   .it-wallet-body .header-title-section .navbar-separator {
     height: 28px;
-    margin: 0 0.5rem;
+    margin: 0;
   }
 }
 
@@ -1178,6 +1202,11 @@ html.it-wallet-html body.it-wallet-body {
     width: 24px;
     height: 24px;
   }
+
+  .it-wallet-page .it-wallet-icon-btn {
+    border: none;
+    background: transparent;
+  }
 }
 
 .it-wallet-title-row {
@@ -1225,6 +1254,29 @@ html.it-wallet-html body.it-wallet-body {
   line-height: 1.2;
   font-weight: 700;
   z-index: 1;
+}
+
+/* Thank you (post-auth) state: single-line title, no cancel CTA */
+.it-wallet-page.is-thank-you .it-wallet-title-heading {
+  max-width: min(36rem, calc(100% - 1rem));
+  white-space: nowrap;
+}
+
+.it-wallet-page.is-thank-you .it-wallet-back-link {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.it-wallet-page.is-thank-you .qr-cancel-wrap {
+  display: none;
+}
+
+.qr-thank-you-pictogram {
+  display: block;
+  width: 10em;
+  height: 10em;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 .it-wallet-title-actions {
@@ -1277,6 +1329,8 @@ html.it-wallet-html body.it-wallet-body {
 
 .it-wallet-subtitle {
   color: #17324D;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
 .it-wallet-layout-surface {
@@ -1332,6 +1386,7 @@ html.it-wallet-html body.it-wallet-body {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
+  align-self: start;
   box-sizing: border-box;
 }
 
@@ -1461,7 +1516,7 @@ html.it-wallet-html body.it-wallet-body {
 
   .it-wallet-controls.it-wallet-controls-panel.is-mobile-panel-open .it-wallet-sort-wrap {
     flex-shrink: 0;
-    align-self: center;
+    align-self: flex-start;
   }
 }
 
@@ -1860,7 +1915,7 @@ html.it-wallet-html body.it-wallet-body {
   }
 
   .it-wallet-title-row {
-    padding-top: 2rem;
+    margin-top: 2rem;
   }
 
 }
@@ -1944,6 +1999,10 @@ html.it-wallet-html body.it-wallet-body {
     text-align: center !important;
   }
 
+  .it-wallet-page.is-thank-you .it-wallet-title-heading {
+    font-size: clamp(1.25rem, 6vw, 1.75rem) !important;
+  }
+
   .it-wallet-card-title {
     font-size: 20px !important;
     line-height: 1.4 !important;
@@ -1952,8 +2011,8 @@ html.it-wallet-html body.it-wallet-body {
   .it-wallet-subtitle {
     font-family: "Titillium Web", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 400 !important;
-    font-size: 20px !important;
-    line-height: 32px !important;
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
     letter-spacing: 0 !important;
     text-align: center !important;
   }

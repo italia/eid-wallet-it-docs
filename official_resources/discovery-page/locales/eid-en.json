@@ -1,6 +1,6 @@
 {
   "header": {
-    "region_name": "Organization Name",
+    "region_name": "Owning entity",
     "lang_active_hint": "active language:",
     "lang_trigger": "Language selection, {{name}} selected"
   },
@@ -15,7 +15,7 @@
     "login_logo": "Your Logo",
     "login_digital_identity": "Log in with a digital identity",
     "login_alternative_method": "Log in using an alternative method",
-    "havent_digital_identy": "Don't have a digital identity yet?",
+    "havent_digital_identy": "Don't have a digital identity?",
     "find_how_to_get_digital_id": "Find out how to get it",
     "find_how_to_get_digital_id_url": "https://identitadigitale.gov.it/",
     "learn_more": "Learn more",
@@ -92,13 +92,13 @@
       "logo_text": "Login with {Alternative 1}",
       "logo": "../shared-ui/svg/sprites.svg#it-code-circle",
       "login_url": "CAMBIAMI",
-      "learn_more_descr": "{Alternative 1} is a federated identity system that allows you to access services that support {Alternative 1} authentication."
+      "learn_more_descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
   },
   "footer": {
     "nav_label": "Legal links",
     "legal_notice": "Legal notes",
-    "privacy_policy": "Privacy Policy",
+    "privacy_policy": "Privacy policy",
     "accessibility_statement": "Accessibility statement",
     "new_window_hint": "opens in a new window"
   },

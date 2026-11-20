@@ -1,6 +1,6 @@
 {
   "header": {
-    "region_name": "Organization Name",
+    "region_name": "Owning entity",
     "lang_active_hint": "active language:",
     "lang_trigger": "Language selection, {{name}} selected"
   },
@@ -12,7 +12,7 @@
   },
   "titles": {
     "page_title": "Choose the app",
-    "page_subtitle": "Select the digital wallet to continue",
+    "page_subtitle": "Select the digital wallet you want to use",
     "logo_title": "Your Logo",
     "wallet_brand_alt": "IT-Wallet"
   },
@@ -33,7 +33,7 @@
     "panel_closed": "Search and sort tools hidden"
   },
   "sort": {
-    "default": "Default sorting",
+    "default": "Default order",
     "az": "Alphabetical A-Z",
     "za": "Alphabetical Z-A",
     "trigger_label": "Sort wallets"
@@ -46,12 +46,12 @@
     "load_more": "Load more"
   },
   "nav": {
-    "back": "Back"
+    "back": "Go back"
   },
   "footer": {
     "nav_label": "Legal links",
     "legal_notice": "Legal notes",
-    "privacy_policy": "Privacy Policy",
+    "privacy_policy": "Privacy policy",
     "accessibility_statement": "Accessibility statement",
     "new_window_hint": "opens in a new window"
   },

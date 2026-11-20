@@ -1,4 +1,4 @@
-/* global i18next, initHeaderLangDropdown */
+/* global i18next, initHeaderLangDropdown, getPreferredLang */
 
 const DEFAULT_WALLET_BRAND = 'IT-Wallet';
 
@@ -45,6 +45,17 @@ function resolveAsset(path) {
   if (!path) return path;
   if (/^(https?:|\/)/.test(path)) return path;
   return new URL(path, window.location.href).href;
+}
+
+function fitHeaderLogoToText() {
+  const svg = document.getElementById('header-logo');
+  const text = document.getElementById('header-logo-text');
+  if (!(svg instanceof SVGSVGElement) || !text || typeof text.getBBox !== 'function') return;
+  const box = text.getBBox();
+  const x = Math.min(0, box.x);
+  const width = Math.max(1, box.x + box.width - x);
+  svg.setAttribute('viewBox', `${x} 0 ${width} 40`);
+  svg.style.width = '';
 }
 
 function getSelectionPageUrl() {
@@ -194,9 +205,11 @@ function adjustQrIconLayout() {
 
   wrapper.style.width = '23.1%';
   wrapper.style.aspectRatio = '1';
+  wrapper.style.height = 'auto';
   wrapper.style.display = 'flex';
   wrapper.style.alignItems = 'center';
   wrapper.style.justifyContent = 'center';
+  wrapper.style.overflow = 'visible';
 }
 
 function applyQrCodeLink(payloadUrl) {
@@ -338,8 +351,12 @@ function updateShellTexts(t) {
 
   const headerLogoText = document.getElementById('header-logo-text');
   if (headerLogoText) headerLogoText.textContent = logoAlt;
+  fitHeaderLogoToText();
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => fitHeaderLogoToText());
+  }
 
-  document.querySelectorAll('.qr-header-logo-wallet').forEach((img) => {
+  document.querySelectorAll('.header-title-section .it-wallet-navbar-logo').forEach((img) => {
     img.setAttribute('alt', getWalletBrandName());
   });
 
@@ -386,11 +403,14 @@ function updateTexts(t) {
   if (title) title.textContent = t('contentTitle');
 
   const info = document.getElementById('content-qrcode-info-text');
+  const expired = document.getElementById('content-qrcode-payload')?.classList.contains('is-expired');
   if (info) {
-    info.innerHTML = t('qrCodeValidInfo', {
-      seconds: String(Math.max(expirationTime, 0)),
-      interpolation: { escapeValue: true },
-    });
+    info.innerHTML = expired
+      ? renderExpiredInfo(t)
+      : t('qrCodeValidInfo', {
+        seconds: String(Math.max(expirationTime, 0)),
+        interpolation: { escapeValue: true },
+      });
   }
 
   const support = document.getElementById('content-text');
@@ -404,15 +424,15 @@ function stopCountdown() {
   }
 }
 
-function startCountdown(t) {
+function startCountdown() {
   if (countdownStarted) return;
   countdownStarted = true;
   countdown = setInterval(() => {
     expirationTime -= 1;
     updateTimerDisplay();
-    if (expirationTime < 0) {
+    if (expirationTime <= 0) {
       stopCountdown();
-      showExpiredState(t);
+      showExpiredState(i18next.t.bind(i18next));
     }
   }, 1000);
 }
@@ -430,8 +450,15 @@ function renderExpiredInfo(t) {
 }
 
 function showExpiredState(t) {
+  const wrap = document.getElementById('content-qrcode-payload');
+  if (wrap) wrap.classList.add('is-expired');
+
   const qrLink = document.getElementById('qr-code-link');
-  if (qrLink) qrLink.classList.add('qr-faded');
+  if (qrLink) {
+    qrLink.classList.remove('qr-faded');
+    qrLink.setAttribute('aria-hidden', 'true');
+    qrLink.setAttribute('tabindex', '-1');
+  }
 
   const info = document.getElementById('content-qrcode-info-text');
   if (info) info.innerHTML = renderExpiredInfo(t);
@@ -450,7 +477,7 @@ function showExpiredState(t) {
 
 async function fetchDemoConfig() {
   try {
-    const response = await fetch(`${getBasePath()}data/qr-demo-config.json`);
+    const response = await fetch(`${getBasePath()}data/qr-demo-config.json?v=wallet-ui-qr-20261117c`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     demoConfig = { ...QR_CONFIG_FALLBACK, ...data };
@@ -471,7 +498,8 @@ function applyDemoConfig() {
 }
 
 function initI18n() {
-  const initialLang = localStorage.getItem('lang') || 'it';
+  const initialLang =
+    typeof getPreferredLang === 'function' ? getPreferredLang() : (localStorage.getItem('lang') || 'it');
 
   i18next
     .use(i18nextHttpBackend)
@@ -479,21 +507,20 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20260625`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261117d`,
       },
     })
     .then((t) => {
       if (typeof initHeaderLangDropdown === 'function') {
         initHeaderLangDropdown(i18next, {
-          afterLanguageChange(lng) {
-            const code = (lng || 'it').split('-')[0];
-            localStorage.setItem('lang', code === 'en' ? 'en' : 'it');
+          afterLanguageChange() {
+            // Language is persisted by header-lang-dropdown.js
             updateTexts(i18next.t);
           },
         });
       }
       updateTexts(t);
-      startCountdown(t);
+      startCountdown();
     })
     .catch((err) => {
       console.error('qr-code-page: i18next init failed', err);

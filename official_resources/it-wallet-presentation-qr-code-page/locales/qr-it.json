@@ -1,6 +1,6 @@
 {
   "header": {
-    "region_name": "Nome dell'Organizzazione",
+    "region_name": "Ente di appartenenza",
     "logo_alt": "Il tuo logo",
     "wallet_brand_alt": "IT-Wallet",
     "lang_active_hint": "lingua attiva:",
@@ -21,7 +21,7 @@
   "login_logo": "Accedi con il tuo wallet digitale",
   "contentTitle": "Inquadra il codice QR",
   "qrCodeValidInfo": "Il codice QR è valido per <b id=\"timer\">{{seconds}}</b> secondi",
-  "supportText": "Usa la funzionalità di <b>{{walletName}}</b> o la <b>fotocamera</b> del tuo smartphone",
+  "supportText": "Usa la funzionalità di <b>{{walletName}}</b><br>o la <b>fotocamera</b> del tuo smartphone",
   "qrCodeLinkAriaLabel": "Codice QR per l'autenticazione con {{walletName}}",
   "backLabel": "Torna indietro",
   "cancelLabel": "Annulla",
@@ -30,8 +30,8 @@
   "appTitle": "Continua sull'app {{walletName}}",
   "appText": "Per proseguire, segui le istruzioni sull'app e autorizza l'accesso",
   "connectedTitle": "Autenticazione completata!",
-  "connectedText": "Continua sul sito",
-  "clickAccessLabel": "Accedi al servizio",
+  "connectedText": "Continua sul sito {{siteName}}",
+  "clickAccessLabel": "Continua",
   "failureTitle": "Non siamo riusciti a recuperare i dati della tua identità digitale",
   "failureText": "Ricorda che per effettuare l'accesso con {{walletName}} devi acconsentire alla lettura dei tuoi dati. Se il problema si ripete, contatta l'assistenza.",
   "retryLabel": "Riprova",
@@ -41,9 +41,9 @@
     "nav_label": "Link legali",
     "legal_notice": "Note legali",
     "legal_url": "#",
-    "privacy_policy": "Privacy Policy",
+    "privacy_policy": "Privacy policy",
     "privacy_url": "#",
-    "accessibility_statement": "Dichiarazione Accessibilità",
+    "accessibility_statement": "Dichiarazione accessibilità",
     "accessibility_url": "#",
     "new_window_hint": "si apre in una nuova finestra"
   }
