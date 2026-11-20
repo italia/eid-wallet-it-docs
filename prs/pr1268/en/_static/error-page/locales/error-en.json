@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Authentication Error",
+    "description": "Authentication Error"
+  },
+  "skip_links": {
+    "nav_label": "Skip links",
+    "main_content": "Skip to main content",
+    "footer": "Skip to footer"
+  },
+  "noscript": {
+    "message": "JavaScript must be enabled to display this page correctly."
+  },
+  "header": {
+    "organization_name": "Owning entity",
+    "region_name": "Owning entity",
+    "logo_title": "Your logo",
+    "lang_active_hint": "active language:",
+    "lang_trigger": "Language selection, {{name}} selected"
+  },
+  "nav": {
+    "main_page": "Main page",
+    "faq": "Frequently asked questions",
+    "this_service": "This service",
+    "assistance": "Assistance",
+    "spid": "SPID",
+    "more_info": "More information",
+    "dont_have_spid": "Don't have SPID?",
+    "need_help": "Need help?",
+    "close": "Close"
+  },
+  "body": {
+    "description": "An error occurred during the authentication process. This was not caused by your credentials; otherwise you would have seen a different message on the login page.",
+    "guidance": "Try again from the service provider's website or wait a few minutes. If the problem persists for more than one hour, please contact support using the channels provided by your organization.",
+    "action": "Return to login",
+    "assistance_link": "Link to specific assistance",
+    "assistance_link_title": "Go to assistance page"
+  },
+  "footer": {
+    "organization_name": "Owning entity",
+    "tagline": "Lorem ipsum",
+    "contacts": "Contacts",
+    "contacts_title": "Go to page: Contacts",
+    "address_line1": "via Example 00000 City, Province",
+    "address_line2": "Tax Code 00000000000 - Tel. (+39) xxxx yyyyyy",
+    "pec": "Certified Email",
+    "pec_title": "Go to page: Certified Email",
+    "e_invoicing": "E-invoicing",
+    "e_invoicing_title": "Go to page: E-invoicing",
+    "useful_links": "Useful links",
+    "useful_links_title": "Go to page: Useful links",
+    "contacts_search": "Contacts / Find people",
+    "contacts_search_title": "Go to page: Contacts / Find people",
+    "admin_contacts": "Administration contacts",
+    "admin_contacts_title": "Go to page: Administration contacts",
+    "services_contacts": "Services contacts",
+    "services_contacts_title": "Go to page: Services contacts",
+    "pat": "PAT - Transparent Administration Portal",
+    "pat_title": "Go to page: PAT - Transparent Administration Portal",
+    "follow_us": "Follow us",
+    "follow_us_title": "Go to page: Follow us",
+    "newsletter": "Newsletter",
+    "newsletter_title": "Go to page: Newsletter",
+    "newsletter_form": "Newsletter form",
+    "useful_links_section": "Useful links section",
+    "legal_notes": "Legal notes",
+    "legal_notes_title": "Legal notes",
+    "privacy": "Privacy policy",
+    "privacy_title": "Privacy policy",
+    "accessibility": "Accessibility statement",
+    "nav_label": "Legal links",
+    "new_window_hint": "opens in a new window"
+  }
+}

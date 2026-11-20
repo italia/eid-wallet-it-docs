@@ -5,6 +5,7 @@ Risorse statiche condivise dalle pagine HTML ufficiali del flusso di autenticazi
 - `discovery-page/disco.html`
 - `it-wallet-selection-page/it-wallet.html`
 - `it-wallet-presentation-qr-code-page/qr-code-page.html`
+- `error-page/error_page.html`
 
 ## Contenuto
 
@@ -16,7 +17,7 @@ Risorse statiche condivise dalle pagine HTML ufficiali del flusso di autenticazi
 | `js/qrcode/` | Web component per il rendering del codice QR |
 | `svg/sprites.svg` | Sprite icone .Italia |
 | `spid/favicon-32x32.png` | Favicon comune |
-| `img/` | Loghi e icone di stato condivisi (IT-Wallet, placeholder wallet, QR) |
+| `img/` | Loghi e icone di stato condivisi (IT-Wallet Mark, logo, `OK_State.svg` per thank-you, `error-icon.svg` per error page, placeholder wallet, QR) |
 
 ## Riferimenti dalle pagine
 

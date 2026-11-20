@@ -48,6 +48,14 @@ python3 -m http.server 8000
 # http://localhost:8000/it-wallet-presentation-qr-code-page/qr-code-page.html
 ```
 
+## Thank You (post-auth)
+
+La demo statica non simula il polling di stato. Nell'implementazione (`iam-proxy-italia-project/templates/qr_code.html`) lo stato di autenticazione riuscita riusa questa pagina con:
+
+- pittogramma `../shared-ui/img/OK_State.svg` (copia operativa di `Icons-and-pictograms/OK_State.svg`)
+- copy `connectedText` / `clickAccessLabel` nei file `locales/`
+- classe `is-thank-you` su `main` (stile in `../shared-ui/css/style.css`): titolo su una riga, CTA Continua, Annulla nascosto
+
 ## Personalizzazione
 
 | File | Scopo |

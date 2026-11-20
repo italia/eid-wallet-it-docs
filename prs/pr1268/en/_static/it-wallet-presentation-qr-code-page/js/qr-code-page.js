@@ -205,9 +205,11 @@ function adjustQrIconLayout() {
 
   wrapper.style.width = '23.1%';
   wrapper.style.aspectRatio = '1';
+  wrapper.style.height = 'auto';
   wrapper.style.display = 'flex';
   wrapper.style.alignItems = 'center';
   wrapper.style.justifyContent = 'center';
+  wrapper.style.overflow = 'visible';
 }
 
 function applyQrCodeLink(payloadUrl) {
@@ -354,7 +356,7 @@ function updateShellTexts(t) {
     document.fonts.ready.then(() => fitHeaderLogoToText());
   }
 
-  document.querySelectorAll('.qr-header-logo-wallet').forEach((img) => {
+  document.querySelectorAll('.header-title-section .it-wallet-navbar-logo').forEach((img) => {
     img.setAttribute('alt', getWalletBrandName());
   });
 
