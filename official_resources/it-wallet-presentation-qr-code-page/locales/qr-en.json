@@ -30,7 +30,7 @@
   "appTitle": "Continue on the {{walletName}} app",
   "appText": "To continue, follow the instructions on the app and authorize access",
   "connectedTitle": "Authentication completed!",
-  "connectedText": "Continue on the website",
+  "connectedText": "Continue on the {{siteName}} site",
   "clickAccessLabel": "Continue",
   "failureTitle": "We were unable to retrieve your data",
   "failureText": "Remember that to log in with {{walletName}}, you must consent to the reading of your information. If the problem persist, please contact the support service.",
