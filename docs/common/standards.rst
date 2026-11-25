@@ -131,6 +131,8 @@ Digital Credential Presentation
 
     * - `OpenID4VP`_
       - Terbu, O., Lodderstedt, T., Yasuda, K., Fett, D., Heenan, J., "OpenID for Verifiable Presentations 1.0", July 2025.
+    * - `W3C Digital Credentials`_
+      - Caceres, M., Cappalli, T., Yosef, M. A., "Digital Credentials", W3C Working Draft, November 2026.
     * - `OAuthCrossDeviceSec`_
       - Kasselman, P., Fett, D., Skokan, F., "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OPENID4VC-HAIP`_

@@ -25,7 +25,7 @@ The metadata JSON Object whose key is ``openid_wallet_provider`` contains the fo
     * - ``wallet_name``
       - REQUIRED. String containing a human-readable name of the Wallet.
     * - ``authorization_endpoint``
-      - REQUIRED. URL of the authorization endpoint, see `OAUTH2`_. The invocation schemes are specified in :ref:`remote-flow:Remote Flow`.
+      - REQUIRED. URL of the authorization endpoint, see `OAUTH2`_. The invocation schemes are specified in :ref:`remote-flow:Non-API-Mediated Presentation`.
     * - ``credential_offer_endpoint``
       - REQUIRED. Credential Offer Endpoint of a Wallet.
     * - ``response_types_supported``

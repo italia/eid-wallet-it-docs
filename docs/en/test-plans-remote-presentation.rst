@@ -7,6 +7,8 @@ Remote Credential Verifier Test Matrix
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for remote flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for remote flows.
 
+URL-specific cases apply to the non-API-mediated alternatives. Relying Party support requirements are specified in :ref:`relying-party-solution:Relying Party Solution`. The following DC API cases apply to those implementations, with execution dependent on platform availability. Common metadata, trust, Credential validation and identity-matching cases apply to both remote transports.
+
 .. note::
   References about official OpenID4VP test plans will update this section in future releases.
 
@@ -20,15 +22,15 @@ This section provides the set of test cases designed for technical implementers 
     - **Description**
     - **Expected Result**
   * - RPR-01
-    - Same Device Flow
+    - Non-API-Mediated Presentation, Same Device Flow
     - Verify HTTP redirect (302) URL.
     - Relying Party issues a correct URL using the base url provided within its metadata.
   * - RPR-02
-    - Cross Device Flow
+    - Non-API-Mediated Presentation, Cross Device Flow
     - Verify QR Code generation for Wallet Instance.
     - Relying Party issues QR Code successfully.
   * - RPR-03
-    - Cross Device Flow
+    - Non-API-Mediated Presentation, Cross Device Flow
     - Verify QR Code contains correct URL parameters.
     - Relying Party issues the QR-Code containing an URL using the base url provided within its metadata.
   * - RPR-04
@@ -44,15 +46,15 @@ This section provides the set of test cases designed for technical implementers 
     - Test QR Code scanning with different devices.
     - QR Code is scanned successfully.
   * - RPR-07
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test ``request_uri_method`` as ``post``.
     - Relying Party accepts Wallet Instance metadata via POST and replies with an updated Request Object.
   * - RPR-08
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test ``request_uri_method`` as ``get``.
     - Relying Party issues the Request Object via HTTP GET response.
   * - RPR-09
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test absence of ``request_uri_method``.
     - Relying Party accepts defaults to GET method.
   * - RPR-10
@@ -65,12 +67,12 @@ This section provides the set of test cases designed for technical implementers 
     - User can modify data selection about optional attributes.
   * - RPR-12
     - Authorization Response
-    - Test sending of Presentation Response.
-    - Relying Party receives and validates response with ``state`` and ``nonce`` values.
+    - Validate response correlation for the selected remote transport
+    - The Relying Party validates the proof nonce and initiating session. Non-API-mediated state handling remains applicable only to URL flows. DC API correlation follows :ref:`remote-flow:DC API Authorization Response`.
   * - RPR-13
     - Authorization Response
-    - Verify response encryption.
-    - Relying Party evaluates the encrypted response using its public key (one of its keys).
+    - Decrypt and validate the encrypted response
+    - The Relying Party uses the private key corresponding to the authorized response-encryption public key. JWE validation and presentation checks succeed before acceptance. DC API follows :ref:`remote-flow:DC API Authorization Response`.
   * - RPR-14
     - Error Handling
     - Test invalid Request Object handling.
@@ -80,23 +82,23 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
     - Voided
   * - RPR-16
-    - Error Handling
+    - Non-API-Mediated Presentation, Error Handling
     - Test recovery from Authorization Request Error.
     - Relying Party prompts the User to retry or scan new QR code.
   * - RPR-17
     - Error Handling
-    - Test fake HTTP Cookie.
-    - Relying Party checks the User session consistency coupling the session http cookie and the state and nonces provided.
+    - Test session binding and replay protection.
+    - The Relying Party rejects a response not bound to the initiating session. URL flows use their state/nonce binding. DC API uses the stored nonce and session context without relying on echoed state. Reuse of accepted presentations is rejected.
   * - RPR-18
     - Voided
     - Voided
     - Voided
   * - RPR-19
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test redirection to Relying Party's endpoint.
     - User is redirected correctly, the endpoint works.
   * - RPR-20
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Verify handling of invalid `redirect_uri`.
     - Error response is returned.
   * - RPR-21
@@ -128,31 +130,31 @@ This section provides the set of test cases designed for technical implementers 
     - Test handling of expired requests.
     - Holder is notified of expiration.
   * - RPR-28
-    - Relying Party Response
+    - Non-API-Mediated Presentation, Relying Party Response
     - Verify inclusion of response code.
     - Response code is cryptographically random.
   * - RPR-29
-    - Relying Party Response
+    - Non-API-Mediated Presentation, Relying Party Response
     - Test handling of invalid response codes.
     - Error response is returned.
   * - RPR-30
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Verify handling of unauthorized access.
     - Unauthorized access is denied.
   * - RPR-31
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Test handling of invalid session IDs.
     - Error response is returned.
   * - RPR-32
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Verify handling of expired sessions.
     - Error response is returned.
   * - RPR-33
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test handling of server errors.
     - Error response is returned.
   * - RPR-34
-    - Same and Cross Device Flow
+    - Non-API-Mediated Presentation, Same and Cross Device Flow
     - Verify handling of slow network conditions.
     - Relying Party provides the http response within the maximum limit of 2 seconds.
   * - RPR-35
@@ -184,19 +186,19 @@ This section provides the set of test cases designed for technical implementers 
     - Test handling of missing response parameters.
     - Error response is returned.
   * - RPR-42
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Verify handling of session timeouts.
     - Error response is returned.
   * - RPR-43
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Test handling of invalid status codes.
     - Error response is returned.
   * - RPR-44
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Verify handling of invalid user sessions.
     - Error response is returned.
   * - RPR-45
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test handling of unavailable services.
     - Error response is returned.
   * - RPR-46
@@ -212,7 +214,7 @@ This section provides the set of test cases designed for technical implementers 
     - Verify QR Code scanning with different lighting.
     - QR Code is scanned successfully.
   * - RPR-49
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test handling of unsupported content types.
     - Error response is returned.
   * - RPR-50
@@ -244,11 +246,11 @@ This section provides the set of test cases designed for technical implementers 
     - Verify handling of unauthorized session access.
     - Unauthorized access is denied.
   * - RPR-57
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Verify handling of invalid redirect parameters.
     - Error response is returned.
   * - RPR-58
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test handling of redirect failures.
     - Error response is returned.
   * - RPR-59
@@ -256,7 +258,7 @@ This section provides the set of test cases designed for technical implementers 
     - Verify handling of user interruptions.
     - User can resume or cancel the process.
   * - RPR-60
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test handling of invalid HTTP methods.
     - Error response is returned.
   * - RPR-61
@@ -292,19 +294,19 @@ This section provides the set of test cases designed for technical implementers 
     - Test handling of response timeout errors.
     - Error response is returned.
   * - RPR-69
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Verify handling of session expiration.
     - Error response is returned.
   * - RPR-70
-    - Status Endpoint
+    - Non-API-Mediated Presentation, Status Endpoint
     - Test handling of session renewal errors.
     - Error response is returned.
   * - RPR-71
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Verify handling of redirect loop errors.
     - Error response is returned.
   * - RPR-72
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test handling of redirect security errors.
     - Error response is returned.
   * - RPR-73
@@ -320,12 +322,12 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
     - Voided
   * - RPR-76
-    - Request URI Method
+    - Non-API-Mediated Presentation, Request URI Method
     - Test handling of unsupported HTTP methods.
     - Error response is returned.
 
   * - RPR-77
-    - QR Code Generation
+    - Non-API-Mediated Presentation, QR Code Generation
     - Verify that QR Code error correction level is Q (Quartile - up to 25%).
     - QR Code uses the required Q error correction level.
 
@@ -343,7 +345,7 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
 
   * - RPR-81
-    - Wallet Nonce
+    - Non-API-Mediated Presentation, Wallet Nonce
     - Test that Relying Party checks ``wallet_nonce`` when present.
     - Relying Party correctly checks ``wallet_nonce`` when present.
 
@@ -353,27 +355,27 @@ This section provides the set of test cases designed for technical implementers 
     - ``response_types_supported`` is correctly set to ``vp_token``.
 
   * - RPR-83
-    - Redirect URI
+    - Non-API-Mediated Presentation, Redirect URI
     - Test that Relying Party correctly provides ``redirect_uri`` parameter to Wallet Instance.
     - Relying Party correctly provides and handles ``redirect_uri``.
 
   * - RPR-84
-    - Flow Support
+    - Non-API-Mediated Presentation, Flow Support
     - Test that Relying Party supports required remote flows.
     - Relying Party supports both Same Device and Cross Device flows.
 
   * - RPR-85
-    - Endpoint Security
+    - Non-API-Mediated Presentation, Endpoint Security
     - Test that ``request_uri`` is attested under the selected trust framework.
     - On the national path, ``request_uri`` exactly matches one value of ``request_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``request_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
   * - RPR-86
-    - Privacy Protection
+    - Non-API-Mediated Presentation, Privacy Protection
     - Test that Relying Party correctly validates Wallet Instance metadata without User information.
     - Relying Party correctly evaluates Wallet Instance technical capabilities.
 
   * - RPR-87
-    - Request URI POST Method
+    - Non-API-Mediated Presentation, Request URI POST Method
     - Test that Relying Party supports receiving Wallet Instance metadata via POST to ``request_uri`` endpoint with content type ``application/x-www-form-urlencoded``.
     - Relying Party correctly accepts and processes Wallet Instance metadata sent via POST with the required content type.
 
@@ -389,8 +391,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-90
     - Response Mode Validation
-    - Test that ``response_mode`` is set to ``direct_post.jwt`` in both Same Device and Cross Device flows.
-    - ``response_mode`` parameter is correctly set to ``direct_post.jwt`` for every remote presentation transaction.
+    - Verify response mode for each presentation transport
+    - Non-API-mediated same-device and cross-device requests use ``direct_post.jwt``. DC API requests use ``dc_api.jwt`` under :ref:`remote-flow:DC API Authorization Request`. The Relying Party rejects a plaintext DC API presentation response.
 
   * - RPR-91
     - Response Type Validation
@@ -398,9 +400,9 @@ This section provides the set of test cases designed for technical implementers 
     - ``response_type`` parameter is correctly set to ``vp_token``.
 
   * - RPR-92
-    - Response URI Usage
+    - Non-API-Mediated Presentation, Response URI Usage
     - Test that Relying Party correctly provides ``response_uri`` parameter to Wallet Instance.
-    - Relying Party sends Authorization Response to correct ``response_uri`` endpoint.
+    - Relying Party correctly provides the ``response_uri`` endpoint for receiving the Authorization Response.
 
   * - RPR-93
     - Nonce Entropy
@@ -413,7 +415,7 @@ This section provides the set of test cases designed for technical implementers 
     - JWT ``exp`` parameter is correctly set and not expired.
 
   * - RPR-95
-    - Response URI Security
+    - Non-API-Mediated Presentation, Response URI Security
     - Test that ``response_uri`` is attested under the selected trust framework.
     - On the national path, ``response_uri`` exactly matches one value of ``response_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``response_uri`` is bound by the WRPAC and the WRPRC. Evidence from the other framework does not authorize the endpoint.
 
@@ -428,12 +430,12 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
 
   * - RPR-98
-    - Error Response Format
+    - Non-API-Mediated Presentation, Error Response Format
     - Test that error response uses ``application/json`` content type.
     - Error response correctly uses ``application/json`` content type.
 
   * - RPR-99
-    - Error Response Parameters
+    - Non-API-Mediated Presentation, Error Response Parameters
     - Test that error response includes required parameters.
     - Error response includes error and ``error_description`` parameters.
 
@@ -464,31 +466,31 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-105
     - KB-JWT Payload
-    - Test that KB-JWT contains required payload parameters.
-    - KB-JWT contains required ``iat``, ``aud``, ``nonce``, and ``sd_hash`` parameters.
+    - Validate required KB-JWT claims in either remote transport
+    - Each KB-JWT contains ``iat``, ``aud``, ``nonce`` and ``sd_hash``. DC API audience and nonce follow :ref:`remote-flow:DC API Authorization Response`.
 
   * - RPR-106
     - KB-JWT Audience
-    - Test that KB-JWT ``aud`` matches the Relying Party Client Identifier, including its Client Identifier Prefix.
-    - KB-JWT ``aud`` parameter equals the Relying Party ``client_id``, including its Client Identifier Prefix.
+    - Validate the transport-specific KB-JWT audience
+    - Non-API-mediated ``aud`` equals the prefix-qualified Relying Party ``client_id``. DC API ``aud`` equals ``origin:`` plus the expected calling origin. A missing or incorrect audience is rejected, including a DC API proof using the signed client identifier instead.
 
   * - RPR-107
     - KB-JWT Nonce
-    - Test that KB-JWT ``nonce`` matches request object ``nonce``.
-    - KB-JWT ``nonce`` parameter matches ``nonce`` from request object.
-
+    - Test that KB-JWT ``nonce`` matches Request Object ``nonce``.
+    - KB-JWT ``nonce`` parameter matches ``nonce`` from Request Object. 
+  
   * - RPR-108
     - Authorization Error Response
     - Test that Relying Party correctly handles Wallet Instance Authorization Error Response on validation failure.
     - Relying Party correctly evaluates Authorization Error Response when validation fails.
 
   * - RPR-109
-    - Error Response Encoding
+    - Non-API-Mediated Presentation, Error Response Encoding
     - Test that Authorization Error Response is encoded correctly.
     - Authorization Error Response is encoded in ``application/x-www-form-urlencoded`` format.
 
   * - RPR-110
-    - Response Processing
+    - Non-API-Mediated Presentation, Response Processing
     - Test that Response URI returns HTTP 200 on successful processing.
     - Response URI returns HTTP 200 with ``application/json`` content type.
 
@@ -498,7 +500,7 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
 
   * - RPR-112
-    - Response Code Inclusion
+    - Non-API-Mediated Presentation, Response Code Inclusion
     - Test that Relying Party includes response code in ``redirect_uri``.
     - Relying Party includes fresh response code in ``redirect_uri``.
 
@@ -508,7 +510,7 @@ This section provides the set of test cases designed for technical implementers 
     - Voided
 
   * - RPR-114
-    - Validation Error Response
+    - Non-API-Mediated Presentation, Validation Error Response
     - Test that Response URI returns error response on validation failure.
     - Response URI returns error response when validation checks fail.
 
@@ -542,4 +544,27 @@ This section provides the set of test cases designed for technical implementers 
     - Test ``verifier_info`` when ``client_id`` uses the ``x509_hash`` prefix.
     - ``verifier_info`` contains ``registrar_dataset`` and ``registration_cert`` (the WRPRC). Those objects are not required for ``openid_federation``.
 
+  * - RPR-121
+    - API-Mediated Presentation, Interoperability
+    - Test complete API-mediated presentation.
+    - The Relying Party successfully invokes the Digital Credentials API, receives the encrypted Authorization Response through the browser, and completes the presentation after backend verification in the initiating session.
 
+  * - RPR-122
+    - API-Mediated Presentation, Request Construction
+    - Verify signed API request construction.
+    - The Relying Party supports at least one of ``openid4vp-v1-signed`` and ``openid4vp-v1-multisigned``. The API request uses the corresponding protocol identifier and signed Request Object encoding, with ``response_mode`` set to ``dc_api.jwt`` and a non-empty ``expected_origins`` array.
+
+  * - RPR-123
+    - API-Mediated Presentation, Error Handling
+    - Test handling of protocol errors and API rejection.
+    - The Relying Party frontend correctly handles protocol errors returned in ``DigitalCredential.data.error`` and rejected API promises, including cancellation.
+  
+  * - RPR-124
+    - API-Mediated Presentation, Security
+    - Validate mdoc DC API handover.
+    - The Relying Party validates the mdoc handover against the expected calling origin, request nonce, and response-encryption JWK thumbprint. Missing or mismatched values cause the presentation to be rejected.
+
+  * - RPR-125
+    - API-Mediated Presentation, Interoperability
+    - Verify mandatory presentation support.
+    - The Relying Party supports both API-mediated and non-API-mediated presentation mechanisms. Platform unavailability is distinguished from missing implementation support.

@@ -1,0 +1,12 @@
+OpenID4VPDCAPIHandoverInfo = [
+  "https://relying-party.example.org",
+  "24373959243739592437395924373959",
+  h'727f88fd634c0a57a1895a79d62ff4569384356d6ea447ab03cb046a6e619feb'
+]
+
+OpenID4VPDCAPIHandover = [
+  "OpenID4VPDCAPIHandover",
+  h'4a0b94cc9c9aad8fca753279b5becc2102442ef036a0d3c11f182dcbd184b101'
+]
+
+SessionTranscript = [null, null, OpenID4VPDCAPIHandover]

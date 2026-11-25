@@ -89,7 +89,11 @@ rst_epilog = """
 
 plantuml_jar = confdir.parent.parent / "utils/plantuml/plantuml-1.2025.2.jar"
 #plantuml = f'java -Djava.awt.headless=true -jar {shlex.quote(str(plantuml_jar))}'
-plantuml = f'java -Djava.awt.headless=true -jar {str(plantuml_jar)}'
+plantuml = (
+    '"C:/Program Files/Eclipse Adoptium/jdk-25.0.5.10002-hotspot/bin/java.exe" '
+    '-Djava.awt.headless=true -jar '
+    'C:/Users/zahra/Documents/GitHub/eudi-wallet-it-docs/utils/plantuml/plantuml-1.2025.2.jar'
+)
 plantuml_output_format = 'svg'
 plantuml_latex_output_format = 'pdf'
 plantuml_server = ''

@@ -636,7 +636,7 @@ This presentation can occur in two different modes, depending on the type of dev
 - **Same-device mode**: the User accesses an online digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`). The User uses the same device on which the Wallet Instance is installed.
 - **Cross-device mode**: when the User accesses a digital service integrated with a special verification system (:ref:`relying-party-instance:Web Relying Party Instance`) using a different device from the one which the Wallet Instance is installed on.
 
-Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution.
+Below are the User Experience requirements related to both methods that the Wallet Provider MUST guarantee via their Wallet Solution, for non-API-mediated presentation, as specified in :ref:`remote-flow:Non-API-Mediated Presentation`.
 
 Same-Device Mode
 """"""""""""""""

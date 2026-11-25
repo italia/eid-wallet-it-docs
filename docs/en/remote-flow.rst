@@ -7,9 +7,16 @@ Remote Flow
 
 This section describes the remote presentation of a Digital Credential from a Wallet Instance to a web Relying Party Instance.
 
-Remote presentation uses [`OpenID4VP`_], profiled by [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
+Remote presentation uses [`OpenID4VP`_]. This section describes :ref:`remote-flow:Non-API-Mediated Presentation` and :ref:`remote-flow:API-Mediated Presentation`.
 The Trust Framework is selected through the ``client_id`` prefix, as specified in :ref:`trust-evaluation:Selection at Presentation`.
-[`ETSI TS 119 472-2`_] clause 6 prevails over [`OPENID4VC-HAIP`_] where the two sources differ.
+
+.. _remote-url-presentation:
+
+Non-API-Mediated Presentation
+-----------------------------
+
+The non-API-mediated flows reference [`OPENID4VC-HAIP`_] and [`ETSI TS 119 472-2`_], as required by [`CIR2024/2982`_].
+For the non-API-mediated flows, [`ETSI TS 119 472-2`_] clause 6 prevails over [`OPENID4VC-HAIP`_] where the two sources differ.
 
 The remote flow has two forms. In the Same Device flow the user-agent and the Wallet Instance are on the same device. In the Cross Device flow they are on different devices. The normative invocation rules are specified in Steps 4-7.
 
@@ -208,6 +215,8 @@ The Wallet Instance MUST NOT retry verification with evidence from the other pat
 
 A failed evaluation terminates processing. The Wallet Instance MUST NOT trigger a retry under the other framework (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
+.. _remote-presentation-consent:
+
 **Steps 16-17 (User Consent)**: Before disclosure, the Wallet Instance MUST display the verified Relying Party. The Wallet Instance MUST display the verified Service. The Wallet Instance MUST display the intended use or purpose. The Wallet Instance MUST display the requested Credentials from the authoritative authorization artifact. The Wallet Instance MUST display the requested attributes from the authoritative authorization artifact. On the National path, the Wallet Instance MUST also display the Federation Intermediate when applicable. In an EUDIW intermediated flow, the Wallet Instance MUST display the intermediated Relying Party. The Wallet Instance MUST NOT display Intermediary trade names. The User authorizes and consents to presentation by selecting the data to release (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
 
 **Step 18 (Authorization Response)**: The Wallet Instance provides the encrypted Authorization Response to the Relying Party using an HTTP POST with response mode ``direct_post.jwt``.
@@ -227,6 +236,8 @@ A failed evaluation terminates processing. The Wallet Instance MUST NOT trigger 
 
 .. note::
   When returning a requested Credential in ``mso_mdoc`` format in the ``vp_token``, the Wallet Instance MUST cryptographically bind the mdoc presentation to the current OpenID4VP transaction, as defined in `OpenID4VP`_ Appendix B.2.
+
+.. _remote-presentation-verification:
 
 **Steps 19-22 (RP Checks)**: The Relying Party verifies the encrypted Authorization Response, extracts the ``vp_token``, and validates its overall format and each presentation against the DCQL query.
 
@@ -272,6 +283,8 @@ If all verifications succeed, the Relying Party updates the User session.
 
 **Steps 28-29**: In the Same Device Flow, the user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`). The Relying Party MUST consider the transaction completed only if the redirect back is received in the same user session in which the flow was initiated. Otherwise the Relying Party MUST reject the presentation.
 In the Cross Device Flow, completion does not depend on that redirect.
+
+.. _remote-presentation-logging:
 
 .. note::
     During each Credential presentation transaction executed through the remote flow, the Wallet Instance MUST create and maintain a corresponding transaction record in the transaction log (see :ref:`wallet-instance-dashboard:Wallet Instance Dashboard and Transaction Logging`).
@@ -374,7 +387,7 @@ Request URI Response
 The Relying Party issues the signed Request Object using the content type set to ``application/oauth-authz-req+jwt``. For the content of the Request Object see Section :ref:`remote-flow:Request Object`.
 
 Request URI Endpoint Errors
-----------------------------
+"""""""""""""""""""""""""""
 
 When the Relying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, it MUST return an error response with ``application/json`` as the content type.
 The response MUST include the following parameters:
@@ -598,7 +611,7 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
 
 
 Authorization Response Errors
------------------------------
+"""""""""""""""""""""""""""""
 
 There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the url provided in the parameter ``request_uri`` but fails the validation checks. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of the Relying Party.
 
@@ -657,7 +670,7 @@ Even if an adversary manages to steal the random value used in the request to th
   The ``redirect_uri`` parameter is subject to :ref:`endpoint-mix-up-protection` (:ref:`WP_094a <wallet-credential-presentation-testcases>`).
 
 Relying Party Response Errors
---------------------------------
+"""""""""""""""""""""""""""""
 
 If any validation check, performed by the Relying Party on the Authorization Response from the Wallet Instance, fails, the Response URI endpoint MUST return an error response. The structure of this error response depends on the specific nature of the error encountered. The response MUST use ``application/json`` as the content type.
 The response MUST include the following parameters:
@@ -731,7 +744,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 * **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's ``response_uri`` endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.
 
 Status Endpoint Errors
-------------------------
+""""""""""""""""""""""
 
 If instead any validation check performed by the Relying Party fails, the QRCode page SHOULD be updated with an error message. Moreover, the status endpoint MUST return an error response, whose structure depends on the nature of the error. The response MUST use ``application/json`` as the content type.
 The response MUST include the following parameters:
@@ -763,7 +776,7 @@ The ``redirect_uri`` value MUST be used with an HTTP method GET by the user-agen
 
 
 Redirect URI Errors
------------------------------
+"""""""""""""""""""
 
 When the user-agent is redirected to the Redirect URI provided by the Relying Party, several errors may occur that prevent the successful completion of the process. These errors are critical as they directly impact the User experience by hindering the seamless flow of information between the Wallet Instance and the Relying Party. Handling these errors requires clear communication to the User within the returned navigation web page. Relying Party MUST implement the error handling and validation mechanisms for Redirect URIs defined in this specification. Below are potential errors related to the Redirect URI. The error response MUST use ``application/json`` as the content type.
 The response MUST include the following parameters:
@@ -793,3 +806,128 @@ The following table lists the HTTP Status Codes and related error codes that MUS
    * - ``503 Service Unavailable``
      - ``temporarily_unavailable``
      - The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (:rfc:`6749#section-4.1.2.1`).
+
+API-Mediated Presentation
+-------------------------
+
+API-mediated presentation uses the Digital Credentials API, as defined in [`W3C Digital Credentials`_] and Appendix A of [`OpenID4VP`_], in line with Annex XII, point (13), of [`CIR2026/1731`_].
+
+The Relying Party frontend invokes the Digital Credentials API in the user-agent. The user-agent passes the request and the calling origin to the platform, which delivers both to the selected Wallet Instance. The Wallet Instance returns its response through the platform to the user-agent, which delivers it to the invoking frontend. The steps below apply to the Same Device flow and, where supported by the platform, the Cross Device flow.
+
+.. _fig_dc_api_presentation:
+
+.. plantuml:: plantuml/credential-presentation-dc-api-flow.puml
+   :width: 99%
+   :alt: The figure illustrates the API-Mediated Presentation flow.
+   :caption: `High Level API-Mediated Protocol Flow. <https://www.plantuml.com/plantuml/svg/ZLJRQjj047qNw1y6lyVGz8h19Qb3QQ0XmY7fytWrbRPPxwfxaN6_ldkrPIU5lYsxPywSENEaAsDHMxSLy8rtFNodaGHSDxSNTzHojDH2eycGj6Yval1Lg5rT3Rw4CpwWj31RazXpsK7ZB_SpG0DwE8DyqMfdICV7JJgV8UuVOAMfzNqu2hX3YLt6ArDNoApIC7ii7EubmGyKWYpSIZ-FP1HXktXNLtMrNCARELmxsolD_wHHrlJRaR6mNDQL7k3YizUz2DDwNZgytcz-4IiSbtCuz1aLIpp7-ZpQ8hu-4zYUu8PttFgHZjEPO6zTPN2eKsPnrWzGji1ygs2ibznncIMydKEm0HhIMsvC412m3oHyMP6ZJA1rKKjU7-28NE164B1USKRULZVf7_aij2JuI7eVIKqazKTGG-3E4jxD3sfl2lpODPd-_mEzdtYQTWUhdjYpYPo9RShxX8AtFfYWSuF0J2CA5oxN3LZjJ5dOX-pMIibemYbbCgW8nPDqM0KjDqmeG-3RuT6j8gIaYGhGQSfjFxxCcXc2X3C1mVZNWSNDGwJ-1Pl4ACHtJTPf6HBc_J5E52C-XPrDlbFlo7RmAau371YUIFEV-r2T5CV59R1Fj4PfaAKmN95i_O-Zhlu2>`_
+
+The following steps describe a successful presentation, as shown in :ref:`fig_dc_api_presentation`, and specified in [`W3C Digital Credentials`_]:
+
+  1. **Authorization Request**: the Relying Party prepares the Request Object for the transaction as specified in :ref:`remote-flow:DC API Authorization Request`.
+
+  2. **Wallet Invocation**: following a User action, the Relying Party frontend invokes the Digital Credentials API by calling ``navigator.credentials.get()``. The user-agent passes the Request Object and the calling origin to the OS Credential Manager. See :ref:`remote-flow:DC API Authorization Request`.
+
+  3. **User Permission and Selection**: the OS Credential Manager identifies Credentials that satisfy the presentation request and presents the matching options to the User. The User selects the Credential(s) to present and grants permission to proceed.
+   
+  4. **Request Delivery**: the OS Credential Manager delivers the Request Object and the calling origin to the Wallet Instance associated with the selected Credential(s).
+   
+  5. **Wallet Instance Checks**: the Wallet Instance validates the Request Object and checks the calling origin as specified in :ref:`remote-flow:DC API Authorization Request`. Relying Party authentication and authorization follow :ref:`trust-evaluation:Selection at Presentation` and :ref:`trust-evaluation:Authorization Decision and Override Rules`, respectively.
+
+  6. **User Consent**: the Wallet Instance shows the User the data to be disclosed and asks for consent to release it to the Relying Party, following the :ref:`User consent procedure <remote-presentation-consent>`.
+
+  7. **Authorization Response**: after the User authorizes disclosure, the Wallet Instance returns the Authorization Response through the OS Credential Manager and the user-agent to the Relying Party frontend, as specified in :ref:`remote-flow:DC API Authorization Response`. The Wallet Instance records the transaction, including its outcome, according to the logging requirements defined for :ref:`non-API-mediated presentation <remote-presentation-logging>`, applying them to the equivalent phases of API-mediated presentation.
+
+  8. **Relying Party Completion**: the frontend forwards the returned protocol and encrypted Authorization Response to the Relying Party backend for the transaction initiated in the user-agent. The backend verifies the response as specified in :ref:`remote-flow:DC API Authorization Response`, completes the transaction and returns its verification result to the frontend.
+
+.. note::
+
+   The high level flow shows logical interactions for Same Device and supported Cross Device flows. In the Cross Device flow, platform mediation includes communication with the device hosting the Wallet Instance and returning the response to the invoking browser. Device selection, transport and proximity checks are handled by the platform, as described in Appendix A of [`OpenID4VP`_] and Section 10.5 of [`W3C Digital Credentials`_].
+
+.. note::
+
+  As defined in Section 2 of [`OpenID4VP`_], API-mediated presentation also includes equivalent native platform APIs, such as Android Credential Manager. This profile covers invocation through the W3C Digital Credentials API in a browser. Native Relying Party invocation is outside this profile.
+
+  The browser-supplied origin identifies the calling website. The Wallet Instance authenticates the Relying Party and evaluates its authorization under the selected Trust Framework.
+
+DC API Authorization Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Following a User action, the Relying Party frontend MUST call ``navigator.credentials.get()`` as specified in [`W3C Digital Credentials`_]. Each entry in ``digital.requests`` contains a ``protocol`` identifier and the corresponding request in ``data``, as specified in Appendix A.1 of [`OpenID4VP`_].
+
+The following non-normative example shows how the Relying Party frontend invokes the Digital Credentials API with a signed Request Object.
+
+.. literalinclude:: ../../examples/shared/dc-api-invocation.js
+   :language: javascript
+
+For API-mediated presentation under this profile, Wallet Solutions MUST support both signed requests using JWS Compact Serialization (``openid4vp-v1-signed``) and multisigned requests using JWS JSON Serialization (``openid4vp-v1-multisigned``), as defined in Appendix A.3.2 of [`OpenID4VP`_]. Relying Parties MUST support at least one of these request types. Wallet Solutions MUST NOT support unsigned requests (``openid4vp-v1-unsigned``) for presentations under this profile.
+
+The Relying Party MUST construct the Request Object according to Appendices A.2 and A.3.2 of [`OpenID4VP`_], using the encoding defined for the selected protocol. The Request Object uses the parameters described in :ref:`remote-flow:Request Object`, with the adaptations specified in Appendices A.2 and A.3.2 of [`OpenID4VP`_].
+
+The Relying Party MUST set ``response_mode`` to ``dc_api.jwt`` and include ``expected_origins`` as a non-empty array of origin strings identifying the Relying Party frontends permitted to invoke the API with the Request Object.
+
+Response-encryption metadata and key requirements are specified in :ref:`remote-flow:DC API Authorization Response`.
+
+The following non-normative example shows the decoded header and payload of a National Request Object using ``openid_federation`` and JWS Compact Serialization.
+
+.. literalinclude:: ../../examples/shared/remote-flow-4.json
+   :language: json
+
+.. literalinclude:: ../../examples/shared/dc-api-national-request-payload.json
+   :language: json
+
+The Wallet Instance MUST process the Request Object according to Appendix A.3.2 of [`OpenID4VP`_] and validate the browser-supplied calling origin against ``expected_origins`` according to Appendix A.2.
+
+.. note::
+
+   Section 5.2 of [`OPENID4VC-HAIP`_] also requires wallets to support unsigned requests. This profile excludes unsigned requests in accordance with OIDFVP-HAIP-API-03 in clause 6.5.1 of [`ETSI TS 119 472-2`_], as applied by Annex XII of [`CIR2026/1731`_].
+
+.. _dc-api-multisigned-parameter-placement:
+
+.. note::
+
+   The placement of ``verifier_info`` in multisigned requests is subject to conflicting requirements. OpenID4VP Appendix A.3.2.2 requires this parameter, when present, exclusively in the respective signature's protected header. However, [`ETSI TS 119 472-2`_], as applied by Annex XII of [`CIR2026/1731`_], requires it in the Request Object's JWT body. Clarification is therefore needed on its placement in multisigned requests.
+
+DC API Authorization Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After obtaining User consent, the Wallet Instance MUST create the successful Authorization Response according to Appendix A.4 of [`OpenID4VP`_]. The result returned to the Relying Party frontend is a ``DigitalCredential`` as defined in [`W3C Digital Credentials`_], containing:
+
+* ``protocol``, identifying the protocol used for the exchange.
+* ``data.response``, containing the encrypted Authorization Response in JWE Compact Serialization.
+
+The following non-normative example shows the ``DigitalCredential`` result returned to the Relying Party frontend. The encrypted response is represented by a placeholder.
+
+.. literalinclude:: ../../examples/shared/dc-api-response.json
+   :language: json
+
+The encrypted Authorization Response contains ``vp_token``, which carries the requested presentations. The requirements for ``vp_token`` content, Credential encoding and batch Credential handling in :ref:`remote-flow:Authorization Response` apply.
+
+The Wallet Instance MUST construct, and the Relying Party MUST verify, the format-specific presentation bindings defined in Appendices A.4, B.2.6.2 and B.3.6 of [`OpenID4VP`_].
+
+The following non-normative example shows the KB-JWT claims corresponding to the preceding request example. The ``sd_hash`` value is a placeholder.
+
+.. literalinclude:: ../../examples/shared/dc-api-kb-jwt-payload.json
+   :language: json
+
+The following non-normative example shows the mdoc handover information corresponding to the preceding request example. It uses CBOR diagnostic notation and includes the calculated JWK thumbprint and handover-information hash.
+
+.. literalinclude:: ../../examples/shared/dc-api-mdoc-handover.txt
+   :language: text
+
+The Wallet Instance MUST encrypt the successful Authorization Response according to Section 8.3 of [`OpenID4VP`_] and the response-encryption requirements in Section 5 of [`OPENID4VC-HAIP`_]. The metadata retrieval, validation and key-identification requirements in :ref:`remote-flow:Request Object` and the response-encryption algorithm requirements in :ref:`remote-flow:Authorization Response` apply.
+
+Before accepting a presentation, the Relying Party backend MUST verify that the returned ``protocol`` matches one offered in the invocation, decrypt the Authorization Response and apply the :ref:`Relying Party verification procedure <remote-presentation-verification>`. It MUST validate the presentation bindings against the expected origin and nonce stored for the pending transaction. The backend MUST prevent reuse of an accepted presentation, as specified in Section 14.1 and Appendix A.5 of [`OpenID4VP`_].
+
+DC API Errors and Cancellation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Wallet Instance and the Relying Party MUST handle protocol errors according to Appendix A.4 and the privacy considerations in Section 15.9.2 of [`OpenID4VP`_]. API rejection and cancellation follow [`W3C Digital Credentials`_].
+
+When a protocol error is returned through the API, the promise is fulfilled with a ``DigitalCredential`` whose ``data.error`` member contains the error code. The Wallet Instance may cancel the flow in accordance with the privacy considerations in Section 15.9.2 of [`OpenID4VP`_].
+
+The Relying Party MUST distinguish a returned protocol error from a rejected API promise, including rejection following cancellation. Rejection or cancellation does not establish that the User has no Wallet Instance or no matching Credential.
+
+The following non-normative example shows the ``data`` object containing a protocol error.
+
+.. literalinclude:: ../../examples/shared/dc-api-error.json
+   :language: json

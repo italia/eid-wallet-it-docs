@@ -1,0 +1,11 @@
+{
+  "alg": "ECDH-ES",
+  "enc": "A256GCM",
+  "kid": "dc-api-request-1",
+  "epk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "<base64url-ephemeral-x>",
+    "y": "<base64url-ephemeral-y>"
+  }
+}

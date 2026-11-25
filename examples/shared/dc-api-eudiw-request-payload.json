@@ -1,0 +1,135 @@
+{
+  "client_id": "x509_hash:<base64url-SHA256-of-WRPAC-DER>",
+  "iss": "x509_hash:<base64url-SHA256-of-WRPAC-DER>",
+  "response_type": "vp_token",
+  "response_mode": "dc_api.jwt",
+  "expected_origins": [
+    "https://relying-party.example.org"
+  ],
+  "nonce": "24373959243739592437395924373959",
+  "iat": 1794312000,
+  "exp": 1794312300,
+  "client_metadata": {
+    "client_id": "https://relying-party.example.org",
+    "client_name": "Example Relying Party",
+    "application_type": "web",
+    "jwks": {
+      "keys": [
+        {
+          "kty": "EC",
+          "crv": "P-256",
+          "x": "MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+          "y": "4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+          "use": "enc",
+          "kid": "dc-api-request-1",
+          "alg": "ECDH-ES"
+        }
+      ]
+    },
+    "encrypted_response_enc_values_supported": [
+      "A128GCM",
+      "A256GCM"
+    ],
+    "vp_formats_supported": {
+      "dc+sd-jwt": {
+        "sd-jwt_alg_values": [
+          "ES256"
+        ],
+        "kb-jwt_alg_values": [
+          "ES256"
+        ]
+      },
+      "mso_mdoc": {
+        "issuerauth_alg_values": [
+          -9
+        ],
+        "deviceauth_alg_values": [
+          -9
+        ]
+      }
+    }
+  },
+  "dcql_query": {
+    "credentials": [
+      {
+        "id": "pid",
+        "format": "dc+sd-jwt",
+        "meta": {
+          "vct_values": [
+            "urn:eudi:pid:it:1"
+          ]
+        },
+        "trusted_authorities": [
+          {
+            "type": "etsi_tl",
+            "values": [
+              "https://trusted-list.example.org"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "path": [
+              "given_name"
+            ]
+          },
+          {
+            "path": [
+              "family_name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mdl",
+        "format": "mso_mdoc",
+        "meta": {
+          "doctype_value": "org.iso.18013.5.1.mDL"
+        },
+        "trusted_authorities": [
+          {
+            "type": "etsi_tl",
+            "values": [
+              "https://trusted-list.example.org"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "path": [
+              "org.iso.18013.5.1",
+              "given_name"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "verifier_info": [
+    {
+      "format": "registrar_dataset",
+      "data": {
+        "identifier": "https://relying-party.example.org",
+        "srvDescription": [
+          {
+            "lang": "en",
+            "value": "Example service"
+          }
+        ],
+        "registryURI": "https://registrar.example.org",
+        "intendedUseIdentifier": "https://example.org/use/presentation",
+        "purpose": [
+          {
+            "lang": "en",
+            "value": "Identity verification"
+          }
+        ],
+        "policyURI": "https://example.org/policy"
+      }
+    },
+    {
+      "format": "registration_cert",
+      "data": "<base64url-WRPRC>"
+    }
+  ]
+}

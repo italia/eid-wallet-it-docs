@@ -1,12 +1,12 @@
 .. include:: ../common/common_definitions.rst
 .. Included via relying-party-endpoints.rst at title level '"' (level 3).
 
-The Relying Party MUST expose the endpoints required by the selected remote presentation path. The National Trust Framework path uses Federation discovery and redirect endpoints.
+The Relying Party MUST expose the endpoints required by the selected remote presentation path. The National Trust Framework path uses the Federation discovery endpoint. Non-API-mediated presentation additionally uses the applicable presentation endpoints.
 
 .. note::
 
   The Relying Party makes explicit its trust framework for the remote flow as follows: 
-  - the National Trust Framework requires the ``client_id`` prefix in the be ``openid_federation``.
+  - the National Trust Framework requires the ``client_id`` prefix in the signed Request Object to be valued with ``openid_federation``.
   - the EUDIW Trust Framework requires the ``client_id`` prefix in the signed Request Object to be valued with ``x509_hash``.
 
 .. note::
@@ -24,7 +24,7 @@ Technical details are provided in Section :ref:`relying-party-entity-configurati
 OpenID4VP Remote Flow Endpoints
 """""""""""""""""""""""""""""""
 
-The following endpoints are required for OpenID4VP 1.0 remote presentation flows as described in :ref:`remote-flow:Remote Flow`. They support both Same Device and Cross Device flows.
+The following endpoints serve the non-API-mediated OpenID4VP presentation alternatives described in :ref:`remote-flow:Remote Flow`. They support both Same Device and Cross Device flows. Their use is not required by :ref:`remote-flow:API-Mediated Presentation`. 
 
 Request URI Endpoint
 ....................
@@ -32,6 +32,14 @@ Request URI Endpoint
 The Request URI Endpoint is where the Relying Party provides the signed Request Object by reference (OIDFVP-HAIP-REDIRECTS-04 in `ETSI TS 119 472-2`_) to the Wallet Instance. This endpoint supports GET and, when requested by ``request_uri_method``, POST as defined in the OpenID4VP 1.0 specification.
 
 For detailed implementation requirements, see :ref:`remote-flow:Request URI Request` and :ref:`remote-flow:Request URI Response`.
+
+
+Redirect URI Endpoint
+.....................
+
+The Redirect URI Endpoint allows the user-agent to return to the Relying Party and complete the non-API-mediated Same Device flow.
+
+For detailed implementation requirements, see :ref:`remote-flow:Redirect URI` and :ref:`remote-flow:Redirect URI Errors`.
 
 
 Response URI Endpoint

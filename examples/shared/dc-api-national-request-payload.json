@@ -1,0 +1,56 @@
+{
+  "client_id": "openid_federation:https://relying-party.example.org",
+  "iss": "openid_federation:https://relying-party.example.org",
+  "response_type": "vp_token",
+  "response_mode": "dc_api.jwt",
+  "expected_origins": [
+    "https://relying-party.example.org"
+  ],
+  "nonce": "24373959243739592437395924373959",
+  "iat": 1794312000,
+  "exp": 1794312300,
+  "client_metadata": {
+    "jwks": {
+      "keys": [
+        {
+          "kty": "EC",
+          "crv": "P-256",
+          "x": "MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+          "y": "4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+          "use": "enc",
+          "kid": "dc-api-request-1",
+          "alg": "ECDH-ES"
+        }
+      ]
+    },
+    "encrypted_response_enc_values_supported": [
+      "A128GCM",
+      "A256GCM"
+    ]
+  },
+  "dcql_query": {
+    "credentials": [
+      {
+        "id": "national_identity",
+        "format": "dc+sd-jwt",
+        "meta": {
+          "vct_values": [
+            "urn:it-wallet:eid:1"
+          ]
+        },
+        "claims": [
+          {
+            "path": [
+              "given_name"
+            ]
+          },
+          {
+            "path": [
+              "family_name"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

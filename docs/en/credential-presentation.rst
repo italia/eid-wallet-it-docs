@@ -7,7 +7,7 @@ Digital Credential Presentation
 
 This section describes how a Relying Party Instance requests a Wallet Instance to present the PID and the Electronic Attestations of Attributes.
 
-The remote flow uses [`OpenID4VP`_], profiled by [`OPENID4VC-HAIP`_]. The proximity flow uses [`ISO18013-5`_]. [`CIR2024/2982`_] requires both flows.
+The remote flow uses [`OpenID4VP`_] through two alternatives: non-API-mediated presentation, following [`OPENID4VC-HAIP`_], and API-mediated presentation, as specified in :ref:`remote-flow:API-Mediated Presentation`. The proximity flow uses [`ISO18013-5`_]. [`CIR2024/2982`_] requires both flows.
 The applicable Trust Framework is selected as specified in :ref:`trust-evaluation:Selection at Presentation`.
 PID presentation before EUDIW notification is specified in :ref:`pid-until-notification`.
 When an Embedded Disclosure Policy is stored with a Digital Credential, the Wallet Unit applies it before disclosure, as specified in :ref:`infrastructure-trust:Embedded Disclosure Policy (EDP)`.
