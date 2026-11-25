@@ -1,0 +1,5 @@
+{
+  "alg": "ES256",
+  "typ": "oauth-authz-req+jwt",
+  "kid": "rp-signing-key-1"
+}

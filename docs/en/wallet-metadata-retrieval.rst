@@ -5,7 +5,7 @@
 Wallet Metadata Retrieval Flow
 ==============================
 
-There are Digital Credential flows that require retrieving Wallet information before interacting with the Wallet itself. For example, to enable the Wallet Solution selection option during a Credential Offer flow or a Presentation flow.
+There are Digital Credential flows that require retrieving Wallet information before interacting with the Wallet itself. For example, to enable the Wallet Solution selection option during a Credential Offer flow or a Non-API-Mediated Presentation flow. Platform-mediated selection for :ref:`remote-flow:API-Mediated Presentation` does not use this Wallet discovery flow. 
 To do so, the third parties offering the Credential Offer (e.g., Authentic Source, Registry, Catalogue) and the Relying Parties consult the IT-Wallet System Register, in particular the Federation Registry, via the Trust Anchor's endpoints.
 
 First, using the Immediate Subordinate Listing endpoint they obtain the list of all subordinates of the Trust Anchor identified by their ``entity_id``. To obtain only the Wallet Provider ``entity_id``, a query parameter ``entity_type`` set with ``openid_wallet_provider`` MAY be used.

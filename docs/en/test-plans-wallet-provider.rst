@@ -166,7 +166,7 @@ This section lists the test cases from Sections:
    * - WP_013
      - Lifecycle, Interoperability
      - Frontend component architecture
-     - Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, Keystore, and WSCA/WSCD Interface for PID) as shown in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`.
+     - Wallet Instance supports all the components (User Interface, Lifecycle Management, Issuer, Presentation, Backup/Restore, Keystore, and WSCA/WSCD Interface for PID) as shown in :ref:`Figure of Wallet Solution High Level Architecture <fig_wallet-solution-high-level-architecture>`. Wallet Solution support for both presentation mechanisms is mandatory under :ref:`wallet-solution-components:Presentation Component`, including API-mediated cross-device support. Execution of API test cases depends on platform availability.
    * - WP_014
      - Trust, Security
      - Keystore implementation
@@ -643,7 +643,7 @@ This section lists the test cases from Sections:
 Test Cases for Presentation Phase
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This section lists the test cases from Section :ref:`credential-presentation:Digital Credential Presentation`,
-covering both the **Remote Flow** and the **Proximity Flow** presentation phases.
+covering both the **Remote Flow** and the **Proximity Flow** presentation phases. URL-specific cases apply to the non-API-mediated alternatives. Wallet Solution support requirements are specified in :ref:`wallet-solution-components:Presentation Component`. Test execution depends on browser and operating-system availability. Common trust and Credential validation cases apply to both remote transports. Existing UX requirements are unchanged.
 
 
 .. list-table::
@@ -656,11 +656,11 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - **Description**
      - **Expected Result**
    * - WP_076
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Same Device flow
      - In the Same Device flow, Wallet Instance successfully obtains a URL and extracts the following parameters: ``client_id``, ``request_uri``, ``state``, and ``request_uri_method``.
    * - WP_077
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - Obtain Authorization Request URL in Cross Device flow
      - In the Cross Device flow, Wallet Instance successfully scans and parses a QR Code to extract the following parameters: ``client_id``, ``request_uri``, ``state``, and ``request_uri_method``.
    * - WP_078
@@ -676,27 +676,27 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - Relying Party authorization evidence
      - On the national path, the Wallet Instance validates the registration Trust Mark. On the EUDIW path, it authorizes the request through the WRPRC in ``verifier_info``. WRPAC and WRPRC material is not national trust evidence.
    * - WP_081
-     - Remote-flow, Trust, Presentation, Security
+     - Non-API-Mediated Presentation, Remote-flow, Trust, Presentation, Security
      - Validate ``request_uri``
      - On the national path, ``request_uri`` exactly matches one value of ``request_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``request_uri`` is bound by the WRPAC and the WRPRC. A mismatch rejects the request. Evidence from the other framework does not authorize the endpoint.
    * - WP_082
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - GET Request Object
      - If the ``request_uri_method`` in the initial request is ``get`` or is absent, Wallet Instance sends an HTTP GET request to the Relying Party's ``request_uri`` endpoint, and successfully retrieves a signed Request Object JWT.
    * - WP_083
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - POST Request Object
      - If the ``request_uri_method`` in the initial request is ``post``, Wallet Instance sends an HTTP POST request to the Relying Party's ``request_uri`` endpoint, including its metadata as ``wallet_metadata`` and ``wallet_nonce`` parameters, with content type ``application/x-www-form-urlencoded``, and successfully retrieves a signed Request Object JWT.
    * - WP_083a
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
      - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes ``vp_formats_supported`` and ``client_id_prefixes_supported``, and optionally ``request_object_signing_alg_values_supported``, per Section 10.1 of [`OpenID4VP`_]. ``client_id_prefixes_supported`` contains both ``x509_hash`` and ``openid_federation``.
    * - WP_083b
-     - Remote-flow, Presentation, Privacy
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
      - The ``wallet_metadata`` JSON contains no User-identifiable or device-specific fields (e.g. names, hardware details).
    * - WP_083c
-     - Remote-flow, Presentation, Security
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Security
      - Generate replay nonce
      - A fresh ``wallet_nonce`` is generated and included in the POST request payload alongside the ``wallet_metadata`` to mitigate replay attacks.
    * - WP_084
@@ -709,8 +709,8 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - Wallet Instance confirms the integrity of the signed Request Object by successfully performing the cryptographic signature validation against the Relying Party’s public key.
    * - WP_086
      - Remote-flow, Presentation, Security
-     - Match ``client_id`` across contexts
-     - ``iss`` equals the prefix-qualified ``client_id`` from the Authorization Request. On the national path, it also matches the Entity Configuration ``sub``. A mismatch rejects the request.
+     - Bind signed Relying Party identity under the selected trust framework
+     - The signed ``iss`` equals the prefix-qualified ``client_id`` and identifies the Relying Party authenticated under the selected framework. URL flows also compare the outer Authorization Request. DC API has no outer URL. A mismatch rejects the request.
    * - WP_087
      - Remote-flow, Presentation, Security
      - Check Relying Party eligibility
@@ -718,59 +718,71 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_088
      - Remote-flow, Presentation, Privacy
      - User consent for disclosure
-     - Wallet Instance requests the User's consent by presenting a UI screen that clearly displays the verified identity of the Relying Party and a list of all requested data attributes.
+     - Wallet Instance requests the User's consent by presenting a UI screen that clearly displays the verified identity of the Relying Party and a list of all requested data attributes. For API-mediated presentation, the Wallet Instance also distinguishes the browser-supplied calling origin from the authenticated Relying Party identity.
    * - WP_089
-     - Remote-flow, Presentation, UX
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, UX
      - Handle ``request_uri`` endpoint errors
      - When the Relying Party's ``request_uri`` endpoint responds with an error, Wallet Instance displays a clear, human-readable message to the User explaining the failure and securely terminates the flow.
    * - WP_089a
-     - Remote-flow, Presentation, UX
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, UX
      - Logging ``request_uri`` errors
      - Wallet Instance internally logs the detailed error information.
    * - WP_089b
-     - Remote-flow, Presentation, UX
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, UX
      - Recovering from ``request_uri`` errors
      - For a recoverable error, such as ``server_error``, Wallet Instance prompts the User with a specific recovery action, such as suggesting a retry or “Scan QR again” option, if applicable.
    * - WP_090
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - Notify Relying Party on invalid request
      - If the Request Object is invalid or fails verification, and the selected path has authenticated ``response_uri``, the Wallet Instance sends an Authorization Error Response via HTTP POST to that endpoint. Otherwise the flow terminates locally and does not disclose Wallet or Credential availability.
    * - WP_091
      - Remote-flow, Presentation, Interoperability
-     - Send Authorization Response
-     - If the Request Object verification is valid, Wallet Instance sends an Authorization Response via HTTP POST to the Relying Party’s ``response_uri`` as per ``response_mode=direct_post.jwt``.
+     - Deliver the Authorization Response using the selected transport
+     - For non-API-mediated presentation, Wallet Instance posts ``direct_post.jwt`` to the authenticated ``response_uri``. For DC API, Wallet Instance returns the encrypted protocol response to the OS Credential Manager under :ref:`remote-flow:DC API Authorization Response`.
    * - WP_091a
-     - Remote-flow, Presentation, Security
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Security
      - Validate ``response_uri``
      - On the national path, ``response_uri`` exactly matches one value of ``response_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``response_uri`` is bound by the WRPAC and the WRPRC. A mismatch aborts the request. Evidence from the other framework does not authorize the endpoint.
    * - WP_092
      - Remote-flow, Presentation, Security
-     - Encrypt Authorization Response
-     - Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [`OpenID4VP`_] using the Relying Party’s public key.
+     - Encrypt the Authorization Response under the applicable metadata source
+     - Wallet Instance encrypts the response under OpenID4VP Section 8.3. DC API encryption additionally follows :ref:`remote-flow:DC API Authorization Request` and :ref:`remote-flow:DC API Authorization Response`, including trusted key provenance and key/algorithm selection.
    * - WP_093
      - Remote-flow, Presentation, Security
-     - Construct ``vp_token`` with ``state``
-     - The Authorization Response JWT payload includes the original ``state`` value and a ``vp_token`` object with entries for each requested Credential presentation.
+     - Construct VP Token and apply transport-specific correlation
+     - The encrypted response contains the requested ``vp_token`` content. Non-API-mediated responses carry the original ``state`` when supplied. DC API does not rely on echoed state and follows :ref:`remote-flow:DC API Authorization Response`.
    * - WP_093a
      - Remote-flow, Presentation, Interoperability
-     - Include signed presentations
-     - Within that ``vp_token``, there are the requested Credential(s) in SD JWT VC format.
+     - Encode presentations in the requested supported formats
+     - The ``vp_token`` contains the requested SD-JWT VC or mdoc presentations under their DCQL query identifiers, following :ref:`remote-flow:Authorization Response`.
    * - WP_093b
      - Remote-flow, Presentation, Security
-     - Append Key Binding JWT
-     - Wallet Instance generates for every individual SD-JWT presentation within the ``vp_token``, its own corresponding Key Binding JWT.
+     - Append a Key Binding JWT for each SD-JWT presentation
+     - Wallet Instance appends the KB-JWT for each SD-JWT presentation. Its audience and nonce follow the selected transport, including :ref:`remote-flow:DC API Authorization Response` for DC API.
    * - WP_093c
      - Remote-flow, Presentation, Security
-     - Key Binding JWT format
-     - The JOSE header of each generated Key Binding JWT includes ``"typ":"kb+jwt"`` and an ``alg`` to one of the supported signature algorithms, as well as a payload including the ``iat``, ``aud``, ``nonce``, and ``sd_hash`` claims per `OpenID4VP`_ .
+     - Construct the KB-JWT headers and transport-specific claims
+     - Each KB-JWT has the required ``typ``, ``alg``, ``iat``, ``aud``, ``nonce`` and ``sd_hash``. Non-API-mediated audience is ``client_id``. DC API audience is ``origin:`` plus the browser-supplied calling origin, as defined in :ref:`remote-flow:DC API Authorization Response`.
    * - WP_094
-     - Remote-flow, Presentation, Interoperability
+     - Non-API-Mediated Presentation, Remote-flow, Presentation, Interoperability
      - Perform user-agent redirect
      - Upon receiving the ``redirect_uri``, Wallet Instance successfully performs a user-agent redirect to the ``redirect_uri`` supplied by the Relying Party, so the Relying Party can resume the interaction on the same device that initiated the flow.
    * - WP_094a
-     - Remote-flow, Trust, Presentation, Security
+     - Non-API-Mediated Presentation, Remote-flow, Trust, Presentation, Security
      - Validate ``redirect_uri``
      - On the national path, ``redirect_uri`` exactly matches one value of ``redirect_uris`` in ``openid_credential_verifier`` metadata. On the EUDIW path, ``redirect_uri`` is bound by the WRPAC and the WRPRC. A mismatch aborts the flow. Evidence from the other framework does not authorize the endpoint.
+   * - WP_164
+     - API-Mediated Presentation, Interoperability
+     - Support signed and multisigned API requests
+     - Wallet Instance successfully processes ``openid4vp-v1-signed`` requests using JWS Compact Serialization and ``openid4vp-v1-multisigned`` requests using JWS JSON Serialization, and rejects ``openid4vp-v1-unsigned`` requests.
+   * - WP_165
+     - API-Mediated Presentation, Security
+     - Validate calling origin
+     - Wallet Instance verifies that the browser-supplied calling origin matches an origin listed in the signed ``expected_origins`` parameter. Requests with missing, empty, or mismatched ``expected_origins`` are rejected.
+   * - WP_166
+     - API-Mediated Presentation, Security
+     - Generate mdoc DC API handover
+     - Wallet Instance constructs the mdoc SessionTranscript with null engagement and key entries and a DC API handover containing the browser-supplied calling origin, request nonce, and SHA-256 thumbprint of the response-encryption JWK, using the required CBOR encoding and hashing.
    * - WP_095
      - Proximity-flow, Presentation, Security
      - Support supervised/unsupervised retrieval

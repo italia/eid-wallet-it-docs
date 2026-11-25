@@ -1,0 +1,6 @@
+{
+  "protocol": "openid4vp-v1-signed",
+  "data": {
+    "response": "<protected-header>..<iv>.<ciphertext>.<authentication-tag>"
+  }
+}

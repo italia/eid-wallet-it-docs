@@ -1,0 +1,10 @@
+{
+  "vp_token": {
+    "pid": [
+      "<issuer-signed-JWT>~<disclosure>~<KB-JWT>"
+    ],
+    "mdl": [
+      "<base64url-CBOR-DeviceResponse>"
+    ]
+  }
+}

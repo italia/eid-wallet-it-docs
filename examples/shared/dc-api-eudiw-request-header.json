@@ -1,0 +1,8 @@
+{
+  "alg": "ES256",
+  "typ": "oauth-authz-req+jwt",
+  "x5c": [
+    "<base64-WRPAC-DER>",
+    "<base64-intermediate-certificate-DER>"
+  ]
+}

@@ -20,6 +20,8 @@ A Relying Party provides at least one of the following components:
   - **Web Client**.
   - **Mobile Application**.
 
+A Relying Party MUST implement both non-API-mediated and API-mediated remote presentation, in accordance with [`CIR2026/1731`_]. The remote presentation flows are specified in :ref:`remote-flow:Remote Flow`.
+
 The following diagram depicts the Relying Party Solution High Level Architecture.
 
 .. plantuml:: plantuml/rp-solution-architecture.puml

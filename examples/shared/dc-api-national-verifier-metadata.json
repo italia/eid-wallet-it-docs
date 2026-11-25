@@ -1,0 +1,42 @@
+{
+  "openid_credential_verifier": {
+    "client_id": "https://relying-party.example.org",
+    "client_name": "Example Relying Party",
+    "application_type": "web",
+    "jwks": {
+      "keys": [
+        {
+          "kty": "EC",
+          "crv": "P-256",
+          "x": "MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4",
+          "y": "4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM",
+          "use": "enc",
+          "kid": "dc-api-request-1",
+          "alg": "ECDH-ES"
+        }
+      ]
+    },
+    "encrypted_response_enc_values_supported": [
+      "A128GCM",
+      "A256GCM"
+    ],
+    "vp_formats_supported": {
+      "dc+sd-jwt": {
+        "sd-jwt_alg_values": [
+          "ES256"
+        ],
+        "kb-jwt_alg_values": [
+          "ES256"
+        ]
+      },
+      "mso_mdoc": {
+        "issuerauth_alg_values": [
+          -9
+        ],
+        "deviceauth_alg_values": [
+          -9
+        ]
+      }
+    }
+  }
+}

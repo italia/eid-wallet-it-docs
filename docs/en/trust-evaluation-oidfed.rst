@@ -69,8 +69,8 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
 
         - :ref:`trust-evaluation:Signing Trust Anchor Validation Procedure`
 
-        On the Wallet Provider, to invoke the Wallet through the national discovery mechanism (see the note below):
-
+        On the Wallet Provider, to invoke the Wallet through the non-API-mediated national discovery mechanism (see the note below):
+        
         - :ref:`trust-evaluation:Metadata Retrieval and Validation`
       - The Entity Configuration (:ref:`infrastructure-trust:Entity Configuration`) with the registration Trust Marks (:ref:`infrastructure-trust:Trust Mark registration-entity`), and the signed Request Object with keys resolvable through the federation, including the ``trust_chain`` header when offline validation is expected, validated as defined in :ref:`trust-evaluation:Federation Entity Authentication` and :ref:`trust-evaluation:Authorization`.
     * - Relying Party Intermediary
@@ -81,8 +81,9 @@ The procedures are defined in a general form, with a **Trust Evaluator** and a *
         The Wallet Unit MUST verify that the affiliated Relying Party's Trust Chain is validated through a recognized Intermediary or directly through the Federation Trust Anchor, and it informs the User as defined in :ref:`trust-evaluation:User Transparency`.
 
 .. note::
-  In the remote flow the Relying Party invokes the Wallet through app links (universal links) instead of custom URL schemes.
+  In the non-API-mediated remote flow the Relying Party invokes the Wallet through app links (universal links) instead of custom URL schemes.
   This IT-Wallet choice requires the Relying Party to obtain and validate the Wallet Provider metadata beforehand, building the Trust Chain about the Wallet Provider (Metadata Retrieval and Validation), as part of the Wallet Metadata Retrieval Flow (see :ref:`wallet-metadata-retrieval:Wallet Metadata Retrieval Flow` and the Selection Page in :ref:`functionalities:User Experience Design`).
+  In API-mediated remote flow, Wallets register their available Credential information with the platform's Credential Manager, which matches the presentation request against registered Credentials and mediates the selection and invocation of the Wallet (see :ref:`remote-flow:DC API Authorization Request`). The Relying Party does not perform the Wallet Provider discovery mechanism described above.
   This mechanism is specific to the remote flow and does not apply to the proximity flow.
 
 

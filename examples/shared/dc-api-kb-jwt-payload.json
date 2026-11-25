@@ -1,0 +1,6 @@
+{
+  "iat": 1794312020,
+  "aud": "origin:https://relying-party.example.org",
+  "nonce": "24373959243739592437395924373959",
+  "sd_hash": "<base64url-SD-JWT-hash>"
+}

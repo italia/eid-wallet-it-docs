@@ -14,6 +14,13 @@ Below is the description of acronyms and definitions which are useful for furthe
 .. glossary::
     :sorted:
 
+    **Digital Credentials API**
+    **DC API**
+      Browser interface that mediates Digital Credential exchange between a website and a Wallet Instance through the user agent and platform. The presentation protocol determines the request and response content.
+
+    **OS Credential Manager**
+      Operating-system service that mediates Digital Credential requests and responses between the browser and a Wallet Instance.
+
     **Dataset_id**
       Alphanumeric string defined by the Authentic Source that uniquely identifies a specific dataset relating to an Electronic Attestation of Attributes.
       Not present in ARF 3.0.0. The term is specific to IT-Wallet.
@@ -527,6 +534,8 @@ Below are the main acronyms used in the document:
     - Conformity Assessment Body
   * - **CIE**
     - Carta di Identità Elettronica (National Electronic Identity Card)
+  * - **DC API**
+    - Digital Credentials API
   * - **EAA**
     - Electronic Attestation of Attributes
   * - **EUMS TL**

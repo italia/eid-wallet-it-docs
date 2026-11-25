@@ -104,6 +104,7 @@
 .. _OpenID Connect Registration 1.0: https://openid.net/specs/openid-connect-registration-1_0.html
 .. _Practical Cryptography for Developers: https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password
 .. _W3C-CredentialAPI: https://wicg.github.io/digital-credentials/
+.. _W3C Digital Credentials: https://www.w3.org/TR/digital-credentials/
 .. _OPENID4VC-HAIP: https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html

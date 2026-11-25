@@ -109,8 +109,7 @@ The Relying Party does not authenticate the Wallet Unit.
 It cannot select the Trust Framework according to the Member State of that Wallet Unit or Wallet Solution.
 The applicable row of :ref:`Applicable Trust Framework by Interaction <table_applicable_tf_by_entity>` selects the Trust Framework.
 
-In the remote flow the Relying Party declares that framework through the ``client_id`` prefix of the request (see `OpenID4VP`_, Section 5.9).
-The prefix ``x509_hash`` selects the EUDIW Trust Framework, as required by [`ETSI TS 119 472-2`_] clause 6 (OIDFVP-HAIP_COMMON_GEN_REQ-02).
+In the remote flow the Relying Party declares that framework through the ``client_id`` prefix of the request (see `OpenID4VP`_, Section 5.9). This also applies to :ref:`remote-flow:DC API Authorization Request`. 
 The prefix ``openid_federation`` selects the National Trust Framework.
 The Wallet Unit MUST process ``x509_hash`` under :ref:`trust-evaluation:EUDIW Authentication`.
 The Wallet Unit MUST process ``openid_federation`` under :ref:`trust-evaluation:Trust Evaluation Processes by Context` when the Trust Chain of the Relying Party is valid under the National Trust Anchor.

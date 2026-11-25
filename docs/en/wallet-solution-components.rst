@@ -79,7 +79,7 @@ Following the `OpenID4VCI`_ specification and the implementation profile in Sect
 Presentation Component
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Following the implementation profile in Section :ref:`credential-presentation:Digital Credential Presentation`, this component MUST be compliant with remote flows based on `OpenID4VP`_ and proximity flow based on `ISO18013-5`_.
+Following :ref:`credential-presentation:Digital Credential Presentation`, this component MUST implement both non-API-mediated and API-mediated remote presentation and the proximity flow. In accordance with clause 6.5 of [`ETSI TS 119 472-2`_], as applied and adapted by Annex XII of [`CIR2026/1731`_], a Wallet Solution MUST support API-mediated Cross Device remote presentation. Invocation through the Digital Credentials API depends on browser and operating-system availability and does not change these support requirements.
 
 Backup and Restore Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,5 +123,5 @@ The Wallet Solution supports these interaction patterns:
 3. **PID/IT-Wallet ID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Instance to Relying Party**: for Digital Credential presentation.
-
+6. **Wallet Instance to OS Credential Manager**: for API-mediated presentation, including Credential registration, Wallet selection and invocation, and exchange of presentation requests and responses through the platform.
 

@@ -72,7 +72,11 @@ SR-CF-21
 
 Both SD-JWT and mdoc-CBOR support cryptographic Holder binding by defining how a Holder can present a Credential to a Relying Party, providing cryptographic proof of legitimate possession of the Credential.
 
-Currently, for the remote flow, IT-Wallet supports only SD-JWT presentations. In this scenario, the KB-JWT (Key-Bound JWT) parameter is utilized to demonstrate that the Holder possesses the private key associated with the Credential. The Holder signs the KB-JWT using a **nonce** and a Relying Party identifier, using the **aud** parameter, as a challenge.
+For the remote flow, IT-Wallet supports both SD-JWT VC and mdoc-CBOR presentations. For SD-JWT VC, the KB-JWT (Key Binding JWT) demonstrates that the Holder possesses the private key associated with the Credential.
+
+The Holder signs the KB-JWT including the request nonce in the **nonce** claim and, in the **aud** claim, the Relying Party identifier for non-API-mediated presentation or the calling origin prefixed with **origin:** for API-mediated presentation. For API-mediated presentation, the Relying Party MUST verify that the presentation proof is bound to the expected calling origin and request nonce, according to the Credential format-specific verification procedures.
+
+For mdoc-CBOR, Holder binding is demonstrated through Device Authentication, , which cryptographically binds the presentation to the request using the Session Transcript. 
 
 SR-E-20
 ^^^^^^^
@@ -184,7 +188,11 @@ SR-P-30
    * - |check-icon|
      - The protocol must ensure that the interaction between the Wallet and Verifier is protected such that no third party can interfere with the interaction by modifying the information transmitted.
 
-The presentation process occurs through different flows, including remote and proximity. In the remote flow, signed Request Objects, **nonce** usage, Trust Chain validation, Wallet Attestation, and Holder binding protect the exchange. No third party can interfere with or modify the information transmitted between the Wallet and the Relying Party. These mechanisms align with Security Requirement P-30. The mechanisms protect the interaction from tampering or injection attacks.
+The presentation process occurs through different flows, including remote and proximity. In the remote flow, signed Request Objects, **nonce** usage, Trust Chain validation, Wallet Attestation, and Holder binding protect the exchange against tampering or injection attacks.
+
+For non-API-mediated presentation, these protections are specified in :ref:`remote-flow:Request Object` and :ref:`remote-flow:Authorization Response`.
+
+For API-mediated presentation, the additional calling-origin checks and origin-bound presentation proofs are specified in :ref:`remote-flow:DC API Authorization Request` and :ref:`remote-flow:DC API Authorization Response`. These additional protections rely on the platform correctly conveying the calling origin to the Wallet and do not eliminate interference originating from a compromised platform or requesting web context.
 
 SR-P-40
 ^^^^^^^
@@ -194,12 +202,12 @@ SR-P-40
    * - |partially-check-icon|
      - The protocol must ensure that the interaction between an attacker and a Verifier cannot be forwarded to and successfully completed by a User.
 
-In the case of the same device flow, this can be prevented by using and properly checking the **nonce** value, which is created and sent by the Relying Party in the authorization request.
+In the case of the non-API-mediated same device flow, this can be prevented by using and properly checking the **nonce** value, which is created and sent by the Relying Party in the authorization request.
 The Relying Party should maintain a mapping between User sessions and the **nonce** that is expected in the flow. The Relying Party should only accept a presentation if the **nonce** in the presentation
 matches the **nonce** that is expected for the User session. With this countermeasure, the Relying Party must detect if a presentation is sent that was not bound to the User's session or if no
 User session exists at all, preventing the attack.
 
-For the cross-device flow the requirement is partially satisfied. The flow is vulnerable to Cross-Device Consent Phishing attacks. An attacker could initiate the presentation flow, obtain the signed Request Object and QR code, and forward them to the victim.
+For the non-API-mediated cross-device flow the requirement is partially satisfied. The flow is vulnerable to Cross-Device Consent Phishing attacks. An attacker could initiate the presentation flow, obtain the signed Request Object and QR code, and forward them to the victim.
 
 Some security measures are already in place, such as the use of **nonce** and state. The **nonce** ensures freshness of the request, and the state binds the flow to a unique transaction,
 thus reducing the opportunity for a successful attack.
@@ -210,6 +218,12 @@ thus reducing the opportunity for a successful attack.
 
   - Short Lived/Timebound QR Codes: Reducing the lifetime of the QR code (e.g., 2-3 mins) is necessary to restrict the time window available for the attacks.
   - One-Time QR Codes: One-Time QR codes restrict the possibility of attacks when the same QR code is sent to multiple victims.
+
+For API-mediated presentation, calling-origin validation and origin-bound presentation proofs provide additional protection against request forwarding and phishing attacks. The Wallet verifies that the calling origin provided by the platform is authorized by the Relying Party through the expected_origins parameter in the signed Request Object.
+
+API-mediated Cross Device presentation uses the platform transport and proximity checks described in Appendix A of [`OpenID4VP`_] and Section 10.5 of [`W3C Digital Credentials`_]. These mechanisms can improve phishing resistance but do not eliminate all phishing, particularly when the requesting origin or platform is compromised.
+
+For API-mediated presentation, the Relying Party must also associate the received presentation with the corresponding pending transaction and verify the request nonce to prevent replay or transaction substitution.
 
 SR-P-41
 ^^^^^^^
@@ -222,7 +236,7 @@ SR-P-41
 A prerequisite for a successful attack of this kind is attacker access to some messages between the Wallet and the Relying Party. For example, the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarantees confidentiality and avoids leakage of the response.
 In addition to TLS, the existing implementation of **nonce** and audience checks in the presentation protocol should help to meet the P-41 security requirement.
 Regarding the **nonce** claim, the Relying Party MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Relying Party during the authorization request.
-Regarding the **aud** value, the Relying Party must check that the audience of the presentation matches the Relying Party's identifier.
+Regarding the **aud** value, for SD-JWT VC, the Relying Party must check that the audience of the presentation matches the Relying Party's identifier for non-API-mediated presentation, or the expected calling origin prefixed with `origin:` for API-mediated presentation. For mdoc-CBOR, the corresponding binding is verified through Device Authentication and the Session Transcript.
 
 SR-P-50
 ^^^^^^^
@@ -289,6 +303,7 @@ SR-W-30
      - The Wallet must provide trustworthy and complete information about Verifiers to the User.
 
 The Wallet validates the Trust Chain related to the Relying Party and its information is displayed to the User before the presentation.
+For API-mediated presentation, the Wallet additionally verifies that the calling origin is authorized by the Relying Party through the **expected_origins** parameter in the signed Request Object. The Wallet distinguishes the calling origin from the authenticated Relying Party identity when displaying information to the User.
 
 Privacy Requirements
 --------------------
@@ -351,7 +366,7 @@ PR-W-40
    * - |check-icon|
      - The Wallet must ask the User for meaningful consent before a Credential is used. The Wallet must provide the User the opportunity to review any data that is released to a Verifier.
 
-After establishing trust with the Relying Party, the Wallet asks for the User's consent and provides the User the opportunity to review and select the data to be presented to the Relying Party.
+For API-mediated presentation, the User first permits the platform to forward the presentation request to the selected Wallet Instance. This platform-mediated interaction does not constitute consent to disclose Credential attributes. Then, after establishing trust with the Relying Party, the Wallet asks for the User's consent and provides the User the opportunity to review and select the data to be presented to the Relying Party.
 
 PR-W-60
 ^^^^^^^
@@ -361,7 +376,7 @@ PR-W-60
    * - |check-icon|
      - The Wallet must ensure that the Issuer cannot learn where the User uses the Credential.
 
-Same as for SR-P-80.
+Same as for SPR-P-80.
 
 PR-W-70
 ^^^^^^^
@@ -416,12 +431,10 @@ SPR-P-60
    * - |check-icon|
      - The protocol must ensure that during an interaction with a Verifier, an attacker cannot read PII.
 
-The IT Wallet complies with the requirements of P-60 by ensuring that all network connections are secured by TLS.
+The IT-Wallet complies with the requirements of P-60 by ensuring that all network connections are secured by TLS. Additionally, for both API-mediated and non-API-mediated presentation, the Authorization Response is encrypted with the Relying Party's public key, ensuring that only the intended recipient can decrypt and read the sensitive information.
 
-In addition, as the Authorization Response contains PII is important that it is not sent to an attacker-controlled endpoint.
+For non-API-mediated presentation, as the Authorization Response contains PII is important that it is not sent to an attacker-controlled endpoint.
 In the IT Wallet specification the **response_uri** is the endpoint where the Wallet sends the Authorization Response. The **response_uri** is included in the signed Request Object. The Wallet verifies that object using the Relying Party's public key and Trust Chain. This guarantees that the Authorization Response is sent to the correct endpoint.
-Additionally, the Authorization Response is encrypted with the Relying Party's public key, ensuring that only the intended recipient can decrypt and read the sensitive information,
-further securing the transmission.
 
 Another endpoint to be validated is the **redirect_uri**, which is used to redirect the User back to the Relying Party after the Credential presentation is complete.
 In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Relying Party onboarding using OpenID Federation. During the presentation phase, the Wallet validates this value by verifying trust in the Relying Party according to `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_.
