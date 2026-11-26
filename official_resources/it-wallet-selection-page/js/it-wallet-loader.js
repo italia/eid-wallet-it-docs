@@ -4,7 +4,7 @@
  * DC API panel (when supported) sits above the wallet list.
  */
 
-import { fetchDcApiConfig, updateDcApiPanel } from './it-wallet-dc-api.js';
+import { fetchDcApiConfig, updateDcApiPanel } from './it-wallet-dc-api.js?v=wallet-ui-20261126m';
 
 const SHOW_CARD_LEARN_MORE = false;
 const SEARCH_MIN_WALLETS = 7;
