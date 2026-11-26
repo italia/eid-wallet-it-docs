@@ -3,7 +3,6 @@
 Risorse statiche condivise dalle pagine HTML ufficiali del flusso di autenticazione/presentazione:
 
 - `discovery-page/disco.html`
-- `it-wallet-dc-api-page/dc-api.html`
 - `it-wallet-selection-page/it-wallet.html`
 - `it-wallet-presentation-qr-code-page/qr-code-page.html`
 - `error-page/error_page.html`
