@@ -1,0 +1,56 @@
+{
+  "header": {
+    "region_name": "Owning entity",
+    "logo_alt": "Your logo",
+    "wallet_brand_alt": "IT-Wallet",
+    "lang_active_hint": "active language:",
+    "lang_trigger": "Language selection, {{name}} selected"
+  },
+  "meta": {
+    "description": "Sign in with {{walletName}} using a QR code."
+  },
+  "noscript": {
+    "message": "JavaScript must be enabled to use the QR code page."
+  },
+  "skip_links": {
+    "nav_label": "Skip links",
+    "main_content": "Skip to main content",
+    "footer": "Skip to footer"
+  },
+  "page_title": "Login",
+  "login_logo": "Log in with your digital wallet",
+  "contentTitle": "Scan the QR code",
+  "qrCodeValidInfo": "The QR code is valid for <b id=\"timer\">{{seconds}}</b> seconds",
+  "supportText": "If you are browsing on your PC, use the <b>{{walletName}}</b> feature<br>or your smartphone <b>camera</b>",
+  "detectedSame": "Detected mode: browsing device is the same as the authentication device",
+  "detectedCross": "Detected mode: browsing device differs from the authentication device",
+  "sameDeviceLead": "If instead you are using the same device to browse and authenticate and cannot scan the QR code:",
+  "sameDeviceButton": "Continue on this device",
+  "sameDeviceButtonCountdown": "Continue on this device ({{seconds}})",
+  "cancelSameDeviceAuto": "Cancel automatic open",
+  "qrCodeLinkAriaLabel": "QR code for signing in with {{walletName}}",
+  "backLabel": "Go back",
+  "cancelLabel": "Cancel",
+  "qrCodeExpiredInfo": "The QR code is no longer valid",
+  "qrCodeReloadLabel": "Generate a new code",
+  "appTitle": "Continue on the {{walletName}} app",
+  "appText": "To continue, follow the instructions on the app and authorize access",
+  "connectedTitle": "Authentication completed!",
+  "connectedText": "Continue on the {{siteName}} site",
+  "clickAccessLabel": "Continue",
+  "failureTitle": "We were unable to retrieve your data",
+  "failureText": "Remember that to log in with {{walletName}}, you must consent to the reading of your information. If the problem persist, please contact the support service.",
+  "retryLabel": "Try again",
+  "contactSupportLabel": "Contact support",
+  "demoPayloadLabel": "QR Code payload (Authorization Request)",
+  "footer": {
+    "nav_label": "Legal links",
+    "legal_notice": "Legal notes",
+    "legal_url": "#",
+    "privacy_policy": "Privacy policy",
+    "privacy_url": "#",
+    "accessibility_statement": "Accessibility statement",
+    "accessibility_url": "#",
+    "new_window_hint": "opens in a new window"
+  }
+}

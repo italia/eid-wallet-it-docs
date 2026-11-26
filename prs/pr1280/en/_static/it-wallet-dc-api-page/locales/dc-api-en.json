@@ -1,0 +1,43 @@
+{
+  "header": {
+    "region_name": "Owning entity",
+    "logo_alt": "Your logo",
+    "wallet_brand_alt": "IT-Wallet",
+    "lang_active_hint": "active language:",
+    "lang_trigger": "Language selection, {{name}} selected"
+  },
+  "meta": {
+    "description": "Sign in with the browser Digital Credentials API, with a fallback to wallet app selection."
+  },
+  "noscript": {
+    "message": "JavaScript must be enabled to use this page."
+  },
+  "skip_links": {
+    "nav_label": "Skip links",
+    "main_content": "Skip to main content",
+    "footer": "Skip to footer"
+  },
+  "page_title": "Login",
+  "contentTitle": "Digital Credentials",
+  "supportText": "We will try signing in with the browser Digital Credentials API if your device and wallet app support it.",
+  "unsupportedText": "This browser does not support the Digital Credentials API. Continue by choosing a wallet app.",
+  "startLabel": "Continue with Digital Credentials",
+  "fallbackLabel": "Choose a specific Wallet application",
+  "backLabel": "Go back",
+  "cancelLabel": "Cancel",
+  "statusWaiting": "Waiting for the wallet response…",
+  "statusSuccess": "Presentation completed (demo). In a real environment the data would return to the Relying Party.",
+  "statusCancelled": "Operation cancelled. You can choose a wallet app to continue.",
+  "statusError": "The request did not succeed. You can choose a wallet app to continue.",
+  "statusNoProvider": "No system-registered wallet matched this request. You can choose a wallet app to continue.",
+  "footer": {
+    "nav_label": "Legal links",
+    "legal_notice": "Legal notes",
+    "legal_url": "#",
+    "privacy_policy": "Privacy policy",
+    "privacy_url": "#",
+    "accessibility_statement": "Accessibility statement",
+    "accessibility_url": "#",
+    "new_window_hint": "opens in a new window"
+  }
+}

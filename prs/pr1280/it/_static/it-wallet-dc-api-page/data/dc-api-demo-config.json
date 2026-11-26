@@ -1,0 +1,21 @@
+{
+  "selection_page_url": "../it-wallet-selection-page/it-wallet.html",
+  "discovery_page_url": "../discovery-page/disco.html",
+  "protocol": "openid4vp-v1-unsigned",
+  "demo_request": {
+    "response_type": "vp_token",
+    "client_id": "openid_federation:https://relying-party.example.org/OpenID4VP",
+    "nonce": "demo-nonce-example-org",
+    "dcql_query": {
+      "credentials": [
+        {
+          "id": "pid",
+          "format": "dc+sd-jwt",
+          "meta": {
+            "vct_values": ["urn:eudi:pid:1"]
+          }
+        }
+      ]
+    }
+  }
+}
