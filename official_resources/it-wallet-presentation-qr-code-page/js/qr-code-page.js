@@ -27,9 +27,28 @@ let expirationTime = demoConfig.qrcode_expiration_time;
 let countdown = null;
 let countdownStarted = false;
 let currentQrPayloadUrl = '';
+let detectedFlow = 'cross_device';
+let sameDeviceAutoSeconds = 12;
+let sameDeviceAutoRemaining = 12;
+let sameDeviceAutoTimer = null;
+let sameDeviceAutoCancelled = false;
+const SAME_DEVICE_AUTO_TIMEOUT = 12;
 
 function isDebugMode() {
   return new URLSearchParams(window.location.search).get('debug') === 'true';
+}
+
+function detectDemoFlowTyp() {
+  const params = new URLSearchParams(window.location.search);
+  const forced = params.get('flow') || params.get('remote_flow_typ');
+  if (forced === 'same_device' || forced === 'cross_device') {
+    return forced;
+  }
+  const ua = navigator.userAgent || '';
+  if (/Android.+Mobile|iPhone|iPod|Windows Phone|Mobile.+Firefox|webOS/i.test(ua)) {
+    return 'same_device';
+  }
+  return 'cross_device';
 }
 
 function escapeHtml(text) {
@@ -396,11 +415,116 @@ function updateShellTexts(t) {
   updateBackLink(t);
 }
 
+function openSameDevice() {
+  stopSameDeviceAutoRedirect();
+  if (!currentQrPayloadUrl) return;
+  window.location.assign(currentQrPayloadUrl);
+}
+
+function stopSameDeviceAutoRedirect() {
+  if (sameDeviceAutoTimer) {
+    clearInterval(sameDeviceAutoTimer);
+    sameDeviceAutoTimer = null;
+  }
+}
+
+function updateSameDeviceButtonLabel(t) {
+  const sameBtnLabel = document.getElementById('btn-same-device-label');
+  if (!sameBtnLabel || !t) return;
+
+  const autoActive = detectedFlow === 'same_device' && !sameDeviceAutoCancelled && sameDeviceAutoRemaining > 0;
+  if (autoActive) {
+    sameBtnLabel.textContent = t('sameDeviceButtonCountdown', {
+      seconds: String(sameDeviceAutoRemaining),
+      interpolation: { escapeValue: true },
+    });
+  } else {
+    sameBtnLabel.textContent = t('sameDeviceButton');
+  }
+}
+
+function startSameDeviceAutoRedirect() {
+  stopSameDeviceAutoRedirect();
+  if (detectedFlow !== 'same_device' || sameDeviceAutoCancelled) return;
+  if (!currentQrPayloadUrl) return;
+
+  sameDeviceAutoSeconds = SAME_DEVICE_AUTO_TIMEOUT;
+  sameDeviceAutoRemaining = SAME_DEVICE_AUTO_TIMEOUT;
+
+  const t = i18next.t.bind(i18next);
+  updateSameDeviceButtonLabel(t);
+
+  const cancelBtn = document.getElementById('btn-cancel-same-auto');
+  if (cancelBtn) {
+    cancelBtn.hidden = false;
+    cancelBtn.textContent = t('cancelSameDeviceAuto');
+  }
+
+  sameDeviceAutoTimer = setInterval(() => {
+    sameDeviceAutoRemaining -= 1;
+    updateSameDeviceButtonLabel(i18next.t.bind(i18next));
+    if (sameDeviceAutoRemaining <= 0) {
+      openSameDevice();
+    }
+  }, 1000);
+}
+
+function cancelSameDeviceAutoRedirect() {
+  sameDeviceAutoCancelled = true;
+  stopSameDeviceAutoRedirect();
+  const cancelBtn = document.getElementById('btn-cancel-same-auto');
+  if (cancelBtn) cancelBtn.hidden = true;
+  if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+    updateSameDeviceButtonLabel(i18next.t.bind(i18next));
+  }
+}
+
+function setupEngagementControls() {
+  const sameBtn = document.getElementById('btn-same-device');
+  if (sameBtn) {
+    sameBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      openSameDevice();
+    });
+  }
+
+  const cancelAuto = document.getElementById('btn-cancel-same-auto');
+  cancelAuto?.addEventListener('click', () => {
+    cancelSameDeviceAutoRedirect();
+  });
+}
+
+function syncSameDeviceLink() {
+  const sameBtn = document.getElementById('btn-same-device');
+  if (sameBtn && currentQrPayloadUrl) {
+    sameBtn.href = currentQrPayloadUrl;
+  }
+}
+
 function updateTexts(t) {
   updateShellTexts(t);
 
   const title = document.getElementById('content-title');
   if (title) title.textContent = t('contentTitle');
+
+  const sameDeviceLead = document.getElementById('same-device-lead');
+  if (sameDeviceLead) sameDeviceLead.textContent = t('sameDeviceLead');
+
+  const badgeText = document.getElementById('engagement-badge-text');
+  if (badgeText) {
+    badgeText.textContent = detectedFlow === 'same_device'
+      ? t('detectedSame')
+      : t('detectedCross');
+  }
+
+  updateSameDeviceButtonLabel(t);
+
+  const cancelAuto = document.getElementById('btn-cancel-same-auto');
+  if (cancelAuto) {
+    cancelAuto.textContent = t('cancelSameDeviceAuto');
+    const showCancel = detectedFlow === 'same_device' && !sameDeviceAutoCancelled && sameDeviceAutoTimer;
+    cancelAuto.hidden = !showCancel;
+  }
 
   const info = document.getElementById('content-qrcode-info-text');
   const expired = document.getElementById('content-qrcode-payload')?.classList.contains('is-expired');
@@ -415,6 +539,8 @@ function updateTexts(t) {
 
   const support = document.getElementById('content-text');
   if (support) support.innerHTML = walletTranslation(t, 'supportText');
+
+  syncSameDeviceLink();
 }
 
 function stopCountdown() {
@@ -507,7 +633,7 @@ function initI18n() {
       lng: initialLang,
       fallbackLng: 'it',
       backend: {
-        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261117d`,
+        loadPath: `${getBasePath()}locales/qr-{{lng}}.json?v=wallet-ui-qr-20261126f`,
       },
     })
     .then((t) => {
@@ -521,6 +647,7 @@ function initI18n() {
       }
       updateTexts(t);
       startCountdown();
+      startSameDeviceAutoRedirect();
     })
     .catch((err) => {
       console.error('qr-code-page: i18next init failed', err);
@@ -531,9 +658,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchDemoConfig();
   await loadTrustedWallets();
   resolveSelectedWalletFromUrl();
+  detectedFlow = detectDemoFlowTyp();
   applyDemoConfig();
+  syncSameDeviceLink();
   setupBackLink();
   setupCancelLink();
+  setupEngagementControls();
   document.querySelector('qr-code')?.addEventListener('codeRendered', adjustQrIconLayout);
   initI18n();
 });

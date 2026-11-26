@@ -1256,6 +1256,12 @@ html.it-wallet-html body.it-wallet-body {
   z-index: 1;
 }
 
+.it-wallet-title-heading--single-line {
+  max-width: min(40rem, calc(100% - 9.5rem));
+  white-space: nowrap;
+  font-size: clamp(1.15rem, 2.6vw, 2rem);
+}
+
 /* Thank you (post-auth) state: single-line title, no cancel CTA */
 .it-wallet-page.is-thank-you .it-wallet-title-heading {
   max-width: min(36rem, calc(100% - 1rem));
@@ -1269,6 +1275,65 @@ html.it-wallet-html body.it-wallet-body {
 
 .it-wallet-page.is-thank-you .qr-cancel-wrap {
   display: none;
+}
+
+.it-wallet-engagement-status {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: #17324d;
+  font-size: 0.95rem;
+}
+
+.it-wallet-dc-api {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0 1.5rem;
+  border: 0;
+  background: transparent;
+}
+
+.it-wallet-dc-api .btn {
+  min-width: min(100%, 22rem);
+}
+
+.it-wallet-dc-api-note {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #5b6f82;
+}
+
+.it-wallet-list-intro {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.5rem;
+}
+
+.it-wallet-list-heading {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: #17324d;
+  font-weight: 600;
+}
+
+.qr-cancel-link {
+  color: #0066CC;
+  font-weight: 600;
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.qr-cancel-link:hover,
+.qr-cancel-link:focus {
+  color: #004d99;
+  text-decoration: underline;
 }
 
 .qr-thank-you-pictogram {

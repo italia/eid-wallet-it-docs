@@ -1,8 +1,17 @@
 # IT-Wallet Presentation QR Code Page
 
-Pagina ufficiale statica per il **flusso Cross Device** della presentazione remota (OpenID4VP), mostrata dopo la selezione del wallet in `it-wallet-selection-page`.
+Pagina ufficiale statica di **engagement** per la presentazione remota (OpenID4VP), mostrata dopo la selezione del wallet in `it-wallet-selection-page`.
+
+Titolo, sottotitolo e **QR restano in primo piano** (come nel flusso cross-device). Sotto, separati, compaiono:
+
+- badge con la **modalità rilevata** (UA o `?flow=same_device|cross_device`)
+- alternativa **same-device**: apre l'Authorization Request (custom URL scheme)
+
+Se il detect è **same-device**, dopo **12 secondi** parte automaticamente il redirect; il countdown è nella label del bottone same-device. L'utente può aprire subito o annullare l'apertura automatica e restare sul QR.
 
 L'export è pensato per anteprima, review UX e integrazione documentale: non richiede backend SATOSA/pyeduwi. Il countdown del timer è simulato lato client; non è presente polling sullo `status` endpoint. Gli asset UI comuni (CSS, JS, font, sprite, favicon, loghi) sono in `../shared-ui/`.
+
+Disamina di integrazione: `../../note/dc-api-engagement-integration.md`.
 
 ## Collegamento dalla Selection Page
 
