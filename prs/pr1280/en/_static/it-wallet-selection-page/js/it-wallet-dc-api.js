@@ -81,7 +81,18 @@ async function invokeDigitalCredentials(resource) {
   }
 }
 
+function isDcApiDisabledByQuery() {
+  const value = new URLSearchParams(window.location.search).get('dc-api');
+  if (value == null) return false;
+  return /^(0|false|no|off)$/i.test(String(value).trim());
+}
+
 export async function fetchDcApiConfig(basePath) {
+  if (isDcApiDisabledByQuery()) {
+    dcApiSupported = false;
+    return false;
+  }
+
   try {
     const response = await fetch(`${basePath}data/dc-api-demo-config.json?v=wallet-ui-20261126d`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
