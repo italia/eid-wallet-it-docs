@@ -17,10 +17,9 @@
     "wallet_brand_alt": "IT-Wallet"
   },
   "dc_api": {
-    "intro_title": "Select the Wallet to use",
-    "intro_text": "Use the automatic Wallet selector built into your operating system",
-    "intro_note": "This works only if, at issuance, you consented to register the credential at operating-system level.",
-    "section_label": "Select the Wallet to use",
+    "intro_title": "Use your operating system's Wallet selector",
+    "intro_text": "This works only if, at issuance, you registered the credentials in the operating system.",
+    "section_label": "Use your operating system's Wallet selector",
     "start_label": "Continue with the wallet on this device",
     "list_heading": "Or",
     "status_waiting": "Waiting for the wallet…",

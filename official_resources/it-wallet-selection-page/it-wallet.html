@@ -8,7 +8,7 @@
   <meta name="description" content="Scelta del wallet digitale per proseguire con l'autenticazione.">
   <link rel="icon" href="../shared-ui/spid/favicon-32x32.png">
 
-  <link rel="stylesheet" href="../shared-ui/css/style.css?v=wallet-ui-20261126i">
+  <link rel="stylesheet" href="../shared-ui/css/style.css?v=wallet-ui-20261126n">
   <link href="../shared-ui/css/bootstrap-italia.min.css" rel="stylesheet">
   <link href="../shared-ui/css/ita.min.css" rel="stylesheet">
 
@@ -96,7 +96,7 @@
           <span class="it-wallet-back-label">Torna indietro</span>
         </a>
       </div>
-      <h1 class="it-wallet-title-heading mb-0 it-wallet-title-heading--single-line" id="page-title">Seleziona il Portafoglio da utilizzare</h1>
+      <h1 class="it-wallet-title-heading mb-0 it-wallet-title-heading--single-line" id="page-title">Usa il selettore di Portafoglio del tuo sistema operativo</h1>
       <div class="it-wallet-title-slot it-wallet-title-slot--end">
         <div id="wallet-title-actions" class="it-wallet-title-actions" hidden>
           <button type="button" id="wallet-search-toggle" class="it-wallet-icon-btn" aria-expanded="false"
@@ -110,10 +110,9 @@
         </div>
       </div>
     </div>
-    <p class="text-center mb-3 it-wallet-subtitle" id="page-subtitle">Usa il selettore automatico di Portafoglio integrato nel tuo sistema operativo</p>
-    <p class="text-center mb-4 it-wallet-dc-api-note" id="dc-api-intro-note" hidden></p>
+    <p class="text-center mb-4 it-wallet-subtitle" id="page-subtitle">Funziona solo se, in fase di emissione, hai registrato gli attestati nel sistema operativo.</p>
 
-    <section id="it-wallet-dc-api" class="it-wallet-dc-api text-center mb-4" aria-label="Seleziona il Portafoglio da utilizzare" hidden>
+    <section id="it-wallet-dc-api" class="it-wallet-dc-api text-center mb-4" aria-label="Usa il selettore di Portafoglio del tuo sistema operativo" hidden>
       <p id="dc-api-status" class="it-wallet-engagement-status mb-3" role="status" aria-live="polite"></p>
       <button type="button" id="dc-api-start" class="btn btn-primary">
         <span id="dc-api-start-label"></span>
@@ -191,7 +190,7 @@
     </div>
   </footer>
 
-  <script type="module" src="js/it-wallet-loader.js?v=wallet-ui-20261126m"></script>
+  <script type="module" src="js/it-wallet-loader.js?v=wallet-ui-20261126n"></script>
 </body>
 
 </html>

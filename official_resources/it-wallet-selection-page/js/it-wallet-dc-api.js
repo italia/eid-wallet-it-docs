@@ -117,7 +117,6 @@ export function updateDcApiPanel(resource) {
   const startLabel = document.getElementById('dc-api-start-label');
   const pageTitle = document.getElementById('page-title');
   const pageSubtitle = document.getElementById('page-subtitle');
-  const introNote = document.getElementById('dc-api-intro-note');
   const listIntro = document.getElementById('wallet-list-intro');
   const listHeading = document.getElementById('wallet-list-heading');
   const listSubtitle = document.getElementById('wallet-list-subtitle');
@@ -141,10 +140,6 @@ export function updateDcApiPanel(resource) {
       pageSubtitle.hidden = false;
       pageSubtitle.textContent = chooseSubtitle;
     }
-    if (introNote) {
-      introNote.hidden = true;
-      introNote.textContent = '';
-    }
     if (listIntro) listIntro.hidden = true;
     if (listSurface) listSurface.setAttribute('aria-labelledby', 'page-title');
     if (tabTitle) tabTitle.textContent = chooseTitle;
@@ -152,11 +147,10 @@ export function updateDcApiPanel(resource) {
     return;
   }
 
-  const introTitle = resource?.dc_api?.intro_title || 'Seleziona il Portafoglio da utilizzare';
+  const introTitle = resource?.dc_api?.intro_title
+    || 'Usa il selettore di Portafoglio del tuo sistema operativo';
   const introText = resource?.dc_api?.intro_text
-    || 'Usa il selettore automatico di Portafoglio integrato nel tuo sistema operativo';
-  const introNoteText = resource?.dc_api?.intro_note
-    || 'Funziona solo se, in fase di emissione, hai acconsentito a registrare la credenziale a livello di sistema operativo.';
+    || 'Funziona solo se, in fase di emissione, hai registrato gli attestati nel sistema operativo.';
 
   if (pageTitle) {
     pageTitle.textContent = introTitle;
@@ -165,10 +159,6 @@ export function updateDcApiPanel(resource) {
   if (pageSubtitle) {
     pageSubtitle.hidden = false;
     pageSubtitle.textContent = introText;
-  }
-  if (introNote) {
-    introNote.hidden = false;
-    introNote.textContent = introNoteText;
   }
   if (tabTitle) tabTitle.textContent = introTitle;
   document.title = introTitle;
