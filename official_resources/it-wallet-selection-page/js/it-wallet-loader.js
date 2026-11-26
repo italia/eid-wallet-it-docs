@@ -1,7 +1,10 @@
 /**
  * IT-Wallet selection page: load wallets, random default order,
  * optional search/sort controls and card rendering.
+ * DC API panel (when supported) sits above the wallet list.
  */
+
+import { fetchDcApiConfig, updateDcApiPanel } from './it-wallet-dc-api.js';
 
 const SHOW_CARD_LEARN_MORE = false;
 const SEARCH_MIN_WALLETS = 7;
@@ -99,12 +102,8 @@ function loadDocument(resource) {
     headerLogo.setAttribute('role', 'img');
     headerLogo.setAttribute('aria-labelledby', 'eid-title');
   }
-  const tabTitle = document.getElementById('tab-title');
-  if (tabTitle) tabTitle.textContent = resource?.titles?.page_title ?? '';
-  const pageTitle = document.getElementById('page-title');
-  if (pageTitle) pageTitle.textContent = resource?.titles?.page_title ?? '';
-  const pageSubtitle = document.getElementById('page-subtitle');
-  if (pageSubtitle) pageSubtitle.textContent = resource?.titles?.page_subtitle ?? '';
+  // Page title/subtitle and list intro depend on DC API support.
+  updateDcApiPanel(resource);
 
   const searchInput = document.getElementById('wallet-search');
   const searchLabel = document.getElementById('wallet-search-label');
@@ -830,9 +829,10 @@ i18next
   .init({
     lng: walletInitialLang,
     fallbackLng: 'it',
-    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json?v=wallet-ui-20261117e' }
+    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json?v=wallet-ui-20261126l' }
   })
-  .then(() => {
+  .then(async () => {
+    await fetchDcApiConfig(getBasePath());
     if (typeof window.initHeaderLangDropdown === 'function') {
       window.initHeaderLangDropdown(i18next, { afterLanguageChange: () => loadItWalletPage() });
     }

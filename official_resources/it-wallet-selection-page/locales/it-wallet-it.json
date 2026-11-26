@@ -16,6 +16,19 @@
     "logo_title": "Il tuo logo",
     "wallet_brand_alt": "IT-Wallet"
   },
+  "dc_api": {
+    "intro_title": "Seleziona il Portafoglio da utilizzare",
+    "intro_text": "Usa il selettore automatico di Portafoglio integrato nel tuo sistema operativo",
+    "intro_note": "Funziona solo se, in fase di emissione, hai acconsentito a registrare la credenziale a livello di sistema operativo.",
+    "section_label": "Seleziona il Portafoglio da utilizzare",
+    "start_label": "Continua con il portafoglio sul dispositivo",
+    "list_heading": "Oppure",
+    "status_waiting": "In attesa della risposta del portafoglio…",
+    "status_success": "Accesso completato (demo).",
+    "status_cancelled": "Operazione annullata. Puoi scegliere un'app qui sotto.",
+    "status_error": "Non è stato possibile continuare. Puoi scegliere un'app qui sotto.",
+    "status_no_provider": "Nessun portafoglio disponibile su questo dispositivo. Puoi scegliere un'app qui sotto."
+  },
   "search": {
     "label": "Cerca wallet per nome",
     "placeholder": "Cerca per nome",
