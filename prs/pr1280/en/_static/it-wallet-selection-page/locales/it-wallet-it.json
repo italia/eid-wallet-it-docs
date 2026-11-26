@@ -17,10 +17,9 @@
     "wallet_brand_alt": "IT-Wallet"
   },
   "dc_api": {
-    "intro_title": "Seleziona il Portafoglio da utilizzare",
-    "intro_text": "Usa il selettore automatico di Portafoglio integrato nel tuo sistema operativo",
-    "intro_note": "Funziona solo se, in fase di emissione, hai acconsentito a registrare la credenziale a livello di sistema operativo.",
-    "section_label": "Seleziona il Portafoglio da utilizzare",
+    "intro_title": "Usa il selettore di Portafoglio del tuo sistema operativo",
+    "intro_text": "Funziona solo se, in fase di emissione, hai registrato gli attestati nel sistema operativo.",
+    "section_label": "Usa il selettore di Portafoglio del tuo sistema operativo",
     "start_label": "Continua con il portafoglio sul dispositivo",
     "list_heading": "Oppure",
     "status_waiting": "In attesa della risposta del portafoglio…",

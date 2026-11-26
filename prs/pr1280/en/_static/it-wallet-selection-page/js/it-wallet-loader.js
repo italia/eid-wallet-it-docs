@@ -4,7 +4,7 @@
  * DC API panel (when supported) sits above the wallet list.
  */
 
-import { fetchDcApiConfig, updateDcApiPanel } from './it-wallet-dc-api.js?v=wallet-ui-20261126m';
+import { fetchDcApiConfig, updateDcApiPanel } from './it-wallet-dc-api.js?v=wallet-ui-20261126n';
 
 const SHOW_CARD_LEARN_MORE = false;
 const SEARCH_MIN_WALLETS = 7;
@@ -829,7 +829,7 @@ i18next
   .init({
     lng: walletInitialLang,
     fallbackLng: 'it',
-    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json?v=wallet-ui-20261126l' }
+    backend: { loadPath: getBasePath() + 'locales/it-wallet-{{lng}}.json?v=wallet-ui-20261126n' }
   })
   .then(async () => {
     await fetchDcApiConfig(getBasePath());
